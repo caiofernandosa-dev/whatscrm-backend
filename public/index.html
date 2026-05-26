@@ -14,95 +14,88 @@ body{font-family:system-ui,sans-serif;background:#f5f5f5;color:#1a1a1a}
 .logo-icon{width:28px;height:28px;background:#25D366;border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:15px}
 .logo-name{font-size:14px;font-weight:700}
 nav{padding:8px;flex:1;overflow-y:auto}
-.nav-s{font-size:10px;color:#bbb;padding:8px 8px 4px;text-transform:uppercase;letter-spacing:.5px}
-.nav-item{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:8px;cursor:pointer;font-size:12px;color:#666;margin-bottom:1px}
-.nav-item:hover{background:#f5f5f5;color:#1a1a1a}
-.nav-item.active{background:#f0faf4;color:#25D366;font-weight:600}
-.nav-item i{font-size:15px;width:16px}
-.badge{margin-left:auto;background:#25D366;color:white;border-radius:8px;font-size:10px;padding:1px 5px}
-.badge-r{margin-left:auto;background:#e24b4a;color:white;border-radius:8px;font-size:10px;padding:1px 5px}
+.ns{font-size:10px;color:#bbb;padding:8px 8px 4px;text-transform:uppercase;letter-spacing:.5px}
+.ni{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:8px;cursor:pointer;font-size:12px;color:#666;margin-bottom:1px}
+.ni:hover{background:#f5f5f5;color:#1a1a1a}
+.ni.active{background:#f0faf4;color:#25D366;font-weight:600}
+.ni i{font-size:15px;width:16px}
+.bgg{margin-left:auto;background:#25D366;color:white;border-radius:8px;font-size:10px;padding:1px 5px}
+.bgr{margin-left:auto;background:#e24b4a;color:white;border-radius:8px;font-size:10px;padding:1px 5px}
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
 .topbar{padding:10px 16px;border-bottom:1px solid #eee;background:white;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.ai-pill{display:flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid #eee;background:#f0faf4;color:#25D366}
+.ai-pill{display:flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid #9FE1CB;background:#f0faf4;color:#25D366}
 .ai-dot{width:7px;height:7px;border-radius:50%;background:#25D366}
-.btn-g{background:#25D366;color:white;border:none;padding:6px 14px;border-radius:8px;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:5px}
-.btn-o{background:transparent;border:1px solid #eee;padding:6px 12px;border-radius:8px;font-size:12px;cursor:pointer;color:#1a1a1a;display:flex;align-items:center;gap:5px}
+.btng{background:#25D366;color:white;border:none;padding:6px 14px;border-radius:8px;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:5px}
+.btno{background:transparent;border:1px solid #eee;padding:6px 12px;border-radius:8px;font-size:12px;cursor:pointer;color:#1a1a1a;display:flex;align-items:center;gap:5px}
 .content{flex:1;overflow-y:auto;padding:16px}
 .view{display:none}.view.active{display:block}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.mcs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
 .mc{background:white;border-radius:10px;padding:12px;border:1px solid #eee}
-.mc-label{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
-.mc-val{font-size:20px;font-weight:700}
-.mc-delta{font-size:10px;color:#25D366;margin-top:1px}
+.mcl{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.mcv{font-size:20px;font-weight:700}
+.mcd{font-size:10px;color:#25D366;margin-top:1px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
 .panel{background:white;border-radius:10px;padding:12px 14px;border:1px solid #eee}
-.panel-title{font-size:12px;font-weight:600;margin-bottom:10px}
+.pt{font-size:12px;font-weight:600;margin-bottom:10px}
 .row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #f5f5f5}
 .row:last-child{border:none}
 .tag{display:inline-block;padding:2px 7px;border-radius:8px;font-size:10px;font-weight:600}
 .tg{background:#e6faf0;color:#0a7a40}.tb{background:#e6f0ff;color:#1a4fa0}
 .ta{background:#fff8e6;color:#a07010}.tr{background:#ffe6e6;color:#a01010}.tp{background:#f0e6ff;color:#6010a0}
 .av{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
-.toggle{width:30px;height:17px;border-radius:9px;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
-.toggle.on{background:#25D366}.toggle.off{background:#ddd}
-.toggle::after{content:'';position:absolute;width:13px;height:13px;border-radius:50%;background:white;top:2px;transition:left .2s}
-.toggle.on::after{left:15px}.toggle.off::after{left:2px}
-.seg-tabs{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap}
+.tog{width:30px;height:17px;border-radius:9px;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
+.tog.on{background:#25D366}.tog.off{background:#ddd}
+.tog::after{content:'';position:absolute;width:13px;height:13px;border-radius:50%;background:white;top:2px;transition:left .2s}
+.tog.on::after{left:15px}.tog.off::after{left:2px}
+.segtabs{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap}
 .stab{padding:4px 10px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid #eee;color:#666;background:white}
 .stab.active{background:#25D366;color:white;border-color:#25D366;font-weight:600}
-.seg-bar{display:flex;align-items:center;justify-content:space-between;background:#f9f9f9;border-radius:8px;padding:7px 12px;margin-bottom:10px;border:1px solid #eee}
+.segbar{display:flex;align-items:center;justify-content:space-between;background:#f9f9f9;border-radius:8px;padding:7px 12px;margin-bottom:10px;border:1px solid #eee}
 table.ct{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}
 table.ct th{text-align:left;padding:5px 8px;color:#999;font-weight:400;border-bottom:1px solid #eee;font-size:11px}
 table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pbox{background:#f9f9f9;border:1px solid #eee;border-radius:8px;padding:8px 10px;font-size:12px;font-family:monospace;line-height:1.5;margin-bottom:8px;width:100%;resize:vertical}
-.plabel{font-size:10px;color:#999;margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
-.cwrap{background:#f9f9f9;border-radius:8px;padding:10px}
-.cmsgs{display:flex;flex-direction:column;gap:6px;margin-bottom:8px;max-height:180px;overflow-y:auto}
-.mi{align-self:flex-start;background:white;border:1px solid #eee;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%}
-.mbot{align-self:flex-start;background:#e6f0ff;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%;color:#1a4fa0}
-.mo{align-self:flex-end;background:#dcf8c6;border-radius:8px 0 8px 8px;padding:6px 9px;font-size:12px;max-width:78%;color:#075e54}
-.mts{font-size:10px;color:#999;margin-top:2px}
-.appt{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid #eee;background:white;margin-bottom:6px}
+.plbl{font-size:10px;color:#999;margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
 /* KANBAN */
-.kb-wrap{background:#f5f5f5;border-radius:10px;padding:12px;min-height:380px}
-.kb-tabs{display:flex;gap:4px;margin-bottom:12px;align-items:center;flex-wrap:wrap}
-.kb-tab{padding:4px 10px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid #eee;color:#666;background:white}
-.kb-tab.active{background:#25D366;color:white;border-color:#25D366;font-weight:600}
-.add-tab{padding:4px 10px;border-radius:20px;font-size:12px;cursor:pointer;border:1px dashed #ccc;color:#999;background:transparent;display:flex;align-items:center;gap:4px}
-.add-tab:hover{border-color:#25D366;color:#25D366}
-.kb-board{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px}
-.kb-col{min-width:170px;width:170px;flex-shrink:0;background:white;border-radius:8px;border:1px solid #eee;display:flex;flex-direction:column}
-.kb-col-hdr{padding:8px 10px;display:flex;align-items:center;border-bottom:1px solid #f5f5f5}
-.cti{font-size:12px;font-weight:600;border:none;background:transparent;color:#1a1a1a;font-family:system-ui;outline:none;flex:1;min-width:0}
-.ccnt{font-size:10px;background:#f5f5f5;color:#999;border-radius:8px;padding:1px 5px;flex-shrink:0;margin-left:4px}
-.cdel{font-size:12px;color:#ccc;cursor:pointer;flex-shrink:0;margin-left:4px}
-.cdel:hover{color:#e24b4a}
-.kb-cards{padding:6px;flex:1;min-height:50px;transition:background .15s}
-.kb-card{background:#f9f9f9;border-radius:8px;padding:7px 9px;margin-bottom:5px;cursor:grab;border:1px solid #eee;font-size:12px}
-.kb-card:active{opacity:.7}
-.cn{font-weight:600;color:#1a1a1a;margin-bottom:2px}
-.cs{font-size:11px;color:#999}
-.ct2{display:inline-block;padding:1px 6px;border-radius:6px;font-size:10px;font-weight:600;margin-top:3px}
-.add-card-btn{padding:5px 8px;font-size:11px;color:#999;cursor:pointer;display:flex;align-items:center;gap:3px;border-top:1px solid #f5f5f5}
-.add-card-btn:hover{color:#25D366}
-.add-col-btn{min-width:36px;width:36px;height:36px;border-radius:8px;border:1px dashed #ccc;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#999;flex-shrink:0;align-self:flex-start;font-size:16px}
-.add-col-btn:hover{border-color:#25D366;color:#25D366}
+.kbwrap{background:#f5f5f5;border-radius:10px;padding:12px;min-height:380px}
+.kbtabs{display:flex;gap:4px;margin-bottom:12px;align-items:center;flex-wrap:wrap}
+.kbtab{padding:4px 10px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid #eee;color:#666;background:white}
+.kbtab.active{background:#25D366;color:white;border-color:#25D366;font-weight:600}
+.addtab{padding:4px 10px;border-radius:20px;font-size:12px;cursor:pointer;border:1px dashed #ccc;color:#999;background:transparent;display:flex;align-items:center;gap:4px}
+.addtab:hover{border-color:#25D366;color:#25D366}
+.kbboard{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;min-height:300px}
+.kbcol{min-width:175px;width:175px;flex-shrink:0;background:white;border-radius:8px;border:1px solid #eee;display:flex;flex-direction:column}
+.kbcolh{padding:8px 10px;display:flex;align-items:center;border-bottom:1px solid #f5f5f5}
+.colti{font-size:12px;font-weight:600;border:none;background:transparent;color:#1a1a1a;font-family:system-ui;outline:none;flex:1;min-width:0}
+.colcnt{font-size:10px;background:#f5f5f5;color:#999;border-radius:8px;padding:1px 5px;flex-shrink:0;margin-left:4px}
+.coldel{font-size:12px;color:#ccc;cursor:pointer;flex-shrink:0;margin-left:4px}
+.coldel:hover{color:#e24b4a}
+.kbcards{padding:6px;flex:1;min-height:60px;transition:background .15s;border-radius:0 0 8px 8px}
+.kbcard{background:#f9f9f9;border-radius:8px;padding:7px 9px;margin-bottom:5px;cursor:grab;border:1px solid #eee;font-size:12px}
+.kbcard:active{opacity:.7}
+.kbcn{font-weight:600;color:#1a1a1a;margin-bottom:2px}
+.kbcs{font-size:11px;color:#999}
+.kbct{display:inline-block;padding:1px 6px;border-radius:6px;font-size:10px;font-weight:600;margin-top:3px}
+.addcardbn{padding:5px 8px;font-size:11px;color:#999;cursor:pointer;display:flex;align-items:center;gap:3px;border-top:1px solid #f5f5f5}
+.addcardbn:hover{color:#25D366}
+.addcolbn{min-width:36px;width:36px;height:36px;border-radius:8px;border:1px dashed #ccc;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#999;flex-shrink:0;align-self:flex-start;font-size:16px}
+.addcolbn:hover{border-color:#25D366;color:#25D366}
 /* FUNIS */
-.fw{display:grid;grid-template-columns:200px 1fr;gap:12px;min-height:400px}
+.fw{display:grid;grid-template-columns:200px 1fr;gap:12px;min-height:420px}
 .fsb{display:flex;flex-direction:column;gap:6px}
-.fi{background:white;border:1px solid #eee;border-radius:8px;padding:9px 12px;cursor:pointer}
-.fi:hover{border-color:#25D366}
-.fi.active{border:1.5px solid #25D366;background:#f0faf4}
+.fitem{background:white;border:1px solid #eee;border-radius:8px;padding:9px 12px;cursor:pointer}
+.fitem:hover{border-color:#25D366}
+.fitem.active{border:1.5px solid #25D366;background:#f0faf4}
 .fin{font-size:12px;font-weight:600}
 .fim{font-size:11px;color:#999;margin-top:1px}
-.add-fn{border:1px dashed #ccc;border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:#999;display:flex;align-items:center;gap:5px}
-.add-fn:hover{border-color:#25D366;color:#25D366}
+.addfn{border:1px dashed #ccc;border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:#999;display:flex;align-items:center;gap:5px}
+.addfn:hover{border-color:#25D366;color:#25D366}
 .fmain{display:flex;flex-direction:column;gap:8px}
 .ftb{display:flex;align-items:center;justify-content:space-between;background:white;border-radius:8px;padding:9px 12px;border:1px solid #eee}
 .fti{font-size:13px;font-weight:600;border:none;background:transparent;color:#1a1a1a;font-family:system-ui;outline:none}
 .sc{background:white;border:1px solid #eee;border-radius:8px;padding:10px 12px}
 .sh{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.sn{width:20px;height:20px;border-radius:50%;background:#25D366;color:white;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.snum{width:20px;height:20px;border-radius:50%;background:#25D366;color:white;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .sni{font-size:12px;font-weight:600;border:none;background:transparent;color:#1a1a1a;font-family:system-ui;outline:none;flex:1}
 .sdel{font-size:12px;color:#ccc;cursor:pointer}
 .sdel:hover{color:#e24b4a}
@@ -110,17 +103,18 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
 .tt{padding:3px 9px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid #eee;color:#666;background:#f5f5f5}
 .tt.active{background:#25D366;color:white;border-color:#25D366}
 .me{width:100%;padding:7px 9px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a;font-family:system-ui;resize:vertical;min-height:56px}
-.dr{display:flex;align-items:center;gap:6px;font-size:11px;color:#999;margin-top:6px}
-.dr input{width:44px;padding:3px 6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a;text-align:center}
-.dr select{padding:3px 6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a}
-.aa{background:#f9f9f9;border-radius:8px;padding:8px 10px;border:1px solid #eee;display:flex;align-items:center;gap:8px}
-.rb{width:30px;height:30px;border-radius:50%;background:#e24b4a;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;flex-shrink:0}
-.ua{border:1px dashed #ccc;border-radius:8px;padding:12px;text-align:center;cursor:pointer;font-size:12px;color:#999;margin-top:6px}
-.ua:hover{border-color:#25D366;color:#25D366}
-.as-btn{border:1px dashed #ccc;border-radius:8px;padding:8px;text-align:center;cursor:pointer;font-size:12px;color:#999;display:flex;align-items:center;justify-content:center;gap:5px}
-.as-btn:hover{border-color:#25D366;color:#25D366}
-.db{background:#f9f9f9;border-radius:8px;padding:9px 12px;border:1px solid #eee;display:flex;align-items:center;justify-content:space-between}
+.drow{display:flex;align-items:center;gap:6px;font-size:11px;color:#999;margin-top:6px}
+.drow input{width:44px;padding:3px 6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a;text-align:center}
+.drow select{padding:3px 6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a}
+.aabtn{border:1px dashed #ccc;border-radius:8px;padding:8px;text-align:center;cursor:pointer;font-size:12px;color:#999;display:flex;align-items:center;justify-content:center;gap:5px}
+.aabtn:hover{border-color:#25D366;color:#25D366}
+.dbar{background:#f9f9f9;border-radius:8px;padding:9px 12px;border:1px solid #eee;display:flex;align-items:center;justify-content:space-between}
 .sarr{text-align:center;color:#25D366;font-size:16px;margin:2px 0}
+.uarea{border:1px dashed #ccc;border-radius:8px;padding:12px;text-align:center;cursor:pointer;font-size:12px;color:#999;margin-top:6px}
+.uarea:hover{border-color:#25D366;color:#25D366}
+/* CHAT AO VIVO */
+.chatgrid{display:grid;grid-template-columns:195px 1fr 185px;border:1px solid #eee;border-radius:10px;overflow:hidden;background:white}
+.chatheight{height:calc(100vh - 100px)}
 /* MODAL */
 .mbg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);align-items:center;justify-content:center;z-index:100}
 .mbg.show{display:flex}
@@ -128,8 +122,8 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
 .modal h3{font-size:14px;font-weight:600;margin-bottom:12px}
 .modal input,.modal select{width:100%;margin-bottom:8px;padding:6px 9px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a;font-family:system-ui}
 .mbtns{display:flex;gap:6px;margin-top:4px}
-.mbg2{background:#25D366;color:white;border:none;padding:7px 16px;border-radius:8px;font-size:12px;cursor:pointer;flex:1}
-.mbc{background:transparent;border:1px solid #eee;padding:7px 16px;border-radius:8px;font-size:12px;cursor:pointer;color:#1a1a1a}
+.mbtnok{background:#25D366;color:white;border:none;padding:7px 16px;border-radius:8px;font-size:12px;cursor:pointer;flex:1}
+.mbtnno{background:transparent;border:1px solid #eee;padding:7px 16px;border-radius:8px;font-size:12px;cursor:pointer;color:#1a1a1a}
 </style>
 </head>
 <body>
@@ -140,49 +134,50 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
     <div class="logo-name">WhatsCRM</div>
   </div>
   <nav>
-    <div class="nav-s">Principal</div>
-    <div class="nav-item active" onclick="go('dashboard',this)"><i class="ti ti-layout-dashboard"></i>Dashboard</div>
-    <div class="nav-item" onclick="go('agente',this)"><i class="ti ti-robot"></i>Agente IA<span class="badge">ON</span></div>
-    <div class="nav-item" onclick="go('atend',this)"><i class="ti ti-message-circle"></i>Atendimento<span class="badge-r">3</span></div>
-    <div class="nav-s">CRM</div>
-    <div class="nav-item" onclick="go('contatos',this)"><i class="ti ti-users"></i>Contatos</div>
-    <div class="nav-item" onclick="go('kanban',this)"><i class="ti ti-layout-kanban"></i>Kanban</div>
-    <div class="nav-item" onclick="go('disparos',this)"><i class="ti ti-send"></i>Disparos</div>
-    <div class="nav-item" onclick="go('funis',this)"><i class="ti ti-hierarchy"></i>Funis</div>
-    <div class="nav-item" onclick="go('remarketing',this)"><i class="ti ti-refresh"></i>Remarketing</div>
-    <div class="nav-s">Integrações</div>
-    <div class="nav-item" onclick="go('agenda',this)"><i class="ti ti-calendar"></i>Agendamentos</div>
-    <div class="nav-item" onclick="go('clinica',this)"><i class="ti ti-stethoscope"></i>Clínica</div>
-    <div class="nav-item" onclick="go('adv',this)"><i class="ti ti-briefcase"></i>Advocacia</div>
+    <div class="ns">Principal</div>
+    <div class="ni active" onclick="go('dashboard',this)"><i class="ti ti-layout-dashboard"></i>Dashboard</div>
+    <div class="ni" onclick="go('agente',this)"><i class="ti ti-robot"></i>Agente IA<span class="bgg">ON</span></div>
+    <div class="ni" onclick="go('atend',this)"><i class="ti ti-message-circle"></i>Atendimento<span class="bgr">3</span></div>
+    <div class="ns">CRM</div>
+    <div class="ni" onclick="go('contatos',this)"><i class="ti ti-users"></i>Contatos</div>
+    <div class="ni" onclick="go('kanban',this)"><i class="ti ti-layout-kanban"></i>Kanban</div>
+    <div class="ni" onclick="go('disparos',this)"><i class="ti ti-send"></i>Disparos</div>
+    <div class="ni" onclick="go('funis',this)"><i class="ti ti-hierarchy"></i>Funis</div>
+    <div class="ni" onclick="go('remarketing',this)"><i class="ti ti-refresh"></i>Remarketing</div>
+    <div class="ns">Integrações</div>
+    <div class="ni" onclick="go('agenda',this)"><i class="ti ti-calendar"></i>Agendamentos</div>
+    <div class="ni" onclick="go('clinica',this)"><i class="ti ti-stethoscope"></i>Clínica</div>
+    <div class="ni" onclick="go('adv',this)"><i class="ti ti-briefcase"></i>Advocacia</div>
   </nav>
 </div>
 <div class="main">
   <div class="topbar">
     <div style="display:flex;align-items:center;gap:10px">
       <span style="font-size:14px;font-weight:600" id="ptitle">Dashboard</span>
-      <div class="ai-pill" onclick="toggleAI()"><div class="ai-dot" id="ai-dot"></div><span id="ai-txt">IA ativa</span></div>
+      <div class="ai-pill" onclick="toggleGlobalAI()"><div class="ai-dot" id="ai-dot"></div><span id="ai-txt">IA ativa</span></div>
     </div>
-    <button class="btn-g"><i class="ti ti-plus"></i><span id="btn-lbl">Nova campanha</span></button>
+    <button class="btng" id="topbtn" onclick="topBtnAction()"><i class="ti ti-plus"></i><span id="btn-lbl">Nova campanha</span></button>
   </div>
   <div class="content">
 
+    <!-- DASHBOARD -->
     <div id="v-dashboard" class="view active">
-      <div class="metrics">
-        <div class="mc"><div class="mc-label">Contatos</div><div class="mc-val" id="total-contatos">—</div><div class="mc-delta">carregando...</div></div>
-        <div class="mc"><div class="mc-label">IA ativa hoje</div><div class="mc-val">143</div><div class="mc-delta">↑ 68% do total</div></div>
-        <div class="mc"><div class="mc-label">Agendamentos</div><div class="mc-val">28</div><div class="mc-delta">hoje</div></div>
-        <div class="mc"><div class="mc-label">Conversão</div><div class="mc-val">31%</div><div class="mc-delta">↑ 5pts vs meta</div></div>
+      <div class="mcs">
+        <div class="mc"><div class="mcl">Contatos</div><div class="mcv" id="total-contatos">—</div><div class="mcd">carregando...</div></div>
+        <div class="mc"><div class="mcl">IA ativa hoje</div><div class="mcv">143</div><div class="mcd">↑ 68% do total</div></div>
+        <div class="mc"><div class="mcl">Agendamentos</div><div class="mcv">28</div><div class="mcd">hoje</div></div>
+        <div class="mc"><div class="mcl">Conversão</div><div class="mcv">31%</div><div class="mcd">↑ 5pts vs meta</div></div>
       </div>
       <div class="g2">
         <div class="panel">
-          <div class="panel-title">Status do sistema</div>
+          <div class="pt">Status do sistema</div>
           <div class="row"><div style="flex:1;font-size:12px">API Railway</div><span class="tag tg" id="api-status">verificando...</span></div>
           <div class="row"><div style="flex:1;font-size:12px">Banco Supabase</div><span class="tag tg">conectado</span></div>
           <div class="row"><div style="flex:1;font-size:12px">Agente IA</div><span class="tag tg">ativo</span></div>
           <div class="row"><div style="flex:1;font-size:12px">WhatsApp</div><span class="tag tr">não conectado</span></div>
         </div>
         <div class="panel">
-          <div class="panel-title">Checklist</div>
+          <div class="pt">Checklist</div>
           <div class="row"><i class="ti ti-check" style="color:#25D366;font-size:13px"></i><div style="font-size:12px;flex:1">GitHub + Railway + Supabase + Vercel</div></div>
           <div class="row"><i class="ti ti-check" style="color:#25D366;font-size:13px"></i><div style="font-size:12px;flex:1">Agente IA com Anthropic API</div></div>
           <div class="row"><i class="ti ti-clock" style="color:#eaa000;font-size:13px"></i><div style="font-size:12px;flex:1">Evolution API — conectar WhatsApp</div></div>
@@ -191,22 +186,23 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       </div>
     </div>
 
+    <!-- AGENTE IA -->
     <div id="v-agente" class="view">
       <div class="g2">
         <div>
           <div class="panel" style="margin-bottom:12px">
-            <div class="panel-title">Controle do agente</div>
+            <div class="pt">Controle</div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
               <span style="font-size:12px">IA respondendo automaticamente</span>
-              <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
+              <div class="tog on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
             </div>
-            <div class="row"><i class="ti ti-clock" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Horário de operação</div><span style="font-size:12px;font-weight:600">08:00–22:00</span></div>
-            <div class="row"><i class="ti ti-message-2" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Delay entre respostas</div><span style="font-size:12px;font-weight:600">3–8s</span></div>
-            <div class="row"><i class="ti ti-user-check" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Transferir se não souber</div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+            <div class="row"><i class="ti ti-clock" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Horário</div><span style="font-size:12px;font-weight:600">08:00–22:00</span></div>
+            <div class="row"><i class="ti ti-message-2" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Delay respostas</div><span style="font-size:12px;font-weight:600">3–8s</span></div>
+            <div class="row"><i class="ti ti-user-check" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Transferir se não souber</div><div class="tog on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
           </div>
           <div class="panel">
-            <div class="panel-title">Perfil</div>
-            <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Nome do agente</label>
+            <div class="pt">Perfil do agente</div>
+            <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Nome</label>
             <input type="text" value="Sofia — Assistente Virtual" style="width:100%;margin-bottom:8px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
             <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Segmento</label>
             <select style="width:100%;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
@@ -216,24 +212,25 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
         </div>
         <div>
           <div class="panel" style="margin-bottom:12px">
-            <div class="panel-title">Prompts</div>
-            <div class="plabel">Prompt base</div>
+            <div class="pt">Prompts</div>
+            <div class="plbl">Prompt base</div>
             <textarea class="pbox" rows="3">Você é Sofia, assistente virtual. Atenda com cordialidade. Responda em português. Nunca invente informações. Se não souber, transfira para um humano.</textarea>
-            <div class="plabel">Agendamento</div>
+            <div class="plbl">Agendamento</div>
             <textarea class="pbox" rows="2">Para agendar: pergunte nome, data e tipo de serviço. Confirme com dia, hora e local.</textarea>
-            <div class="plabel">Vendas</div>
-            <textarea class="pbox" rows="2">Apresente produtos com entusiasmo. Use o nome do cliente. Máximo 2 opções.</textarea>
+            <div class="plbl">Vendas</div>
+            <textarea class="pbox" rows="2">Apresente produtos com entusiasmo. Use o nome do cliente. Máximo 2 opções por vez.</textarea>
+            <button class="btng" style="margin-top:8px">Salvar prompts</button>
           </div>
           <div class="panel">
-            <div class="panel-title">Simulador</div>
-            <div class="cwrap">
-              <div class="cmsgs" id="sim-msgs">
-                <div class="mi">Olá, quero marcar uma consulta<div class="mts">agora</div></div>
-                <div class="mbot">Olá! Sou a Sofia! Qual especialidade?<div class="mts">Sofia · IA</div></div>
+            <div class="pt">Simulador</div>
+            <div style="background:#f9f9f9;border-radius:8px;padding:10px">
+              <div id="sim-msgs" style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px;max-height:160px;overflow-y:auto">
+                <div style="align-self:flex-start;background:white;border:1px solid #eee;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%">Olá, quero marcar uma consulta</div>
+                <div style="align-self:flex-start;background:#e6f0ff;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%;color:#1a4fa0">Olá! Sou a Sofia! Qual especialidade você precisa?<div style="font-size:10px;color:#888;margin-top:2px">Sofia · IA</div></div>
               </div>
               <div style="display:flex;gap:6px">
-                <input type="text" id="sim-input" placeholder="Simule uma mensagem..." style="flex:1;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
-                <button class="btn-g" onclick="simSend()" style="padding:5px 10px"><i class="ti ti-send"></i></button>
+                <input type="text" id="sim-input" placeholder="Simule uma mensagem..." style="flex:1;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:white">
+                <button class="btng" onclick="simSend()" style="padding:5px 10px"><i class="ti ti-send"></i></button>
               </div>
             </div>
           </div>
@@ -241,8 +238,9 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       </div>
     </div>
 
+    <!-- CONTATOS -->
     <div id="v-contatos" class="view">
-      <div class="seg-tabs" id="seg-tabs">
+      <div class="segtabs" id="seg-tabs">
         <div class="stab active" onclick="selSeg(this,'Todos',5204)">Todos (5.204)</div>
         <div class="stab" onclick="selSeg(this,'Leads',890)">Leads (890)</div>
         <div class="stab" onclick="selSeg(this,'Clientes',2310)">Clientes (2.310)</div>
@@ -250,11 +248,11 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
         <div class="stab" onclick="selSeg(this,'Clínica',412)">Clínica (412)</div>
         <div class="stab" onclick="selSeg(this,'Advocacia',203)">Advocacia (203)</div>
       </div>
-      <div class="seg-bar">
+      <div class="segbar">
         <div style="font-size:12px">Segmento: <strong id="seg-name">Todos</strong> · <strong id="seg-count">5.204</strong> contatos</div>
         <div style="display:flex;gap:6px">
-          <button class="btn-o" style="font-size:11px" onclick="go('funis',null)"><i class="ti ti-hierarchy"></i>Enviar funil</button>
-          <button class="btn-g" style="font-size:11px" onclick="go('disparos',null)"><i class="ti ti-send"></i>Disparar mensagem</button>
+          <button class="btno" style="font-size:11px" onclick="go('funis',null)"><i class="ti ti-hierarchy"></i>Enviar funil</button>
+          <button class="btng" style="font-size:11px" onclick="go('disparos',null)"><i class="ti ti-send"></i>Disparar mensagem</button>
         </div>
       </div>
       <table class="ct">
@@ -268,37 +266,39 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       </table>
     </div>
 
+    <!-- KANBAN -->
     <div id="v-kanban" class="view">
-      <div class="kb-wrap">
-        <div class="kb-tabs" id="kb-tabs"></div>
-        <div class="kb-board" id="kb-board"></div>
+      <div class="kbwrap">
+        <div class="kbtabs" id="kb-tabs"></div>
+        <div class="kbboard" id="kb-board"></div>
       </div>
     </div>
 
+    <!-- DISPAROS -->
     <div id="v-disparos" class="view">
-      <div class="seg-tabs">
-        <div class="stab active" onclick="this.closest('.seg-tabs').querySelectorAll('.stab').forEach(s=>s.classList.remove('active'));this.classList.add('active')">Todos (5.204)</div>
-        <div class="stab" onclick="this.closest('.seg-tabs').querySelectorAll('.stab').forEach(s=>s.classList.remove('active'));this.classList.add('active')">Clientes (2.310)</div>
-        <div class="stab" onclick="this.closest('.seg-tabs').querySelectorAll('.stab').forEach(s=>s.classList.remove('active'));this.classList.add('active')">Leads (890)</div>
-        <div class="stab" onclick="this.closest('.seg-tabs').querySelectorAll('.stab').forEach(s=>s.classList.remove('active'));this.classList.add('active')">VIP (145)</div>
-        <div class="stab" onclick="this.closest('.seg-tabs').querySelectorAll('.stab').forEach(s=>s.classList.remove('active'));this.classList.add('active')">Clínica (412)</div>
-        <div class="stab" onclick="this.closest('.seg-tabs').querySelectorAll('.stab').forEach(s=>s.classList.remove('active'));this.classList.add('active')">Advocacia (203)</div>
+      <div class="segtabs" id="disp-tabs">
+        <div class="stab active" onclick="selDispTab(this)">Todos (5.204)</div>
+        <div class="stab" onclick="selDispTab(this)">Clientes (2.310)</div>
+        <div class="stab" onclick="selDispTab(this)">Leads (890)</div>
+        <div class="stab" onclick="selDispTab(this)">VIP (145)</div>
+        <div class="stab" onclick="selDispTab(this)">Clínica (412)</div>
+        <div class="stab" onclick="selDispTab(this)">Advocacia (203)</div>
       </div>
       <div class="g2">
         <div class="panel">
-          <div class="panel-title">Configurar disparo</div>
+          <div class="pt">Configurar disparo</div>
           <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Nome da campanha</label>
           <input type="text" value="Promoção Julho" style="width:100%;margin-bottom:8px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
-          <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Mensagem</label>
+          <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Mensagem (use {{nome}}, {{data}})</label>
           <textarea rows="4" style="width:100%;margin-bottom:8px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;resize:none">Olá {{nome}}! Temos uma oferta especial. Responda SIM para saber mais!</textarea>
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-            <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
+            <div class="tog on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
             <span style="font-size:11px;color:#666">IA responde quem interagir</span>
           </div>
-          <button class="btn-g" style="width:100%;justify-content:center;padding:8px"><i class="ti ti-send"></i>Disparar agora</button>
+          <button class="btng" style="width:100%;justify-content:center;padding:8px"><i class="ti ti-send"></i>Disparar agora</button>
         </div>
         <div class="panel">
-          <div class="panel-title">Histórico</div>
+          <div class="pt">Histórico</div>
           <div class="row"><div style="flex:1"><div style="font-size:12px;font-weight:600">Promoção Junho</div><div style="font-size:11px;color:#999">3.000 enviadas · 76% lidas</div></div><span class="tag tg">OK</span></div>
           <div class="row"><div style="flex:1"><div style="font-size:12px;font-weight:600">Lembrete VIP</div><div style="font-size:11px;color:#999">145 enviadas · 92% lidas</div></div><span class="tag tg">OK</span></div>
           <div class="row"><div style="flex:1"><div style="font-size:12px;font-weight:600">Pauta Jurídica</div><div style="font-size:11px;color:#999">203 enviadas · 61% lidas</div></div><span class="tag tg">OK</span></div>
@@ -306,32 +306,33 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       </div>
     </div>
 
+    <!-- FUNIS -->
     <div id="v-funis" class="view">
       <div class="fw">
         <div class="fsb">
           <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px">Meus funis</div>
           <div id="funil-list"></div>
-          <div class="add-fn" onclick="addFunil()"><i class="ti ti-plus"></i>Novo funil</div>
+          <div class="addfn" onclick="addFunil()"><i class="ti ti-plus"></i>Novo funil</div>
           <div style="margin-top:10px;padding-top:10px;border-top:1px solid #eee">
             <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px">Disparar para</div>
             <select id="funil-seg" style="width:100%;padding:5px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;margin-bottom:6px">
               <option>Todos os contatos</option><option>Leads novos</option><option>Clientes ativos</option>
               <option>VIP</option><option>Clínica</option><option>Advocacia</option><option>1 contato específico</option>
             </select>
-            <button class="btn-g" style="width:100%;justify-content:center" onclick="dispararFunil()"><i class="ti ti-send"></i>Disparar funil</button>
+            <button class="btng" style="width:100%;justify-content:center" onclick="dispararFunil()"><i class="ti ti-send"></i>Disparar funil</button>
           </div>
         </div>
         <div class="fmain">
           <div class="ftb">
-            <input class="fti" id="funil-title" value="Funil de vendas" onchange="updateFunilName(this.value)">
+            <input class="fti" id="funil-title" value="Funil de vendas" oninput="updateFunilName(this.value)">
             <div style="display:flex;gap:6px">
-              <button class="btn-o" style="font-size:11px"><i class="ti ti-eye"></i>Preview</button>
-              <button class="btn-g" style="font-size:11px" onclick="saveFunil()"><i class="ti ti-check"></i>Salvar</button>
+              <button class="btno" style="font-size:11px"><i class="ti ti-eye"></i>Preview</button>
+              <button class="btng" style="font-size:11px" onclick="saveFunil()"><i class="ti ti-check"></i>Salvar</button>
             </div>
           </div>
-          <div id="steps-area" style="display:flex;flex-direction:column;gap:6px;flex:1;overflow-y:auto"></div>
-          <div class="as-btn" onclick="addStep()"><i class="ti ti-plus"></i>Adicionar etapa</div>
-          <div class="db">
+          <div id="steps-area" style="display:flex;flex-direction:column;gap:6px;overflow-y:auto;max-height:calc(100vh - 300px)"></div>
+          <div class="aabtn" onclick="addStep()"><i class="ti ti-plus"></i>Adicionar etapa</div>
+          <div class="dbar">
             <div style="font-size:12px;color:#666">Funil: <strong id="d-fn">Funil de vendas</strong> · <strong id="d-st">3</strong> etapas</div>
             <span class="tag tg" id="d-status">Pronto</span>
           </div>
@@ -339,26 +340,28 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       </div>
     </div>
 
+    <!-- REMARKETING -->
     <div id="v-remarketing" class="view">
       <div class="panel">
-        <div class="panel-title">Automações ativas</div>
-        <div class="row"><i class="ti ti-shopping-cart" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Carrinho abandonado</div><div style="color:#999;font-size:11px">1h após inatividade + IA responde</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
-        <div class="row"><i class="ti ti-calendar-off" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Consulta não confirmada</div><div style="color:#999;font-size:11px">Lembra 24h e 1h antes</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
-        <div class="row"><i class="ti ti-clock" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Reengajamento 30 dias</div><div style="color:#999;font-size:11px">Contatos sem interação</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
-        <div class="row"><i class="ti ti-star" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Upsell pós-compra</div><div style="color:#999;font-size:11px">7 dias após atendimento</div></div><div class="toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+        <div class="pt">Automações ativas</div>
+        <div class="row"><i class="ti ti-shopping-cart" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Carrinho abandonado</div><div style="color:#999;font-size:11px">1h após inatividade + IA responde</div></div><div class="tog on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+        <div class="row"><i class="ti ti-calendar-off" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Consulta não confirmada</div><div style="color:#999;font-size:11px">Lembra 24h e 1h antes</div></div><div class="tog on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+        <div class="row"><i class="ti ti-clock" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Reengajamento 30 dias</div><div style="color:#999;font-size:11px">Contatos sem interação</div></div><div class="tog on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+        <div class="row"><i class="ti ti-star" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Upsell pós-compra</div><div style="color:#999;font-size:11px">7 dias após atendimento</div></div><div class="tog off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
       </div>
     </div>
 
+    <!-- AGENDA -->
     <div id="v-agenda" class="view">
       <div class="g2">
         <div class="panel">
-          <div class="panel-title">Agendamentos de hoje</div>
-          <div class="appt"><div style="font-size:11px;font-weight:600;min-width:38px">08:30</div><div><div style="font-size:12px;font-weight:600">Ana Costa</div><div style="font-size:11px;color:#999">Clínica · Cardiologia</div></div><span class="tag tb">Confirmado</span></div>
-          <div class="appt"><div style="font-size:11px;font-weight:600;min-width:38px">10:00</div><div><div style="font-size:12px;font-weight:600">João Lima</div><div style="font-size:11px;color:#999">Advocacia · Trabalhista</div></div><span class="tag tp">Confirmado</span></div>
-          <div class="appt"><div style="font-size:11px;font-weight:600;min-width:38px">14:30</div><div><div style="font-size:12px;font-weight:600">Pedro Alves</div><div style="font-size:11px;color:#999">Clínica · Dermatologia</div></div><span class="tag ta">Pendente</span></div>
+          <div class="pt">Agendamentos de hoje</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid #eee;background:white;margin-bottom:6px"><div style="font-size:11px;font-weight:600;min-width:38px">08:30</div><div><div style="font-size:12px;font-weight:600">Ana Costa</div><div style="font-size:11px;color:#999">Clínica · Cardiologia</div></div><span class="tag tb">Confirmado</span></div>
+          <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid #eee;background:white;margin-bottom:6px"><div style="font-size:11px;font-weight:600;min-width:38px">10:00</div><div><div style="font-size:12px;font-weight:600">João Lima</div><div style="font-size:11px;color:#999">Advocacia · Trabalhista</div></div><span class="tag tp">Confirmado</span></div>
+          <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid #eee;background:white"><div style="font-size:11px;font-weight:600;min-width:38px">14:30</div><div><div style="font-size:12px;font-weight:600">Pedro Alves</div><div style="font-size:11px;color:#999">Clínica · Dermatologia</div></div><span class="tag ta">Pendente</span></div>
         </div>
         <div class="panel">
-          <div class="panel-title">Integrações</div>
+          <div class="pt">Integrações</div>
           <div class="row"><i class="ti ti-calendar" style="color:#25D366;font-size:13px"></i><div style="flex:1;font-size:12px">Google Calendar</div><span class="tag tg">Ativo</span></div>
           <div class="row"><i class="ti ti-stethoscope" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Doctoralia</div><span class="tag ta">Configurar</span></div>
           <div class="row"><i class="ti ti-briefcase" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Projuris / Advbox</div><span class="tag ta">Configurar</span></div>
@@ -366,79 +369,86 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       </div>
     </div>
 
+    <!-- CLINICA -->
     <div id="v-clinica" class="view">
       <div class="panel">
-        <div class="panel-title">Prompt — clínica médica</div>
-        <div class="plabel">Recepcionista virtual</div>
+        <div class="pt">Prompt — clínica médica</div>
+        <div class="plbl">Recepcionista virtual</div>
         <textarea class="pbox" rows="5">Você é a recepcionista virtual da Clínica [Nome]. Ao receber mensagem: 1) Cumprimente pelo nome. 2) Pergunte se é consulta, retorno ou exame. 3) Verifique disponibilidade. 4) Confirme: nome, convênio, especialidade. 5) Envie confirmação com endereço e horário. Nunca dê diagnósticos médicos.</textarea>
-        <button class="btn-g" style="margin-top:8px">Salvar prompt</button>
+        <button class="btng" style="margin-top:8px">Salvar prompt</button>
       </div>
     </div>
 
+    <!-- ADVOCACIA -->
     <div id="v-adv" class="view">
       <div class="panel">
-        <div class="panel-title">Prompt — advocacia</div>
-        <div class="plabel">Assistente jurídica virtual</div>
+        <div class="pt">Prompt — advocacia</div>
+        <div class="plbl">Assistente jurídica virtual</div>
         <textarea class="pbox" rows="5">Você é assistente jurídica virtual do escritório [Nome]. Ao receber mensagem: 1) Identifique a área: trabalhista, cível, família, criminal. 2) Colete informações sem dar orientação jurídica. 3) Agende consulta com o advogado. NUNCA dê parecer jurídico.</textarea>
-        <button class="btn-g" style="margin-top:8px">Salvar prompt</button>
+        <button class="btng" style="margin-top:8px">Salvar prompt</button>
       </div>
     </div>
 
+    <!-- ATENDIMENTO AO VIVO -->
     <div id="v-atend" class="view">
-      <div style="display:grid;grid-template-columns:200px 1fr 190px;height:calc(100vh - 90px);border:1px solid #eee;border-radius:10px;overflow:hidden;background:white">
-        <!-- LISTA -->
-        <div style="border-right:1px solid #eee;display:flex;flex-direction:column;background:#f9f9f9">
-          <div style="padding:10px 12px;border-bottom:1px solid #eee;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:space-between">
-            Atendimento <span style="background:#e24b4a;color:white;border-radius:8px;font-size:10px;padding:1px 5px">3</span>
+      <div class="chatgrid chatheight">
+        <!-- LISTA CONTATOS -->
+        <div style="border-right:1px solid #eee;display:flex;flex-direction:column;background:#f9f9f9;overflow:hidden">
+          <div style="padding:10px 12px;border-bottom:1px solid #eee;font-size:12px;font-weight:600;display:flex;justify-content:space-between;align-items:center;flex-shrink:0">
+            Fila <span style="background:#e24b4a;color:white;border-radius:8px;font-size:10px;padding:1px 5px">3</span>
           </div>
-          <div style="padding:6px 10px;border-bottom:1px solid #eee">
+          <div style="padding:6px 10px;border-bottom:1px solid #eee;flex-shrink:0">
             <input type="text" placeholder="Buscar..." style="width:100%;padding:5px 8px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white">
           </div>
-          <div id="atend-contact-list" style="flex:1;overflow-y:auto"></div>
+          <div id="atend-list" style="flex:1;overflow-y:auto"></div>
         </div>
-        <!-- CHAT -->
-        <div style="display:flex;flex-direction:column;position:relative">
+        <!-- CHAT CENTRAL -->
+        <div style="display:flex;flex-direction:column;overflow:hidden;position:relative">
+          <!-- HEADER DO CHAT -->
           <div style="padding:10px 14px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:10px;flex-shrink:0;background:white">
             <div id="ach-av" style="width:34px;height:34px;border-radius:50%;background:#e6faf0;color:#0a7a40;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0">AC</div>
             <div style="flex:1">
               <div style="font-size:13px;font-weight:600" id="ach-name">Ana Costa</div>
-              <div style="font-size:11px;color:#25D366" id="ach-status">● Online · Clínica</div>
+              <div style="font-size:11px;color:#25D366" id="ach-sub">● Online · Clínica</div>
             </div>
-            <div id="aia-btn" onclick="toggleAtendIA()" style="display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;cursor:pointer;background:#e6faf0;color:#0a7a40;border:1px solid #9FE1CB;font-weight:500">
-              <div id="aia-dot" style="width:6px;height:6px;border-radius:50%;background:#25D366"></div>
-              <span id="aia-txt">IA ativa</span>
+            <div id="ia-btn" onclick="toggleAtendIA()" style="display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;cursor:pointer;background:#e6faf0;color:#0a7a40;border:1px solid #9FE1CB;font-weight:500;flex-shrink:0">
+              <div id="ia-dot2" style="width:6px;height:6px;border-radius:50%;background:#25D366"></div>
+              <span id="ia-txt2">IA ativa</span>
             </div>
-            <div onclick="toggleAtendIA()" style="width:28px;height:28px;border-radius:6px;border:1px solid #eee;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;color:#666" title="Info"><i class="ti ti-info-circle"></i></div>
+            <div style="width:28px;height:28px;border-radius:6px;border:1px solid #eee;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#666" title="Buscar"><i class="ti ti-search"></i></div>
           </div>
+          <!-- MENSAGENS -->
           <div id="atend-msgs" style="flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:8px;background:#f0f2f5">
             <div style="text-align:center;font-size:10px;color:#999;padding:4px 0">Hoje, 26 mai</div>
             <div style="display:flex;flex-direction:column;align-items:flex-start">
-              <div style="font-size:9px;color:#999;margin-bottom:2px;padding:0 2px">Ana Costa</div>
-              <div style="background:white;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;line-height:1.5">Olá! Quero marcar uma consulta com cardiologista<div style="font-size:10px;color:#999;margin-top:2px">14:30</div></div>
+              <div style="font-size:9px;color:#999;margin-bottom:2px">Ana Costa</div>
+              <div style="background:white;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;line-height:1.5">Olá! Quero marcar consulta com cardiologista<div style="font-size:10px;color:#999;margin-top:2px">14:30</div></div>
             </div>
             <div style="display:flex;flex-direction:column;align-items:flex-start">
-              <div style="font-size:9px;color:#1a4fa0;margin-bottom:2px;padding:0 2px">Sofia · IA</div>
+              <div style="font-size:9px;color:#1a4fa0;margin-bottom:2px">Sofia · IA</div>
               <div style="background:#e6f0ff;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#1a4fa0;line-height:1.5">Olá Ana! Sou a Sofia! Qual seu convênio e data preferida?<div style="font-size:10px;color:#888;margin-top:2px">14:30 🤖</div></div>
             </div>
             <div style="display:flex;flex-direction:column;align-items:flex-start">
               <div style="background:white;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;line-height:1.5">Unimed, prefiro manhã esta semana<div style="font-size:10px;color:#999;margin-top:2px">14:32</div></div>
             </div>
             <div style="display:flex;flex-direction:column;align-items:flex-start">
-              <div style="font-size:9px;color:#1a4fa0;margin-bottom:2px;padding:0 2px">Sofia · IA</div>
+              <div style="font-size:9px;color:#1a4fa0;margin-bottom:2px">Sofia · IA</div>
               <div style="background:#e6f0ff;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#1a4fa0;line-height:1.5">Temos quinta às 08:30 com Dr. Ferreira. Confirmo?<div style="font-size:10px;color:#888;margin-top:2px">14:32 🤖</div></div>
             </div>
             <div style="display:flex;flex-direction:column;align-items:flex-end">
-              <div style="font-size:9px;color:#999;margin-bottom:2px;padding:0 2px">Você</div>
-              <div style="background:#dcf8c6;border-radius:10px 0 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#075e54;line-height:1.5">Perfeito Ana! Agendado quinta 08:30 Dr. Ferreira!<div style="font-size:10px;color:#888;margin-top:2px">14:35 ✓✓</div></div>
+              <div style="font-size:9px;color:#999;margin-bottom:2px">Você</div>
+              <div style="background:#dcf8c6;border-radius:10px 0 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#075e54;line-height:1.5">Ana, agendado quinta 08:30 Dr. Ferreira!<div style="font-size:10px;color:#888;margin-top:2px">14:35 ✓✓</div></div>
             </div>
           </div>
-          <div style="padding:6px 12px;border-top:1px solid #eee;border-bottom:1px solid #eee;display:flex;align-items:center;gap:4px;background:white;flex-shrink:0">
-            <div onclick="toggleFunilPop()" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666;border:1px solid transparent" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'"><i class="ti ti-hierarchy"></i>Funis</div>
-            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'"><i class="ti ti-photo"></i>Imagem</div>
-            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'"><i class="ti ti-microphone"></i>Áudio</div>
-            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'"><i class="ti ti-file"></i>Arquivo</div>
-            <div onclick="toggleAtendIA()" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#25D366;margin-left:auto" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'"><i class="ti ti-robot"></i><span id="toolbar-ia-lbl">Pausar IA</span></div>
+          <!-- TOOLBAR -->
+          <div style="padding:6px 12px;border-top:1px solid #eee;border-bottom:1px solid #eee;display:flex;align-items:center;gap:2px;background:white;flex-shrink:0">
+            <div onclick="toggleFunilPop()" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#25D366;font-weight:500;border:1px solid #9FE1CB;background:#f0faf4"><i class="ti ti-hierarchy"></i>Funis</div>
+            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background=''"><i class="ti ti-photo"></i>Imagem</div>
+            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background=''"><i class="ti ti-microphone"></i>Áudio</div>
+            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background=''"><i class="ti ti-file"></i>Arquivo</div>
+            <div onclick="toggleAtendIA()" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666;margin-left:auto" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background=''"><i class="ti ti-robot"></i><span id="tb-ia-lbl">Pausar IA</span></div>
           </div>
+          <!-- INPUT -->
           <div style="padding:10px 12px;display:flex;align-items:flex-end;gap:8px;background:white;flex-shrink:0">
             <div style="flex:1;background:#f9f9f9;border-radius:10px;border:1px solid #eee;padding:8px 12px">
               <textarea id="atend-input" placeholder="Digite uma mensagem..." rows="1" style="width:100%;border:none;background:transparent;font-size:12px;color:#1a1a1a;resize:none;outline:none;font-family:system-ui;max-height:80px" onkeydown="atendKey(event)"></textarea>
@@ -446,9 +456,11 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
             <button onclick="atendSend()" style="width:36px;height:36px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:15px;flex-shrink:0"><i class="ti ti-send"></i></button>
           </div>
           <!-- POPUP FUNIS -->
-          <div id="funil-pop" style="display:none;background:white;border:1px solid #eee;border-radius:10px;padding:10px;position:absolute;bottom:110px;left:50%;transform:translateX(-50%);width:260px;z-index:10;box-shadow:0 4px 20px rgba(0,0,0,.1)">
-            <div style="font-size:11px;font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">Enviar funil <span style="cursor:pointer;color:#999" onclick="toggleFunilPop()"><i class="ti ti-x"></i></span></div>
-            <div id="funil-pop-list"></div>
+          <div id="funil-pop" style="display:none;background:white;border:1px solid #eee;border-radius:10px;padding:10px;position:absolute;bottom:115px;left:14px;width:260px;z-index:10;box-shadow:0 4px 20px rgba(0,0,0,.1)">
+            <div style="font-size:12px;font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+              Enviar funil <span onclick="toggleFunilPop()" style="cursor:pointer;color:#999;font-size:14px"><i class="ti ti-x"></i></span>
+            </div>
+            <div id="funil-pop-items"></div>
           </div>
         </div>
         <!-- PAINEL DIREITO -->
@@ -459,20 +471,20 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
             <div style="font-size:11px;color:#999">67 99801-2233</div>
           </div>
           <div style="padding:10px 12px;border-bottom:1px solid #eee">
-            <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Informações</div>
+            <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Informações</div>
             <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:11px"><span style="color:#999">Tag</span><span class="tag tg">Cliente</span></div>
             <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:11px"><span style="color:#999">Segmento</span><span class="tag tb">Clínica</span></div>
             <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:11px"><span style="color:#999">IA</span><span id="rp-ia-st" class="tag tg">Ativa</span></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:11px"><span style="color:#999">Interações</span><span style="font-weight:600">14</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:11px"><span style="color:#999">Mensagens</span><span style="font-weight:600">14</span></div>
           </div>
           <div style="padding:10px 12px;border-bottom:1px solid #eee">
-            <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Funis</div>
+            <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Funis rápidos</div>
             <div id="rp-funil-list"></div>
           </div>
           <div style="padding:10px 12px">
-            <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Ações</div>
-            <button onclick="toggleAtendIA()" style="width:100%;margin-bottom:5px;padding:6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white;color:#1a1a1a;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-robot" style="font-size:13px"></i><span id="rp-ia-btn">Pausar IA</span></button>
-            <button style="width:100%;margin-bottom:5px;padding:6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white;color:#1a1a1a;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-calendar" style="font-size:13px"></i>Criar agendamento</button>
+            <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Ações</div>
+            <button onclick="toggleAtendIA()" style="width:100%;margin-bottom:5px;padding:6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-robot" style="font-size:13px"></i><span id="rp-ia-btn">Pausar IA</span></button>
+            <button style="width:100%;margin-bottom:5px;padding:6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-calendar" style="font-size:13px"></i>Criar agendamento</button>
             <button style="width:100%;padding:6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white;color:#e24b4a;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-x" style="font-size:13px"></i>Encerrar chat</button>
           </div>
         </div>
@@ -495,347 +507,450 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       <option value="adv">Advocacia</option><option value="urgente">Urgente</option>
     </select>
     <div class="mbtns">
-      <button class="mbc" onclick="closeKbModal()">Cancelar</button>
-      <button class="mbg2" onclick="saveKbCard()">Salvar</button>
+      <button class="mbtnno" onclick="closeKbModal()">Cancelar</button>
+      <button class="mbtnok" onclick="saveKbCard()">Salvar</button>
     </div>
   </div>
 </div>
 
 <script>
-const API='https://whatscrm-backend-production-f2e2.up.railway.app';
-const views=['dashboard','agente','contatos','kanban','disparos','funis','remarketing','agenda','clinica','adv','atend'];
-const titles={dashboard:'Dashboard',agente:'Agente IA',contatos:'Contatos',kanban:'Kanban',disparos:'Disparos',funis:'Funis',remarketing:'Remarketing',agenda:'Agendamentos',clinica:'Clínica',adv:'Advocacia',atend:'Atendimento'};
-const btns={dashboard:'Nova campanha',agente:'Salvar',contatos:'Novo contato',kanban:'Nova coluna',disparos:'Novo disparo',funis:'Novo funil',remarketing:'Nova automação',agenda:'Novo agendamento',clinica:'Salvar',adv:'Salvar',atend:'Encerrar'};
-let aiOn=true;
+const API = 'https://whatscrm-backend-production-f2e2.up.railway.app';
 
-function go(v,el){
-  views.forEach(x=>{const e=document.getElementById('v-'+x);if(e)e.classList.remove('active')});
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  const ve=document.getElementById('v-'+v);if(ve)ve.classList.add('active');
-  if(el)el.classList.add('active');
-  document.getElementById('ptitle').textContent=titles[v]||v;
-  document.getElementById('btn-lbl').textContent=btns[v]||'Novo';
-  if(v==='kanban')renderKanban();
-  if(v==='funis')renderFunis();
+// ========== NAVEGAÇÃO ==========
+const VIEWS = ['dashboard','agente','contatos','kanban','disparos','funis','remarketing','agenda','clinica','adv','atend'];
+const TITLES = {dashboard:'Dashboard',agente:'Agente IA',contatos:'Contatos',kanban:'Kanban',disparos:'Disparos',funis:'Funis',remarketing:'Remarketing',agenda:'Agendamentos',clinica:'Clínica',adv:'Advocacia',atend:'Atendimento ao vivo'};
+const BTNS = {dashboard:'Nova campanha',agente:'Salvar prompts',contatos:'Novo contato',kanban:'Nova coluna',disparos:'Novo disparo',funis:'Novo funil',remarketing:'Nova automação',agenda:'Novo agendamento',clinica:'Salvar prompt',adv:'Salvar prompt',atend:'Encerrar chat'};
+let currentView = 'dashboard';
+
+function go(v, el) {
+  VIEWS.forEach(x => { const e = document.getElementById('v-' + x); if (e) e.classList.remove('active'); });
+  document.querySelectorAll('.ni').forEach(n => n.classList.remove('active'));
+  const ve = document.getElementById('v-' + v);
+  if (ve) ve.classList.add('active');
+  if (el) el.classList.add('active');
+  document.getElementById('ptitle').textContent = TITLES[v] || v;
+  document.getElementById('btn-lbl').textContent = BTNS[v] || 'Novo';
+  currentView = v;
+  if (v === 'kanban') renderKanban();
+  if (v === 'funis') renderFunis();
+  if (v === 'atend') { renderAtendList(); renderFunilPanels(); }
 }
 
-function toggleAI(){
-  aiOn=!aiOn;
-  document.getElementById('ai-dot').style.background=aiOn?'#25D366':'#e24b4a';
-  document.getElementById('ai-txt').textContent=aiOn?'IA ativa':'IA pausada';
+function topBtnAction() {
+  if (currentView === 'funis') addFunil();
+  else if (currentView === 'kanban') { const n = prompt('Nome da nova coluna:'); if (n) { kbBoards[activeKb].cols.push({ title: n, cards: [] }); renderKanban(); } }
+  else if (currentView === 'atend') alert('Chat encerrado!');
 }
 
-function selSeg(el,name,count){
-  document.querySelectorAll('#seg-tabs .stab').forEach(s=>s.classList.remove('active'));
+// ========== IA GLOBAL ==========
+let globalIA = true;
+function toggleGlobalAI() {
+  globalIA = !globalIA;
+  document.getElementById('ai-dot').style.background = globalIA ? '#25D366' : '#e24b4a';
+  document.getElementById('ai-txt').textContent = globalIA ? 'IA ativa' : 'IA pausada';
+}
+
+// ========== SIMULADOR ==========
+const simResps = ['Claro! Pode me informar seu nome?','Qual especialidade você precisa?','Temos horário quinta às 09:00. Confirmo?','Agendamento confirmado! Até lá!'];
+let simIdx = 0;
+function simSend() {
+  const inp = document.getElementById('sim-input');
+  const msgs = document.getElementById('sim-msgs');
+  if (!inp || !msgs || !inp.value.trim()) return;
+  msgs.innerHTML += `<div style="align-self:flex-start;background:white;border:1px solid #eee;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%">${inp.value}</div>`;
+  inp.value = '';
+  setTimeout(() => {
+    msgs.innerHTML += `<div style="align-self:flex-start;background:#e6f0ff;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%;color:#1a4fa0">${simResps[simIdx % simResps.length]}<div style="font-size:10px;color:#888;margin-top:2px">Sofia · IA</div></div>`;
+    simIdx++;
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 800);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const si = document.getElementById('sim-input');
+  if (si) si.addEventListener('keydown', e => { if (e.key === 'Enter') simSend(); });
+});
+
+// ========== CONTATOS ==========
+function selSeg(el, name, count) {
+  document.querySelectorAll('#seg-tabs .stab').forEach(s => s.classList.remove('active'));
   el.classList.add('active');
-  document.getElementById('seg-name').textContent=name;
-  document.getElementById('seg-count').textContent=count.toLocaleString('pt-BR');
+  document.getElementById('seg-name').textContent = name;
+  document.getElementById('seg-count').textContent = count.toLocaleString('pt-BR');
 }
 
-const simR=['Claro! Pode me informar seu nome?','Qual especialidade você precisa?','Temos horário quinta às 09:00. Confirmo?','Agendamento confirmado!'];
-let simI=0;
-function simSend(){
-  const inp=document.getElementById('sim-input');
-  const msgs=document.getElementById('sim-msgs');
-  if(!inp.value.trim())return;
-  msgs.innerHTML+=`<div class="mi">${inp.value}<div class="mts">agora</div></div>`;
-  inp.value='';
-  setTimeout(()=>{msgs.innerHTML+=`<div class="mbot">${simR[simI%simR.length]}<div class="mts">Sofia · IA</div></div>`;simI++;msgs.scrollTop=msgs.scrollHeight;},800);
-  msgs.scrollTop=msgs.scrollHeight;
+function selDispTab(el) {
+  document.querySelectorAll('#disp-tabs .stab').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
 }
-document.getElementById('sim-input').addEventListener('keydown',e=>{if(e.key==='Enter')simSend()});
 
-function selChat(name,ini,bg,color){
-  document.getElementById('chat-name').textContent=name;
-  const av=document.getElementById('chat-av');av.textContent=ini;av.style.background=bg;av.style.color=color;
-}
-function sendChat(){
-  const inp=document.getElementById('chat-input');const msgs=document.getElementById('chat-msgs');
-  if(!inp.value.trim())return;
-  msgs.innerHTML+=`<div class="mo">${inp.value}<div class="mts">Você · agora ✓✓</div></div>`;
-  inp.value='';msgs.scrollTop=msgs.scrollHeight;
-}
-document.getElementById('chat-input').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat()});
+// ========== KANBAN ==========
+const tagColors = { lead:'#e6f0ff|#1a4fa0', cliente:'#e6faf0|#0a7a40', vip:'#f0e6ff|#6010a0', clinica:'#e6f0ff|#185FA5', adv:'#f0e6ff|#534AB7', urgente:'#ffe6e6|#a01010' };
 
-// KANBAN
-const tc={lead:'#e6f0ff|#1a4fa0',cliente:'#e6faf0|#0a7a40',vip:'#f0e6ff|#6010a0',clinica:'#e6f0ff|#185FA5',adv:'#f0e6ff|#534AB7',urgente:'#ffe6e6|#a01010'};
-const kbBoards={
-  atendimento:{label:'Atendimento',cols:[
-    {title:'Fila de espera',cards:[{name:'Ana Costa',sub:'67 99801-2233',tag:'clinica'},{name:'Pedro Mota',sub:'11 98712-5544',tag:'lead'}]},
-    {title:'Em atendimento',cards:[{name:'Lúcia Faria',sub:'VIP · há 5min',tag:'vip'}]},
-    {title:'IA respondendo',cards:[{name:'Rafael Souza',sub:'Lead frio',tag:'lead'},{name:'Maria Gomes',sub:'Retorno',tag:'cliente'}]},
-    {title:'Resolvido',cards:[{name:'João Lima',sub:'Consulta marcada',tag:'clinica'}]}
+const kbBoards = {
+  atendimento: { label: 'Atendimento', cols: [
+    { title: 'Fila de espera', cards: [{ name:'Ana Costa', sub:'67 99801-2233', tag:'clinica' }, { name:'Pedro Mota', sub:'11 98712-5544', tag:'lead' }] },
+    { title: 'Em atendimento', cards: [{ name:'Lúcia Faria', sub:'VIP · há 5min', tag:'vip' }] },
+    { title: 'IA respondendo', cards: [{ name:'Rafael Souza', sub:'Lead frio', tag:'lead' }, { name:'Maria Gomes', sub:'Retorno', tag:'cliente' }] },
+    { title: 'Resolvido', cards: [{ name:'João Lima', sub:'Consulta marcada', tag:'clinica' }] }
   ]},
-  contatos:{label:'Contatos',cols:[
-    {title:'Novos leads',cards:[{name:'Bruno Alves',sub:'Indicação',tag:'lead'},{name:'Carla Mendes',sub:'Instagram',tag:'lead'}]},
-    {title:'Em negociação',cards:[{name:'Fernanda Lima',sub:'Proposta enviada',tag:'cliente'}]},
-    {title:'Clientes ativos',cards:[{name:'Ana Costa',sub:'Desde jan/2026',tag:'cliente'},{name:'Lúcia Faria',sub:'VIP · 3 compras',tag:'vip'}]},
-    {title:'Inativos',cards:[{name:'Ricardo Souza',sub:'30 dias sem resposta',tag:'lead'}]}
+  contatos: { label: 'Contatos', cols: [
+    { title: 'Novos leads', cards: [{ name:'Bruno Alves', sub:'Indicação', tag:'lead' }, { name:'Carla Mendes', sub:'Instagram', tag:'lead' }] },
+    { title: 'Em negociação', cards: [{ name:'Fernanda Lima', sub:'Proposta enviada', tag:'cliente' }] },
+    { title: 'Clientes ativos', cards: [{ name:'Ana Costa', sub:'Desde jan/2026', tag:'cliente' }, { name:'Lúcia Faria', sub:'VIP · 3 compras', tag:'vip' }] },
+    { title: 'Inativos', cards: [{ name:'Ricardo Souza', sub:'30 dias sem resposta', tag:'lead' }] }
   ]},
-  campanhas:{label:'Campanhas',cols:[
-    {title:'Rascunho',cards:[{name:'Promoção Julho',sub:'2.310 contatos',tag:'cliente'}]},
-    {title:'Agendada',cards:[{name:'Lembrete VIP',sub:'28/05 · 145 contatos',tag:'vip'}]},
-    {title:'Enviando',cards:[{name:'Reengajamento',sub:'630 inativos',tag:'lead'}]},
-    {title:'Concluída',cards:[{name:'Promoção Junho',sub:'3.000 · 76%',tag:'cliente'},{name:'Black Friday',sub:'4.200 · 81%',tag:'cliente'}]}
+  campanhas: { label: 'Campanhas', cols: [
+    { title: 'Rascunho', cards: [{ name:'Promoção Julho', sub:'2.310 contatos', tag:'cliente' }] },
+    { title: 'Agendada', cards: [{ name:'Lembrete VIP', sub:'28/05 · 145 contatos', tag:'vip' }] },
+    { title: 'Enviando', cards: [{ name:'Reengajamento', sub:'630 inativos', tag:'lead' }] },
+    { title: 'Concluída', cards: [{ name:'Promoção Junho', sub:'3.000 · 76%', tag:'cliente' }, { name:'Black Friday', sub:'4.200 · 81%', tag:'cliente' }] }
   ]}
 };
-let activeKb='atendimento',kbAddCol=null,kbDC=null,kbDF=null;
 
-function renderKanban(){
-  const tabs=document.getElementById('kb-tabs');tabs.innerHTML='';
-  Object.entries(kbBoards).forEach(([key,b])=>{
-    const t=document.createElement('div');t.className='kb-tab'+(key===activeKb?' active':'');
-    t.innerHTML=`<span ondblclick="rnKbTab('${key}',this)">${b.label}</span>`;
-    t.onclick=e=>{if(!e.target.closest('.close-tab')){activeKb=key;renderKanban();}};tabs.appendChild(t);
+let activeKb = 'atendimento';
+let kbDragCard = null;
+let kbDragFrom = null;
+let kbAddCol = null;
+
+function renderKanban() {
+  const tabs = document.getElementById('kb-tabs');
+  if (!tabs) return;
+  tabs.innerHTML = '';
+  Object.entries(kbBoards).forEach(([key, b]) => {
+    const t = document.createElement('div');
+    t.className = 'kbtab' + (key === activeKb ? ' active' : '');
+    t.innerHTML = `<span ondblclick="rnKbTab('${key}',this)">${b.label}</span>`;
+    t.onclick = e => { if (!e.target.isContentEditable) { activeKb = key; renderKanban(); } };
+    tabs.appendChild(t);
   });
-  const add=document.createElement('div');add.className='add-tab';add.innerHTML='<i class="ti ti-plus"></i> Nova aba';add.onclick=addKbTab;tabs.appendChild(add);
-  const board=document.getElementById('kb-board');board.innerHTML='';
-  kbBoards[activeKb].cols.forEach((col,ci)=>{
-    const colEl=document.createElement('div');colEl.className='kb-col';
-    const hdr=document.createElement('div');hdr.className='kb-col-hdr';
-    const ti=document.createElement('input');ti.className='cti';ti.value=col.title;ti.onchange=()=>{col.title=ti.value};
-    const cnt=document.createElement('span');cnt.className='ccnt';cnt.textContent=col.cards.length;
-    const del=document.createElement('span');del.className='cdel ti ti-x';del.onclick=()=>{if(confirm('Remover?')){kbBoards[activeKb].cols.splice(ci,1);renderKanban();}};
-    hdr.appendChild(ti);hdr.appendChild(cnt);hdr.appendChild(del);colEl.appendChild(hdr);
-    const ce=document.createElement('div');ce.className='kb-cards';
-    ce.addEventListener('dragover',e=>{e.preventDefault();ce.style.background='#f0faf4';});
-    ce.addEventListener('dragleave',()=>{ce.style.background='';});
-    ce.addEventListener('drop',e=>{e.preventDefault();ce.style.background='';if(kbDC!==null&&kbDF!==null){const card=kbBoards[activeKb].cols[kbDF].cards.splice(kbDC,1)[0];kbBoards[activeKb].cols[ci].cards.push(card);renderKanban();}});
-    col.cards.forEach((card,cdi)=>{
-      const cardEl=document.createElement('div');cardEl.className='kb-card';cardEl.draggable=true;
-      const c=(tc[card.tag]||'#eee|#333').split('|');
-      cardEl.innerHTML=`<div class="cn">${card.name}</div><div class="cs">${card.sub}</div><span class="ct2" style="background:${c[0]};color:${c[1]}">${card.tag}</span>`;
-      cardEl.addEventListener('dragstart',()=>{kbDC=cdi;kbDF=ci;});cardEl.addEventListener('dragend',()=>{kbDC=null;kbDF=null;});
+  const addT = document.createElement('div');
+  addT.className = 'addtab';
+  addT.innerHTML = '<i class="ti ti-plus"></i> Nova aba';
+  addT.onclick = () => {
+    const n = prompt('Nome da nova aba:');
+    if (!n) return;
+    const key = 'kb_' + Date.now();
+    kbBoards[key] = { label: n, cols: [{ title: 'A fazer', cards: [] }, { title: 'Em andamento', cards: [] }, { title: 'Concluído', cards: [] }] };
+    activeKb = key; renderKanban();
+  };
+  tabs.appendChild(addT);
+
+  const board = document.getElementById('kb-board');
+  if (!board) return;
+  board.innerHTML = '';
+  kbBoards[activeKb].cols.forEach((col, ci) => {
+    const colEl = document.createElement('div');
+    colEl.className = 'kbcol';
+    const hdr = document.createElement('div');
+    hdr.className = 'kbcolh';
+    const ti = document.createElement('input');
+    ti.className = 'colti'; ti.value = col.title;
+    ti.onchange = () => { col.title = ti.value; };
+    const cnt = document.createElement('span');
+    cnt.className = 'colcnt'; cnt.textContent = col.cards.length;
+    const del = document.createElement('span');
+    del.className = 'coldel ti ti-x';
+    del.onclick = () => { if (confirm('Remover coluna "' + col.title + '"?')) { kbBoards[activeKb].cols.splice(ci, 1); renderKanban(); } };
+    hdr.appendChild(ti); hdr.appendChild(cnt); hdr.appendChild(del);
+    colEl.appendChild(hdr);
+
+    const ce = document.createElement('div');
+    ce.className = 'kbcards';
+    ce.addEventListener('dragover', e => { e.preventDefault(); ce.style.background = '#f0faf4'; });
+    ce.addEventListener('dragleave', () => { ce.style.background = ''; });
+    ce.addEventListener('drop', e => {
+      e.preventDefault(); ce.style.background = '';
+      if (kbDragCard !== null && kbDragFrom !== null) {
+        const card = kbBoards[activeKb].cols[kbDragFrom].cards.splice(kbDragCard, 1)[0];
+        kbBoards[activeKb].cols[ci].cards.push(card);
+        renderKanban();
+      }
+    });
+
+    col.cards.forEach((card, cdi) => {
+      const cardEl = document.createElement('div');
+      cardEl.className = 'kbcard'; cardEl.draggable = true;
+      const c = (tagColors[card.tag] || '#eee|#333').split('|');
+      cardEl.innerHTML = `<div class="kbcn">${card.name}</div><div class="kbcs">${card.sub}</div><span class="kbct" style="background:${c[0]};color:${c[1]}">${card.tag}</span>`;
+      cardEl.addEventListener('dragstart', () => { kbDragCard = cdi; kbDragFrom = ci; });
+      cardEl.addEventListener('dragend', () => { kbDragCard = null; kbDragFrom = null; });
       ce.appendChild(cardEl);
     });
     colEl.appendChild(ce);
-    const ac=document.createElement('div');ac.className='add-card-btn';ac.innerHTML='<i class="ti ti-plus" style="font-size:11px"></i> Adicionar';
-    ac.onclick=()=>{kbAddCol=ci;document.getElementById('kb-modal').classList.add('show');document.getElementById('kb-name').focus();};
-    colEl.appendChild(ac);board.appendChild(colEl);
-  });
-  const acb=document.createElement('div');acb.className='add-col-btn';acb.innerHTML='<i class="ti ti-plus"></i>';
-  acb.onclick=()=>{const n=prompt('Nome da coluna:');if(n){kbBoards[activeKb].cols.push({title:n,cards:[]});renderKanban();}};
-  board.appendChild(acb);
-}
-function rnKbTab(key,el){el.contentEditable='true';el.focus();el.onblur=()=>{el.contentEditable='false';kbBoards[key].label=el.textContent.trim()||kbBoards[key].label;el.textContent=kbBoards[key].label;};el.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();el.blur();}};}
-function addKbTab(){const n=prompt('Nome da nova aba:');if(!n)return;const key='kb_'+Date.now();kbBoards[key]={label:n,cols:[{title:'A fazer',cards:[]},{title:'Em andamento',cards:[]},{title:'Concluído',cards:[]}]};activeKb=key;renderKanban();}
-function closeKbModal(){document.getElementById('kb-modal').classList.remove('show');document.getElementById('kb-name').value='';document.getElementById('kb-sub').value='';}
-function saveKbCard(){const name=document.getElementById('kb-name').value.trim();if(!name)return;const sub=document.getElementById('kb-sub').value.trim();const tag=document.getElementById('kb-tag').value;kbBoards[activeKb].cols[kbAddCol].cards.push({name,sub,tag});closeKbModal();renderKanban();}
-document.getElementById('kb-name').addEventListener('keydown',e=>{if(e.key==='Enter')saveKbCard()});
 
-// FUNIS
-const funis=[
-  {id:1,name:'Funil de vendas',steps:[
-    {name:'Boas-vindas',type:'text',content:'Olá {{nome}}! Sou a Sofia da [Empresa]. Posso te ajudar?',delay:0,delayUnit:'min'},
-    {name:'Apresentação',type:'audio',content:'audio_apresentacao.mp3',delay:5,delayUnit:'min'},
-    {name:'Proposta',type:'text',content:'{{nome}}, preparei uma proposta especial! Posso enviar detalhes?',delay:1,delayUnit:'hora'},
+    const ac = document.createElement('div');
+    ac.className = 'addcardbn';
+    ac.innerHTML = '<i class="ti ti-plus" style="font-size:11px"></i> Adicionar';
+    ac.onclick = () => { kbAddCol = ci; document.getElementById('kb-modal').classList.add('show'); document.getElementById('kb-name').focus(); };
+    colEl.appendChild(ac);
+    board.appendChild(colEl);
+  });
+
+  const addColBtn = document.createElement('div');
+  addColBtn.className = 'addcolbn';
+  addColBtn.innerHTML = '<i class="ti ti-plus"></i>';
+  addColBtn.onclick = () => {
+    const n = prompt('Nome da nova coluna:');
+    if (n) { kbBoards[activeKb].cols.push({ title: n, cards: [] }); renderKanban(); }
+  };
+  board.appendChild(addColBtn);
+}
+
+function rnKbTab(key, el) {
+  el.contentEditable = 'true'; el.focus();
+  el.onblur = () => { el.contentEditable = 'false'; kbBoards[key].label = el.textContent.trim() || kbBoards[key].label; renderKanban(); };
+  el.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); el.blur(); } };
+}
+
+function closeKbModal() {
+  document.getElementById('kb-modal').classList.remove('show');
+  document.getElementById('kb-name').value = '';
+  document.getElementById('kb-sub').value = '';
+}
+
+function saveKbCard() {
+  const name = document.getElementById('kb-name').value.trim();
+  if (!name) return;
+  const sub = document.getElementById('kb-sub').value.trim();
+  const tag = document.getElementById('kb-tag').value;
+  kbBoards[activeKb].cols[kbAddCol].cards.push({ name, sub, tag });
+  closeKbModal(); renderKanban();
+}
+
+document.getElementById('kb-name').addEventListener('keydown', e => { if (e.key === 'Enter') saveKbCard(); });
+
+// ========== FUNIS ==========
+const funis = [
+  { id: 1, name: 'Funil de vendas', steps: [
+    { name: 'Boas-vindas', type: 'text', content: 'Olá {{nome}}! Sou a Sofia da [Empresa]. Posso te ajudar?', delay: 0, delayUnit: 'min' },
+    { name: 'Apresentação', type: 'audio', content: 'audio_apresentacao.mp3', delay: 5, delayUnit: 'min' },
+    { name: 'Proposta', type: 'text', content: '{{nome}}, preparei uma proposta especial! Posso enviar detalhes?', delay: 1, delayUnit: 'hora' }
   ]},
-  {id:2,name:'Funil clínica',steps:[
-    {name:'Primeiro contato',type:'text',content:'Olá {{nome}}! Somos a Clínica [Nome]. Podemos ajudar a agendar sua consulta?',delay:0,delayUnit:'min'},
-    {name:'Catálogo',type:'image',content:'catalogo_clinica.pdf',delay:2,delayUnit:'min'},
-    {name:'Agendamento',type:'text',content:'Que dia e horário seria melhor {{nome}}?',delay:10,delayUnit:'min'},
+  { id: 2, name: 'Funil clínica', steps: [
+    { name: 'Primeiro contato', type: 'text', content: 'Olá {{nome}}! Somos a Clínica [Nome]. Podemos ajudar a agendar sua consulta?', delay: 0, delayUnit: 'min' },
+    { name: 'Catálogo', type: 'image', content: 'catalogo.pdf', delay: 2, delayUnit: 'min' },
+    { name: 'Agendamento', type: 'text', content: 'Que dia e horário seria melhor {{nome}}?', delay: 10, delayUnit: 'min' }
+  ]},
+  { id: 3, name: 'Boas-vindas', steps: [
+    { name: 'Olá', type: 'text', content: 'Olá {{nome}}! Bem-vindo! Como posso te ajudar hoje?', delay: 0, delayUnit: 'min' }
   ]}
 ];
-let activeFunil=0;
+let activeFunil = 0;
 
-function renderFunis(){
-  const list=document.getElementById('funil-list');list.innerHTML='';
-  funis.forEach((f,i)=>{
-    const el=document.createElement('div');el.className='fi'+(i===activeFunil?' active':'');
-    el.innerHTML=`<div class="fin">${f.name}</div><div class="fim">${f.steps.length} etapas</div>`;
-    el.onclick=()=>{activeFunil=i;renderFunis();};list.appendChild(el);
+function renderFunis() {
+  const list = document.getElementById('funil-list');
+  if (!list) return;
+  list.innerHTML = '';
+  funis.forEach((f, i) => {
+    const el = document.createElement('div');
+    el.className = 'fitem' + (i === activeFunil ? ' active' : '');
+    el.innerHTML = `<div class="fin">${f.name}</div><div class="fim">${f.steps.length} etapa${f.steps.length > 1 ? 's' : ''}</div>`;
+    el.onclick = () => { activeFunil = i; renderFunis(); };
+    list.appendChild(el);
   });
-  const f=funis[activeFunil];
-  document.getElementById('funil-title').value=f.name;
-  document.getElementById('d-fn').textContent=f.name;
-  document.getElementById('d-st').textContent=f.steps.length;
+  const f = funis[activeFunil];
+  document.getElementById('funil-title').value = f.name;
+  document.getElementById('d-fn').textContent = f.name;
+  document.getElementById('d-st').textContent = f.steps.length;
   renderSteps();
 }
-function renderSteps(){
-  const area=document.getElementById('steps-area');area.innerHTML='';
-  const f=funis[activeFunil];
-  f.steps.forEach((step,si)=>{
-    const card=document.createElement('div');card.className='sc';
-    const hdr=document.createElement('div');hdr.className='sh';
-    hdr.innerHTML=`<div class="sn">${si+1}</div><input class="sni" value="${step.name}" onchange="funis[activeFunil].steps[${si}].name=this.value"><span class="sdel ti ti-trash" onclick="delStep(${si})"></span>`;
+
+function renderSteps() {
+  const area = document.getElementById('steps-area');
+  if (!area) return;
+  area.innerHTML = '';
+  const f = funis[activeFunil];
+  f.steps.forEach((step, si) => {
+    const card = document.createElement('div');
+    card.className = 'sc';
+    const hdr = document.createElement('div');
+    hdr.className = 'sh';
+    hdr.innerHTML = `<div class="snum">${si + 1}</div><input class="sni" value="${step.name}" oninput="funis[activeFunil].steps[${si}].name=this.value"><span class="sdel ti ti-trash" onclick="delStep(${si})"></span>`;
     card.appendChild(hdr);
-    const ttabs=document.createElement('div');ttabs.className='ttabs';
-    [['text','ti-message','Texto'],['audio','ti-microphone','Áudio'],['image','ti-photo','Imagem/PDF']].forEach(([t,ic,label])=>{
-      const tb=document.createElement('div');tb.className='tt'+(step.type===t?' active':'');
-      tb.innerHTML=`<i class="ti ${ic}"></i> ${label}`;tb.onclick=()=>{step.type=t;renderSteps();};ttabs.appendChild(tb);
+
+    const tt = document.createElement('div');
+    tt.className = 'ttabs';
+    [['text', 'ti-message', 'Texto'], ['audio', 'ti-microphone', 'Áudio'], ['image', 'ti-photo', 'Imagem/PDF']].forEach(([t, ic, lbl]) => {
+      const tb = document.createElement('div');
+      tb.className = 'tt' + (step.type === t ? ' active' : '');
+      tb.innerHTML = `<i class="ti ${ic}"></i> ${lbl}`;
+      tb.onclick = () => { step.type = t; renderSteps(); };
+      tt.appendChild(tb);
     });
-    card.appendChild(ttabs);
-    if(step.type==='text'){
-      const ta=document.createElement('textarea');ta.className='me';ta.value=step.content;
-      ta.placeholder='Digite a mensagem... Use {{nome}}, {{data}}, {{empresa}}';
-      ta.onchange=()=>{step.content=ta.value;};card.appendChild(ta);
-      const hint=document.createElement('div');hint.style='font-size:10px;color:#999;margin-top:2px';hint.textContent='Variáveis: {{nome}} {{data}} {{empresa}} {{telefone}}';card.appendChild(hint);
-    } else if(step.type==='audio'){
-      const ae=document.createElement('div');ae.className='aa';
-      ae.innerHTML=`<button class="rb" onclick="this.style.background=this.style.background=='rgb(160,16,16)'?'#e24b4a':'#a01010'"><i class="ti ti-microphone"></i></button><span style="font-size:12px;color:#999;flex:1">${step.content||'Clique para gravar ou enviar áudio'}</span>`;
+    card.appendChild(tt);
+
+    if (step.type === 'text') {
+      const ta = document.createElement('textarea');
+      ta.className = 'me'; ta.value = step.content;
+      ta.placeholder = 'Digite a mensagem... Use {{nome}}, {{data}}, {{empresa}}';
+      ta.oninput = () => { step.content = ta.value; };
+      card.appendChild(ta);
+      const hint = document.createElement('div');
+      hint.style.cssText = 'font-size:10px;color:#999;margin-top:2px';
+      hint.textContent = 'Variáveis: {{nome}} {{data}} {{empresa}} {{telefone}}';
+      card.appendChild(hint);
+    } else if (step.type === 'audio') {
+      const ae = document.createElement('div');
+      ae.style.cssText = 'background:#f9f9f9;border-radius:8px;padding:8px 10px;border:1px solid #eee;display:flex;align-items:center;gap:8px';
+      ae.innerHTML = `<button onclick="this.style.background=this.style.background=='rgb(160,16,16)'?'#e24b4a':'#a01010'" style="width:30px;height:30px;border-radius:50%;background:#e24b4a;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;flex-shrink:0"><i class="ti ti-microphone"></i></button><span style="font-size:12px;color:#999;flex:1">${step.content || 'Clique para gravar ou enviar áudio'}</span>`;
       card.appendChild(ae);
-      const up=document.createElement('div');up.className='ua';up.innerHTML='<i class="ti ti-upload"></i> Enviar arquivo de áudio (.mp3, .ogg)';card.appendChild(up);
+      const up = document.createElement('div');
+      up.className = 'uarea';
+      up.innerHTML = '<i class="ti ti-upload"></i> Enviar arquivo de áudio (.mp3, .ogg)';
+      card.appendChild(up);
     } else {
-      const ie=document.createElement('div');ie.className='ua';
-      ie.innerHTML=`<i class="ti ti-photo" style="font-size:18px;display:block;margin-bottom:3px"></i>Clique para enviar imagem ou PDF${step.content?`<br><span style="font-size:10px;color:#25D366">${step.content}</span>`:''}`;card.appendChild(ie);
+      const ie = document.createElement('div');
+      ie.className = 'uarea';
+      ie.innerHTML = `<i class="ti ti-photo" style="font-size:18px;display:block;margin-bottom:3px"></i>Clique para enviar imagem ou PDF${step.content ? `<br><span style="font-size:10px;color:#25D366">${step.content}</span>` : ''}`;
+      card.appendChild(ie);
     }
-    const dr=document.createElement('div');dr.className='dr';
-    dr.innerHTML=`<i class="ti ti-clock" style="font-size:12px"></i><span>Aguardar</span><input type="number" min="0" value="${step.delay}" onchange="funis[activeFunil].steps[${si}].delay=+this.value"><select onchange="funis[activeFunil].steps[${si}].delayUnit=this.value"><option ${step.delayUnit==='min'?'selected':''}>min</option><option ${step.delayUnit==='hora'?'selected':''}>hora</option><option ${step.delayUnit==='dia'?'selected':''}>dia</option></select><span>antes de enviar</span>`;
+
+    const dr = document.createElement('div');
+    dr.className = 'drow';
+    dr.innerHTML = `<i class="ti ti-clock" style="font-size:12px"></i><span>Aguardar</span><input type="number" min="0" value="${step.delay}" oninput="funis[activeFunil].steps[${si}].delay=+this.value"><select oninput="funis[activeFunil].steps[${si}].delayUnit=this.value"><option ${step.delayUnit === 'min' ? 'selected' : ''}>min</option><option ${step.delayUnit === 'hora' ? 'selected' : ''}>hora</option><option ${step.delayUnit === 'dia' ? 'selected' : ''}>dia</option></select><span>antes de enviar</span>`;
     card.appendChild(dr);
-    if(si<f.steps.length-1){const arr=document.createElement('div');arr.className='sarr';arr.innerHTML='<i class="ti ti-arrow-down"></i>';card.appendChild(arr);}
+
+    if (si < f.steps.length - 1) {
+      const arr = document.createElement('div');
+      arr.className = 'sarr';
+      arr.innerHTML = '<i class="ti ti-arrow-down"></i>';
+      card.appendChild(arr);
+    }
     area.appendChild(card);
   });
 }
-function addStep(){funis[activeFunil].steps.push({name:'Nova etapa',type:'text',content:'',delay:0,delayUnit:'min'});renderFunis();}
-function delStep(si){funis[activeFunil].steps.splice(si,1);renderFunis();}
-function addFunil(){const n=prompt('Nome do novo funil:');if(!n)return;funis.push({id:Date.now(),name:n,steps:[{name:'Primeiro contato',type:'text',content:`Olá {{nome}}!`,delay:0,delayUnit:'min'}]});activeFunil=funis.length-1;renderFunis();}
-function updateFunilName(v){funis[activeFunil].name=v;document.getElementById('d-fn').textContent=v;renderFunis();}
-function saveFunil(){const s=document.getElementById('d-status');s.textContent='Salvo!';setTimeout(()=>{s.textContent='Pronto';},2000);}
-function dispararFunil(){const seg=document.getElementById('funil-seg').value;const f=funis[activeFunil];alert(`Funil "${f.name}" disparado para: ${seg}\n${f.steps.length} etapas com delays configurados!`);}
 
-// ATENDIMENTO AO VIVO
-const atendContacts=[
-  {name:'Ana Costa',ini:'AC',bg:'#e6faf0',color:'#0a7a40',phone:'67 99801-2233',tag:'cliente',seg:'clinica',ia:true,unread:0,preview:'Sim, pode confirmar!',time:'14:33'},
-  {name:'Pedro Mota',ini:'PM',bg:'#e6f0ff',color:'#1a4fa0',phone:'11 98712-5544',tag:'lead',seg:'geral',ia:true,unread:2,preview:'Quero mais informações',time:'14:28'},
-  {name:'Lúcia Faria',ini:'LF',bg:'#f0e6ff',color:'#6010a0',phone:'21 97654-9910',tag:'vip',seg:'advocacia',ia:false,unread:1,preview:'Preciso falar com advogado',time:'14:10'},
-  {name:'Rafael Souza',ini:'RS',bg:'#fff8e6',color:'#a07010',phone:'31 96543-7788',tag:'lead',seg:'geral',ia:true,unread:0,preview:'Ok, obrigado',time:'13:45'},
+function addStep() {
+  funis[activeFunil].steps.push({ name: 'Nova etapa', type: 'text', content: '', delay: 0, delayUnit: 'min' });
+  renderFunis();
+}
+
+function delStep(si) {
+  funis[activeFunil].steps.splice(si, 1);
+  renderFunis();
+}
+
+function addFunil() {
+  const n = prompt('Nome do novo funil:');
+  if (!n) return;
+  funis.push({ id: Date.now(), name: n, steps: [{ name: 'Primeiro contato', type: 'text', content: `Olá {{nome}}! Bem-vindo!`, delay: 0, delayUnit: 'min' }] });
+  activeFunil = funis.length - 1;
+  renderFunis();
+}
+
+function updateFunilName(v) {
+  funis[activeFunil].name = v;
+  document.getElementById('d-fn').textContent = v;
+  const list = document.getElementById('funil-list');
+  if (list) {
+    const items = list.querySelectorAll('.fitem');
+    if (items[activeFunil]) items[activeFunil].querySelector('.fin').textContent = v;
+  }
+}
+
+function saveFunil() {
+  const s = document.getElementById('d-status');
+  if (s) { s.textContent = 'Salvo!'; setTimeout(() => { s.textContent = 'Pronto'; }, 2000); }
+}
+
+function dispararFunil() {
+  const seg = document.getElementById('funil-seg').value;
+  const f = funis[activeFunil];
+  alert(`Funil "${f.name}" disparado para: ${seg}\n${f.steps.length} etapas com delays configurados!`);
+}
+
+// ========== ATENDIMENTO AO VIVO ==========
+const atendContacts = [
+  { name:'Ana Costa', ini:'AC', bg:'#e6faf0', col:'#0a7a40', phone:'67 99801-2233', seg:'Clínica', ia:true, unread:0, preview:'Sim, pode confirmar!', time:'14:33' },
+  { name:'Pedro Mota', ini:'PM', bg:'#e6f0ff', col:'#1a4fa0', phone:'11 98712-5544', seg:'Geral', ia:true, unread:2, preview:'Quero mais informações', time:'14:28' },
+  { name:'Lúcia Faria', ini:'LF', bg:'#f0e6ff', col:'#6010a0', phone:'21 97654-9910', seg:'Advocacia', ia:false, unread:1, preview:'Preciso falar com advogado', time:'14:10' },
+  { name:'Rafael Souza', ini:'RS', bg:'#fff8e6', col:'#a07010', phone:'31 96543-7788', seg:'Geral', ia:true, unread:0, preview:'Ok, obrigado', time:'13:45' }
 ];
-let activeAtend=0;
-let atendIA=true;
-let funilPopOpen=false;
+let activeAtend = 0;
+let atendIAon = true;
+let funilPopOpen = false;
 
-function renderAtendContacts(){
-  const el=document.getElementById('atend-contact-list');
-  if(!el)return;
-  el.innerHTML='';
-  atendContacts.forEach((c,i)=>{
-    const item=document.createElement('div');
-    item.style.cssText=`padding:8px 12px;cursor:pointer;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px;${i===activeAtend?'background:white;border-left:2px solid #25D366':''}`;
-    item.innerHTML=`
-      <div style="width:30px;height:30px;border-radius:50%;background:${c.bg};color:${c.color};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0">${c.ini}</div>
+function renderAtendList() {
+  const el = document.getElementById('atend-list');
+  if (!el) return;
+  el.innerHTML = '';
+  atendContacts.forEach((c, i) => {
+    const item = document.createElement('div');
+    item.style.cssText = `padding:8px 12px;cursor:pointer;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px;background:${i === activeAtend ? 'white' : 'transparent'};${i === activeAtend ? 'border-left:2px solid #25D366' : ''}`;
+    item.innerHTML = `
+      <div style="width:30px;height:30px;border-radius:50%;background:${c.bg};color:${c.col};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0">${c.ini}</div>
       <div style="flex:1;min-width:0">
         <div style="font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.name}</div>
         <div style="font-size:10px;color:#999;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.preview}</div>
       </div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0">
         <div style="font-size:10px;color:#999">${c.time}</div>
-        ${c.unread>0?`<div style="background:#25D366;color:white;border-radius:8px;font-size:9px;padding:1px 5px;font-weight:600">${c.unread}</div>`:''}
-        <div style="font-size:9px;padding:1px 4px;border-radius:4px;font-weight:600;${c.ia?'background:#e6faf0;color:#0a7a40':'background:#fff8e6;color:#a07010'}">${c.ia?'IA':'hum'}</div>
+        ${c.unread > 0 ? `<div style="background:#25D366;color:white;border-radius:8px;font-size:9px;padding:1px 5px;font-weight:600">${c.unread}</div>` : ''}
+        <div style="font-size:9px;padding:1px 4px;border-radius:4px;font-weight:600;${c.ia ? 'background:#e6faf0;color:#0a7a40' : 'background:#fff8e6;color:#a07010'}">${c.ia ? 'IA' : 'hum'}</div>
       </div>`;
-    item.onclick=()=>{activeAtend=i;selectAtendContact(c);renderAtendContacts();};
+    item.onclick = () => { activeAtend = i; atendIAon = c.ia; selectAtendContact(c); renderAtendList(); };
     el.appendChild(item);
   });
 }
 
-function selectAtendContact(c){
-  const els=['ach-av','rp-av'];
-  els.forEach(id=>{const e=document.getElementById(id);if(e){e.textContent=c.ini;e.style.background=c.bg;e.style.color=c.color;}});
-  ['ach-name','rp-name'].forEach((id,i)=>{const e=document.getElementById(id);if(e)e.textContent=c.name;});
-  const st=document.getElementById('ach-status');if(st)st.textContent=`● Online · ${c.seg}`;
-  atendIA=c.ia;updateAtendIA();renderFunilPop();
+function selectAtendContact(c) {
+  ['ach-av','rp-av'].forEach(id => {
+    const e = document.getElementById(id);
+    if (e) { e.textContent = c.ini; e.style.background = c.bg; e.style.color = c.col; }
+  });
+  const n1 = document.getElementById('ach-name'); if (n1) n1.textContent = c.name;
+  const n2 = document.getElementById('rp-name'); if (n2) n2.textContent = c.name;
+  const sub = document.getElementById('ach-sub'); if (sub) sub.textContent = `● Online · ${c.seg}`;
+  updateAtendIAUI();
+  renderFunilPanels();
 }
 
-function toggleAtendIA(){
-  atendIA=!atendIA;
-  atendContacts[activeAtend].ia=atendIA;
-  updateAtendIA();
-  renderAtendContacts();
-  const msgs=document.getElementById('atend-msgs');
-  if(msgs){msgs.innerHTML+=`<div style="text-align:center;font-size:10px;color:#999;padding:4px 0">${atendIA?'IA reativada':'IA pausada — você assumiu o atendimento'}</div>`;msgs.scrollTop=msgs.scrollHeight;}
-}
-
-function updateAtendIA(){
-  const btn=document.getElementById('aia-btn');
-  const dot=document.getElementById('aia-dot');
-  const txt=document.getElementById('aia-txt');
-  const tbTxt=document.getElementById('toolbar-ia-lbl');
-  const rpBtn=document.getElementById('rp-ia-btn');
-  const rpSt=document.getElementById('rp-ia-st');
-  if(atendIA){
-    if(btn){btn.style.background='#e6faf0';btn.style.color='#0a7a40';btn.style.borderColor='#9FE1CB';}
-    if(dot)dot.style.background='#25D366';
-    if(txt)txt.textContent='IA ativa';
-    if(tbTxt)tbTxt.textContent='Pausar IA';
-    if(rpBtn)rpBtn.textContent='Pausar IA';
-    if(rpSt){rpSt.textContent='Ativa';rpSt.className='tag tg';}
-  } else {
-    if(btn){btn.style.background='#fff8e6';btn.style.color='#a07010';btn.style.borderColor='#FAC775';}
-    if(dot)dot.style.background='#a07010';
-    if(txt)txt.textContent='IA pausada';
-    if(tbTxt)tbTxt.textContent='Ativar IA';
-    if(rpBtn)rpBtn.textContent='Ativar IA';
-    if(rpSt){rpSt.textContent='Pausada';rpSt.className='tag ta';}
+function toggleAtendIA() {
+  atendIAon = !atendIAon;
+  atendContacts[activeAtend].ia = atendIAon;
+  updateAtendIAUI();
+  renderAtendList();
+  const msgs = document.getElementById('atend-msgs');
+  if (msgs) {
+    msgs.innerHTML += `<div style="text-align:center;font-size:10px;color:#999;padding:4px 0;margin:4px 0">${atendIAon ? '🤖 IA reativada — respondendo automaticamente' : '⏸ IA pausada — você assumiu o atendimento'}</div>`;
+    msgs.scrollTop = msgs.scrollHeight;
   }
 }
 
-function renderFunilPop(){
-  const popList=document.getElementById('funil-pop-list');
-  const rpList=document.getElementById('rp-funil-list');
-  const c=atendContacts[activeAtend];
-  [popList,rpList].forEach(el=>{
-    if(!el)return;
-    el.innerHTML='';
-    funis.forEach(f=>{
-      const d=document.createElement('div');
-      d.style.cssText='background:white;border-radius:6px;padding:7px 9px;margin-bottom:5px;border:1px solid #eee;cursor:pointer';
-      d.innerHTML=`<div style="font-size:11px;font-weight:500">${f.name}</div><div style="font-size:10px;color:#999;margin-top:1px">${f.steps} etapas</div>`;
-      const btn=document.createElement('button');
-      btn.style.cssText='width:100%;margin-top:4px;padding:5px;background:#25D366;color:white;border:none;border-radius:6px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px';
-      btn.innerHTML=`<i class="ti ti-send"></i>Enviar para ${c.name}`;
-      btn.onclick=()=>sendFunilAtend(f);
-      d.appendChild(btn);el.appendChild(d);
-    });
-  });
+function updateAtendIAUI() {
+  const btn = document.getElementById('ia-btn');
+  const dot = document.getElementById('ia-dot2');
+  const txt = document.getElementById('ia-txt2');
+  const tbLbl = document.getElementById('tb-ia-lbl');
+  const rpBtn = document.getElementById('rp-ia-btn');
+  const rpSt = document.getElementById('rp-ia-st');
+  if (atendIAon) {
+    if (btn) { btn.style.background='#e6faf0'; btn.style.color='#0a7a40'; btn.style.borderColor='#9FE1CB'; }
+    if (dot) dot.style.background = '#25D366';
+    if (txt) txt.textContent = 'IA ativa';
+    if (tbLbl) tbLbl.textContent = 'Pausar IA';
+    if (rpBtn) rpBtn.textContent = 'Pausar IA';
+    if (rpSt) { rpSt.textContent = 'Ativa'; rpSt.className = 'tag tg'; }
+  } else {
+    if (btn) { btn.style.background='#fff8e6'; btn.style.color='#a07010'; btn.style.borderColor='#FAC775'; }
+    if (dot) dot.style.background = '#a07010';
+    if (txt) txt.textContent = 'IA pausada';
+    if (tbLbl) tbLbl.textContent = 'Ativar IA';
+    if (rpBtn) rpBtn.textContent = 'Ativar IA';
+    if (rpSt) { rpSt.textContent = 'Pausada'; rpSt.className = 'tag ta'; }
+  }
 }
 
-function sendFunilAtend(f){
-  const msgs=document.getElementById('atend-msgs');
-  if(!msgs)return;
-  msgs.innerHTML+=`
-    <div style="display:flex;flex-direction:column;align-items:flex-end">
-      <div style="font-size:9px;color:#999;margin-bottom:2px">Você · funil enviado</div>
-      <div style="background:white;border-radius:10px 0 10px 10px;padding:8px 10px;max-width:75%;border:1px solid #eee">
-        <div style="font-size:10px;font-weight:600;color:#25D366;margin-bottom:4px;display:flex;align-items:center;gap:4px"><i class="ti ti-hierarchy" style="font-size:12px"></i>${f.name}</div>
-        <div style="font-size:11px;color:#666;padding:3px 0;border-bottom:1px solid #f5f5f5;display:flex;align-items:center;gap:4px"><i class="ti ti-message" style="font-size:11px;color:#25D366"></i>Etapa 1 — Mensagem de boas-vindas</div>
-        <div style="font-size:11px;color:#999;padding:3px 0;border-bottom:1px solid #f5f5f5;display:flex;align-items:center;gap:4px"><i class="ti ti-clock" style="font-size:11px"></i>Delay configurado</div>
-        <div style="font-size:11px;color:#666;padding:3px 0;display:flex;align-items:center;gap:4px"><i class="ti ti-check" style="font-size:11px;color:#25D366"></i>${f.steps} etapas programadas</div>
-      </div>
-      <div style="font-size:10px;color:#999;margin-top:2px">agora ✓✓</div>
-    </div>`;
-  msgs.scrollTop=msgs.scrollHeight;
-  toggleFunilPop();
-}
-
-function toggleFunilPop(){
-  funilPopOpen=!funilPopOpen;
-  const pop=document.getElementById('funil-pop');
-  if(pop){pop.style.display=funilPopOpen?'block':'none';}
-  if(funilPopOpen)renderFunilPop();
-}
-
-function atendSend(){
-  const inp=document.getElementById('atend-input');
-  const msgs=document.getElementById('atend-msgs');
-  if(!inp||!msgs||!inp.value.trim())return;
-  msgs.innerHTML+=`<div style="display:flex;flex-direction:column;align-items:flex-end"><div style="font-size:9px;color:#999;margin-bottom:2px">Você</div><div style="background:#dcf8c6;border-radius:10px 0 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#075e54;line-height:1.5">${inp.value}<div style="font-size:10px;color:#888;margin-top:2px">agora ✓✓</div></div></div>`;
-  inp.value='';msgs.scrollTop=msgs.scrollHeight;inp.style.height='auto';
-}
-
-function atendKey(e){
-  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();atendSend();}
-  const t=e.target;t.style.height='auto';t.style.height=Math.min(t.scrollHeight,80)+'px';
-}
-
-// Inicializa atendimento quando view ativa
-const origGo=go;
-window.go=function(v,el){
-  origGo(v,el);
-  if(v==='atend'){setTimeout(()=>{renderAtendContacts();renderFunilPop();},50);}
-};
-
-// API
-fetch(API).then(r=>r.json()).then(d=>{const el=document.getElementById('api-status');if(el){el.textContent=d.status==='online'?'online':'offline';el.className='tag '+(d.status==='online'?'tg':'tr');}}).catch(()=>{const el=document.getElementById('api-status');if(el){el.textContent='offline';el.className='tag tr';}});
-fetch(`${API}/api/contatos`).then(r=>r.json()).then(d=>{const el=document.getElementById('total-contatos');if(el)el.textContent=d.total||'0';}).catch(()=>{});
-</script>
-</body>
-</html>
+function renderFunilPanels() {
+  const c = atendContacts[activeAtend];
+  ['funil-pop-items','rp-funil-list'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.innerHTML = '';
+    funis.forEach(f => {
+      const d = document.createElement('div');
+      d.style.cssText = 'background:white;border-radius:6px;padding:7px 9px;margin-bottom:6px;border:1px solid #eee;cursor:pointer';
+      d.innerHTML = `<div style="font-size:11px;font-weight:600">${f.name}</div><div style="font-size:10px;color:#999;margin-top:1px">${f.steps.length} etapa${f.steps.length>1?'s':''} · texto/áudio</div>`;
+      const btn = document.createElement('button');
+      btn.style.cssText = 'width:100%;margin-top:5px;padding:5px;background:#25D366;color:white;bord
