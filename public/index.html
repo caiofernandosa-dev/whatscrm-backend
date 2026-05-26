@@ -15,12 +15,13 @@ body{font-family:system-ui,sans-serif;background:#f5f5f5;color:#1a1a1a}
 .logo-name{font-size:14px;font-weight:700}
 nav{padding:8px;flex:1;overflow-y:auto}
 .ns{font-size:10px;color:#bbb;padding:8px 8px 4px;text-transform:uppercase;letter-spacing:.5px}
-.ni{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:8px;cursor:pointer;font-size:12px;color:#666;margin-bottom:1px}
+.ni{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:8px;cursor:pointer;font-size:12px;color:#666;margin-bottom:1px;user-select:none}
 .ni:hover{background:#f5f5f5;color:#1a1a1a}
 .ni.active{background:#f0faf4;color:#25D366;font-weight:600}
-.ni i{font-size:15px;width:16px}
-.bgg{margin-left:auto;background:#25D366;color:white;border-radius:8px;font-size:10px;padding:1px 5px}
-.bgr{margin-left:auto;background:#e24b4a;color:white;border-radius:8px;font-size:10px;padding:1px 5px}
+.ni i{font-size:15px;width:16px;pointer-events:none}
+.ni span{pointer-events:none}
+.bgg{margin-left:auto;background:#25D366;color:white;border-radius:8px;font-size:10px;padding:1px 5px;pointer-events:none}
+.bgr{margin-left:auto;background:#e24b4a;color:white;border-radius:8px;font-size:10px;padding:1px 5px;pointer-events:none}
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
 .topbar{padding:10px 16px;border-bottom:1px solid #eee;background:white;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 .ai-pill{display:flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid #9FE1CB;background:#f0faf4;color:#25D366}
@@ -56,7 +57,6 @@ table.ct th{text-align:left;padding:5px 8px;color:#999;font-weight:400;border-bo
 table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pbox{background:#f9f9f9;border:1px solid #eee;border-radius:8px;padding:8px 10px;font-size:12px;font-family:monospace;line-height:1.5;margin-bottom:8px;width:100%;resize:vertical}
 .plbl{font-size:10px;color:#999;margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
-/* KANBAN */
 .kbwrap{background:#f5f5f5;border-radius:10px;padding:12px;min-height:380px}
 .kbtabs{display:flex;gap:4px;margin-bottom:12px;align-items:center;flex-wrap:wrap}
 .kbtab{padding:4px 10px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid #eee;color:#666;background:white}
@@ -80,7 +80,6 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
 .addcardbn:hover{color:#25D366}
 .addcolbn{min-width:36px;width:36px;height:36px;border-radius:8px;border:1px dashed #ccc;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#999;flex-shrink:0;align-self:flex-start;font-size:16px}
 .addcolbn:hover{border-color:#25D366;color:#25D366}
-/* FUNIS */
 .fw{display:grid;grid-template-columns:200px 1fr;gap:12px;min-height:420px}
 .fsb{display:flex;flex-direction:column;gap:6px}
 .fitem{background:white;border:1px solid #eee;border-radius:8px;padding:9px 12px;cursor:pointer}
@@ -106,16 +105,13 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
 .drow{display:flex;align-items:center;gap:6px;font-size:11px;color:#999;margin-top:6px}
 .drow input{width:44px;padding:3px 6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a;text-align:center}
 .drow select{padding:3px 6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a}
-.aabtn{border:1px dashed #ccc;border-radius:8px;padding:8px;text-align:center;cursor:pointer;font-size:12px;color:#999;display:flex;align-items:center;justify-content:center;gap:5px}
+.aabtn{border:1px dashed #ccc;border-radius:8px;padding:8px;text-align:center;cursor:pointer;font-size:12px;color:#999;display:flex;align-items:center;justify-content:center;gap:5px;background:white}
 .aabtn:hover{border-color:#25D366;color:#25D366}
 .dbar{background:#f9f9f9;border-radius:8px;padding:9px 12px;border:1px solid #eee;display:flex;align-items:center;justify-content:space-between}
 .sarr{text-align:center;color:#25D366;font-size:16px;margin:2px 0}
 .uarea{border:1px dashed #ccc;border-radius:8px;padding:12px;text-align:center;cursor:pointer;font-size:12px;color:#999;margin-top:6px}
 .uarea:hover{border-color:#25D366;color:#25D366}
-/* CHAT AO VIVO */
-.chatgrid{display:grid;grid-template-columns:195px 1fr 185px;border:1px solid #eee;border-radius:10px;overflow:hidden;background:white}
-.chatheight{height:calc(100vh - 100px)}
-/* MODAL */
+.chatgrid{display:grid;grid-template-columns:195px 1fr 185px;border:1px solid #eee;border-radius:10px;overflow:hidden;background:white;height:calc(100vh - 100px)}
 .mbg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);align-items:center;justify-content:center;z-index:100}
 .mbg.show{display:flex}
 .modal{background:white;border-radius:12px;padding:18px;width:280px;border:1px solid #eee}
@@ -133,34 +129,33 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
     <div class="logo-icon"><i class="ti ti-brand-whatsapp"></i></div>
     <div class="logo-name">WhatsCRM</div>
   </div>
-  <nav>
+  <nav id="main-nav">
     <div class="ns">Principal</div>
-    <div class="ni active" onclick="go('dashboard',this)"><i class="ti ti-layout-dashboard"></i>Dashboard</div>
-    <div class="ni" onclick="go('agente',this)"><i class="ti ti-robot"></i>Agente IA<span class="bgg">ON</span></div>
-    <div class="ni" onclick="go('atend',this)"><i class="ti ti-message-circle"></i>Atendimento<span class="bgr">3</span></div>
+    <div class="ni active" data-view="dashboard"><i class="ti ti-layout-dashboard"></i><span>Dashboard</span></div>
+    <div class="ni" data-view="agente"><i class="ti ti-robot"></i><span>Agente IA</span><span class="bgg">ON</span></div>
+    <div class="ni" data-view="atend"><i class="ti ti-message-circle"></i><span>Atendimento</span><span class="bgr">3</span></div>
     <div class="ns">CRM</div>
-    <div class="ni" onclick="go('contatos',this)"><i class="ti ti-users"></i>Contatos</div>
-    <div class="ni" onclick="go('kanban',this)"><i class="ti ti-layout-kanban"></i>Kanban</div>
-    <div class="ni" onclick="go('disparos',this)"><i class="ti ti-send"></i>Disparos</div>
-    <div class="ni" onclick="go('funis',this)"><i class="ti ti-hierarchy"></i>Funis</div>
-    <div class="ni" onclick="go('remarketing',this)"><i class="ti ti-refresh"></i>Remarketing</div>
+    <div class="ni" data-view="contatos"><i class="ti ti-users"></i><span>Contatos</span></div>
+    <div class="ni" data-view="kanban"><i class="ti ti-layout-kanban"></i><span>Kanban</span></div>
+    <div class="ni" data-view="disparos"><i class="ti ti-send"></i><span>Disparos</span></div>
+    <div class="ni" data-view="funis"><i class="ti ti-hierarchy"></i><span>Funis</span></div>
+    <div class="ni" data-view="remarketing"><i class="ti ti-refresh"></i><span>Remarketing</span></div>
     <div class="ns">Integrações</div>
-    <div class="ni" onclick="go('agenda',this)"><i class="ti ti-calendar"></i>Agendamentos</div>
-    <div class="ni" onclick="go('clinica',this)"><i class="ti ti-stethoscope"></i>Clínica</div>
-    <div class="ni" onclick="go('adv',this)"><i class="ti ti-briefcase"></i>Advocacia</div>
+    <div class="ni" data-view="agenda"><i class="ti ti-calendar"></i><span>Agendamentos</span></div>
+    <div class="ni" data-view="clinica"><i class="ti ti-stethoscope"></i><span>Clínica</span></div>
+    <div class="ni" data-view="adv"><i class="ti ti-briefcase"></i><span>Advocacia</span></div>
   </nav>
 </div>
 <div class="main">
   <div class="topbar">
     <div style="display:flex;align-items:center;gap:10px">
       <span style="font-size:14px;font-weight:600" id="ptitle">Dashboard</span>
-      <div class="ai-pill" onclick="toggleGlobalAI()"><div class="ai-dot" id="ai-dot"></div><span id="ai-txt">IA ativa</span></div>
+      <div class="ai-pill" id="ai-pill"><div class="ai-dot" id="ai-dot"></div><span id="ai-txt">IA ativa</span></div>
     </div>
-    <button class="btng" id="topbtn" onclick="topBtnAction()"><i class="ti ti-plus"></i><span id="btn-lbl">Nova campanha</span></button>
+    <button class="btng" id="topbtn"><i class="ti ti-plus"></i><span id="btn-lbl">Nova campanha</span></button>
   </div>
   <div class="content">
 
-    <!-- DASHBOARD -->
     <div id="v-dashboard" class="view active">
       <div class="mcs">
         <div class="mc"><div class="mcl">Contatos</div><div class="mcv" id="total-contatos">—</div><div class="mcd">carregando...</div></div>
@@ -186,28 +181,22 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       </div>
     </div>
 
-    <!-- AGENTE IA -->
     <div id="v-agente" class="view">
       <div class="g2">
         <div>
           <div class="panel" style="margin-bottom:12px">
             <div class="pt">Controle</div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-              <span style="font-size:12px">IA respondendo automaticamente</span>
-              <div class="tog on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
-            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span style="font-size:12px">IA respondendo automaticamente</span><div class="tog on" id="tog-ia-global"></div></div>
             <div class="row"><i class="ti ti-clock" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Horário</div><span style="font-size:12px;font-weight:600">08:00–22:00</span></div>
             <div class="row"><i class="ti ti-message-2" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Delay respostas</div><span style="font-size:12px;font-weight:600">3–8s</span></div>
-            <div class="row"><i class="ti ti-user-check" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Transferir se não souber</div><div class="tog on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+            <div class="row"><i class="ti ti-user-check" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Transferir se não souber</div><div class="tog on"></div></div>
           </div>
           <div class="panel">
             <div class="pt">Perfil do agente</div>
             <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Nome</label>
             <input type="text" value="Sofia — Assistente Virtual" style="width:100%;margin-bottom:8px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
             <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Segmento</label>
-            <select style="width:100%;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
-              <option>Todos</option><option>Clínica</option><option>Advocacia</option><option>E-commerce</option>
-            </select>
+            <select style="width:100%;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9"><option>Todos</option><option>Clínica</option><option>Advocacia</option></select>
           </div>
         </div>
         <div>
@@ -218,7 +207,7 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
             <div class="plbl">Agendamento</div>
             <textarea class="pbox" rows="2">Para agendar: pergunte nome, data e tipo de serviço. Confirme com dia, hora e local.</textarea>
             <div class="plbl">Vendas</div>
-            <textarea class="pbox" rows="2">Apresente produtos com entusiasmo. Use o nome do cliente. Máximo 2 opções por vez.</textarea>
+            <textarea class="pbox" rows="2">Apresente produtos com entusiasmo. Use o nome do cliente. Máximo 2 opções.</textarea>
             <button class="btng" style="margin-top:8px">Salvar prompts</button>
           </div>
           <div class="panel">
@@ -226,11 +215,11 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
             <div style="background:#f9f9f9;border-radius:8px;padding:10px">
               <div id="sim-msgs" style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px;max-height:160px;overflow-y:auto">
                 <div style="align-self:flex-start;background:white;border:1px solid #eee;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%">Olá, quero marcar uma consulta</div>
-                <div style="align-self:flex-start;background:#e6f0ff;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%;color:#1a4fa0">Olá! Sou a Sofia! Qual especialidade você precisa?<div style="font-size:10px;color:#888;margin-top:2px">Sofia · IA</div></div>
+                <div style="align-self:flex-start;background:#e6f0ff;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%;color:#1a4fa0">Olá! Sou a Sofia! Qual especialidade?<div style="font-size:10px;color:#888;margin-top:2px">Sofia · IA</div></div>
               </div>
               <div style="display:flex;gap:6px">
                 <input type="text" id="sim-input" placeholder="Simule uma mensagem..." style="flex:1;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:white">
-                <button class="btng" onclick="simSend()" style="padding:5px 10px"><i class="ti ti-send"></i></button>
+                <button class="btng" id="sim-btn" style="padding:5px 10px"><i class="ti ti-send"></i></button>
               </div>
             </div>
           </div>
@@ -238,21 +227,20 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       </div>
     </div>
 
-    <!-- CONTATOS -->
     <div id="v-contatos" class="view">
       <div class="segtabs" id="seg-tabs">
-        <div class="stab active" onclick="selSeg(this,'Todos',5204)">Todos (5.204)</div>
-        <div class="stab" onclick="selSeg(this,'Leads',890)">Leads (890)</div>
-        <div class="stab" onclick="selSeg(this,'Clientes',2310)">Clientes (2.310)</div>
-        <div class="stab" onclick="selSeg(this,'VIP',145)">VIP (145)</div>
-        <div class="stab" onclick="selSeg(this,'Clínica',412)">Clínica (412)</div>
-        <div class="stab" onclick="selSeg(this,'Advocacia',203)">Advocacia (203)</div>
+        <div class="stab active" data-seg="Todos" data-count="5204">Todos (5.204)</div>
+        <div class="stab" data-seg="Leads" data-count="890">Leads (890)</div>
+        <div class="stab" data-seg="Clientes" data-count="2310">Clientes (2.310)</div>
+        <div class="stab" data-seg="VIP" data-count="145">VIP (145)</div>
+        <div class="stab" data-seg="Clínica" data-count="412">Clínica (412)</div>
+        <div class="stab" data-seg="Advocacia" data-count="203">Advocacia (203)</div>
       </div>
       <div class="segbar">
         <div style="font-size:12px">Segmento: <strong id="seg-name">Todos</strong> · <strong id="seg-count">5.204</strong> contatos</div>
         <div style="display:flex;gap:6px">
-          <button class="btno" style="font-size:11px" onclick="go('funis',null)"><i class="ti ti-hierarchy"></i>Enviar funil</button>
-          <button class="btng" style="font-size:11px" onclick="go('disparos',null)"><i class="ti ti-send"></i>Disparar mensagem</button>
+          <button class="btno" style="font-size:11px" data-goto="funis"><i class="ti ti-hierarchy"></i>Enviar funil</button>
+          <button class="btng" style="font-size:11px" data-goto="disparos"><i class="ti ti-send"></i>Disparar mensagem</button>
         </div>
       </div>
       <table class="ct">
@@ -266,7 +254,6 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       </table>
     </div>
 
-    <!-- KANBAN -->
     <div id="v-kanban" class="view">
       <div class="kbwrap">
         <div class="kbtabs" id="kb-tabs"></div>
@@ -274,15 +261,14 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       </div>
     </div>
 
-    <!-- DISPAROS -->
     <div id="v-disparos" class="view">
       <div class="segtabs" id="disp-tabs">
-        <div class="stab active" onclick="selDispTab(this)">Todos (5.204)</div>
-        <div class="stab" onclick="selDispTab(this)">Clientes (2.310)</div>
-        <div class="stab" onclick="selDispTab(this)">Leads (890)</div>
-        <div class="stab" onclick="selDispTab(this)">VIP (145)</div>
-        <div class="stab" onclick="selDispTab(this)">Clínica (412)</div>
-        <div class="stab" onclick="selDispTab(this)">Advocacia (203)</div>
+        <div class="stab active">Todos (5.204)</div>
+        <div class="stab">Clientes (2.310)</div>
+        <div class="stab">Leads (890)</div>
+        <div class="stab">VIP (145)</div>
+        <div class="stab">Clínica (412)</div>
+        <div class="stab">Advocacia (203)</div>
       </div>
       <div class="g2">
         <div class="panel">
@@ -290,11 +276,8 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
           <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Nome da campanha</label>
           <input type="text" value="Promoção Julho" style="width:100%;margin-bottom:8px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
           <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Mensagem (use {{nome}}, {{data}})</label>
-          <textarea rows="4" style="width:100%;margin-bottom:8px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;resize:none">Olá {{nome}}! Temos uma oferta especial. Responda SIM para saber mais!</textarea>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-            <div class="tog on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
-            <span style="font-size:11px;color:#666">IA responde quem interagir</span>
-          </div>
+          <textarea rows="4" style="width:100%;margin-bottom:8px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;resize:none">Olá {{nome}}! Temos uma oferta especial. Responda SIM!</textarea>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><div class="tog on"></div><span style="font-size:11px;color:#666">IA responde quem interagir</span></div>
           <button class="btng" style="width:100%;justify-content:center;padding:8px"><i class="ti ti-send"></i>Disparar agora</button>
         </div>
         <div class="panel">
@@ -306,32 +289,30 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       </div>
     </div>
 
-    <!-- FUNIS -->
     <div id="v-funis" class="view">
       <div class="fw">
         <div class="fsb">
           <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px">Meus funis</div>
           <div id="funil-list"></div>
-          <div class="addfn" onclick="addFunil()"><i class="ti ti-plus"></i>Novo funil</div>
+          <div class="addfn" id="addfn-btn"><i class="ti ti-plus"></i>Novo funil</div>
           <div style="margin-top:10px;padding-top:10px;border-top:1px solid #eee">
             <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px">Disparar para</div>
             <select id="funil-seg" style="width:100%;padding:5px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;margin-bottom:6px">
-              <option>Todos os contatos</option><option>Leads novos</option><option>Clientes ativos</option>
-              <option>VIP</option><option>Clínica</option><option>Advocacia</option><option>1 contato específico</option>
+              <option>Todos os contatos</option><option>Leads novos</option><option>Clientes ativos</option><option>VIP</option><option>Clínica</option><option>Advocacia</option>
             </select>
-            <button class="btng" style="width:100%;justify-content:center" onclick="dispararFunil()"><i class="ti ti-send"></i>Disparar funil</button>
+            <button class="btng" style="width:100%;justify-content:center" id="disparar-funil-btn"><i class="ti ti-send"></i>Disparar funil</button>
           </div>
         </div>
         <div class="fmain">
           <div class="ftb">
-            <input class="fti" id="funil-title" value="Funil de vendas" oninput="updateFunilName(this.value)">
+            <input class="fti" id="funil-title" value="Funil de vendas">
             <div style="display:flex;gap:6px">
               <button class="btno" style="font-size:11px"><i class="ti ti-eye"></i>Preview</button>
-              <button class="btng" style="font-size:11px" onclick="saveFunil()"><i class="ti ti-check"></i>Salvar</button>
+              <button class="btng" style="font-size:11px" id="save-funil-btn"><i class="ti ti-check"></i>Salvar</button>
             </div>
           </div>
-          <div id="steps-area" style="display:flex;flex-direction:column;gap:6px;overflow-y:auto;max-height:calc(100vh - 300px)"></div>
-          <div class="aabtn" onclick="addStep()"><i class="ti ti-plus"></i>Adicionar etapa</div>
+          <div id="steps-area" style="display:flex;flex-direction:column;gap:6px;overflow-y:auto;max-height:calc(100vh - 320px)"></div>
+          <div class="aabtn" id="add-step-btn"><i class="ti ti-plus"></i>Adicionar etapa</div>
           <div class="dbar">
             <div style="font-size:12px;color:#666">Funil: <strong id="d-fn">Funil de vendas</strong> · <strong id="d-st">3</strong> etapas</div>
             <span class="tag tg" id="d-status">Pronto</span>
@@ -340,24 +321,22 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       </div>
     </div>
 
-    <!-- REMARKETING -->
     <div id="v-remarketing" class="view">
       <div class="panel">
         <div class="pt">Automações ativas</div>
-        <div class="row"><i class="ti ti-shopping-cart" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Carrinho abandonado</div><div style="color:#999;font-size:11px">1h após inatividade + IA responde</div></div><div class="tog on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
-        <div class="row"><i class="ti ti-calendar-off" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Consulta não confirmada</div><div style="color:#999;font-size:11px">Lembra 24h e 1h antes</div></div><div class="tog on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
-        <div class="row"><i class="ti ti-clock" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Reengajamento 30 dias</div><div style="color:#999;font-size:11px">Contatos sem interação</div></div><div class="tog on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
-        <div class="row"><i class="ti ti-star" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Upsell pós-compra</div><div style="color:#999;font-size:11px">7 dias após atendimento</div></div><div class="tog off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+        <div class="row"><i class="ti ti-shopping-cart" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Carrinho abandonado</div><div style="color:#999;font-size:11px">1h após inatividade + IA responde</div></div><div class="tog on"></div></div>
+        <div class="row"><i class="ti ti-calendar-off" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Consulta não confirmada</div><div style="color:#999;font-size:11px">Lembra 24h e 1h antes</div></div><div class="tog on"></div></div>
+        <div class="row"><i class="ti ti-clock" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Reengajamento 30 dias</div><div style="color:#999;font-size:11px">Contatos sem interação</div></div><div class="tog on"></div></div>
+        <div class="row"><i class="ti ti-star" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Upsell pós-compra</div><div style="color:#999;font-size:11px">7 dias após atendimento</div></div><div class="tog off"></div></div>
       </div>
     </div>
 
-    <!-- AGENDA -->
     <div id="v-agenda" class="view">
       <div class="g2">
         <div class="panel">
-          <div class="pt">Agendamentos de hoje</div>
-          <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid #eee;background:white;margin-bottom:6px"><div style="font-size:11px;font-weight:600;min-width:38px">08:30</div><div><div style="font-size:12px;font-weight:600">Ana Costa</div><div style="font-size:11px;color:#999">Clínica · Cardiologia</div></div><span class="tag tb">Confirmado</span></div>
-          <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid #eee;background:white;margin-bottom:6px"><div style="font-size:11px;font-weight:600;min-width:38px">10:00</div><div><div style="font-size:12px;font-weight:600">João Lima</div><div style="font-size:11px;color:#999">Advocacia · Trabalhista</div></div><span class="tag tp">Confirmado</span></div>
+          <div class="pt">Hoje</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid #eee;background:white;margin-bottom:6px"><div style="font-size:11px;font-weight:600;min-width:38px">08:30</div><div><div style="font-size:12px;font-weight:600">Ana Costa</div><div style="font-size:11px;color:#999">Clínica · Cardiologia</div></div><span class="tag tb">OK</span></div>
+          <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid #eee;background:white;margin-bottom:6px"><div style="font-size:11px;font-weight:600;min-width:38px">10:00</div><div><div style="font-size:12px;font-weight:600">João Lima</div><div style="font-size:11px;color:#999">Advocacia · Trabalhista</div></div><span class="tag tp">OK</span></div>
           <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid #eee;background:white"><div style="font-size:11px;font-weight:600;min-width:38px">14:30</div><div><div style="font-size:12px;font-weight:600">Pedro Alves</div><div style="font-size:11px;color:#999">Clínica · Dermatologia</div></div><span class="tag ta">Pendente</span></div>
         </div>
         <div class="panel">
@@ -369,101 +348,58 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       </div>
     </div>
 
-    <!-- CLINICA -->
     <div id="v-clinica" class="view">
-      <div class="panel">
-        <div class="pt">Prompt — clínica médica</div>
-        <div class="plbl">Recepcionista virtual</div>
-        <textarea class="pbox" rows="5">Você é a recepcionista virtual da Clínica [Nome]. Ao receber mensagem: 1) Cumprimente pelo nome. 2) Pergunte se é consulta, retorno ou exame. 3) Verifique disponibilidade. 4) Confirme: nome, convênio, especialidade. 5) Envie confirmação com endereço e horário. Nunca dê diagnósticos médicos.</textarea>
-        <button class="btng" style="margin-top:8px">Salvar prompt</button>
-      </div>
+      <div class="panel"><div class="pt">Prompt — clínica médica</div><div class="plbl">Recepcionista virtual</div>
+      <textarea class="pbox" rows="5">Você é a recepcionista virtual da Clínica [Nome]. Ao receber mensagem: 1) Cumprimente pelo nome. 2) Pergunte se é consulta, retorno ou exame. 3) Verifique disponibilidade. 4) Confirme: nome, convênio, especialidade. Nunca dê diagnósticos médicos.</textarea>
+      <button class="btng" style="margin-top:8px">Salvar prompt</button></div>
     </div>
 
-    <!-- ADVOCACIA -->
     <div id="v-adv" class="view">
-      <div class="panel">
-        <div class="pt">Prompt — advocacia</div>
-        <div class="plbl">Assistente jurídica virtual</div>
-        <textarea class="pbox" rows="5">Você é assistente jurídica virtual do escritório [Nome]. Ao receber mensagem: 1) Identifique a área: trabalhista, cível, família, criminal. 2) Colete informações sem dar orientação jurídica. 3) Agende consulta com o advogado. NUNCA dê parecer jurídico.</textarea>
-        <button class="btng" style="margin-top:8px">Salvar prompt</button>
-      </div>
+      <div class="panel"><div class="pt">Prompt — advocacia</div><div class="plbl">Assistente jurídica virtual</div>
+      <textarea class="pbox" rows="5">Você é assistente jurídica virtual do escritório [Nome]. Ao receber mensagem: 1) Identifique a área: trabalhista, cível, família, criminal. 2) Colete informações sem dar orientação jurídica. 3) Agende consulta com o advogado. NUNCA dê parecer jurídico.</textarea>
+      <button class="btng" style="margin-top:8px">Salvar prompt</button></div>
     </div>
 
-    <!-- ATENDIMENTO AO VIVO -->
     <div id="v-atend" class="view">
-      <div class="chatgrid chatheight">
-        <!-- LISTA CONTATOS -->
+      <div class="chatgrid">
         <div style="border-right:1px solid #eee;display:flex;flex-direction:column;background:#f9f9f9;overflow:hidden">
-          <div style="padding:10px 12px;border-bottom:1px solid #eee;font-size:12px;font-weight:600;display:flex;justify-content:space-between;align-items:center;flex-shrink:0">
-            Fila <span style="background:#e24b4a;color:white;border-radius:8px;font-size:10px;padding:1px 5px">3</span>
-          </div>
-          <div style="padding:6px 10px;border-bottom:1px solid #eee;flex-shrink:0">
-            <input type="text" placeholder="Buscar..." style="width:100%;padding:5px 8px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white">
-          </div>
+          <div style="padding:10px 12px;border-bottom:1px solid #eee;font-size:12px;font-weight:600;display:flex;justify-content:space-between;align-items:center;flex-shrink:0">Fila <span style="background:#e24b4a;color:white;border-radius:8px;font-size:10px;padding:1px 5px">3</span></div>
+          <div style="padding:6px 10px;border-bottom:1px solid #eee;flex-shrink:0"><input type="text" placeholder="Buscar..." style="width:100%;padding:5px 8px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white"></div>
           <div id="atend-list" style="flex:1;overflow-y:auto"></div>
         </div>
-        <!-- CHAT CENTRAL -->
         <div style="display:flex;flex-direction:column;overflow:hidden;position:relative">
-          <!-- HEADER DO CHAT -->
           <div style="padding:10px 14px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:10px;flex-shrink:0;background:white">
             <div id="ach-av" style="width:34px;height:34px;border-radius:50%;background:#e6faf0;color:#0a7a40;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0">AC</div>
-            <div style="flex:1">
-              <div style="font-size:13px;font-weight:600" id="ach-name">Ana Costa</div>
-              <div style="font-size:11px;color:#25D366" id="ach-sub">● Online · Clínica</div>
+            <div style="flex:1"><div style="font-size:13px;font-weight:600" id="ach-name">Ana Costa</div><div style="font-size:11px;color:#25D366" id="ach-sub">● Online · Clínica</div></div>
+            <div id="ia-pill2" style="display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;cursor:pointer;background:#e6faf0;color:#0a7a40;border:1px solid #9FE1CB;font-weight:500;flex-shrink:0">
+              <div id="ia-dot2" style="width:6px;height:6px;border-radius:50%;background:#25D366"></div><span id="ia-txt2">IA ativa</span>
             </div>
-            <div id="ia-btn" onclick="toggleAtendIA()" style="display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;cursor:pointer;background:#e6faf0;color:#0a7a40;border:1px solid #9FE1CB;font-weight:500;flex-shrink:0">
-              <div id="ia-dot2" style="width:6px;height:6px;border-radius:50%;background:#25D366"></div>
-              <span id="ia-txt2">IA ativa</span>
-            </div>
-            <div style="width:28px;height:28px;border-radius:6px;border:1px solid #eee;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#666" title="Buscar"><i class="ti ti-search"></i></div>
           </div>
-          <!-- MENSAGENS -->
           <div id="atend-msgs" style="flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:8px;background:#f0f2f5">
             <div style="text-align:center;font-size:10px;color:#999;padding:4px 0">Hoje, 26 mai</div>
-            <div style="display:flex;flex-direction:column;align-items:flex-start">
-              <div style="font-size:9px;color:#999;margin-bottom:2px">Ana Costa</div>
-              <div style="background:white;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;line-height:1.5">Olá! Quero marcar consulta com cardiologista<div style="font-size:10px;color:#999;margin-top:2px">14:30</div></div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:flex-start">
-              <div style="font-size:9px;color:#1a4fa0;margin-bottom:2px">Sofia · IA</div>
-              <div style="background:#e6f0ff;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#1a4fa0;line-height:1.5">Olá Ana! Sou a Sofia! Qual seu convênio e data preferida?<div style="font-size:10px;color:#888;margin-top:2px">14:30 🤖</div></div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:flex-start">
-              <div style="background:white;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;line-height:1.5">Unimed, prefiro manhã esta semana<div style="font-size:10px;color:#999;margin-top:2px">14:32</div></div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:flex-start">
-              <div style="font-size:9px;color:#1a4fa0;margin-bottom:2px">Sofia · IA</div>
-              <div style="background:#e6f0ff;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#1a4fa0;line-height:1.5">Temos quinta às 08:30 com Dr. Ferreira. Confirmo?<div style="font-size:10px;color:#888;margin-top:2px">14:32 🤖</div></div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:flex-end">
-              <div style="font-size:9px;color:#999;margin-bottom:2px">Você</div>
-              <div style="background:#dcf8c6;border-radius:10px 0 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#075e54;line-height:1.5">Ana, agendado quinta 08:30 Dr. Ferreira!<div style="font-size:10px;color:#888;margin-top:2px">14:35 ✓✓</div></div>
-            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start"><div style="font-size:9px;color:#999;margin-bottom:2px">Ana Costa</div><div style="background:white;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;line-height:1.5">Olá! Quero marcar consulta com cardiologista<div style="font-size:10px;color:#999;margin-top:2px">14:30</div></div></div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start"><div style="font-size:9px;color:#1a4fa0;margin-bottom:2px">Sofia · IA</div><div style="background:#e6f0ff;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#1a4fa0;line-height:1.5">Olá Ana! Sou a Sofia! Qual convênio e data preferida?<div style="font-size:10px;color:#888;margin-top:2px">14:30 🤖</div></div></div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start"><div style="background:white;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;line-height:1.5">Unimed, prefiro manhã<div style="font-size:10px;color:#999;margin-top:2px">14:32</div></div></div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start"><div style="font-size:9px;color:#1a4fa0;margin-bottom:2px">Sofia · IA</div><div style="background:#e6f0ff;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#1a4fa0;line-height:1.5">Temos quinta às 08:30 com Dr. Ferreira. Confirmo?<div style="font-size:10px;color:#888;margin-top:2px">14:32 🤖</div></div></div>
           </div>
-          <!-- TOOLBAR -->
-          <div style="padding:6px 12px;border-top:1px solid #eee;border-bottom:1px solid #eee;display:flex;align-items:center;gap:2px;background:white;flex-shrink:0">
-            <div onclick="toggleFunilPop()" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#25D366;font-weight:500;border:1px solid #9FE1CB;background:#f0faf4"><i class="ti ti-hierarchy"></i>Funis</div>
-            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background=''"><i class="ti ti-photo"></i>Imagem</div>
-            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background=''"><i class="ti ti-microphone"></i>Áudio</div>
-            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background=''"><i class="ti ti-file"></i>Arquivo</div>
-            <div onclick="toggleAtendIA()" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666;margin-left:auto" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background=''"><i class="ti ti-robot"></i><span id="tb-ia-lbl">Pausar IA</span></div>
+          <div style="padding:6px 12px;border-top:1px solid #eee;border-bottom:1px solid #eee;display:flex;align-items:center;gap:4px;background:white;flex-shrink:0">
+            <div id="funil-toolbar-btn" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#25D366;font-weight:500;border:1px solid #9FE1CB;background:#f0faf4"><i class="ti ti-hierarchy"></i>Funis</div>
+            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666"><i class="ti ti-photo"></i>Imagem</div>
+            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666"><i class="ti ti-microphone"></i>Áudio</div>
+            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666"><i class="ti ti-file"></i>Arquivo</div>
+            <div id="pausar-ia-btn" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666;margin-left:auto"><i class="ti ti-robot"></i><span id="tb-ia-lbl">Pausar IA</span></div>
           </div>
-          <!-- INPUT -->
           <div style="padding:10px 12px;display:flex;align-items:flex-end;gap:8px;background:white;flex-shrink:0">
             <div style="flex:1;background:#f9f9f9;border-radius:10px;border:1px solid #eee;padding:8px 12px">
-              <textarea id="atend-input" placeholder="Digite uma mensagem..." rows="1" style="width:100%;border:none;background:transparent;font-size:12px;color:#1a1a1a;resize:none;outline:none;font-family:system-ui;max-height:80px" onkeydown="atendKey(event)"></textarea>
+              <textarea id="atend-input" placeholder="Digite uma mensagem..." rows="1" style="width:100%;border:none;background:transparent;font-size:12px;color:#1a1a1a;resize:none;outline:none;font-family:system-ui;max-height:80px"></textarea>
             </div>
-            <button onclick="atendSend()" style="width:36px;height:36px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:15px;flex-shrink:0"><i class="ti ti-send"></i></button>
+            <button id="atend-send-btn" style="width:36px;height:36px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:15px;flex-shrink:0"><i class="ti ti-send"></i></button>
           </div>
-          <!-- POPUP FUNIS -->
           <div id="funil-pop" style="display:none;background:white;border:1px solid #eee;border-radius:10px;padding:10px;position:absolute;bottom:115px;left:14px;width:260px;z-index:10;box-shadow:0 4px 20px rgba(0,0,0,.1)">
-            <div style="font-size:12px;font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
-              Enviar funil <span onclick="toggleFunilPop()" style="cursor:pointer;color:#999;font-size:14px"><i class="ti ti-x"></i></span>
-            </div>
+            <div style="font-size:12px;font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">Enviar funil <span id="close-funil-pop" style="cursor:pointer;color:#999;font-size:14px"><i class="ti ti-x"></i></span></div>
             <div id="funil-pop-items"></div>
           </div>
         </div>
-        <!-- PAINEL DIREITO -->
         <div style="border-left:1px solid #eee;display:flex;flex-direction:column;background:#f9f9f9;overflow-y:auto">
           <div style="display:flex;flex-direction:column;align-items:center;padding:14px 12px;border-bottom:1px solid #eee">
             <div id="rp-av" style="width:44px;height:44px;border-radius:50%;background:#e6faf0;color:#0a7a40;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;margin-bottom:6px">AC</div>
@@ -472,10 +408,9 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
           </div>
           <div style="padding:10px 12px;border-bottom:1px solid #eee">
             <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Informações</div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:11px"><span style="color:#999">Tag</span><span class="tag tg">Cliente</span></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:11px"><span style="color:#999">Segmento</span><span class="tag tb">Clínica</span></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:11px"><span style="color:#999">IA</span><span id="rp-ia-st" class="tag tg">Ativa</span></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:11px"><span style="color:#999">Mensagens</span><span style="font-weight:600">14</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;font-size:11px"><span style="color:#999">Tag</span><span class="tag tg">Cliente</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;font-size:11px"><span style="color:#999">Segmento</span><span class="tag tb">Clínica</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;font-size:11px"><span style="color:#999">IA</span><span id="rp-ia-st" class="tag tg">Ativa</span></div>
           </div>
           <div style="padding:10px 12px;border-bottom:1px solid #eee">
             <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Funis rápidos</div>
@@ -483,7 +418,7 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
           </div>
           <div style="padding:10px 12px">
             <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Ações</div>
-            <button onclick="toggleAtendIA()" style="width:100%;margin-bottom:5px;padding:6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-robot" style="font-size:13px"></i><span id="rp-ia-btn">Pausar IA</span></button>
+            <button id="rp-pausar-btn" style="width:100%;margin-bottom:5px;padding:6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-robot" style="font-size:13px"></i><span id="rp-ia-btn">Pausar IA</span></button>
             <button style="width:100%;margin-bottom:5px;padding:6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-calendar" style="font-size:13px"></i>Criar agendamento</button>
             <button style="width:100%;padding:6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white;color:#e24b4a;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-x" style="font-size:13px"></i>Encerrar chat</button>
           </div>
@@ -495,39 +430,31 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
 </div>
 </div>
 
-<!-- MODAL KANBAN -->
 <div class="mbg" id="kb-modal">
   <div class="modal">
     <h3>Novo card</h3>
     <input type="text" id="kb-name" placeholder="Nome do contato / item">
     <input type="text" id="kb-sub" placeholder="Detalhe (telefone, valor...)">
-    <select id="kb-tag">
-      <option value="lead">Lead</option><option value="cliente">Cliente ativo</option>
-      <option value="vip">VIP</option><option value="clinica">Clínica</option>
-      <option value="adv">Advocacia</option><option value="urgente">Urgente</option>
-    </select>
-    <div class="mbtns">
-      <button class="mbtnno" onclick="closeKbModal()">Cancelar</button>
-      <button class="mbtnok" onclick="saveKbCard()">Salvar</button>
-    </div>
+    <select id="kb-tag"><option value="lead">Lead</option><option value="cliente">Cliente ativo</option><option value="vip">VIP</option><option value="clinica">Clínica</option><option value="adv">Advocacia</option><option value="urgente">Urgente</option></select>
+    <div class="mbtns"><button class="mbtnno" id="kb-cancel">Cancelar</button><button class="mbtnok" id="kb-save">Salvar</button></div>
   </div>
 </div>
 
 <script>
 const API = 'https://whatscrm-backend-production-f2e2.up.railway.app';
 
-// ========== NAVEGAÇÃO ==========
-const VIEWS = ['dashboard','agente','contatos','kanban','disparos','funis','remarketing','agenda','clinica','adv','atend'];
-const TITLES = {dashboard:'Dashboard',agente:'Agente IA',contatos:'Contatos',kanban:'Kanban',disparos:'Disparos',funis:'Funis',remarketing:'Remarketing',agenda:'Agendamentos',clinica:'Clínica',adv:'Advocacia',atend:'Atendimento ao vivo'};
-const BTNS = {dashboard:'Nova campanha',agente:'Salvar prompts',contatos:'Novo contato',kanban:'Nova coluna',disparos:'Novo disparo',funis:'Novo funil',remarketing:'Nova automação',agenda:'Novo agendamento',clinica:'Salvar prompt',adv:'Salvar prompt',atend:'Encerrar chat'};
+// ===== NAVEGAÇÃO via data-attributes =====
+const TITLES = {dashboard:'Dashboard',agente:'Agente IA',atend:'Atendimento ao vivo',contatos:'Contatos',kanban:'Kanban',disparos:'Disparos',funis:'Funis',remarketing:'Remarketing',agenda:'Agendamentos',clinica:'Clínica',adv:'Advocacia'};
+const BTNS   = {dashboard:'Nova campanha',agente:'Salvar prompts',atend:'Encerrar chat',contatos:'Novo contato',kanban:'Nova coluna',disparos:'Novo disparo',funis:'Novo funil',remarketing:'Nova automação',agenda:'Novo agendamento',clinica:'Salvar prompt',adv:'Salvar prompt'};
 let currentView = 'dashboard';
 
-function go(v, el) {
-  VIEWS.forEach(x => { const e = document.getElementById('v-' + x); if (e) e.classList.remove('active'); });
-  document.querySelectorAll('.ni').forEach(n => n.classList.remove('active'));
+function goTo(v) {
+  document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.ni').forEach(el => el.classList.remove('active'));
   const ve = document.getElementById('v-' + v);
   if (ve) ve.classList.add('active');
-  if (el) el.classList.add('active');
+  const ni = document.querySelector('.ni[data-view="' + v + '"]');
+  if (ni) ni.classList.add('active');
   document.getElementById('ptitle').textContent = TITLES[v] || v;
   document.getElementById('btn-lbl').textContent = BTNS[v] || 'Novo';
   currentView = v;
@@ -536,82 +463,98 @@ function go(v, el) {
   if (v === 'atend') { renderAtendList(); renderFunilPanels(); }
 }
 
-function topBtnAction() {
-  if (currentView === 'funis') addFunil();
-  else if (currentView === 'kanban') { const n = prompt('Nome da nova coluna:'); if (n) { kbBoards[activeKb].cols.push({ title: n, cards: [] }); renderKanban(); } }
-  else if (currentView === 'atend') alert('Chat encerrado!');
-}
+// Nav click via delegation
+document.getElementById('main-nav').addEventListener('click', function(e) {
+  const ni = e.target.closest('.ni[data-view]');
+  if (ni) goTo(ni.dataset.view);
+});
 
-// ========== IA GLOBAL ==========
+// Botão goto em contatos
+document.addEventListener('click', function(e) {
+  const gt = e.target.closest('[data-goto]');
+  if (gt) goTo(gt.dataset.goto);
+});
+
+// Botão topo
+document.getElementById('topbtn').addEventListener('click', function() {
+  if (currentView === 'funis') addFunil();
+  else if (currentView === 'kanban') { const n = prompt('Nome da nova coluna:'); if (n) { kbBoards[activeKb].cols.push({title:n,cards:[]}); renderKanban(); } }
+});
+
+// ===== IA GLOBAL =====
 let globalIA = true;
-function toggleGlobalAI() {
+document.getElementById('ai-pill').addEventListener('click', function() {
   globalIA = !globalIA;
   document.getElementById('ai-dot').style.background = globalIA ? '#25D366' : '#e24b4a';
   document.getElementById('ai-txt').textContent = globalIA ? 'IA ativa' : 'IA pausada';
-}
+});
 
-// ========== SIMULADOR ==========
-const simResps = ['Claro! Pode me informar seu nome?','Qual especialidade você precisa?','Temos horário quinta às 09:00. Confirmo?','Agendamento confirmado! Até lá!'];
+// Toggles genéricos
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('tog')) {
+    e.target.classList.toggle('on');
+    e.target.classList.toggle('off');
+  }
+});
+
+// ===== SEGTABS =====
+document.getElementById('seg-tabs').addEventListener('click', function(e) {
+  const stab = e.target.closest('.stab');
+  if (!stab) return;
+  this.querySelectorAll('.stab').forEach(s => s.classList.remove('active'));
+  stab.classList.add('active');
+  document.getElementById('seg-name').textContent = stab.dataset.seg || stab.textContent;
+  document.getElementById('seg-count').textContent = Number(stab.dataset.count || 0).toLocaleString('pt-BR');
+});
+
+document.getElementById('disp-tabs').addEventListener('click', function(e) {
+  const stab = e.target.closest('.stab');
+  if (!stab) return;
+  this.querySelectorAll('.stab').forEach(s => s.classList.remove('active'));
+  stab.classList.add('active');
+});
+
+// ===== SIMULADOR =====
+const simResps = ['Claro! Pode me informar seu nome?','Qual especialidade você precisa?','Temos horário quinta às 09:00. Confirmo?','Agendamento confirmado!'];
 let simIdx = 0;
 function simSend() {
   const inp = document.getElementById('sim-input');
   const msgs = document.getElementById('sim-msgs');
-  if (!inp || !msgs || !inp.value.trim()) return;
+  if (!inp.value.trim()) return;
   msgs.innerHTML += `<div style="align-self:flex-start;background:white;border:1px solid #eee;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%">${inp.value}</div>`;
   inp.value = '';
   setTimeout(() => {
-    msgs.innerHTML += `<div style="align-self:flex-start;background:#e6f0ff;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%;color:#1a4fa0">${simResps[simIdx % simResps.length]}<div style="font-size:10px;color:#888;margin-top:2px">Sofia · IA</div></div>`;
-    simIdx++;
-    msgs.scrollTop = msgs.scrollHeight;
-  }, 800);
+    msgs.innerHTML += `<div style="align-self:flex-start;background:#e6f0ff;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%;color:#1a4fa0">${simResps[simIdx%simResps.length]}<div style="font-size:10px;color:#888;margin-top:2px">Sofia · IA</div></div>`;
+    simIdx++; msgs.scrollTop = msgs.scrollHeight;
+  }, 700);
   msgs.scrollTop = msgs.scrollHeight;
 }
-document.addEventListener('DOMContentLoaded', () => {
-  const si = document.getElementById('sim-input');
-  if (si) si.addEventListener('keydown', e => { if (e.key === 'Enter') simSend(); });
-});
+document.getElementById('sim-btn').addEventListener('click', simSend);
+document.getElementById('sim-input').addEventListener('keydown', e => { if (e.key === 'Enter') simSend(); });
 
-// ========== CONTATOS ==========
-function selSeg(el, name, count) {
-  document.querySelectorAll('#seg-tabs .stab').forEach(s => s.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('seg-name').textContent = name;
-  document.getElementById('seg-count').textContent = count.toLocaleString('pt-BR');
-}
-
-function selDispTab(el) {
-  document.querySelectorAll('#disp-tabs .stab').forEach(s => s.classList.remove('active'));
-  el.classList.add('active');
-}
-
-// ========== KANBAN ==========
-const tagColors = { lead:'#e6f0ff|#1a4fa0', cliente:'#e6faf0|#0a7a40', vip:'#f0e6ff|#6010a0', clinica:'#e6f0ff|#185FA5', adv:'#f0e6ff|#534AB7', urgente:'#ffe6e6|#a01010' };
-
+// ===== KANBAN =====
+const tagC = {lead:'#e6f0ff|#1a4fa0',cliente:'#e6faf0|#0a7a40',vip:'#f0e6ff|#6010a0',clinica:'#e6f0ff|#185FA5',adv:'#f0e6ff|#534AB7',urgente:'#ffe6e6|#a01010'};
 const kbBoards = {
-  atendimento: { label: 'Atendimento', cols: [
-    { title: 'Fila de espera', cards: [{ name:'Ana Costa', sub:'67 99801-2233', tag:'clinica' }, { name:'Pedro Mota', sub:'11 98712-5544', tag:'lead' }] },
-    { title: 'Em atendimento', cards: [{ name:'Lúcia Faria', sub:'VIP · há 5min', tag:'vip' }] },
-    { title: 'IA respondendo', cards: [{ name:'Rafael Souza', sub:'Lead frio', tag:'lead' }, { name:'Maria Gomes', sub:'Retorno', tag:'cliente' }] },
-    { title: 'Resolvido', cards: [{ name:'João Lima', sub:'Consulta marcada', tag:'clinica' }] }
+  atendimento:{label:'Atendimento',cols:[
+    {title:'Fila',cards:[{name:'Ana Costa',sub:'67 99801-2233',tag:'clinica'},{name:'Pedro Mota',sub:'11 98712-5544',tag:'lead'}]},
+    {title:'Em atendimento',cards:[{name:'Lúcia Faria',sub:'VIP · há 5min',tag:'vip'}]},
+    {title:'IA respondendo',cards:[{name:'Rafael Souza',sub:'Lead frio',tag:'lead'},{name:'Maria Gomes',sub:'Retorno',tag:'cliente'}]},
+    {title:'Resolvido',cards:[{name:'João Lima',sub:'Consulta marcada',tag:'clinica'}]}
   ]},
-  contatos: { label: 'Contatos', cols: [
-    { title: 'Novos leads', cards: [{ name:'Bruno Alves', sub:'Indicação', tag:'lead' }, { name:'Carla Mendes', sub:'Instagram', tag:'lead' }] },
-    { title: 'Em negociação', cards: [{ name:'Fernanda Lima', sub:'Proposta enviada', tag:'cliente' }] },
-    { title: 'Clientes ativos', cards: [{ name:'Ana Costa', sub:'Desde jan/2026', tag:'cliente' }, { name:'Lúcia Faria', sub:'VIP · 3 compras', tag:'vip' }] },
-    { title: 'Inativos', cards: [{ name:'Ricardo Souza', sub:'30 dias sem resposta', tag:'lead' }] }
+  contatos:{label:'Contatos',cols:[
+    {title:'Novos leads',cards:[{name:'Bruno Alves',sub:'Indicação',tag:'lead'},{name:'Carla Mendes',sub:'Instagram',tag:'lead'}]},
+    {title:'Negociação',cards:[{name:'Fernanda Lima',sub:'Proposta enviada',tag:'cliente'}]},
+    {title:'Clientes ativos',cards:[{name:'Ana Costa',sub:'jan/2026',tag:'cliente'},{name:'Lúcia Faria',sub:'VIP',tag:'vip'}]},
+    {title:'Inativos',cards:[{name:'Ricardo Souza',sub:'30 dias',tag:'lead'}]}
   ]},
-  campanhas: { label: 'Campanhas', cols: [
-    { title: 'Rascunho', cards: [{ name:'Promoção Julho', sub:'2.310 contatos', tag:'cliente' }] },
-    { title: 'Agendada', cards: [{ name:'Lembrete VIP', sub:'28/05 · 145 contatos', tag:'vip' }] },
-    { title: 'Enviando', cards: [{ name:'Reengajamento', sub:'630 inativos', tag:'lead' }] },
-    { title: 'Concluída', cards: [{ name:'Promoção Junho', sub:'3.000 · 76%', tag:'cliente' }, { name:'Black Friday', sub:'4.200 · 81%', tag:'cliente' }] }
+  campanhas:{label:'Campanhas',cols:[
+    {title:'Rascunho',cards:[{name:'Promoção Julho',sub:'2.310 contatos',tag:'cliente'}]},
+    {title:'Agendada',cards:[{name:'Lembrete VIP',sub:'28/05 · 145',tag:'vip'}]},
+    {title:'Enviando',cards:[{name:'Reengajamento',sub:'630 inativos',tag:'lead'}]},
+    {title:'Concluída',cards:[{name:'Promoção Junho',sub:'3.000 · 76%',tag:'cliente'},{name:'Black Friday',sub:'4.200 · 81%',tag:'cliente'}]}
   ]}
 };
-
-let activeKb = 'atendimento';
-let kbDragCard = null;
-let kbDragFrom = null;
-let kbAddCol = null;
+let activeKb = 'atendimento', kbDC = null, kbDF = null, kbAddCol = null;
 
 function renderKanban() {
   const tabs = document.getElementById('kb-tabs');
@@ -620,133 +563,71 @@ function renderKanban() {
   Object.entries(kbBoards).forEach(([key, b]) => {
     const t = document.createElement('div');
     t.className = 'kbtab' + (key === activeKb ? ' active' : '');
-    t.innerHTML = `<span ondblclick="rnKbTab('${key}',this)">${b.label}</span>`;
-    t.onclick = e => { if (!e.target.isContentEditable) { activeKb = key; renderKanban(); } };
+    t.dataset.key = key;
+    t.innerHTML = `<span>${b.label}</span>`;
+    t.addEventListener('dblclick', () => {
+      const s = t.querySelector('span'); s.contentEditable = 'true'; s.focus();
+      s.onblur = () => { s.contentEditable = 'false'; b.label = s.textContent.trim() || b.label; s.textContent = b.label; };
+      s.onkeydown = ev => { if (ev.key === 'Enter') { ev.preventDefault(); s.blur(); } };
+    });
+    t.addEventListener('click', e => { if (e.target.isContentEditable) return; activeKb = key; renderKanban(); });
     tabs.appendChild(t);
   });
-  const addT = document.createElement('div');
-  addT.className = 'addtab';
-  addT.innerHTML = '<i class="ti ti-plus"></i> Nova aba';
-  addT.onclick = () => {
-    const n = prompt('Nome da nova aba:');
-    if (!n) return;
-    const key = 'kb_' + Date.now();
-    kbBoards[key] = { label: n, cols: [{ title: 'A fazer', cards: [] }, { title: 'Em andamento', cards: [] }, { title: 'Concluído', cards: [] }] };
-    activeKb = key; renderKanban();
-  };
-  tabs.appendChild(addT);
-
-  const board = document.getElementById('kb-board');
-  if (!board) return;
-  board.innerHTML = '';
+  const at = document.createElement('div'); at.className = 'addtab'; at.innerHTML = '<i class="ti ti-plus"></i> Nova aba';
+  at.addEventListener('click', () => { const n = prompt('Nome da aba:'); if (!n) return; const k = 'kb_'+Date.now(); kbBoards[k] = {label:n,cols:[{title:'A fazer',cards:[]},{title:'Em andamento',cards:[]},{title:'Concluído',cards:[]}]}; activeKb = k; renderKanban(); });
+  tabs.appendChild(at);
+  const board = document.getElementById('kb-board'); board.innerHTML = '';
   kbBoards[activeKb].cols.forEach((col, ci) => {
-    const colEl = document.createElement('div');
-    colEl.className = 'kbcol';
-    const hdr = document.createElement('div');
-    hdr.className = 'kbcolh';
-    const ti = document.createElement('input');
-    ti.className = 'colti'; ti.value = col.title;
-    ti.onchange = () => { col.title = ti.value; };
-    const cnt = document.createElement('span');
-    cnt.className = 'colcnt'; cnt.textContent = col.cards.length;
-    const del = document.createElement('span');
-    del.className = 'coldel ti ti-x';
-    del.onclick = () => { if (confirm('Remover coluna "' + col.title + '"?')) { kbBoards[activeKb].cols.splice(ci, 1); renderKanban(); } };
-    hdr.appendChild(ti); hdr.appendChild(cnt); hdr.appendChild(del);
-    colEl.appendChild(hdr);
-
-    const ce = document.createElement('div');
-    ce.className = 'kbcards';
+    const colEl = document.createElement('div'); colEl.className = 'kbcol';
+    const hdr = document.createElement('div'); hdr.className = 'kbcolh';
+    const ti = document.createElement('input'); ti.className = 'colti'; ti.value = col.title; ti.onchange = () => col.title = ti.value;
+    const cnt = document.createElement('span'); cnt.className = 'colcnt'; cnt.textContent = col.cards.length;
+    const del = document.createElement('span'); del.className = 'coldel ti ti-x';
+    del.addEventListener('click', () => { if (confirm('Remover "'+col.title+'"?')) { kbBoards[activeKb].cols.splice(ci,1); renderKanban(); } });
+    hdr.appendChild(ti); hdr.appendChild(cnt); hdr.appendChild(del); colEl.appendChild(hdr);
+    const ce = document.createElement('div'); ce.className = 'kbcards';
     ce.addEventListener('dragover', e => { e.preventDefault(); ce.style.background = '#f0faf4'; });
-    ce.addEventListener('dragleave', () => { ce.style.background = ''; });
-    ce.addEventListener('drop', e => {
-      e.preventDefault(); ce.style.background = '';
-      if (kbDragCard !== null && kbDragFrom !== null) {
-        const card = kbBoards[activeKb].cols[kbDragFrom].cards.splice(kbDragCard, 1)[0];
-        kbBoards[activeKb].cols[ci].cards.push(card);
-        renderKanban();
-      }
-    });
-
+    ce.addEventListener('dragleave', () => ce.style.background = '');
+    ce.addEventListener('drop', e => { e.preventDefault(); ce.style.background = ''; if (kbDC !== null) { const card = kbBoards[activeKb].cols[kbDF].cards.splice(kbDC,1)[0]; col.cards.push(card); renderKanban(); } });
     col.cards.forEach((card, cdi) => {
-      const cardEl = document.createElement('div');
-      cardEl.className = 'kbcard'; cardEl.draggable = true;
-      const c = (tagColors[card.tag] || '#eee|#333').split('|');
+      const cardEl = document.createElement('div'); cardEl.className = 'kbcard'; cardEl.draggable = true;
+      const c = (tagC[card.tag]||'#eee|#333').split('|');
       cardEl.innerHTML = `<div class="kbcn">${card.name}</div><div class="kbcs">${card.sub}</div><span class="kbct" style="background:${c[0]};color:${c[1]}">${card.tag}</span>`;
-      cardEl.addEventListener('dragstart', () => { kbDragCard = cdi; kbDragFrom = ci; });
-      cardEl.addEventListener('dragend', () => { kbDragCard = null; kbDragFrom = null; });
+      cardEl.addEventListener('dragstart', () => { kbDC = cdi; kbDF = ci; });
+      cardEl.addEventListener('dragend', () => { kbDC = null; kbDF = null; });
       ce.appendChild(cardEl);
     });
     colEl.appendChild(ce);
-
-    const ac = document.createElement('div');
-    ac.className = 'addcardbn';
-    ac.innerHTML = '<i class="ti ti-plus" style="font-size:11px"></i> Adicionar';
-    ac.onclick = () => { kbAddCol = ci; document.getElementById('kb-modal').classList.add('show'); document.getElementById('kb-name').focus(); };
-    colEl.appendChild(ac);
-    board.appendChild(colEl);
+    const ac = document.createElement('div'); ac.className = 'addcardbn'; ac.innerHTML = '<i class="ti ti-plus" style="font-size:11px"></i> Adicionar';
+    ac.addEventListener('click', () => { kbAddCol = ci; document.getElementById('kb-modal').classList.add('show'); document.getElementById('kb-name').focus(); });
+    colEl.appendChild(ac); board.appendChild(colEl);
   });
-
-  const addColBtn = document.createElement('div');
-  addColBtn.className = 'addcolbn';
-  addColBtn.innerHTML = '<i class="ti ti-plus"></i>';
-  addColBtn.onclick = () => {
-    const n = prompt('Nome da nova coluna:');
-    if (n) { kbBoards[activeKb].cols.push({ title: n, cards: [] }); renderKanban(); }
-  };
-  board.appendChild(addColBtn);
+  const acb = document.createElement('div'); acb.className = 'addcolbn'; acb.innerHTML = '<i class="ti ti-plus"></i>';
+  acb.addEventListener('click', () => { const n = prompt('Nome da coluna:'); if (n) { kbBoards[activeKb].cols.push({title:n,cards:[]}); renderKanban(); } });
+  board.appendChild(acb);
 }
+document.getElementById('kb-cancel').addEventListener('click', () => { document.getElementById('kb-modal').classList.remove('show'); document.getElementById('kb-name').value=''; document.getElementById('kb-sub').value=''; });
+document.getElementById('kb-save').addEventListener('click', () => {
+  const name = document.getElementById('kb-name').value.trim(); if (!name) return;
+  kbBoards[activeKb].cols[kbAddCol].cards.push({name, sub:document.getElementById('kb-sub').value.trim(), tag:document.getElementById('kb-tag').value});
+  document.getElementById('kb-modal').classList.remove('show'); document.getElementById('kb-name').value=''; document.getElementById('kb-sub').value=''; renderKanban();
+});
 
-function rnKbTab(key, el) {
-  el.contentEditable = 'true'; el.focus();
-  el.onblur = () => { el.contentEditable = 'false'; kbBoards[key].label = el.textContent.trim() || kbBoards[key].label; renderKanban(); };
-  el.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); el.blur(); } };
-}
-
-function closeKbModal() {
-  document.getElementById('kb-modal').classList.remove('show');
-  document.getElementById('kb-name').value = '';
-  document.getElementById('kb-sub').value = '';
-}
-
-function saveKbCard() {
-  const name = document.getElementById('kb-name').value.trim();
-  if (!name) return;
-  const sub = document.getElementById('kb-sub').value.trim();
-  const tag = document.getElementById('kb-tag').value;
-  kbBoards[activeKb].cols[kbAddCol].cards.push({ name, sub, tag });
-  closeKbModal(); renderKanban();
-}
-
-document.getElementById('kb-name').addEventListener('keydown', e => { if (e.key === 'Enter') saveKbCard(); });
-
-// ========== FUNIS ==========
+// ===== FUNIS =====
 const funis = [
-  { id: 1, name: 'Funil de vendas', steps: [
-    { name: 'Boas-vindas', type: 'text', content: 'Olá {{nome}}! Sou a Sofia da [Empresa]. Posso te ajudar?', delay: 0, delayUnit: 'min' },
-    { name: 'Apresentação', type: 'audio', content: 'audio_apresentacao.mp3', delay: 5, delayUnit: 'min' },
-    { name: 'Proposta', type: 'text', content: '{{nome}}, preparei uma proposta especial! Posso enviar detalhes?', delay: 1, delayUnit: 'hora' }
-  ]},
-  { id: 2, name: 'Funil clínica', steps: [
-    { name: 'Primeiro contato', type: 'text', content: 'Olá {{nome}}! Somos a Clínica [Nome]. Podemos ajudar a agendar sua consulta?', delay: 0, delayUnit: 'min' },
-    { name: 'Catálogo', type: 'image', content: 'catalogo.pdf', delay: 2, delayUnit: 'min' },
-    { name: 'Agendamento', type: 'text', content: 'Que dia e horário seria melhor {{nome}}?', delay: 10, delayUnit: 'min' }
-  ]},
-  { id: 3, name: 'Boas-vindas', steps: [
-    { name: 'Olá', type: 'text', content: 'Olá {{nome}}! Bem-vindo! Como posso te ajudar hoje?', delay: 0, delayUnit: 'min' }
-  ]}
+  {id:1,name:'Funil de vendas',steps:[{name:'Boas-vindas',type:'text',content:'Olá {{nome}}! Sou a Sofia. Posso te ajudar?',delay:0,du:'min'},{name:'Apresentação',type:'audio',content:'audio.mp3',delay:5,du:'min'},{name:'Proposta',type:'text',content:'{{nome}}, preparei uma proposta! Posso enviar detalhes?',delay:1,du:'hora'}]},
+  {id:2,name:'Funil clínica',steps:[{name:'Primeiro contato',type:'text',content:'Olá {{nome}}! Somos a Clínica [Nome]. Podemos ajudar?',delay:0,du:'min'},{name:'Catálogo',type:'image',content:'catalogo.pdf',delay:2,du:'min'},{name:'Agendamento',type:'text',content:'Que dia seria melhor {{nome}}?',delay:10,du:'min'}]},
+  {id:3,name:'Boas-vindas',steps:[{name:'Olá',type:'text',content:'Olá {{nome}}! Bem-vindo! Como posso te ajudar?',delay:0,du:'min'}]}
 ];
 let activeFunil = 0;
 
 function renderFunis() {
-  const list = document.getElementById('funil-list');
-  if (!list) return;
+  const list = document.getElementById('funil-list'); if (!list) return;
   list.innerHTML = '';
   funis.forEach((f, i) => {
-    const el = document.createElement('div');
-    el.className = 'fitem' + (i === activeFunil ? ' active' : '');
-    el.innerHTML = `<div class="fin">${f.name}</div><div class="fim">${f.steps.length} etapa${f.steps.length > 1 ? 's' : ''}</div>`;
-    el.onclick = () => { activeFunil = i; renderFunis(); };
+    const el = document.createElement('div'); el.className = 'fitem' + (i === activeFunil ? ' active' : '');
+    el.innerHTML = `<div class="fin">${f.name}</div><div class="fim">${f.steps.length} etapa${f.steps.length>1?'s':''}</div>`;
+    el.addEventListener('click', () => { activeFunil = i; renderFunis(); });
     list.appendChild(el);
   });
   const f = funis[activeFunil];
@@ -757,200 +638,172 @@ function renderFunis() {
 }
 
 function renderSteps() {
-  const area = document.getElementById('steps-area');
-  if (!area) return;
+  const area = document.getElementById('steps-area'); if (!area) return;
   area.innerHTML = '';
-  const f = funis[activeFunil];
-  f.steps.forEach((step, si) => {
-    const card = document.createElement('div');
-    card.className = 'sc';
-    const hdr = document.createElement('div');
-    hdr.className = 'sh';
-    hdr.innerHTML = `<div class="snum">${si + 1}</div><input class="sni" value="${step.name}" oninput="funis[activeFunil].steps[${si}].name=this.value"><span class="sdel ti ti-trash" onclick="delStep(${si})"></span>`;
+  funis[activeFunil].steps.forEach((step, si) => {
+    const card = document.createElement('div'); card.className = 'sc';
+    const hdr = document.createElement('div'); hdr.className = 'sh';
+    hdr.innerHTML = `<div class="snum">${si+1}</div><input class="sni" value="${step.name}"><span class="sdel ti ti-trash"></span>`;
+    hdr.querySelector('.sni').oninput = e => step.name = e.target.value;
+    hdr.querySelector('.sdel').addEventListener('click', () => { funis[activeFunil].steps.splice(si,1); renderFunis(); });
     card.appendChild(hdr);
-
-    const tt = document.createElement('div');
-    tt.className = 'ttabs';
-    [['text', 'ti-message', 'Texto'], ['audio', 'ti-microphone', 'Áudio'], ['image', 'ti-photo', 'Imagem/PDF']].forEach(([t, ic, lbl]) => {
-      const tb = document.createElement('div');
-      tb.className = 'tt' + (step.type === t ? ' active' : '');
+    const tt = document.createElement('div'); tt.className = 'ttabs';
+    [['text','ti-message','Texto'],['audio','ti-microphone','Áudio'],['image','ti-photo','Imagem/PDF']].forEach(([t,ic,lbl]) => {
+      const tb = document.createElement('div'); tb.className = 'tt'+(step.type===t?' active':'');
       tb.innerHTML = `<i class="ti ${ic}"></i> ${lbl}`;
-      tb.onclick = () => { step.type = t; renderSteps(); };
+      tb.addEventListener('click', () => { step.type = t; renderSteps(); });
       tt.appendChild(tb);
     });
     card.appendChild(tt);
-
     if (step.type === 'text') {
-      const ta = document.createElement('textarea');
-      ta.className = 'me'; ta.value = step.content;
-      ta.placeholder = 'Digite a mensagem... Use {{nome}}, {{data}}, {{empresa}}';
-      ta.oninput = () => { step.content = ta.value; };
-      card.appendChild(ta);
-      const hint = document.createElement('div');
-      hint.style.cssText = 'font-size:10px;color:#999;margin-top:2px';
-      hint.textContent = 'Variáveis: {{nome}} {{data}} {{empresa}} {{telefone}}';
-      card.appendChild(hint);
+      const ta = document.createElement('textarea'); ta.className = 'me'; ta.value = step.content;
+      ta.placeholder = 'Mensagem... Use {{nome}}, {{data}}, {{empresa}}';
+      ta.oninput = e => step.content = e.target.value; card.appendChild(ta);
+      const h = document.createElement('div'); h.style.cssText='font-size:10px;color:#999;margin-top:2px'; h.textContent='Variáveis: {{nome}} {{data}} {{empresa}} {{telefone}}'; card.appendChild(h);
     } else if (step.type === 'audio') {
-      const ae = document.createElement('div');
-      ae.style.cssText = 'background:#f9f9f9;border-radius:8px;padding:8px 10px;border:1px solid #eee;display:flex;align-items:center;gap:8px';
-      ae.innerHTML = `<button onclick="this.style.background=this.style.background=='rgb(160,16,16)'?'#e24b4a':'#a01010'" style="width:30px;height:30px;border-radius:50%;background:#e24b4a;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;flex-shrink:0"><i class="ti ti-microphone"></i></button><span style="font-size:12px;color:#999;flex:1">${step.content || 'Clique para gravar ou enviar áudio'}</span>`;
+      const ae = document.createElement('div'); ae.style.cssText='background:#f9f9f9;border-radius:8px;padding:8px 10px;border:1px solid #eee;display:flex;align-items:center;gap:8px';
+      ae.innerHTML = `<button style="width:30px;height:30px;border-radius:50%;background:#e24b4a;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;flex-shrink:0"><i class="ti ti-microphone"></i></button><span style="font-size:12px;color:#999;flex:1">${step.content||'Clique para gravar'}</span>`;
       card.appendChild(ae);
-      const up = document.createElement('div');
-      up.className = 'uarea';
-      up.innerHTML = '<i class="ti ti-upload"></i> Enviar arquivo de áudio (.mp3, .ogg)';
-      card.appendChild(up);
+      const up = document.createElement('div'); up.className='uarea'; up.innerHTML='<i class="ti ti-upload"></i> Enviar áudio (.mp3, .ogg)'; card.appendChild(up);
     } else {
-      const ie = document.createElement('div');
-      ie.className = 'uarea';
-      ie.innerHTML = `<i class="ti ti-photo" style="font-size:18px;display:block;margin-bottom:3px"></i>Clique para enviar imagem ou PDF${step.content ? `<br><span style="font-size:10px;color:#25D366">${step.content}</span>` : ''}`;
+      const ie = document.createElement('div'); ie.className='uarea';
+      ie.innerHTML=`<i class="ti ti-photo" style="font-size:18px;display:block;margin-bottom:3px"></i>Clique para enviar imagem ou PDF${step.content?`<br><span style="font-size:10px;color:#25D366">${step.content}</span>`:''}`;
       card.appendChild(ie);
     }
-
-    const dr = document.createElement('div');
-    dr.className = 'drow';
-    dr.innerHTML = `<i class="ti ti-clock" style="font-size:12px"></i><span>Aguardar</span><input type="number" min="0" value="${step.delay}" oninput="funis[activeFunil].steps[${si}].delay=+this.value"><select oninput="funis[activeFunil].steps[${si}].delayUnit=this.value"><option ${step.delayUnit === 'min' ? 'selected' : ''}>min</option><option ${step.delayUnit === 'hora' ? 'selected' : ''}>hora</option><option ${step.delayUnit === 'dia' ? 'selected' : ''}>dia</option></select><span>antes de enviar</span>`;
+    const dr = document.createElement('div'); dr.className='drow';
+    dr.innerHTML=`<i class="ti ti-clock" style="font-size:12px"></i><span>Aguardar</span><input type="number" min="0" value="${step.delay}"><select><option ${step.du==='min'?'selected':''}>min</option><option ${step.du==='hora'?'selected':''}>hora</option><option ${step.du==='dia'?'selected':''}>dia</option></select><span>antes de enviar</span>`;
+    dr.querySelector('input').oninput = e => step.delay = +e.target.value;
+    dr.querySelector('select').onchange = e => step.du = e.target.value;
     card.appendChild(dr);
-
-    if (si < f.steps.length - 1) {
-      const arr = document.createElement('div');
-      arr.className = 'sarr';
-      arr.innerHTML = '<i class="ti ti-arrow-down"></i>';
-      card.appendChild(arr);
-    }
+    if (si < funis[activeFunil].steps.length-1) { const arr = document.createElement('div'); arr.className='sarr'; arr.innerHTML='<i class="ti ti-arrow-down"></i>'; card.appendChild(arr); }
     area.appendChild(card);
   });
 }
 
-function addStep() {
-  funis[activeFunil].steps.push({ name: 'Nova etapa', type: 'text', content: '', delay: 0, delayUnit: 'min' });
-  renderFunis();
-}
-
-function delStep(si) {
-  funis[activeFunil].steps.splice(si, 1);
-  renderFunis();
-}
-
 function addFunil() {
-  const n = prompt('Nome do novo funil:');
-  if (!n) return;
-  funis.push({ id: Date.now(), name: n, steps: [{ name: 'Primeiro contato', type: 'text', content: `Olá {{nome}}! Bem-vindo!`, delay: 0, delayUnit: 'min' }] });
-  activeFunil = funis.length - 1;
-  renderFunis();
+  const n = prompt('Nome do novo funil:'); if (!n) return;
+  funis.push({id:Date.now(),name:n,steps:[{name:'Primeiro contato',type:'text',content:'Olá {{nome}}! Bem-vindo!',delay:0,du:'min'}]});
+  activeFunil = funis.length-1; renderFunis();
 }
 
-function updateFunilName(v) {
-  funis[activeFunil].name = v;
-  document.getElementById('d-fn').textContent = v;
-  const list = document.getElementById('funil-list');
-  if (list) {
-    const items = list.querySelectorAll('.fitem');
-    if (items[activeFunil]) items[activeFunil].querySelector('.fin').textContent = v;
-  }
-}
-
-function saveFunil() {
-  const s = document.getElementById('d-status');
-  if (s) { s.textContent = 'Salvo!'; setTimeout(() => { s.textContent = 'Pronto'; }, 2000); }
-}
-
-function dispararFunil() {
+document.getElementById('addfn-btn').addEventListener('click', addFunil);
+document.getElementById('add-step-btn').addEventListener('click', () => { funis[activeFunil].steps.push({name:'Nova etapa',type:'text',content:'',delay:0,du:'min'}); renderFunis(); });
+document.getElementById('save-funil-btn').addEventListener('click', () => { const s=document.getElementById('d-status'); s.textContent='Salvo!'; setTimeout(()=>s.textContent='Pronto',2000); });
+document.getElementById('funil-title').addEventListener('input', e => {
+  funis[activeFunil].name = e.target.value;
+  document.getElementById('d-fn').textContent = e.target.value;
+  const items = document.querySelectorAll('#funil-list .fitem');
+  if (items[activeFunil]) items[activeFunil].querySelector('.fin').textContent = e.target.value;
+});
+document.getElementById('disparar-funil-btn').addEventListener('click', () => {
   const seg = document.getElementById('funil-seg').value;
-  const f = funis[activeFunil];
-  alert(`Funil "${f.name}" disparado para: ${seg}\n${f.steps.length} etapas com delays configurados!`);
-}
+  alert(`Funil "${funis[activeFunil].name}" disparado para: ${seg}\n${funis[activeFunil].steps.length} etapas com delays!`);
+});
 
-// ========== ATENDIMENTO AO VIVO ==========
+// ===== ATENDIMENTO AO VIVO =====
 const atendContacts = [
-  { name:'Ana Costa', ini:'AC', bg:'#e6faf0', col:'#0a7a40', phone:'67 99801-2233', seg:'Clínica', ia:true, unread:0, preview:'Sim, pode confirmar!', time:'14:33' },
-  { name:'Pedro Mota', ini:'PM', bg:'#e6f0ff', col:'#1a4fa0', phone:'11 98712-5544', seg:'Geral', ia:true, unread:2, preview:'Quero mais informações', time:'14:28' },
-  { name:'Lúcia Faria', ini:'LF', bg:'#f0e6ff', col:'#6010a0', phone:'21 97654-9910', seg:'Advocacia', ia:false, unread:1, preview:'Preciso falar com advogado', time:'14:10' },
-  { name:'Rafael Souza', ini:'RS', bg:'#fff8e6', col:'#a07010', phone:'31 96543-7788', seg:'Geral', ia:true, unread:0, preview:'Ok, obrigado', time:'13:45' }
+  {name:'Ana Costa',ini:'AC',bg:'#e6faf0',col:'#0a7a40',phone:'67 99801-2233',seg:'Clínica',ia:true,unread:0,preview:'Sim, pode confirmar!',time:'14:33'},
+  {name:'Pedro Mota',ini:'PM',bg:'#e6f0ff',col:'#1a4fa0',phone:'11 98712-5544',seg:'Geral',ia:true,unread:2,preview:'Quero mais informações',time:'14:28'},
+  {name:'Lúcia Faria',ini:'LF',bg:'#f0e6ff',col:'#6010a0',phone:'21 97654-9910',seg:'Advocacia',ia:false,unread:1,preview:'Preciso de ajuda jurídica',time:'14:10'},
+  {name:'Rafael Souza',ini:'RS',bg:'#fff8e6',col:'#a07010',phone:'31 96543-7788',seg:'Geral',ia:true,unread:0,preview:'Ok, obrigado',time:'13:45'}
 ];
-let activeAtend = 0;
-let atendIAon = true;
-let funilPopOpen = false;
+let activeAtend = 0, atendIAon = true, funilPopOpen = false;
 
 function renderAtendList() {
-  const el = document.getElementById('atend-list');
-  if (!el) return;
+  const el = document.getElementById('atend-list'); if (!el) return;
   el.innerHTML = '';
   atendContacts.forEach((c, i) => {
     const item = document.createElement('div');
-    item.style.cssText = `padding:8px 12px;cursor:pointer;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px;background:${i === activeAtend ? 'white' : 'transparent'};${i === activeAtend ? 'border-left:2px solid #25D366' : ''}`;
-    item.innerHTML = `
-      <div style="width:30px;height:30px;border-radius:50%;background:${c.bg};color:${c.col};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0">${c.ini}</div>
-      <div style="flex:1;min-width:0">
-        <div style="font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.name}</div>
-        <div style="font-size:10px;color:#999;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.preview}</div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0">
-        <div style="font-size:10px;color:#999">${c.time}</div>
-        ${c.unread > 0 ? `<div style="background:#25D366;color:white;border-radius:8px;font-size:9px;padding:1px 5px;font-weight:600">${c.unread}</div>` : ''}
-        <div style="font-size:9px;padding:1px 4px;border-radius:4px;font-weight:600;${c.ia ? 'background:#e6faf0;color:#0a7a40' : 'background:#fff8e6;color:#a07010'}">${c.ia ? 'IA' : 'hum'}</div>
-      </div>`;
-    item.onclick = () => { activeAtend = i; atendIAon = c.ia; selectAtendContact(c); renderAtendList(); };
+    item.style.cssText = `padding:8px 12px;cursor:pointer;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px;background:${i===activeAtend?'white':'transparent'};${i===activeAtend?'border-left:2px solid #25D366':''}`;
+    item.innerHTML = `<div style="width:30px;height:30px;border-radius:50%;background:${c.bg};color:${c.col};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0">${c.ini}</div><div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.name}</div><div style="font-size:10px;color:#999;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.preview}</div></div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0"><div style="font-size:10px;color:#999">${c.time}</div>${c.unread>0?`<div style="background:#25D366;color:white;border-radius:8px;font-size:9px;padding:1px 5px">${c.unread}</div>`:''}<div style="font-size:9px;padding:1px 4px;border-radius:4px;font-weight:600;${c.ia?'background:#e6faf0;color:#0a7a40':'background:#fff8e6;color:#a07010'}">${c.ia?'IA':'hum'}</div></div>`;
+    item.addEventListener('click', () => { activeAtend = i; atendIAon = c.ia; selectAtend(c); renderAtendList(); });
     el.appendChild(item);
   });
 }
 
-function selectAtendContact(c) {
-  ['ach-av','rp-av'].forEach(id => {
-    const e = document.getElementById(id);
-    if (e) { e.textContent = c.ini; e.style.background = c.bg; e.style.color = c.col; }
-  });
-  const n1 = document.getElementById('ach-name'); if (n1) n1.textContent = c.name;
-  const n2 = document.getElementById('rp-name'); if (n2) n2.textContent = c.name;
-  const sub = document.getElementById('ach-sub'); if (sub) sub.textContent = `● Online · ${c.seg}`;
-  updateAtendIAUI();
-  renderFunilPanels();
+function selectAtend(c) {
+  ['ach-av','rp-av'].forEach(id => { const e=document.getElementById(id); if(e){e.textContent=c.ini;e.style.background=c.bg;e.style.color=c.col;} });
+  const n=document.getElementById('ach-name'); if(n) n.textContent=c.name;
+  const rn=document.getElementById('rp-name'); if(rn) rn.textContent=c.name;
+  const s=document.getElementById('ach-sub'); if(s) s.textContent=`● Online · ${c.seg}`;
+  updateAtendIA(); renderFunilPanels();
 }
 
 function toggleAtendIA() {
   atendIAon = !atendIAon;
   atendContacts[activeAtend].ia = atendIAon;
-  updateAtendIAUI();
-  renderAtendList();
+  updateAtendIA(); renderAtendList();
   const msgs = document.getElementById('atend-msgs');
-  if (msgs) {
-    msgs.innerHTML += `<div style="text-align:center;font-size:10px;color:#999;padding:4px 0;margin:4px 0">${atendIAon ? '🤖 IA reativada — respondendo automaticamente' : '⏸ IA pausada — você assumiu o atendimento'}</div>`;
-    msgs.scrollTop = msgs.scrollHeight;
-  }
+  if (msgs) { msgs.innerHTML += `<div style="text-align:center;font-size:10px;color:#999;padding:4px 0;margin:4px 0">${atendIAon?'🤖 IA reativada':'⏸ IA pausada — você assumiu o atendimento'}</div>`; msgs.scrollTop=msgs.scrollHeight; }
 }
 
-function updateAtendIAUI() {
-  const btn = document.getElementById('ia-btn');
-  const dot = document.getElementById('ia-dot2');
-  const txt = document.getElementById('ia-txt2');
-  const tbLbl = document.getElementById('tb-ia-lbl');
-  const rpBtn = document.getElementById('rp-ia-btn');
-  const rpSt = document.getElementById('rp-ia-st');
+function updateAtendIA() {
+  const pill=document.getElementById('ia-pill2'), dot=document.getElementById('ia-dot2'), txt=document.getElementById('ia-txt2');
+  const tbLbl=document.getElementById('tb-ia-lbl'), rpBtn=document.getElementById('rp-ia-btn'), rpSt=document.getElementById('rp-ia-st');
   if (atendIAon) {
-    if (btn) { btn.style.background='#e6faf0'; btn.style.color='#0a7a40'; btn.style.borderColor='#9FE1CB'; }
-    if (dot) dot.style.background = '#25D366';
-    if (txt) txt.textContent = 'IA ativa';
-    if (tbLbl) tbLbl.textContent = 'Pausar IA';
-    if (rpBtn) rpBtn.textContent = 'Pausar IA';
-    if (rpSt) { rpSt.textContent = 'Ativa'; rpSt.className = 'tag tg'; }
+    if(pill){pill.style.background='#e6faf0';pill.style.color='#0a7a40';pill.style.borderColor='#9FE1CB';}
+    if(dot)dot.style.background='#25D366'; if(txt)txt.textContent='IA ativa';
+    if(tbLbl)tbLbl.textContent='Pausar IA'; if(rpBtn)rpBtn.textContent='Pausar IA';
+    if(rpSt){rpSt.textContent='Ativa';rpSt.className='tag tg';}
   } else {
-    if (btn) { btn.style.background='#fff8e6'; btn.style.color='#a07010'; btn.style.borderColor='#FAC775'; }
-    if (dot) dot.style.background = '#a07010';
-    if (txt) txt.textContent = 'IA pausada';
-    if (tbLbl) tbLbl.textContent = 'Ativar IA';
-    if (rpBtn) rpBtn.textContent = 'Ativar IA';
-    if (rpSt) { rpSt.textContent = 'Pausada'; rpSt.className = 'tag ta'; }
+    if(pill){pill.style.background='#fff8e6';pill.style.color='#a07010';pill.style.borderColor='#FAC775';}
+    if(dot)dot.style.background='#a07010'; if(txt)txt.textContent='IA pausada';
+    if(tbLbl)tbLbl.textContent='Ativar IA'; if(rpBtn)rpBtn.textContent='Ativar IA';
+    if(rpSt){rpSt.textContent='Pausada';rpSt.className='tag ta';}
   }
 }
 
 function renderFunilPanels() {
   const c = atendContacts[activeAtend];
   ['funil-pop-items','rp-funil-list'].forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
+    const el = document.getElementById(id); if (!el) return;
     el.innerHTML = '';
     funis.forEach(f => {
       const d = document.createElement('div');
-      d.style.cssText = 'background:white;border-radius:6px;padding:7px 9px;margin-bottom:6px;border:1px solid #eee;cursor:pointer';
-      d.innerHTML = `<div style="font-size:11px;font-weight:600">${f.name}</div><div style="font-size:10px;color:#999;margin-top:1px">${f.steps.length} etapa${f.steps.length>1?'s':''} · texto/áudio</div>`;
+      d.style.cssText='background:white;border-radius:6px;padding:7px 9px;margin-bottom:6px;border:1px solid #eee';
+      d.innerHTML=`<div style="font-size:11px;font-weight:600">${f.name}</div><div style="font-size:10px;color:#999;margin-top:1px">${f.steps.length} etapa${f.steps.length>1?'s':''}</div>`;
       const btn = document.createElement('button');
-      btn.style.cssText = 'width:100%;margin-top:5px;padding:5px;background:#25D366;color:white;bord
+      btn.style.cssText='width:100%;margin-top:5px;padding:5px;background:#25D366;color:white;border:none;border-radius:6px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px';
+      btn.innerHTML=`<i class="ti ti-send"></i> Enviar para ${c.name}`;
+      btn.addEventListener('click', () => sendFunilChat(f));
+      d.appendChild(btn); el.appendChild(d);
+    });
+  });
+}
+
+function sendFunilChat(f) {
+  const msgs = document.getElementById('atend-msgs'); if (!msgs) return;
+  msgs.innerHTML += `<div style="display:flex;flex-direction:column;align-items:flex-end;margin:4px 0"><div style="font-size:9px;color:#999;margin-bottom:2px">Você · funil</div><div style="background:white;border-radius:10px 0 10px 10px;padding:8px 10px;max-width:78%;border:1px solid #eee"><div style="font-size:11px;font-weight:600;color:#25D366;margin-bottom:5px;display:flex;align-items:center;gap:4px"><i class="ti ti-hierarchy" style="font-size:12px"></i>${f.name}</div>${f.steps.map((s,i)=>`<div style="font-size:11px;color:#666;padding:3px 0;${i<f.steps.length-1?'border-bottom:1px solid #f5f5f5;':''}display:flex;align-items:center;gap:4px"><i class="ti ti-${s.type==='text'?'message':s.type==='audio'?'microphone':'photo'}" style="font-size:11px;color:#25D366"></i>${s.name}${s.delay>0?` <span style="font-size:9px;color:#999;margin-left:auto">+${s.delay}${s.du}</span>`:''}</div>`).join('')}</div><div style="font-size:10px;color:#999;margin-top:2px">agora ✓✓</div></div>`;
+  msgs.scrollTop = msgs.scrollHeight;
+  if (funilPopOpen) toggleFunilPop();
+}
+
+function toggleFunilPop() {
+  funilPopOpen = !funilPopOpen;
+  const pop = document.getElementById('funil-pop');
+  if (pop) pop.style.display = funilPopOpen ? 'block' : 'none';
+  if (funilPopOpen) renderFunilPanels();
+}
+
+function atendSend() {
+  const inp = document.getElementById('atend-input'), msgs = document.getElementById('atend-msgs');
+  if (!inp||!msgs||!inp.value.trim()) return;
+  msgs.innerHTML += `<div style="display:flex;flex-direction:column;align-items:flex-end;margin:4px 0"><div style="font-size:9px;color:#999;margin-bottom:2px">Você</div><div style="background:#dcf8c6;border-radius:10px 0 10px 10px;padding:7px 10px;font-size:12px;max-width:78%;color:#075e54;line-height:1.5">${inp.value}<div style="font-size:10px;color:#888;margin-top:2px">agora ✓✓</div></div></div>`;
+  inp.value=''; msgs.scrollTop=msgs.scrollHeight; inp.style.height='auto';
+}
+
+// Event listeners atendimento
+document.getElementById('ia-pill2').addEventListener('click', toggleAtendIA);
+document.getElementById('pausar-ia-btn').addEventListener('click', toggleAtendIA);
+document.getElementById('rp-pausar-btn').addEventListener('click', toggleAtendIA);
+document.getElementById('funil-toolbar-btn').addEventListener('click', toggleFunilPop);
+document.getElementById('close-funil-pop').addEventListener('click', toggleFunilPop);
+document.getElementById('atend-send-btn').addEventListener('click', atendSend);
+document.getElementById('atend-input').addEventListener('keydown', e => { if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();atendSend();} const t=e.target;t.style.height='auto';t.style.height=Math.min(t.scrollHeight,80)+'px'; });
+
+// ===== API STATUS =====
+fetch(API).then(r=>r.json()).then(d=>{const el=document.getElementById('api-status');if(el){el.textContent=d.status==='online'?'online':'offline';el.className='tag '+(d.status==='online'?'tg':'tr');}}).catch(()=>{const el=document.getElementById('api-status');if(el){el.textContent='offline';el.className='tag tr';}});
+fetch(API+'/api/contatos').then(r=>r.json()).then(d=>{const el=document.getElementById('total-contatos');if(el)el.textContent=(d.total||0).toLocaleString('pt-BR');}).catch(()=>{});
+</script>
+</body>
+</html>
