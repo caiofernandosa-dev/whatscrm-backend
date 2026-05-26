@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsCRM</title>
+<script>
+  // Redireciona para o backend
+  const API = 'https://whatscrm-backend-production-f2e2.up.railway.app';
+  fetch(API).then(r=>r.json()).then(d=>{
+    document.getElementById('status').textContent = '✅ ' + d.app + ' — ' + d.status;
+  }).catch(()=>{
+    document.getElementById('status').textContent = '❌ Backend offline';
+  });
+</script>
+<style>
+  body{font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#f5f5f5}
+  .card{background:white;padding:2rem 3rem;border-radius:12px;text-align:center;border:1px solid #eee}
+  h1{color:#25D366;margin-bottom:0.5rem}
+  p{color:#666;margin-bottom:1.5rem}
+  #status{font-size:1.1rem;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>WhatsCRM</h1>
+  <p>CRM completo para WhatsApp com agente de IA</p>
+  <div id="status">Verificando backend...</div>
+</div>
+</body>
+</html>
