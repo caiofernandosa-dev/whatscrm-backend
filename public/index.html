@@ -385,35 +385,95 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
     </div>
 
     <div id="v-atend" class="view">
-      <div style="display:grid;grid-template-columns:180px 1fr;gap:10px">
-        <div>
-          <div style="font-size:11px;color:#999;margin-bottom:6px">Fila · 3 pendentes</div>
-          <div style="background:#e6faf0;border-radius:8px;padding:8px 10px;cursor:pointer;margin-bottom:4px;border:1px solid #b0e8c8" onclick="selChat('Ana Costa','AC','#e6faf0','#0a7a40')">
-            <div style="font-size:12px;font-weight:600;color:#0a7a40">Ana Costa</div><div style="font-size:10px;color:#0a7a40">IA ativa · 2 min</div>
+      <div style="display:grid;grid-template-columns:200px 1fr 190px;height:calc(100vh - 90px);border:1px solid #eee;border-radius:10px;overflow:hidden;background:white">
+        <!-- LISTA -->
+        <div style="border-right:1px solid #eee;display:flex;flex-direction:column;background:#f9f9f9">
+          <div style="padding:10px 12px;border-bottom:1px solid #eee;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:space-between">
+            Atendimento <span style="background:#e24b4a;color:white;border-radius:8px;font-size:10px;padding:1px 5px">3</span>
           </div>
-          <div style="background:white;border-radius:8px;padding:8px 10px;cursor:pointer;margin-bottom:4px;border:1px solid #eee" onclick="selChat('Pedro Mota','PM','#e6f0ff','#1a4fa0')">
-            <div style="font-size:12px;font-weight:600">Pedro Mota</div><div style="font-size:10px;color:#999">IA ativa · 5 min</div>
+          <div style="padding:6px 10px;border-bottom:1px solid #eee">
+            <input type="text" placeholder="Buscar..." style="width:100%;padding:5px 8px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white">
           </div>
-          <div style="background:white;border-radius:8px;padding:8px 10px;cursor:pointer;border:1px solid #eee" onclick="selChat('Lúcia Faria','LF','#f0e6ff','#6010a0')">
-            <div style="font-size:12px;font-weight:600">Lúcia Faria</div><div style="font-size:10px;color:#999">Aguarda humano</div>
+          <div id="atend-contact-list" style="flex:1;overflow-y:auto"></div>
+        </div>
+        <!-- CHAT -->
+        <div style="display:flex;flex-direction:column;position:relative">
+          <div style="padding:10px 14px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:10px;flex-shrink:0;background:white">
+            <div id="ach-av" style="width:34px;height:34px;border-radius:50%;background:#e6faf0;color:#0a7a40;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0">AC</div>
+            <div style="flex:1">
+              <div style="font-size:13px;font-weight:600" id="ach-name">Ana Costa</div>
+              <div style="font-size:11px;color:#25D366" id="ach-status">● Online · Clínica</div>
+            </div>
+            <div id="aia-btn" onclick="toggleAtendIA()" style="display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;cursor:pointer;background:#e6faf0;color:#0a7a40;border:1px solid #9FE1CB;font-weight:500">
+              <div id="aia-dot" style="width:6px;height:6px;border-radius:50%;background:#25D366"></div>
+              <span id="aia-txt">IA ativa</span>
+            </div>
+            <div onclick="toggleAtendIA()" style="width:28px;height:28px;border-radius:6px;border:1px solid #eee;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;color:#666" title="Info"><i class="ti ti-info-circle"></i></div>
+          </div>
+          <div id="atend-msgs" style="flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:8px;background:#f0f2f5">
+            <div style="text-align:center;font-size:10px;color:#999;padding:4px 0">Hoje, 26 mai</div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start">
+              <div style="font-size:9px;color:#999;margin-bottom:2px;padding:0 2px">Ana Costa</div>
+              <div style="background:white;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;line-height:1.5">Olá! Quero marcar uma consulta com cardiologista<div style="font-size:10px;color:#999;margin-top:2px">14:30</div></div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start">
+              <div style="font-size:9px;color:#1a4fa0;margin-bottom:2px;padding:0 2px">Sofia · IA</div>
+              <div style="background:#e6f0ff;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#1a4fa0;line-height:1.5">Olá Ana! Sou a Sofia! Qual seu convênio e data preferida?<div style="font-size:10px;color:#888;margin-top:2px">14:30 🤖</div></div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start">
+              <div style="background:white;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;line-height:1.5">Unimed, prefiro manhã esta semana<div style="font-size:10px;color:#999;margin-top:2px">14:32</div></div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start">
+              <div style="font-size:9px;color:#1a4fa0;margin-bottom:2px;padding:0 2px">Sofia · IA</div>
+              <div style="background:#e6f0ff;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#1a4fa0;line-height:1.5">Temos quinta às 08:30 com Dr. Ferreira. Confirmo?<div style="font-size:10px;color:#888;margin-top:2px">14:32 🤖</div></div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end">
+              <div style="font-size:9px;color:#999;margin-bottom:2px;padding:0 2px">Você</div>
+              <div style="background:#dcf8c6;border-radius:10px 0 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#075e54;line-height:1.5">Perfeito Ana! Agendado quinta 08:30 Dr. Ferreira!<div style="font-size:10px;color:#888;margin-top:2px">14:35 ✓✓</div></div>
+            </div>
+          </div>
+          <div style="padding:6px 12px;border-top:1px solid #eee;border-bottom:1px solid #eee;display:flex;align-items:center;gap:4px;background:white;flex-shrink:0">
+            <div onclick="toggleFunilPop()" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666;border:1px solid transparent" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'"><i class="ti ti-hierarchy"></i>Funis</div>
+            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'"><i class="ti ti-photo"></i>Imagem</div>
+            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'"><i class="ti ti-microphone"></i>Áudio</div>
+            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'"><i class="ti ti-file"></i>Arquivo</div>
+            <div onclick="toggleAtendIA()" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#25D366;margin-left:auto" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'"><i class="ti ti-robot"></i><span id="toolbar-ia-lbl">Pausar IA</span></div>
+          </div>
+          <div style="padding:10px 12px;display:flex;align-items:flex-end;gap:8px;background:white;flex-shrink:0">
+            <div style="flex:1;background:#f9f9f9;border-radius:10px;border:1px solid #eee;padding:8px 12px">
+              <textarea id="atend-input" placeholder="Digite uma mensagem..." rows="1" style="width:100%;border:none;background:transparent;font-size:12px;color:#1a1a1a;resize:none;outline:none;font-family:system-ui;max-height:80px" onkeydown="atendKey(event)"></textarea>
+            </div>
+            <button onclick="atendSend()" style="width:36px;height:36px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:15px;flex-shrink:0"><i class="ti ti-send"></i></button>
+          </div>
+          <!-- POPUP FUNIS -->
+          <div id="funil-pop" style="display:none;background:white;border:1px solid #eee;border-radius:10px;padding:10px;position:absolute;bottom:110px;left:50%;transform:translateX(-50%);width:260px;z-index:10;box-shadow:0 4px 20px rgba(0,0,0,.1)">
+            <div style="font-size:11px;font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">Enviar funil <span style="cursor:pointer;color:#999" onclick="toggleFunilPop()"><i class="ti ti-x"></i></span></div>
+            <div id="funil-pop-list"></div>
           </div>
         </div>
-        <div class="panel">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #f5f5f5">
-            <div class="av" id="chat-av" style="background:#e6faf0;color:#0a7a40;width:32px;height:32px">AC</div>
-            <div style="flex:1"><div style="font-size:13px;font-weight:600" id="chat-name">Ana Costa</div><div style="font-size:11px;color:#25D366">● Online agora</div></div>
-            <span style="font-size:11px;color:#999">IA:</span>
-            <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
+        <!-- PAINEL DIREITO -->
+        <div style="border-left:1px solid #eee;display:flex;flex-direction:column;background:#f9f9f9;overflow-y:auto">
+          <div style="display:flex;flex-direction:column;align-items:center;padding:14px 12px;border-bottom:1px solid #eee">
+            <div id="rp-av" style="width:44px;height:44px;border-radius:50%;background:#e6faf0;color:#0a7a40;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;margin-bottom:6px">AC</div>
+            <div style="font-size:13px;font-weight:600" id="rp-name">Ana Costa</div>
+            <div style="font-size:11px;color:#999">67 99801-2233</div>
           </div>
-          <div class="cmsgs" id="chat-msgs">
-            <div class="mi">Quero marcar uma consulta<div class="mts">14:30</div></div>
-            <div class="mbot">Olá Ana! Qual especialidade você precisa?<div class="mts">Sofia · IA</div></div>
-            <div class="mi">Cardiologia, pode ser amanhã?<div class="mts">14:31</div></div>
-            <div class="mbot">Temos às 08:30 com Dr. Ferreira. Confirmo?<div class="mts">Sofia · IA</div></div>
+          <div style="padding:10px 12px;border-bottom:1px solid #eee">
+            <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Informações</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:11px"><span style="color:#999">Tag</span><span class="tag tg">Cliente</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:11px"><span style="color:#999">Segmento</span><span class="tag tb">Clínica</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:11px"><span style="color:#999">IA</span><span id="rp-ia-st" class="tag tg">Ativa</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:11px"><span style="color:#999">Interações</span><span style="font-weight:600">14</span></div>
           </div>
-          <div style="display:flex;gap:6px;margin-top:8px">
-            <input type="text" id="chat-input" placeholder="Digite uma mensagem..." style="flex:1;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
-            <button class="btn-g" onclick="sendChat()"><i class="ti ti-send"></i></button>
+          <div style="padding:10px 12px;border-bottom:1px solid #eee">
+            <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Funis</div>
+            <div id="rp-funil-list"></div>
+          </div>
+          <div style="padding:10px 12px">
+            <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Ações</div>
+            <button onclick="toggleAtendIA()" style="width:100%;margin-bottom:5px;padding:6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white;color:#1a1a1a;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-robot" style="font-size:13px"></i><span id="rp-ia-btn">Pausar IA</span></button>
+            <button style="width:100%;margin-bottom:5px;padding:6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white;color:#1a1a1a;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-calendar" style="font-size:13px"></i>Criar agendamento</button>
+            <button style="width:100%;padding:6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white;color:#e24b4a;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-x" style="font-size:13px"></i>Encerrar chat</button>
           </div>
         </div>
       </div>
@@ -632,6 +692,146 @@ function addFunil(){const n=prompt('Nome do novo funil:');if(!n)return;funis.pus
 function updateFunilName(v){funis[activeFunil].name=v;document.getElementById('d-fn').textContent=v;renderFunis();}
 function saveFunil(){const s=document.getElementById('d-status');s.textContent='Salvo!';setTimeout(()=>{s.textContent='Pronto';},2000);}
 function dispararFunil(){const seg=document.getElementById('funil-seg').value;const f=funis[activeFunil];alert(`Funil "${f.name}" disparado para: ${seg}\n${f.steps.length} etapas com delays configurados!`);}
+
+// ATENDIMENTO AO VIVO
+const atendContacts=[
+  {name:'Ana Costa',ini:'AC',bg:'#e6faf0',color:'#0a7a40',phone:'67 99801-2233',tag:'cliente',seg:'clinica',ia:true,unread:0,preview:'Sim, pode confirmar!',time:'14:33'},
+  {name:'Pedro Mota',ini:'PM',bg:'#e6f0ff',color:'#1a4fa0',phone:'11 98712-5544',tag:'lead',seg:'geral',ia:true,unread:2,preview:'Quero mais informações',time:'14:28'},
+  {name:'Lúcia Faria',ini:'LF',bg:'#f0e6ff',color:'#6010a0',phone:'21 97654-9910',tag:'vip',seg:'advocacia',ia:false,unread:1,preview:'Preciso falar com advogado',time:'14:10'},
+  {name:'Rafael Souza',ini:'RS',bg:'#fff8e6',color:'#a07010',phone:'31 96543-7788',tag:'lead',seg:'geral',ia:true,unread:0,preview:'Ok, obrigado',time:'13:45'},
+];
+let activeAtend=0;
+let atendIA=true;
+let funilPopOpen=false;
+
+function renderAtendContacts(){
+  const el=document.getElementById('atend-contact-list');
+  if(!el)return;
+  el.innerHTML='';
+  atendContacts.forEach((c,i)=>{
+    const item=document.createElement('div');
+    item.style.cssText=`padding:8px 12px;cursor:pointer;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px;${i===activeAtend?'background:white;border-left:2px solid #25D366':''}`;
+    item.innerHTML=`
+      <div style="width:30px;height:30px;border-radius:50%;background:${c.bg};color:${c.color};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0">${c.ini}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.name}</div>
+        <div style="font-size:10px;color:#999;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.preview}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0">
+        <div style="font-size:10px;color:#999">${c.time}</div>
+        ${c.unread>0?`<div style="background:#25D366;color:white;border-radius:8px;font-size:9px;padding:1px 5px;font-weight:600">${c.unread}</div>`:''}
+        <div style="font-size:9px;padding:1px 4px;border-radius:4px;font-weight:600;${c.ia?'background:#e6faf0;color:#0a7a40':'background:#fff8e6;color:#a07010'}">${c.ia?'IA':'hum'}</div>
+      </div>`;
+    item.onclick=()=>{activeAtend=i;selectAtendContact(c);renderAtendContacts();};
+    el.appendChild(item);
+  });
+}
+
+function selectAtendContact(c){
+  const els=['ach-av','rp-av'];
+  els.forEach(id=>{const e=document.getElementById(id);if(e){e.textContent=c.ini;e.style.background=c.bg;e.style.color=c.color;}});
+  ['ach-name','rp-name'].forEach((id,i)=>{const e=document.getElementById(id);if(e)e.textContent=c.name;});
+  const st=document.getElementById('ach-status');if(st)st.textContent=`● Online · ${c.seg}`;
+  atendIA=c.ia;updateAtendIA();renderFunilPop();
+}
+
+function toggleAtendIA(){
+  atendIA=!atendIA;
+  atendContacts[activeAtend].ia=atendIA;
+  updateAtendIA();
+  renderAtendContacts();
+  const msgs=document.getElementById('atend-msgs');
+  if(msgs){msgs.innerHTML+=`<div style="text-align:center;font-size:10px;color:#999;padding:4px 0">${atendIA?'IA reativada':'IA pausada — você assumiu o atendimento'}</div>`;msgs.scrollTop=msgs.scrollHeight;}
+}
+
+function updateAtendIA(){
+  const btn=document.getElementById('aia-btn');
+  const dot=document.getElementById('aia-dot');
+  const txt=document.getElementById('aia-txt');
+  const tbTxt=document.getElementById('toolbar-ia-lbl');
+  const rpBtn=document.getElementById('rp-ia-btn');
+  const rpSt=document.getElementById('rp-ia-st');
+  if(atendIA){
+    if(btn){btn.style.background='#e6faf0';btn.style.color='#0a7a40';btn.style.borderColor='#9FE1CB';}
+    if(dot)dot.style.background='#25D366';
+    if(txt)txt.textContent='IA ativa';
+    if(tbTxt)tbTxt.textContent='Pausar IA';
+    if(rpBtn)rpBtn.textContent='Pausar IA';
+    if(rpSt){rpSt.textContent='Ativa';rpSt.className='tag tg';}
+  } else {
+    if(btn){btn.style.background='#fff8e6';btn.style.color='#a07010';btn.style.borderColor='#FAC775';}
+    if(dot)dot.style.background='#a07010';
+    if(txt)txt.textContent='IA pausada';
+    if(tbTxt)tbTxt.textContent='Ativar IA';
+    if(rpBtn)rpBtn.textContent='Ativar IA';
+    if(rpSt){rpSt.textContent='Pausada';rpSt.className='tag ta';}
+  }
+}
+
+function renderFunilPop(){
+  const popList=document.getElementById('funil-pop-list');
+  const rpList=document.getElementById('rp-funil-list');
+  const c=atendContacts[activeAtend];
+  [popList,rpList].forEach(el=>{
+    if(!el)return;
+    el.innerHTML='';
+    funis.forEach(f=>{
+      const d=document.createElement('div');
+      d.style.cssText='background:white;border-radius:6px;padding:7px 9px;margin-bottom:5px;border:1px solid #eee;cursor:pointer';
+      d.innerHTML=`<div style="font-size:11px;font-weight:500">${f.name}</div><div style="font-size:10px;color:#999;margin-top:1px">${f.steps} etapas</div>`;
+      const btn=document.createElement('button');
+      btn.style.cssText='width:100%;margin-top:4px;padding:5px;background:#25D366;color:white;border:none;border-radius:6px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px';
+      btn.innerHTML=`<i class="ti ti-send"></i>Enviar para ${c.name}`;
+      btn.onclick=()=>sendFunilAtend(f);
+      d.appendChild(btn);el.appendChild(d);
+    });
+  });
+}
+
+function sendFunilAtend(f){
+  const msgs=document.getElementById('atend-msgs');
+  if(!msgs)return;
+  msgs.innerHTML+=`
+    <div style="display:flex;flex-direction:column;align-items:flex-end">
+      <div style="font-size:9px;color:#999;margin-bottom:2px">Você · funil enviado</div>
+      <div style="background:white;border-radius:10px 0 10px 10px;padding:8px 10px;max-width:75%;border:1px solid #eee">
+        <div style="font-size:10px;font-weight:600;color:#25D366;margin-bottom:4px;display:flex;align-items:center;gap:4px"><i class="ti ti-hierarchy" style="font-size:12px"></i>${f.name}</div>
+        <div style="font-size:11px;color:#666;padding:3px 0;border-bottom:1px solid #f5f5f5;display:flex;align-items:center;gap:4px"><i class="ti ti-message" style="font-size:11px;color:#25D366"></i>Etapa 1 — Mensagem de boas-vindas</div>
+        <div style="font-size:11px;color:#999;padding:3px 0;border-bottom:1px solid #f5f5f5;display:flex;align-items:center;gap:4px"><i class="ti ti-clock" style="font-size:11px"></i>Delay configurado</div>
+        <div style="font-size:11px;color:#666;padding:3px 0;display:flex;align-items:center;gap:4px"><i class="ti ti-check" style="font-size:11px;color:#25D366"></i>${f.steps} etapas programadas</div>
+      </div>
+      <div style="font-size:10px;color:#999;margin-top:2px">agora ✓✓</div>
+    </div>`;
+  msgs.scrollTop=msgs.scrollHeight;
+  toggleFunilPop();
+}
+
+function toggleFunilPop(){
+  funilPopOpen=!funilPopOpen;
+  const pop=document.getElementById('funil-pop');
+  if(pop){pop.style.display=funilPopOpen?'block':'none';}
+  if(funilPopOpen)renderFunilPop();
+}
+
+function atendSend(){
+  const inp=document.getElementById('atend-input');
+  const msgs=document.getElementById('atend-msgs');
+  if(!inp||!msgs||!inp.value.trim())return;
+  msgs.innerHTML+=`<div style="display:flex;flex-direction:column;align-items:flex-end"><div style="font-size:9px;color:#999;margin-bottom:2px">Você</div><div style="background:#dcf8c6;border-radius:10px 0 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#075e54;line-height:1.5">${inp.value}<div style="font-size:10px;color:#888;margin-top:2px">agora ✓✓</div></div></div>`;
+  inp.value='';msgs.scrollTop=msgs.scrollHeight;inp.style.height='auto';
+}
+
+function atendKey(e){
+  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();atendSend();}
+  const t=e.target;t.style.height='auto';t.style.height=Math.min(t.scrollHeight,80)+'px';
+}
+
+// Inicializa atendimento quando view ativa
+const origGo=go;
+window.go=function(v,el){
+  origGo(v,el);
+  if(v==='atend'){setTimeout(()=>{renderAtendContacts();renderFunilPop();},50);}
+};
 
 // API
 fetch(API).then(r=>r.json()).then(d=>{const el=document.getElementById('api-status');if(el){el.textContent=d.status==='online'?'online':'offline';el.className='tag '+(d.status==='online'?'tg':'tr');}}).catch(()=>{const el=document.getElementById('api-status');if(el){el.textContent='offline';el.className='tag tr';}});
