@@ -10,70 +10,126 @@
 body{font-family:system-ui,sans-serif;background:#f5f5f5;color:#1a1a1a}
 .app{display:flex;height:100vh;overflow:hidden}
 .sidebar{width:200px;background:#fff;border-right:1px solid #eee;display:flex;flex-direction:column;flex-shrink:0}
-.logo{padding:16px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px}
+.logo{padding:14px 16px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px}
 .logo-icon{width:28px;height:28px;background:#25D366;border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:15px}
-.logo-name{font-size:14px;font-weight:600}
-nav{padding:8px;flex:1}
-.nav-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:13px;color:#666;margin-bottom:2px}
+.logo-name{font-size:14px;font-weight:700}
+nav{padding:8px;flex:1;overflow-y:auto}
+.nav-s{font-size:10px;color:#bbb;padding:8px 8px 4px;text-transform:uppercase;letter-spacing:.5px}
+.nav-item{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:8px;cursor:pointer;font-size:12px;color:#666;margin-bottom:1px}
 .nav-item:hover{background:#f5f5f5;color:#1a1a1a}
-.nav-item.active{background:#f0faf4;color:#25D366;font-weight:500}
-.nav-item i{font-size:16px}
-.badge{margin-left:auto;background:#25D366;color:white;border-radius:10px;font-size:10px;padding:1px 6px}
+.nav-item.active{background:#f0faf4;color:#25D366;font-weight:600}
+.nav-item i{font-size:15px;width:16px}
+.badge{margin-left:auto;background:#25D366;color:white;border-radius:8px;font-size:10px;padding:1px 5px}
+.badge-r{margin-left:auto;background:#e24b4a;color:white;border-radius:8px;font-size:10px;padding:1px 5px}
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
-.topbar{padding:12px 20px;border-bottom:1px solid #eee;background:white;display:flex;align-items:center;justify-content:space-between}
-.topbar-title{font-size:15px;font-weight:600}
-.ai-pill{display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:12px;border:1px solid #eee;cursor:pointer;background:#f0faf4;color:#25D366}
+.topbar{padding:10px 16px;border-bottom:1px solid #eee;background:white;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.ai-pill{display:flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid #eee;background:#f0faf4;color:#25D366}
 .ai-dot{width:7px;height:7px;border-radius:50%;background:#25D366}
-.btn-green{background:#25D366;color:white;border:none;padding:6px 14px;border-radius:8px;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:5px}
-.content{flex:1;overflow-y:auto;padding:20px}
-.view{display:none}
-.view.active{display:block}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
-.mc{background:white;border-radius:10px;padding:14px;border:1px solid #eee}
-.mc-label{font-size:11px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-.mc-val{font-size:22px;font-weight:600}
-.mc-delta{font-size:11px;color:#25D366;margin-top:2px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
-.panel{background:white;border-radius:10px;padding:14px;border:1px solid #eee}
-.panel-title{font-size:13px;font-weight:600;margin-bottom:12px;color:#1a1a1a}
-.row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #f5f5f5}
+.btn-g{background:#25D366;color:white;border:none;padding:6px 14px;border-radius:8px;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:5px}
+.btn-o{background:transparent;border:1px solid #eee;padding:6px 12px;border-radius:8px;font-size:12px;cursor:pointer;color:#1a1a1a;display:flex;align-items:center;gap:5px}
+.content{flex:1;overflow-y:auto;padding:16px}
+.view{display:none}.view.active{display:block}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.mc{background:white;border-radius:10px;padding:12px;border:1px solid #eee}
+.mc-label{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.mc-val{font-size:20px;font-weight:700}
+.mc-delta{font-size:10px;color:#25D366;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.panel{background:white;border-radius:10px;padding:12px 14px;border:1px solid #eee}
+.panel-title{font-size:12px;font-weight:600;margin-bottom:10px}
+.row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #f5f5f5}
 .row:last-child{border:none}
-.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
-.tag-g{background:#e6faf0;color:#0a7a40}
-.tag-b{background:#e6f0ff;color:#1a4fa0}
-.tag-a{background:#fff8e6;color:#a07010}
-.tag-r{background:#ffe6e6;color:#a01010}
-.tag-p{background:#f0e6ff;color:#6010a0}
-.avatar{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0}
-.toggle{width:32px;height:18px;border-radius:9px;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
-.toggle.on{background:#25D366}
-.toggle.off{background:#ddd}
-.toggle::after{content:'';position:absolute;width:14px;height:14px;border-radius:50%;background:white;top:2px;transition:left .2s}
-.toggle.on::after{left:16px}
-.toggle.off::after{left:2px}
-.seg-tabs{display:flex;gap:4px;margin-bottom:14px;flex-wrap:wrap}
-.stab{padding:5px 12px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid #eee;color:#666;background:white}
-.stab.active{background:#25D366;color:white;border-color:#25D366;font-weight:500}
-.seg-bar{display:flex;align-items:center;justify-content:space-between;background:#f9f9f9;border-radius:8px;padding:8px 14px;margin-bottom:12px;border:1px solid #eee}
-.seg-info{font-size:12px;color:#333}
-.seg-info span{font-weight:600;color:#25D366}
+.tag{display:inline-block;padding:2px 7px;border-radius:8px;font-size:10px;font-weight:600}
+.tg{background:#e6faf0;color:#0a7a40}.tb{background:#e6f0ff;color:#1a4fa0}
+.ta{background:#fff8e6;color:#a07010}.tr{background:#ffe6e6;color:#a01010}.tp{background:#f0e6ff;color:#6010a0}
+.av{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.toggle{width:30px;height:17px;border-radius:9px;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
+.toggle.on{background:#25D366}.toggle.off{background:#ddd}
+.toggle::after{content:'';position:absolute;width:13px;height:13px;border-radius:50%;background:white;top:2px;transition:left .2s}
+.toggle.on::after{left:15px}.toggle.off::after{left:2px}
+.seg-tabs{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap}
+.stab{padding:4px 10px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid #eee;color:#666;background:white}
+.stab.active{background:#25D366;color:white;border-color:#25D366;font-weight:600}
+.seg-bar{display:flex;align-items:center;justify-content:space-between;background:#f9f9f9;border-radius:8px;padding:7px 12px;margin-bottom:10px;border:1px solid #eee}
 table.ct{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}
-table.ct th{text-align:left;padding:6px 8px;color:#999;font-weight:400;border-bottom:1px solid #eee;font-size:11px}
-table.ct td{padding:7px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-table.ct tr:hover td{background:#fafafa}
-.prompt-box{background:#f9f9f9;border:1px solid #eee;border-radius:8px;padding:10px;font-size:12px;font-family:monospace;line-height:1.5;margin-bottom:8px;width:100%}
-.prompt-label{font-size:10px;color:#999;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
-.chat-wrap{background:#f9f9f9;border-radius:8px;padding:10px}
-.chat-msgs{display:flex;flex-direction:column;gap:6px;margin-bottom:8px;max-height:180px;overflow-y:auto}
-.msg-in{align-self:flex-start;background:white;border:1px solid #eee;border-radius:0 8px 8px 8px;padding:6px 10px;font-size:12px;max-width:78%}
-.msg-bot{align-self:flex-start;background:#e6f0ff;border-radius:0 8px 8px 8px;padding:6px 10px;font-size:12px;max-width:78%;color:#1a4fa0}
-.msg-out{align-self:flex-end;background:#dcf8c6;border-radius:8px 0 8px 8px;padding:6px 10px;font-size:12px;max-width:78%;color:#075e54}
-.msg-ts{font-size:10px;color:#999;margin-top:2px}
+table.ct th{text-align:left;padding:5px 8px;color:#999;font-weight:400;border-bottom:1px solid #eee;font-size:11px}
+table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pbox{background:#f9f9f9;border:1px solid #eee;border-radius:8px;padding:8px 10px;font-size:12px;font-family:monospace;line-height:1.5;margin-bottom:8px;width:100%;resize:vertical}
+.plabel{font-size:10px;color:#999;margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
+.cwrap{background:#f9f9f9;border-radius:8px;padding:10px}
+.cmsgs{display:flex;flex-direction:column;gap:6px;margin-bottom:8px;max-height:180px;overflow-y:auto}
+.mi{align-self:flex-start;background:white;border:1px solid #eee;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%}
+.mbot{align-self:flex-start;background:#e6f0ff;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%;color:#1a4fa0}
+.mo{align-self:flex-end;background:#dcf8c6;border-radius:8px 0 8px 8px;padding:6px 9px;font-size:12px;max-width:78%;color:#075e54}
+.mts{font-size:10px;color:#999;margin-top:2px}
 .appt{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid #eee;background:white;margin-bottom:6px}
-.appt-time{font-size:11px;font-weight:600;min-width:38px}
-.costs-table{width:100%;border-collapse:collapse;font-size:13px}
-.costs-table th{text-align:left;padding:8px 10px;color:#999;font-weight:400;border-bottom:1px solid #eee}
-.costs-table td{padding:8px 10px;border-bottom:1px solid #f5f5f5}
+/* KANBAN */
+.kb-wrap{background:#f5f5f5;border-radius:10px;padding:12px;min-height:380px}
+.kb-tabs{display:flex;gap:4px;margin-bottom:12px;align-items:center;flex-wrap:wrap}
+.kb-tab{padding:4px 10px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid #eee;color:#666;background:white}
+.kb-tab.active{background:#25D366;color:white;border-color:#25D366;font-weight:600}
+.add-tab{padding:4px 10px;border-radius:20px;font-size:12px;cursor:pointer;border:1px dashed #ccc;color:#999;background:transparent;display:flex;align-items:center;gap:4px}
+.add-tab:hover{border-color:#25D366;color:#25D366}
+.kb-board{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px}
+.kb-col{min-width:170px;width:170px;flex-shrink:0;background:white;border-radius:8px;border:1px solid #eee;display:flex;flex-direction:column}
+.kb-col-hdr{padding:8px 10px;display:flex;align-items:center;border-bottom:1px solid #f5f5f5}
+.cti{font-size:12px;font-weight:600;border:none;background:transparent;color:#1a1a1a;font-family:system-ui;outline:none;flex:1;min-width:0}
+.ccnt{font-size:10px;background:#f5f5f5;color:#999;border-radius:8px;padding:1px 5px;flex-shrink:0;margin-left:4px}
+.cdel{font-size:12px;color:#ccc;cursor:pointer;flex-shrink:0;margin-left:4px}
+.cdel:hover{color:#e24b4a}
+.kb-cards{padding:6px;flex:1;min-height:50px;transition:background .15s}
+.kb-card{background:#f9f9f9;border-radius:8px;padding:7px 9px;margin-bottom:5px;cursor:grab;border:1px solid #eee;font-size:12px}
+.kb-card:active{opacity:.7}
+.cn{font-weight:600;color:#1a1a1a;margin-bottom:2px}
+.cs{font-size:11px;color:#999}
+.ct2{display:inline-block;padding:1px 6px;border-radius:6px;font-size:10px;font-weight:600;margin-top:3px}
+.add-card-btn{padding:5px 8px;font-size:11px;color:#999;cursor:pointer;display:flex;align-items:center;gap:3px;border-top:1px solid #f5f5f5}
+.add-card-btn:hover{color:#25D366}
+.add-col-btn{min-width:36px;width:36px;height:36px;border-radius:8px;border:1px dashed #ccc;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#999;flex-shrink:0;align-self:flex-start;font-size:16px}
+.add-col-btn:hover{border-color:#25D366;color:#25D366}
+/* FUNIS */
+.fw{display:grid;grid-template-columns:200px 1fr;gap:12px;min-height:400px}
+.fsb{display:flex;flex-direction:column;gap:6px}
+.fi{background:white;border:1px solid #eee;border-radius:8px;padding:9px 12px;cursor:pointer}
+.fi:hover{border-color:#25D366}
+.fi.active{border:1.5px solid #25D366;background:#f0faf4}
+.fin{font-size:12px;font-weight:600}
+.fim{font-size:11px;color:#999;margin-top:1px}
+.add-fn{border:1px dashed #ccc;border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:#999;display:flex;align-items:center;gap:5px}
+.add-fn:hover{border-color:#25D366;color:#25D366}
+.fmain{display:flex;flex-direction:column;gap:8px}
+.ftb{display:flex;align-items:center;justify-content:space-between;background:white;border-radius:8px;padding:9px 12px;border:1px solid #eee}
+.fti{font-size:13px;font-weight:600;border:none;background:transparent;color:#1a1a1a;font-family:system-ui;outline:none}
+.sc{background:white;border:1px solid #eee;border-radius:8px;padding:10px 12px}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.sn{width:20px;height:20px;border-radius:50%;background:#25D366;color:white;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sni{font-size:12px;font-weight:600;border:none;background:transparent;color:#1a1a1a;font-family:system-ui;outline:none;flex:1}
+.sdel{font-size:12px;color:#ccc;cursor:pointer}
+.sdel:hover{color:#e24b4a}
+.ttabs{display:flex;gap:4px;margin-bottom:8px}
+.tt{padding:3px 9px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid #eee;color:#666;background:#f5f5f5}
+.tt.active{background:#25D366;color:white;border-color:#25D366}
+.me{width:100%;padding:7px 9px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a;font-family:system-ui;resize:vertical;min-height:56px}
+.dr{display:flex;align-items:center;gap:6px;font-size:11px;color:#999;margin-top:6px}
+.dr input{width:44px;padding:3px 6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a;text-align:center}
+.dr select{padding:3px 6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a}
+.aa{background:#f9f9f9;border-radius:8px;padding:8px 10px;border:1px solid #eee;display:flex;align-items:center;gap:8px}
+.rb{width:30px;height:30px;border-radius:50%;background:#e24b4a;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;flex-shrink:0}
+.ua{border:1px dashed #ccc;border-radius:8px;padding:12px;text-align:center;cursor:pointer;font-size:12px;color:#999;margin-top:6px}
+.ua:hover{border-color:#25D366;color:#25D366}
+.as-btn{border:1px dashed #ccc;border-radius:8px;padding:8px;text-align:center;cursor:pointer;font-size:12px;color:#999;display:flex;align-items:center;justify-content:center;gap:5px}
+.as-btn:hover{border-color:#25D366;color:#25D366}
+.db{background:#f9f9f9;border-radius:8px;padding:9px 12px;border:1px solid #eee;display:flex;align-items:center;justify-content:space-between}
+.sarr{text-align:center;color:#25D366;font-size:16px;margin:2px 0}
+/* MODAL */
+.mbg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);align-items:center;justify-content:center;z-index:100}
+.mbg.show{display:flex}
+.modal{background:white;border-radius:12px;padding:18px;width:280px;border:1px solid #eee}
+.modal h3{font-size:14px;font-weight:600;margin-bottom:12px}
+.modal input,.modal select{width:100%;margin-bottom:8px;padding:6px 9px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a;font-family:system-ui}
+.mbtns{display:flex;gap:6px;margin-top:4px}
+.mbg2{background:#25D366;color:white;border:none;padding:7px 16px;border-radius:8px;font-size:12px;cursor:pointer;flex:1}
+.mbc{background:transparent;border:1px solid #eee;padding:7px 16px;border-radius:8px;font-size:12px;cursor:pointer;color:#1a1a1a}
 </style>
 </head>
 <body>
@@ -84,15 +140,17 @@ table.ct tr:hover td{background:#fafafa}
     <div class="logo-name">WhatsCRM</div>
   </div>
   <nav>
-    <div style="font-size:10px;color:#bbb;padding:8px 8px 4px;text-transform:uppercase;letter-spacing:.5px">Principal</div>
+    <div class="nav-s">Principal</div>
     <div class="nav-item active" onclick="go('dashboard',this)"><i class="ti ti-layout-dashboard"></i>Dashboard</div>
     <div class="nav-item" onclick="go('agente',this)"><i class="ti ti-robot"></i>Agente IA<span class="badge">ON</span></div>
-    <div class="nav-item" onclick="go('atendimento',this)"><i class="ti ti-message-circle"></i>Atendimento<span class="badge" style="background:#e24b4a">3</span></div>
-    <div style="font-size:10px;color:#bbb;padding:8px 8px 4px;text-transform:uppercase;letter-spacing:.5px">CRM</div>
+    <div class="nav-item" onclick="go('atend',this)"><i class="ti ti-message-circle"></i>Atendimento<span class="badge-r">3</span></div>
+    <div class="nav-s">CRM</div>
     <div class="nav-item" onclick="go('contatos',this)"><i class="ti ti-users"></i>Contatos</div>
+    <div class="nav-item" onclick="go('kanban',this)"><i class="ti ti-layout-kanban"></i>Kanban</div>
     <div class="nav-item" onclick="go('disparos',this)"><i class="ti ti-send"></i>Disparos</div>
+    <div class="nav-item" onclick="go('funis',this)"><i class="ti ti-hierarchy"></i>Funis</div>
     <div class="nav-item" onclick="go('remarketing',this)"><i class="ti ti-refresh"></i>Remarketing</div>
-    <div style="font-size:10px;color:#bbb;padding:8px 8px 4px;text-transform:uppercase;letter-spacing:.5px">Integrações</div>
+    <div class="nav-s">Integrações</div>
     <div class="nav-item" onclick="go('agenda',this)"><i class="ti ti-calendar"></i>Agendamentos</div>
     <div class="nav-item" onclick="go('clinica',this)"><i class="ti ti-stethoscope"></i>Clínica</div>
     <div class="nav-item" onclick="go('adv',this)"><i class="ti ti-briefcase"></i>Advocacia</div>
@@ -101,10 +159,10 @@ table.ct tr:hover td{background:#fafafa}
 <div class="main">
   <div class="topbar">
     <div style="display:flex;align-items:center;gap:10px">
-      <span class="topbar-title" id="ptitle">Dashboard</span>
-      <div class="ai-pill" id="ai-pill" onclick="toggleAI()"><div class="ai-dot" id="ai-dot"></div><span id="ai-txt">IA ativa</span></div>
+      <span style="font-size:14px;font-weight:600" id="ptitle">Dashboard</span>
+      <div class="ai-pill" onclick="toggleAI()"><div class="ai-dot" id="ai-dot"></div><span id="ai-txt">IA ativa</span></div>
     </div>
-    <button class="btn-green"><i class="ti ti-plus"></i><span id="btn-lbl">Nova campanha</span></button>
+    <button class="btn-g"><i class="ti ti-plus"></i><span id="btn-lbl">Nova campanha</span></button>
   </div>
   <div class="content">
 
@@ -115,73 +173,67 @@ table.ct tr:hover td{background:#fafafa}
         <div class="mc"><div class="mc-label">Agendamentos</div><div class="mc-val">28</div><div class="mc-delta">hoje</div></div>
         <div class="mc"><div class="mc-label">Conversão</div><div class="mc-val">31%</div><div class="mc-delta">↑ 5pts vs meta</div></div>
       </div>
-      <div class="grid2">
+      <div class="g2">
         <div class="panel">
-          <div class="panel-title">Status do backend</div>
-          <div class="row"><div style="flex:1;font-size:13px">API Railway</div><span class="tag tag-g" id="api-status">verificando...</span></div>
-          <div class="row"><div style="flex:1;font-size:13px">Banco Supabase</div><span class="tag tag-g">conectado</span></div>
-          <div class="row"><div style="flex:1;font-size:13px">Agente IA</div><span class="tag tag-a">sem chave API</span></div>
-          <div class="row"><div style="flex:1;font-size:13px">WhatsApp</div><span class="tag tag-r">não conectado</span></div>
+          <div class="panel-title">Status do sistema</div>
+          <div class="row"><div style="flex:1;font-size:12px">API Railway</div><span class="tag tg" id="api-status">verificando...</span></div>
+          <div class="row"><div style="flex:1;font-size:12px">Banco Supabase</div><span class="tag tg">conectado</span></div>
+          <div class="row"><div style="flex:1;font-size:12px">Agente IA</div><span class="tag tg">ativo</span></div>
+          <div class="row"><div style="flex:1;font-size:12px">WhatsApp</div><span class="tag tr">não conectado</span></div>
         </div>
         <div class="panel">
-          <div class="panel-title">Próximos passos</div>
-          <div class="row"><i class="ti ti-check" style="color:#25D366"></i><div style="font-size:12px;flex:1">GitHub — código salvo</div></div>
-          <div class="row"><i class="ti ti-check" style="color:#25D366"></i><div style="font-size:12px;flex:1">Railway — backend online</div></div>
-          <div class="row"><i class="ti ti-check" style="color:#25D366"></i><div style="font-size:12px;flex:1">Supabase — banco criado</div></div>
-          <div class="row"><i class="ti ti-check" style="color:#25D366"></i><div style="font-size:12px;flex:1">Vercel — frontend online</div></div>
-          <div class="row"><i class="ti ti-clock" style="color:#eaa000"></i><div style="font-size:12px;flex:1">Anthropic API — adicionar chave</div></div>
-          <div class="row"><i class="ti ti-clock" style="color:#eaa000"></i><div style="font-size:12px;flex:1">Evolution API — conectar WhatsApp</div></div>
+          <div class="panel-title">Checklist</div>
+          <div class="row"><i class="ti ti-check" style="color:#25D366;font-size:13px"></i><div style="font-size:12px;flex:1">GitHub + Railway + Supabase + Vercel</div></div>
+          <div class="row"><i class="ti ti-check" style="color:#25D366;font-size:13px"></i><div style="font-size:12px;flex:1">Agente IA com Anthropic API</div></div>
+          <div class="row"><i class="ti ti-clock" style="color:#eaa000;font-size:13px"></i><div style="font-size:12px;flex:1">Evolution API — conectar WhatsApp</div></div>
+          <div class="row"><i class="ti ti-clock" style="color:#eaa000;font-size:13px"></i><div style="font-size:12px;flex:1">VPS Hostinger — R$28/mês</div></div>
         </div>
       </div>
     </div>
 
     <div id="v-agente" class="view">
-      <div class="grid2">
+      <div class="g2">
         <div>
           <div class="panel" style="margin-bottom:12px">
             <div class="panel-title">Controle do agente</div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-              <span style="font-size:13px">IA respondendo automaticamente</span>
-              <div class="toggle on" id="ai-toggle" onclick="toggleAI()"></div>
+              <span style="font-size:12px">IA respondendo automaticamente</span>
+              <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
             </div>
-            <div class="row"><i class="ti ti-clock" style="font-size:14px;color:#999"></i><div style="flex:1;font-size:12px">Horário de operação</div><span style="font-size:12px;font-weight:600">08:00–22:00</span></div>
-            <div class="row"><i class="ti ti-message-2" style="font-size:14px;color:#999"></i><div style="flex:1;font-size:12px">Delay entre respostas</div><span style="font-size:12px;font-weight:600">3–8s</span></div>
-            <div class="row"><i class="ti ti-user-check" style="font-size:14px;color:#999"></i><div style="flex:1;font-size:12px">Transferir se não souber</div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
-            <div class="row"><i class="ti ti-calendar" style="font-size:14px;color:#999"></i><div style="flex:1;font-size:12px">Agendar pelo bot</div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+            <div class="row"><i class="ti ti-clock" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Horário de operação</div><span style="font-size:12px;font-weight:600">08:00–22:00</span></div>
+            <div class="row"><i class="ti ti-message-2" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Delay entre respostas</div><span style="font-size:12px;font-weight:600">3–8s</span></div>
+            <div class="row"><i class="ti ti-user-check" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Transferir se não souber</div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
           </div>
           <div class="panel">
-            <div class="panel-title">Perfil do agente</div>
-            <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Nome</label>
-            <input type="text" value="Sofia — Assistente Virtual" style="width:100%;margin-bottom:10px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee">
+            <div class="panel-title">Perfil</div>
+            <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Nome do agente</label>
+            <input type="text" value="Sofia — Assistente Virtual" style="width:100%;margin-bottom:8px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
             <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Segmento</label>
-            <select style="width:100%;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee">
-              <option>Todos os contatos</option>
-              <option>Clínica médica</option>
-              <option>Advocacia</option>
-              <option>E-commerce</option>
+            <select style="width:100%;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
+              <option>Todos</option><option>Clínica</option><option>Advocacia</option><option>E-commerce</option>
             </select>
           </div>
         </div>
         <div>
           <div class="panel" style="margin-bottom:12px">
-            <div class="panel-title">Prompts de personalidade</div>
-            <div class="prompt-label">Prompt base</div>
-            <textarea class="prompt-box" rows="3">Você é Sofia, assistente virtual. Atenda com cordialidade. Responda em português brasileiro. Nunca invente informações. Se não souber, transfira para um humano.</textarea>
-            <div class="prompt-label">Prompt de agendamento</div>
-            <textarea class="prompt-box" rows="2">Para agendar, pergunte: nome, data preferida e tipo de serviço. Confirme com dia, hora e local.</textarea>
-            <div class="prompt-label">Prompt de vendas</div>
-            <textarea class="prompt-box" rows="2">Apresente produtos com entusiasmo. Use o nome do cliente. Ofereça no máximo 2 opções.</textarea>
+            <div class="panel-title">Prompts</div>
+            <div class="plabel">Prompt base</div>
+            <textarea class="pbox" rows="3">Você é Sofia, assistente virtual. Atenda com cordialidade. Responda em português. Nunca invente informações. Se não souber, transfira para um humano.</textarea>
+            <div class="plabel">Agendamento</div>
+            <textarea class="pbox" rows="2">Para agendar: pergunte nome, data e tipo de serviço. Confirme com dia, hora e local.</textarea>
+            <div class="plabel">Vendas</div>
+            <textarea class="pbox" rows="2">Apresente produtos com entusiasmo. Use o nome do cliente. Máximo 2 opções.</textarea>
           </div>
           <div class="panel">
             <div class="panel-title">Simulador</div>
-            <div class="chat-wrap">
-              <div class="chat-msgs" id="sim-msgs">
-                <div class="msg-in">Olá, quero marcar uma consulta<div class="msg-ts">agora</div></div>
-                <div class="msg-bot">Olá! Sou a Sofia! Fico feliz em ajudar! Qual seu nome e especialidade?<div class="msg-ts">Sofia · IA</div></div>
+            <div class="cwrap">
+              <div class="cmsgs" id="sim-msgs">
+                <div class="mi">Olá, quero marcar uma consulta<div class="mts">agora</div></div>
+                <div class="mbot">Olá! Sou a Sofia! Qual especialidade?<div class="mts">Sofia · IA</div></div>
               </div>
               <div style="display:flex;gap:6px">
-                <input type="text" id="sim-input" placeholder="Simule uma mensagem..." style="flex:1;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee">
-                <button class="btn-green" onclick="simSend()" style="padding:5px 10px"><i class="ti ti-send"></i></button>
+                <input type="text" id="sim-input" placeholder="Simule uma mensagem..." style="flex:1;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
+                <button class="btn-g" onclick="simSend()" style="padding:5px 10px"><i class="ti ti-send"></i></button>
               </div>
             </div>
           </div>
@@ -199,20 +251,28 @@ table.ct tr:hover td{background:#fafafa}
         <div class="stab" onclick="selSeg(this,'Advocacia',203)">Advocacia (203)</div>
       </div>
       <div class="seg-bar">
-        <div class="seg-info">Segmento: <span id="seg-name">Todos</span> · <span id="seg-count">5.204</span> contatos</div>
+        <div style="font-size:12px">Segmento: <strong id="seg-name">Todos</strong> · <strong id="seg-count">5.204</strong> contatos</div>
         <div style="display:flex;gap:6px">
-          <button class="btn-green" style="font-size:11px;background:white;color:#25D366;border:1px solid #25D366" onclick="go('disparos',null)"><i class="ti ti-send"></i>Disparar para este grupo</button>
+          <button class="btn-o" style="font-size:11px" onclick="go('funis',null)"><i class="ti ti-hierarchy"></i>Enviar funil</button>
+          <button class="btn-g" style="font-size:11px" onclick="go('disparos',null)"><i class="ti ti-send"></i>Disparar mensagem</button>
         </div>
       </div>
       <table class="ct">
         <thead><tr><th style="width:28%">Nome</th><th style="width:22%">WhatsApp</th><th style="width:15%">Tag</th><th style="width:20%">Última msg</th><th style="width:15%">IA</th></tr></thead>
-        <tbody id="contacts-tbody">
-          <tr><td><span class="avatar" style="background:#e6faf0;color:#0a7a40;margin-right:5px">AC</span>Ana Costa</td><td>67 99801-2233</td><td><span class="tag tag-g">Cliente</span></td><td>há 2h</td><td><span class="tag tag-g">Ativa</span></td></tr>
-          <tr><td><span class="avatar" style="background:#e6f0ff;color:#1a4fa0;margin-right:5px">PM</span>Pedro Mota</td><td>11 98712-5544</td><td><span class="tag tag-b">Lead</span></td><td>há 4h</td><td><span class="tag tag-b">Ativa</span></td></tr>
-          <tr><td><span class="avatar" style="background:#f0e6ff;color:#6010a0;margin-right:5px">LF</span>Lúcia Faria</td><td>21 97654-9910</td><td><span class="tag tag-p">VIP</span></td><td>há 1h</td><td><span class="tag tag-a">Humano</span></td></tr>
-          <tr><td><span class="avatar" style="background:#fff8e6;color:#a07010;margin-right:5px">RS</span>Rafael Souza</td><td>31 96543-7788</td><td><span class="tag tag-b">Lead</span></td><td>há 2d</td><td><span class="tag tag-r">Pausada</span></td></tr>
+        <tbody>
+          <tr><td><span class="av" style="background:#e6faf0;color:#0a7a40;margin-right:5px">AC</span>Ana Costa</td><td>67 99801-2233</td><td><span class="tag tg">Cliente</span></td><td>há 2h</td><td><span class="tag tg">Ativa</span></td></tr>
+          <tr><td><span class="av" style="background:#e6f0ff;color:#1a4fa0;margin-right:5px">PM</span>Pedro Mota</td><td>11 98712-5544</td><td><span class="tag tb">Lead</span></td><td>há 4h</td><td><span class="tag tb">Ativa</span></td></tr>
+          <tr><td><span class="av" style="background:#f0e6ff;color:#6010a0;margin-right:5px">LF</span>Lúcia Faria</td><td>21 97654-9910</td><td><span class="tag tp">VIP</span></td><td>há 1h</td><td><span class="tag ta">Humano</span></td></tr>
+          <tr><td><span class="av" style="background:#fff8e6;color:#a07010;margin-right:5px">RS</span>Rafael Souza</td><td>31 96543-7788</td><td><span class="tag tb">Lead</span></td><td>há 2d</td><td><span class="tag tr">Pausada</span></td></tr>
         </tbody>
       </table>
+    </div>
+
+    <div id="v-kanban" class="view">
+      <div class="kb-wrap">
+        <div class="kb-tabs" id="kb-tabs"></div>
+        <div class="kb-board" id="kb-board"></div>
+      </div>
     </div>
 
     <div id="v-disparos" class="view">
@@ -224,81 +284,108 @@ table.ct tr:hover td{background:#fafafa}
         <div class="stab" onclick="this.closest('.seg-tabs').querySelectorAll('.stab').forEach(s=>s.classList.remove('active'));this.classList.add('active')">Clínica (412)</div>
         <div class="stab" onclick="this.closest('.seg-tabs').querySelectorAll('.stab').forEach(s=>s.classList.remove('active'));this.classList.add('active')">Advocacia (203)</div>
       </div>
-      <div class="grid2">
+      <div class="g2">
         <div class="panel">
           <div class="panel-title">Configurar disparo</div>
           <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Nome da campanha</label>
-          <input type="text" value="Promoção Julho" style="width:100%;margin-bottom:9px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee">
-          <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Mensagem (use {{nome}}, {{data}})</label>
-          <textarea rows="4" style="width:100%;margin-bottom:9px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;resize:none">Olá {{nome}}! Temos uma oferta especial para você. Responda SIM para saber mais!</textarea>
-          <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">IA responde quem interagir</label>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <input type="text" value="Promoção Julho" style="width:100%;margin-bottom:8px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
+          <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Mensagem</label>
+          <textarea rows="4" style="width:100%;margin-bottom:8px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;resize:none">Olá {{nome}}! Temos uma oferta especial. Responda SIM para saber mais!</textarea>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
             <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
-            <span style="font-size:12px;color:#666">Ativar após disparo</span>
+            <span style="font-size:11px;color:#666">IA responde quem interagir</span>
           </div>
-          <button class="btn-green" style="width:100%;justify-content:center;padding:9px"><i class="ti ti-send"></i>Disparar agora</button>
+          <button class="btn-g" style="width:100%;justify-content:center;padding:8px"><i class="ti ti-send"></i>Disparar agora</button>
         </div>
         <div class="panel">
           <div class="panel-title">Histórico</div>
-          <div class="row"><div style="flex:1"><div style="font-size:12px;font-weight:600">Promoção Junho</div><div style="font-size:11px;color:#999">3.000 enviadas · 76% lidas</div></div><span class="tag tag-g">OK</span></div>
-          <div class="row"><div style="flex:1"><div style="font-size:12px;font-weight:600">Lembrete VIP</div><div style="font-size:11px;color:#999">145 enviadas · 92% lidas</div></div><span class="tag tag-g">OK</span></div>
-          <div class="row"><div style="flex:1"><div style="font-size:12px;font-weight:600">Pauta Jurídica</div><div style="font-size:11px;color:#999">203 enviadas · 61% lidas</div></div><span class="tag tag-g">OK</span></div>
+          <div class="row"><div style="flex:1"><div style="font-size:12px;font-weight:600">Promoção Junho</div><div style="font-size:11px;color:#999">3.000 enviadas · 76% lidas</div></div><span class="tag tg">OK</span></div>
+          <div class="row"><div style="flex:1"><div style="font-size:12px;font-weight:600">Lembrete VIP</div><div style="font-size:11px;color:#999">145 enviadas · 92% lidas</div></div><span class="tag tg">OK</span></div>
+          <div class="row"><div style="flex:1"><div style="font-size:12px;font-weight:600">Pauta Jurídica</div><div style="font-size:11px;color:#999">203 enviadas · 61% lidas</div></div><span class="tag tg">OK</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="v-funis" class="view">
+      <div class="fw">
+        <div class="fsb">
+          <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px">Meus funis</div>
+          <div id="funil-list"></div>
+          <div class="add-fn" onclick="addFunil()"><i class="ti ti-plus"></i>Novo funil</div>
+          <div style="margin-top:10px;padding-top:10px;border-top:1px solid #eee">
+            <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px">Disparar para</div>
+            <select id="funil-seg" style="width:100%;padding:5px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;margin-bottom:6px">
+              <option>Todos os contatos</option><option>Leads novos</option><option>Clientes ativos</option>
+              <option>VIP</option><option>Clínica</option><option>Advocacia</option><option>1 contato específico</option>
+            </select>
+            <button class="btn-g" style="width:100%;justify-content:center" onclick="dispararFunil()"><i class="ti ti-send"></i>Disparar funil</button>
+          </div>
+        </div>
+        <div class="fmain">
+          <div class="ftb">
+            <input class="fti" id="funil-title" value="Funil de vendas" onchange="updateFunilName(this.value)">
+            <div style="display:flex;gap:6px">
+              <button class="btn-o" style="font-size:11px"><i class="ti ti-eye"></i>Preview</button>
+              <button class="btn-g" style="font-size:11px" onclick="saveFunil()"><i class="ti ti-check"></i>Salvar</button>
+            </div>
+          </div>
+          <div id="steps-area" style="display:flex;flex-direction:column;gap:6px;flex:1;overflow-y:auto"></div>
+          <div class="as-btn" onclick="addStep()"><i class="ti ti-plus"></i>Adicionar etapa</div>
+          <div class="db">
+            <div style="font-size:12px;color:#666">Funil: <strong id="d-fn">Funil de vendas</strong> · <strong id="d-st">3</strong> etapas</div>
+            <span class="tag tg" id="d-status">Pronto</span>
+          </div>
         </div>
       </div>
     </div>
 
     <div id="v-remarketing" class="view">
-      <div class="metrics" style="grid-template-columns:repeat(3,1fr)">
-        <div class="mc"><div class="mc-label">Recuperados</div><div class="mc-val">214</div><div class="mc-delta">este mês</div></div>
-        <div class="mc"><div class="mc-label">Agendamentos recuperados</div><div class="mc-val">67</div><div class="mc-delta">clínica + adv.</div></div>
-        <div class="mc"><div class="mc-label">ROI</div><div class="mc-val">5.1x</div><div class="mc-delta">vs campanhas frias</div></div>
-      </div>
       <div class="panel">
-        <div class="panel-title">Automações</div>
-        <div class="row"><i class="ti ti-shopping-cart" style="font-size:14px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Carrinho abandonado</div><div style="color:#999;font-size:11px">Dispara após 1h + IA responde</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
-        <div class="row"><i class="ti ti-calendar-off" style="font-size:14px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Consulta não confirmada</div><div style="color:#999;font-size:11px">Clínica · lembra 24h e 1h antes</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
-        <div class="row"><i class="ti ti-briefcase" style="font-size:14px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Lead jurídico sem retorno</div><div style="color:#999;font-size:11px">Follow-up em 3 e 7 dias</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
-        <div class="row"><i class="ti ti-clock" style="font-size:14px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Reengajamento 30 dias</div><div style="color:#999;font-size:11px">Contatos sem interação</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+        <div class="panel-title">Automações ativas</div>
+        <div class="row"><i class="ti ti-shopping-cart" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Carrinho abandonado</div><div style="color:#999;font-size:11px">1h após inatividade + IA responde</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+        <div class="row"><i class="ti ti-calendar-off" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Consulta não confirmada</div><div style="color:#999;font-size:11px">Lembra 24h e 1h antes</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+        <div class="row"><i class="ti ti-clock" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Reengajamento 30 dias</div><div style="color:#999;font-size:11px">Contatos sem interação</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+        <div class="row"><i class="ti ti-star" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Upsell pós-compra</div><div style="color:#999;font-size:11px">7 dias após atendimento</div></div><div class="toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
       </div>
     </div>
 
     <div id="v-agenda" class="view">
-      <div class="grid2">
+      <div class="g2">
         <div class="panel">
           <div class="panel-title">Agendamentos de hoje</div>
-          <div class="appt"><div class="appt-time">08:30</div><div><div style="font-size:12px;font-weight:600">Ana Costa</div><div style="font-size:11px;color:#999">Clínica · Cardiologia</div></div><span class="tag tag-b">Confirmado</span></div>
-          <div class="appt"><div class="appt-time">10:00</div><div><div style="font-size:12px;font-weight:600">João Lima</div><div style="font-size:11px;color:#999">Advocacia · Trabalhista</div></div><span class="tag tag-p">Confirmado</span></div>
-          <div class="appt"><div class="appt-time">14:30</div><div><div style="font-size:12px;font-weight:600">Pedro Alves</div><div style="font-size:11px;color:#999">Clínica · Dermatologia</div></div><span class="tag tag-a">Pendente</span></div>
+          <div class="appt"><div style="font-size:11px;font-weight:600;min-width:38px">08:30</div><div><div style="font-size:12px;font-weight:600">Ana Costa</div><div style="font-size:11px;color:#999">Clínica · Cardiologia</div></div><span class="tag tb">Confirmado</span></div>
+          <div class="appt"><div style="font-size:11px;font-weight:600;min-width:38px">10:00</div><div><div style="font-size:12px;font-weight:600">João Lima</div><div style="font-size:11px;color:#999">Advocacia · Trabalhista</div></div><span class="tag tp">Confirmado</span></div>
+          <div class="appt"><div style="font-size:11px;font-weight:600;min-width:38px">14:30</div><div><div style="font-size:12px;font-weight:600">Pedro Alves</div><div style="font-size:11px;color:#999">Clínica · Dermatologia</div></div><span class="tag ta">Pendente</span></div>
         </div>
         <div class="panel">
-          <div class="panel-title">Integrações de agenda</div>
-          <div class="row"><i class="ti ti-calendar" style="font-size:14px;color:#25D366"></i><div style="flex:1;font-size:12px">Google Calendar</div><span class="tag tag-g">Ativo</span></div>
-          <div class="row"><i class="ti ti-stethoscope" style="font-size:14px;color:#999"></i><div style="flex:1;font-size:12px">Doctoralia</div><span class="tag tag-a">Configurar</span></div>
-          <div class="row"><i class="ti ti-briefcase" style="font-size:14px;color:#999"></i><div style="flex:1;font-size:12px">Projuris / Advbox</div><span class="tag tag-a">Configurar</span></div>
+          <div class="panel-title">Integrações</div>
+          <div class="row"><i class="ti ti-calendar" style="color:#25D366;font-size:13px"></i><div style="flex:1;font-size:12px">Google Calendar</div><span class="tag tg">Ativo</span></div>
+          <div class="row"><i class="ti ti-stethoscope" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Doctoralia</div><span class="tag ta">Configurar</span></div>
+          <div class="row"><i class="ti ti-briefcase" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Projuris / Advbox</div><span class="tag ta">Configurar</span></div>
         </div>
       </div>
     </div>
 
     <div id="v-clinica" class="view">
-      <div class="panel" style="margin-bottom:12px">
-        <div class="panel-title">Prompt especializado — clínica médica</div>
-        <div class="prompt-label">Prompt da recepcionista virtual</div>
-        <textarea class="prompt-box" rows="5">Você é a recepcionista virtual da Clínica [Nome]. Ao receber mensagem: 1) Cumprimente pelo nome. 2) Pergunte se é consulta, retorno ou exame. 3) Verifique disponibilidade. 4) Confirme: nome, convênio, especialidade. 5) Envie confirmação com endereço e horário. 6) Lembre 24h e 1h antes. Nunca dê diagnósticos médicos.</textarea>
-        <button class="btn-green" style="margin-top:10px">Salvar prompt</button>
+      <div class="panel">
+        <div class="panel-title">Prompt — clínica médica</div>
+        <div class="plabel">Recepcionista virtual</div>
+        <textarea class="pbox" rows="5">Você é a recepcionista virtual da Clínica [Nome]. Ao receber mensagem: 1) Cumprimente pelo nome. 2) Pergunte se é consulta, retorno ou exame. 3) Verifique disponibilidade. 4) Confirme: nome, convênio, especialidade. 5) Envie confirmação com endereço e horário. Nunca dê diagnósticos médicos.</textarea>
+        <button class="btn-g" style="margin-top:8px">Salvar prompt</button>
       </div>
     </div>
 
     <div id="v-adv" class="view">
-      <div class="panel" style="margin-bottom:12px">
-        <div class="panel-title">Prompt especializado — advocacia</div>
-        <div class="prompt-label">Prompt da assistente jurídica</div>
-        <textarea class="prompt-box" rows="5">Você é assistente jurídica virtual do escritório [Nome]. Ao receber mensagem: 1) Identifique a área: trabalhista, cível, família, criminal. 2) Colete informações sem dar orientação jurídica. 3) Agende consulta com o advogado. 4) Informe que consulta inicial é gratuita. NUNCA dê parecer jurídico ou cite leis.</textarea>
-        <button class="btn-green" style="margin-top:10px">Salvar prompt</button>
+      <div class="panel">
+        <div class="panel-title">Prompt — advocacia</div>
+        <div class="plabel">Assistente jurídica virtual</div>
+        <textarea class="pbox" rows="5">Você é assistente jurídica virtual do escritório [Nome]. Ao receber mensagem: 1) Identifique a área: trabalhista, cível, família, criminal. 2) Colete informações sem dar orientação jurídica. 3) Agende consulta com o advogado. NUNCA dê parecer jurídico.</textarea>
+        <button class="btn-g" style="margin-top:8px">Salvar prompt</button>
       </div>
     </div>
 
-    <div id="v-atendimento" class="view">
-      <div style="display:grid;grid-template-columns:190px 1fr;gap:12px">
+    <div id="v-atend" class="view">
+      <div style="display:grid;grid-template-columns:180px 1fr;gap:10px">
         <div>
           <div style="font-size:11px;color:#999;margin-bottom:6px">Fila · 3 pendentes</div>
           <div style="background:#e6faf0;border-radius:8px;padding:8px 10px;cursor:pointer;margin-bottom:4px;border:1px solid #b0e8c8" onclick="selChat('Ana Costa','AC','#e6faf0','#0a7a40')">
@@ -313,20 +400,20 @@ table.ct tr:hover td{background:#fafafa}
         </div>
         <div class="panel">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #f5f5f5">
-            <div class="avatar" id="chat-av" style="background:#e6faf0;color:#0a7a40;width:32px;height:32px">AC</div>
+            <div class="av" id="chat-av" style="background:#e6faf0;color:#0a7a40;width:32px;height:32px">AC</div>
             <div style="flex:1"><div style="font-size:13px;font-weight:600" id="chat-name">Ana Costa</div><div style="font-size:11px;color:#25D366">● Online agora</div></div>
             <span style="font-size:11px;color:#999">IA:</span>
-            <div class="toggle on" id="chat-toggle" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
+            <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
           </div>
-          <div class="chat-msgs" id="chat-msgs">
-            <div class="msg-in">Quero marcar uma consulta<div class="msg-ts">14:30</div></div>
-            <div class="msg-bot">Olá Ana! Sou a Sofia! Qual especialidade você precisa?<div class="msg-ts">Sofia · IA</div></div>
-            <div class="msg-in">Cardiologia, pode ser amanhã?<div class="msg-ts">14:31</div></div>
-            <div class="msg-bot">Temos disponibilidade às 08:30 com Dr. Ferreira. Confirmo?<div class="msg-ts">Sofia · IA</div></div>
+          <div class="cmsgs" id="chat-msgs">
+            <div class="mi">Quero marcar uma consulta<div class="mts">14:30</div></div>
+            <div class="mbot">Olá Ana! Qual especialidade você precisa?<div class="mts">Sofia · IA</div></div>
+            <div class="mi">Cardiologia, pode ser amanhã?<div class="mts">14:31</div></div>
+            <div class="mbot">Temos às 08:30 com Dr. Ferreira. Confirmo?<div class="mts">Sofia · IA</div></div>
           </div>
           <div style="display:flex;gap:6px;margin-top:8px">
-            <input type="text" id="chat-input" placeholder="Digite uma mensagem..." style="flex:1;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee">
-            <button class="btn-green" onclick="sendChat()"><i class="ti ti-send"></i></button>
+            <input type="text" id="chat-input" placeholder="Digite uma mensagem..." style="flex:1;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
+            <button class="btn-g" onclick="sendChat()"><i class="ti ti-send"></i></button>
           </div>
         </div>
       </div>
@@ -336,81 +423,219 @@ table.ct tr:hover td{background:#fafafa}
 </div>
 </div>
 
+<!-- MODAL KANBAN -->
+<div class="mbg" id="kb-modal">
+  <div class="modal">
+    <h3>Novo card</h3>
+    <input type="text" id="kb-name" placeholder="Nome do contato / item">
+    <input type="text" id="kb-sub" placeholder="Detalhe (telefone, valor...)">
+    <select id="kb-tag">
+      <option value="lead">Lead</option><option value="cliente">Cliente ativo</option>
+      <option value="vip">VIP</option><option value="clinica">Clínica</option>
+      <option value="adv">Advocacia</option><option value="urgente">Urgente</option>
+    </select>
+    <div class="mbtns">
+      <button class="mbc" onclick="closeKbModal()">Cancelar</button>
+      <button class="mbg2" onclick="saveKbCard()">Salvar</button>
+    </div>
+  </div>
+</div>
+
 <script>
-const API = 'https://whatscrm-backend-production-f2e2.up.railway.app';
-const views = ['dashboard','agente','contatos','disparos','remarketing','agenda','clinica','adv','atendimento'];
-const titles = {dashboard:'Dashboard',agente:'Agente IA',contatos:'Contatos',disparos:'Disparos em massa',remarketing:'Remarketing',agenda:'Agendamentos',clinica:'Clínica médica',adv:'Advocacia',atendimento:'Atendimento'};
-const btns = {dashboard:'Nova campanha',agente:'Salvar prompts',contatos:'Novo contato',disparos:'Novo disparo',remarketing:'Nova automação',agenda:'Novo agendamento',clinica:'Salvar prompt',adv:'Salvar prompt',atendimento:'Encerrar chat'};
-let aiOn = true;
+const API='https://whatscrm-backend-production-f2e2.up.railway.app';
+const views=['dashboard','agente','contatos','kanban','disparos','funis','remarketing','agenda','clinica','adv','atend'];
+const titles={dashboard:'Dashboard',agente:'Agente IA',contatos:'Contatos',kanban:'Kanban',disparos:'Disparos',funis:'Funis',remarketing:'Remarketing',agenda:'Agendamentos',clinica:'Clínica',adv:'Advocacia',atend:'Atendimento'};
+const btns={dashboard:'Nova campanha',agente:'Salvar',contatos:'Novo contato',kanban:'Nova coluna',disparos:'Novo disparo',funis:'Novo funil',remarketing:'Nova automação',agenda:'Novo agendamento',clinica:'Salvar',adv:'Salvar',atend:'Encerrar'};
+let aiOn=true;
 
-function go(v, el) {
-  views.forEach(x => document.getElementById('v-'+x).classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById('v-'+v).classList.add('active');
-  if (el) el.classList.add('active');
-  document.getElementById('ptitle').textContent = titles[v] || v;
-  document.getElementById('btn-lbl').textContent = btns[v] || 'Novo';
+function go(v,el){
+  views.forEach(x=>{const e=document.getElementById('v-'+x);if(e)e.classList.remove('active')});
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const ve=document.getElementById('v-'+v);if(ve)ve.classList.add('active');
+  if(el)el.classList.add('active');
+  document.getElementById('ptitle').textContent=titles[v]||v;
+  document.getElementById('btn-lbl').textContent=btns[v]||'Novo';
+  if(v==='kanban')renderKanban();
+  if(v==='funis')renderFunis();
 }
 
-function toggleAI() {
-  aiOn = !aiOn;
-  document.getElementById('ai-dot').style.background = aiOn ? '#25D366' : '#e24b4a';
-  document.getElementById('ai-txt').textContent = aiOn ? 'IA ativa' : 'IA pausada';
-  document.getElementById('ai-pill').style.background = aiOn ? '#f0faf4' : '#fff0f0';
-  document.getElementById('ai-pill').style.color = aiOn ? '#25D366' : '#e24b4a';
-  const tog = document.getElementById('ai-toggle');
-  if (tog) { tog.classList.toggle('on', aiOn); tog.classList.toggle('off', !aiOn); }
+function toggleAI(){
+  aiOn=!aiOn;
+  document.getElementById('ai-dot').style.background=aiOn?'#25D366':'#e24b4a';
+  document.getElementById('ai-txt').textContent=aiOn?'IA ativa':'IA pausada';
 }
 
-function selSeg(el, name, count) {
-  document.querySelectorAll('#seg-tabs .stab').forEach(s => s.classList.remove('active'));
+function selSeg(el,name,count){
+  document.querySelectorAll('#seg-tabs .stab').forEach(s=>s.classList.remove('active'));
   el.classList.add('active');
-  document.getElementById('seg-name').textContent = name;
-  document.getElementById('seg-count').textContent = count.toLocaleString('pt-BR');
+  document.getElementById('seg-name').textContent=name;
+  document.getElementById('seg-count').textContent=count.toLocaleString('pt-BR');
 }
 
-const simR = ['Claro! Pode me informar seu nome?','Qual especialidade você precisa?','Temos horário na quinta às 09:00. Confirmo?','Agendamento confirmado! Até lá!'];
-let simI = 0;
-function simSend() {
-  const inp = document.getElementById('sim-input');
-  const msgs = document.getElementById('sim-msgs');
-  if (!inp.value.trim()) return;
-  msgs.innerHTML += `<div class="msg-in">${inp.value}<div class="msg-ts">agora</div></div>`;
-  inp.value = '';
-  setTimeout(() => {
-    msgs.innerHTML += `<div class="msg-bot">${simR[simI % simR.length]}<div class="msg-ts">Sofia · IA</div></div>`;
-    simI++; msgs.scrollTop = msgs.scrollHeight;
-  }, 800);
-  msgs.scrollTop = msgs.scrollHeight;
+const simR=['Claro! Pode me informar seu nome?','Qual especialidade você precisa?','Temos horário quinta às 09:00. Confirmo?','Agendamento confirmado!'];
+let simI=0;
+function simSend(){
+  const inp=document.getElementById('sim-input');
+  const msgs=document.getElementById('sim-msgs');
+  if(!inp.value.trim())return;
+  msgs.innerHTML+=`<div class="mi">${inp.value}<div class="mts">agora</div></div>`;
+  inp.value='';
+  setTimeout(()=>{msgs.innerHTML+=`<div class="mbot">${simR[simI%simR.length]}<div class="mts">Sofia · IA</div></div>`;simI++;msgs.scrollTop=msgs.scrollHeight;},800);
+  msgs.scrollTop=msgs.scrollHeight;
 }
-document.getElementById('sim-input').addEventListener('keydown', e => { if (e.key === 'Enter') simSend(); });
+document.getElementById('sim-input').addEventListener('keydown',e=>{if(e.key==='Enter')simSend()});
 
-function selChat(name, ini, bg, color) {
-  document.getElementById('chat-name').textContent = name;
-  const av = document.getElementById('chat-av');
-  av.textContent = ini; av.style.background = bg; av.style.color = color;
+function selChat(name,ini,bg,color){
+  document.getElementById('chat-name').textContent=name;
+  const av=document.getElementById('chat-av');av.textContent=ini;av.style.background=bg;av.style.color=color;
 }
-
-function sendChat() {
-  const inp = document.getElementById('chat-input');
-  const msgs = document.getElementById('chat-msgs');
-  if (!inp.value.trim()) return;
-  msgs.innerHTML += `<div class="msg-out">${inp.value}<div class="msg-ts">Você · agora ✓✓</div></div>`;
-  inp.value = ''; msgs.scrollTop = msgs.scrollHeight;
+function sendChat(){
+  const inp=document.getElementById('chat-input');const msgs=document.getElementById('chat-msgs');
+  if(!inp.value.trim())return;
+  msgs.innerHTML+=`<div class="mo">${inp.value}<div class="mts">Você · agora ✓✓</div></div>`;
+  inp.value='';msgs.scrollTop=msgs.scrollHeight;
 }
-document.getElementById('chat-input').addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(); });
+document.getElementById('chat-input').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat()});
 
-fetch(API).then(r => r.json()).then(d => {
-  document.getElementById('api-status').textContent = d.status === 'online' ? 'online' : 'offline';
-  document.getElementById('api-status').className = 'tag ' + (d.status === 'online' ? 'tag-g' : 'tag-r');
-}).catch(() => {
-  document.getElementById('api-status').textContent = 'offline';
-  document.getElementById('api-status').className = 'tag tag-r';
-});
+// KANBAN
+const tc={lead:'#e6f0ff|#1a4fa0',cliente:'#e6faf0|#0a7a40',vip:'#f0e6ff|#6010a0',clinica:'#e6f0ff|#185FA5',adv:'#f0e6ff|#534AB7',urgente:'#ffe6e6|#a01010'};
+const kbBoards={
+  atendimento:{label:'Atendimento',cols:[
+    {title:'Fila de espera',cards:[{name:'Ana Costa',sub:'67 99801-2233',tag:'clinica'},{name:'Pedro Mota',sub:'11 98712-5544',tag:'lead'}]},
+    {title:'Em atendimento',cards:[{name:'Lúcia Faria',sub:'VIP · há 5min',tag:'vip'}]},
+    {title:'IA respondendo',cards:[{name:'Rafael Souza',sub:'Lead frio',tag:'lead'},{name:'Maria Gomes',sub:'Retorno',tag:'cliente'}]},
+    {title:'Resolvido',cards:[{name:'João Lima',sub:'Consulta marcada',tag:'clinica'}]}
+  ]},
+  contatos:{label:'Contatos',cols:[
+    {title:'Novos leads',cards:[{name:'Bruno Alves',sub:'Indicação',tag:'lead'},{name:'Carla Mendes',sub:'Instagram',tag:'lead'}]},
+    {title:'Em negociação',cards:[{name:'Fernanda Lima',sub:'Proposta enviada',tag:'cliente'}]},
+    {title:'Clientes ativos',cards:[{name:'Ana Costa',sub:'Desde jan/2026',tag:'cliente'},{name:'Lúcia Faria',sub:'VIP · 3 compras',tag:'vip'}]},
+    {title:'Inativos',cards:[{name:'Ricardo Souza',sub:'30 dias sem resposta',tag:'lead'}]}
+  ]},
+  campanhas:{label:'Campanhas',cols:[
+    {title:'Rascunho',cards:[{name:'Promoção Julho',sub:'2.310 contatos',tag:'cliente'}]},
+    {title:'Agendada',cards:[{name:'Lembrete VIP',sub:'28/05 · 145 contatos',tag:'vip'}]},
+    {title:'Enviando',cards:[{name:'Reengajamento',sub:'630 inativos',tag:'lead'}]},
+    {title:'Concluída',cards:[{name:'Promoção Junho',sub:'3.000 · 76%',tag:'cliente'},{name:'Black Friday',sub:'4.200 · 81%',tag:'cliente'}]}
+  ]}
+};
+let activeKb='atendimento',kbAddCol=null,kbDC=null,kbDF=null;
 
-fetch(`${API}/api/contatos`).then(r => r.json()).then(d => {
-  document.getElementById('total-contatos').textContent = d.total || '0';
-}).catch(() => {});
+function renderKanban(){
+  const tabs=document.getElementById('kb-tabs');tabs.innerHTML='';
+  Object.entries(kbBoards).forEach(([key,b])=>{
+    const t=document.createElement('div');t.className='kb-tab'+(key===activeKb?' active':'');
+    t.innerHTML=`<span ondblclick="rnKbTab('${key}',this)">${b.label}</span>`;
+    t.onclick=e=>{if(!e.target.closest('.close-tab')){activeKb=key;renderKanban();}};tabs.appendChild(t);
+  });
+  const add=document.createElement('div');add.className='add-tab';add.innerHTML='<i class="ti ti-plus"></i> Nova aba';add.onclick=addKbTab;tabs.appendChild(add);
+  const board=document.getElementById('kb-board');board.innerHTML='';
+  kbBoards[activeKb].cols.forEach((col,ci)=>{
+    const colEl=document.createElement('div');colEl.className='kb-col';
+    const hdr=document.createElement('div');hdr.className='kb-col-hdr';
+    const ti=document.createElement('input');ti.className='cti';ti.value=col.title;ti.onchange=()=>{col.title=ti.value};
+    const cnt=document.createElement('span');cnt.className='ccnt';cnt.textContent=col.cards.length;
+    const del=document.createElement('span');del.className='cdel ti ti-x';del.onclick=()=>{if(confirm('Remover?')){kbBoards[activeKb].cols.splice(ci,1);renderKanban();}};
+    hdr.appendChild(ti);hdr.appendChild(cnt);hdr.appendChild(del);colEl.appendChild(hdr);
+    const ce=document.createElement('div');ce.className='kb-cards';
+    ce.addEventListener('dragover',e=>{e.preventDefault();ce.style.background='#f0faf4';});
+    ce.addEventListener('dragleave',()=>{ce.style.background='';});
+    ce.addEventListener('drop',e=>{e.preventDefault();ce.style.background='';if(kbDC!==null&&kbDF!==null){const card=kbBoards[activeKb].cols[kbDF].cards.splice(kbDC,1)[0];kbBoards[activeKb].cols[ci].cards.push(card);renderKanban();}});
+    col.cards.forEach((card,cdi)=>{
+      const cardEl=document.createElement('div');cardEl.className='kb-card';cardEl.draggable=true;
+      const c=(tc[card.tag]||'#eee|#333').split('|');
+      cardEl.innerHTML=`<div class="cn">${card.name}</div><div class="cs">${card.sub}</div><span class="ct2" style="background:${c[0]};color:${c[1]}">${card.tag}</span>`;
+      cardEl.addEventListener('dragstart',()=>{kbDC=cdi;kbDF=ci;});cardEl.addEventListener('dragend',()=>{kbDC=null;kbDF=null;});
+      ce.appendChild(cardEl);
+    });
+    colEl.appendChild(ce);
+    const ac=document.createElement('div');ac.className='add-card-btn';ac.innerHTML='<i class="ti ti-plus" style="font-size:11px"></i> Adicionar';
+    ac.onclick=()=>{kbAddCol=ci;document.getElementById('kb-modal').classList.add('show');document.getElementById('kb-name').focus();};
+    colEl.appendChild(ac);board.appendChild(colEl);
+  });
+  const acb=document.createElement('div');acb.className='add-col-btn';acb.innerHTML='<i class="ti ti-plus"></i>';
+  acb.onclick=()=>{const n=prompt('Nome da coluna:');if(n){kbBoards[activeKb].cols.push({title:n,cards:[]});renderKanban();}};
+  board.appendChild(acb);
+}
+function rnKbTab(key,el){el.contentEditable='true';el.focus();el.onblur=()=>{el.contentEditable='false';kbBoards[key].label=el.textContent.trim()||kbBoards[key].label;el.textContent=kbBoards[key].label;};el.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();el.blur();}};}
+function addKbTab(){const n=prompt('Nome da nova aba:');if(!n)return;const key='kb_'+Date.now();kbBoards[key]={label:n,cols:[{title:'A fazer',cards:[]},{title:'Em andamento',cards:[]},{title:'Concluído',cards:[]}]};activeKb=key;renderKanban();}
+function closeKbModal(){document.getElementById('kb-modal').classList.remove('show');document.getElementById('kb-name').value='';document.getElementById('kb-sub').value='';}
+function saveKbCard(){const name=document.getElementById('kb-name').value.trim();if(!name)return;const sub=document.getElementById('kb-sub').value.trim();const tag=document.getElementById('kb-tag').value;kbBoards[activeKb].cols[kbAddCol].cards.push({name,sub,tag});closeKbModal();renderKanban();}
+document.getElementById('kb-name').addEventListener('keydown',e=>{if(e.key==='Enter')saveKbCard()});
+
+// FUNIS
+const funis=[
+  {id:1,name:'Funil de vendas',steps:[
+    {name:'Boas-vindas',type:'text',content:'Olá {{nome}}! Sou a Sofia da [Empresa]. Posso te ajudar?',delay:0,delayUnit:'min'},
+    {name:'Apresentação',type:'audio',content:'audio_apresentacao.mp3',delay:5,delayUnit:'min'},
+    {name:'Proposta',type:'text',content:'{{nome}}, preparei uma proposta especial! Posso enviar detalhes?',delay:1,delayUnit:'hora'},
+  ]},
+  {id:2,name:'Funil clínica',steps:[
+    {name:'Primeiro contato',type:'text',content:'Olá {{nome}}! Somos a Clínica [Nome]. Podemos ajudar a agendar sua consulta?',delay:0,delayUnit:'min'},
+    {name:'Catálogo',type:'image',content:'catalogo_clinica.pdf',delay:2,delayUnit:'min'},
+    {name:'Agendamento',type:'text',content:'Que dia e horário seria melhor {{nome}}?',delay:10,delayUnit:'min'},
+  ]}
+];
+let activeFunil=0;
+
+function renderFunis(){
+  const list=document.getElementById('funil-list');list.innerHTML='';
+  funis.forEach((f,i)=>{
+    const el=document.createElement('div');el.className='fi'+(i===activeFunil?' active':'');
+    el.innerHTML=`<div class="fin">${f.name}</div><div class="fim">${f.steps.length} etapas</div>`;
+    el.onclick=()=>{activeFunil=i;renderFunis();};list.appendChild(el);
+  });
+  const f=funis[activeFunil];
+  document.getElementById('funil-title').value=f.name;
+  document.getElementById('d-fn').textContent=f.name;
+  document.getElementById('d-st').textContent=f.steps.length;
+  renderSteps();
+}
+function renderSteps(){
+  const area=document.getElementById('steps-area');area.innerHTML='';
+  const f=funis[activeFunil];
+  f.steps.forEach((step,si)=>{
+    const card=document.createElement('div');card.className='sc';
+    const hdr=document.createElement('div');hdr.className='sh';
+    hdr.innerHTML=`<div class="sn">${si+1}</div><input class="sni" value="${step.name}" onchange="funis[activeFunil].steps[${si}].name=this.value"><span class="sdel ti ti-trash" onclick="delStep(${si})"></span>`;
+    card.appendChild(hdr);
+    const ttabs=document.createElement('div');ttabs.className='ttabs';
+    [['text','ti-message','Texto'],['audio','ti-microphone','Áudio'],['image','ti-photo','Imagem/PDF']].forEach(([t,ic,label])=>{
+      const tb=document.createElement('div');tb.className='tt'+(step.type===t?' active':'');
+      tb.innerHTML=`<i class="ti ${ic}"></i> ${label}`;tb.onclick=()=>{step.type=t;renderSteps();};ttabs.appendChild(tb);
+    });
+    card.appendChild(ttabs);
+    if(step.type==='text'){
+      const ta=document.createElement('textarea');ta.className='me';ta.value=step.content;
+      ta.placeholder='Digite a mensagem... Use {{nome}}, {{data}}, {{empresa}}';
+      ta.onchange=()=>{step.content=ta.value;};card.appendChild(ta);
+      const hint=document.createElement('div');hint.style='font-size:10px;color:#999;margin-top:2px';hint.textContent='Variáveis: {{nome}} {{data}} {{empresa}} {{telefone}}';card.appendChild(hint);
+    } else if(step.type==='audio'){
+      const ae=document.createElement('div');ae.className='aa';
+      ae.innerHTML=`<button class="rb" onclick="this.style.background=this.style.background=='rgb(160,16,16)'?'#e24b4a':'#a01010'"><i class="ti ti-microphone"></i></button><span style="font-size:12px;color:#999;flex:1">${step.content||'Clique para gravar ou enviar áudio'}</span>`;
+      card.appendChild(ae);
+      const up=document.createElement('div');up.className='ua';up.innerHTML='<i class="ti ti-upload"></i> Enviar arquivo de áudio (.mp3, .ogg)';card.appendChild(up);
+    } else {
+      const ie=document.createElement('div');ie.className='ua';
+      ie.innerHTML=`<i class="ti ti-photo" style="font-size:18px;display:block;margin-bottom:3px"></i>Clique para enviar imagem ou PDF${step.content?`<br><span style="font-size:10px;color:#25D366">${step.content}</span>`:''}`;card.appendChild(ie);
+    }
+    const dr=document.createElement('div');dr.className='dr';
+    dr.innerHTML=`<i class="ti ti-clock" style="font-size:12px"></i><span>Aguardar</span><input type="number" min="0" value="${step.delay}" onchange="funis[activeFunil].steps[${si}].delay=+this.value"><select onchange="funis[activeFunil].steps[${si}].delayUnit=this.value"><option ${step.delayUnit==='min'?'selected':''}>min</option><option ${step.delayUnit==='hora'?'selected':''}>hora</option><option ${step.delayUnit==='dia'?'selected':''}>dia</option></select><span>antes de enviar</span>`;
+    card.appendChild(dr);
+    if(si<f.steps.length-1){const arr=document.createElement('div');arr.className='sarr';arr.innerHTML='<i class="ti ti-arrow-down"></i>';card.appendChild(arr);}
+    area.appendChild(card);
+  });
+}
+function addStep(){funis[activeFunil].steps.push({name:'Nova etapa',type:'text',content:'',delay:0,delayUnit:'min'});renderFunis();}
+function delStep(si){funis[activeFunil].steps.splice(si,1);renderFunis();}
+function addFunil(){const n=prompt('Nome do novo funil:');if(!n)return;funis.push({id:Date.now(),name:n,steps:[{name:'Primeiro contato',type:'text',content:`Olá {{nome}}!`,delay:0,delayUnit:'min'}]});activeFunil=funis.length-1;renderFunis();}
+function updateFunilName(v){funis[activeFunil].name=v;document.getElementById('d-fn').textContent=v;renderFunis();}
+function saveFunil(){const s=document.getElementById('d-status');s.textContent='Salvo!';setTimeout(()=>{s.textContent='Pronto';},2000);}
+function dispararFunil(){const seg=document.getElementById('funil-seg').value;const f=funis[activeFunil];alert(`Funil "${f.name}" disparado para: ${seg}\n${f.steps.length} etapas com delays configurados!`);}
+
+// API
+fetch(API).then(r=>r.json()).then(d=>{const el=document.getElementById('api-status');if(el){el.textContent=d.status==='online'?'online':'offline';el.className='tag '+(d.status==='online'?'tg':'tr');}}).catch(()=>{const el=document.getElementById('api-status');if(el){el.textContent='offline';el.className='tag tr';}});
+fetch(`${API}/api/contatos`).then(r=>r.json()).then(d=>{const el=document.getElementById('total-contatos');if(el)el.textContent=d.total||'0';}).catch(()=>{});
 </script>
 </body>
 </html>
