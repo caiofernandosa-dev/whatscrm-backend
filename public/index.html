@@ -646,8 +646,30 @@ table.ct td{padding:7px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
           </div>
           <div style="padding:10px 12px;border-bottom:1px solid #eee">
             <div style="font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px;font-weight:600">Informações</div>
-            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:11px"><span style="color:#888">Tag</span><span class="tag tg">Cliente</span></div>
-            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:11px"><span style="color:#888">Segmento</span><span class="tag tb">Clínica</span></div>
+            <div style="margin-bottom:8px">
+              <div style="font-size:10px;color:#888;margin-bottom:3px">Tag</div>
+              <select id="rp-tag" onchange="atualizarContato('tag',this.value)" style="width:100%;padding:5px 8px;font-size:11px;border-radius:6px;border:1px solid #eee;background:#f9f9f9">
+                <option value="">Sem tag</option>
+                <option value="lead">Lead</option>
+                <option value="cliente">Cliente</option>
+                <option value="vip">VIP</option>
+                <option value="inativo">Inativo</option>
+              </select>
+            </div>
+            <div style="margin-bottom:8px">
+              <div style="font-size:10px;color:#888;margin-bottom:3px">Segmento</div>
+              <select id="rp-segmento" onchange="atualizarContato('segmento',this.value)" style="width:100%;padding:5px 8px;font-size:11px;border-radius:6px;border:1px solid #eee;background:#f9f9f9">
+                <option value="">Geral</option>
+                <option value="clinica">Clínica</option>
+                <option value="advocacia">Advocacia</option>
+                <option value="ecommerce">E-commerce</option>
+                <option value="educacao">Educação</option>
+              </select>
+            </div>
+            <div style="margin-bottom:8px">
+              <div style="font-size:10px;color:#888;margin-bottom:3px">Observações</div>
+              <textarea id="rp-obs" onblur="atualizarContato('observacoes',this.value)" placeholder="Anotações sobre o contato..." style="width:100%;padding:5px 8px;font-size:11px;border-radius:6px;border:1px solid #eee;background:#f9f9f9;resize:none;font-family:system-ui;min-height:60px"></textarea>
+            </div>
             <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:11px"><span style="color:#888">IA</span><span id="rp-ia-st" class="tag tg">Ativa</span></div>
           </div>
           <div style="padding:10px 12px;border-bottom:1px solid #eee">
@@ -657,8 +679,10 @@ table.ct td{padding:7px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
           <div style="padding:10px 12px">
             <div style="font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px;font-weight:600">Ações</div>
             <button id="rp-pausar-btn" style="width:100%;margin-bottom:6px;padding:7px;font-size:11px;border-radius:8px;border:1px solid #eee;background:white;cursor:pointer;display:flex;align-items:center;gap:6px;font-weight:500"><i class="ti ti-robot" style="font-size:13px;color:#0a7a70"></i><span id="rp-ia-btn">Pausar IA</span></button>
+            <button style="width:100%;margin-bottom:6px;padding:7px;font-size:11px;border-radius:8px;border:1px solid #eee;background:white;cursor:pointer;display:flex;align-items:center;gap:6px;font-weight:500" onclick="abrirNovaConversa()"><i class="ti ti-plus" style="font-size:13px;color:#0a7a70"></i>Nova conversa</button>
+            <button style="width:100%;margin-bottom:6px;padding:7px;font-size:11px;border-radius:8px;border:1px solid #eee;background:white;cursor:pointer;display:flex;align-items:center;gap:6px;font-weight:500" onclick="moverParaKanban()"><i class="ti ti-layout-kanban" style="font-size:13px;color:#0a7a70"></i>Mover para Kanban</button>
             <button style="width:100%;margin-bottom:6px;padding:7px;font-size:11px;border-radius:8px;border:1px solid #eee;background:white;cursor:pointer;display:flex;align-items:center;gap:6px;font-weight:500"><i class="ti ti-calendar" style="font-size:13px;color:#0a7a70"></i>Criar agendamento</button>
-            <button style="width:100%;padding:7px;font-size:11px;border-radius:8px;border:1px solid #ffe0e0;background:#fff8f8;color:#e24b4a;cursor:pointer;display:flex;align-items:center;gap:6px;font-weight:500"><i class="ti ti-x" style="font-size:13px"></i>Encerrar chat</button>
+            <button style="width:100%;padding:7px;font-size:11px;border-radius:8px;border:1px solid #ffe0e0;background:#fff8f8;color:#e24b4a;cursor:pointer;display:flex;align-items:center;gap:6px;font-weight:500" onclick="apagarContato()"><i class="ti ti-trash" style="font-size:13px"></i>Apagar contato</button>
           </div>
         </div>
       </div>
@@ -831,7 +855,18 @@ function renderKanban(){
     colEl.appendChild(ce);
     const ac=document.createElement('div');ac.className='addcardbn';ac.innerHTML='<i class="ti ti-plus" style="font-size:11px"></i> Adicionar';
     ac.addEventListener('click',()=>{kbAddCol=ci;document.getElementById('kb-modal').classList.add('show');document.getElementById('kb-name').focus();});
-    colEl.appendChild(ac);board.appendChild(colEl);
+    colEl.appendChild(ac);
+    
+    // Botão disparar para todos da coluna
+    if(col.cards.length > 0){
+      const dispBtn=document.createElement('div');
+      dispBtn.style.cssText='padding:6px 10px;font-size:11px;color:white;cursor:pointer;display:flex;align-items:center;gap:4px;background:linear-gradient(135deg,#0a7a70,#0d6b8a);border-radius:0 0 10px 10px;justify-content:center;font-weight:600';
+      dispBtn.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Disparar para '+col.cards.length+' contatos';
+      dispBtn.addEventListener('click',()=>abrirDisparoKanban(col, ci));
+      colEl.appendChild(dispBtn);
+    }
+    
+    board.appendChild(colEl);
   });
   const acb=document.createElement('div');acb.className='addcolbn';acb.innerHTML='<i class="ti ti-plus"></i>';
   acb.addEventListener('click',()=>{const n=prompt('Nome da coluna:');if(n){kbBoards[activeKb].cols.push({title:n,cards:[]});renderKanban();}});
@@ -971,6 +1006,220 @@ document.getElementById('funil-modal-confirm').addEventListener('click',()=>{
   document.getElementById('funil-modal').classList.remove('show');
 });
 
+// ===== DISPARO EM MASSA KANBAN =====
+function abrirDisparoKanban(col, ci){
+  if(col.cards.length === 0){ alert('Nenhum contato nesta coluna!'); return; }
+  const modal = document.createElement('div');
+  modal.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:300';
+  
+  let funisOpts = funis.map((f,i)=>`<option value="funil_${i}">${f.name} (${f.steps.length} etapas)</option>`).join('');
+  
+  modal.innerHTML=`<div style="background:white;border-radius:14px;padding:20px;width:380px;max-height:80vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.15)">
+    <h3 style="font-size:15px;font-weight:700;color:#0d1b2a;margin-bottom:6px">Disparar para coluna</h3>
+    <p style="font-size:12px;color:#888;margin-bottom:14px"><strong>${col.cards.length} contatos</strong> na coluna <strong>${col.title}</strong></p>
+    
+    <div style="margin-bottom:12px">
+      <label style="font-size:11px;color:#888;display:block;margin-bottom:4px">Tipo de disparo</label>
+      <select id="disp-tipo" onchange="alternarTipoDisparo(this.value)" style="width:100%;padding:7px 10px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
+        <option value="mensagem">Mensagem personalizada</option>
+        <option value="funil">Funil completo</option>
+      </select>
+    </div>
+    
+    <div id="disp-msg-area">
+      <label style="font-size:11px;color:#888;display:block;margin-bottom:4px">Mensagem (use {{nome}})</label>
+      <textarea id="disp-msg" placeholder="Olá {{nome}}! Temos uma novidade para você..." style="width:100%;padding:8px 10px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;resize:none;min-height:80px;font-family:system-ui;margin-bottom:10px"></textarea>
+    </div>
+    
+    <div id="disp-funil-area" style="display:none;margin-bottom:10px">
+      <label style="font-size:11px;color:#888;display:block;margin-bottom:4px">Selecione o funil</label>
+      <select id="disp-funil-sel" style="width:100%;padding:7px 10px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
+        ${funisOpts}
+      </select>
+    </div>
+    
+    <div style="background:#fff8e6;border:1px solid #FAC775;border-radius:8px;padding:8px 12px;font-size:11px;color:#a07010;margin-bottom:14px">
+      ⚠️ Isso vai enviar mensagem para <strong>${col.cards.length} contatos</strong>. Confirme antes de disparar.
+    </div>
+    
+    <div style="display:flex;gap:8px">
+      <button onclick="this.closest('[style*=fixed]').remove()" style="flex:1;padding:8px;border-radius:8px;border:1px solid #ddd;background:transparent;cursor:pointer;font-size:12px;color:#666">Cancelar</button>
+      <button onclick="confirmarDisparoKanban(${JSON.stringify(col.cards).replace(/"/g,'&quot;')})" style="flex:1;padding:8px;border-radius:8px;border:none;background:linear-gradient(135deg,#0a7a70,#0d6b8a);color:white;cursor:pointer;font-size:12px;font-weight:600">🚀 Disparar agora</button>
+    </div>
+  </div>`;
+  document.body.appendChild(modal);
+}
+
+function alternarTipoDisparo(tipo){
+  document.getElementById('disp-msg-area').style.display = tipo==='mensagem' ? 'block' : 'none';
+  document.getElementById('disp-funil-area').style.display = tipo==='funil' ? 'block' : 'none';
+}
+
+async function confirmarDisparoKanban(cards){
+  const tipo = document.getElementById('disp-tipo').value;
+  let enviados = 0; let erros = 0;
+  
+  const btn = event.target;
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+  
+  for(const card of cards){
+    const telefone = card.sub && card.sub.match(/\d{8,}/) ? card.sub.replace(/\D/g,'') : null;
+    if(!telefone) { erros++; continue; }
+    const tel = telefone.startsWith('55') ? telefone : '55'+telefone;
+    
+    try {
+      if(tipo === 'mensagem'){
+        const msg = document.getElementById('disp-msg').value.replace(/\{\{nome\}\}/gi, card.name);
+        if(!msg.trim()){ alert('Digite uma mensagem!'); return; }
+        await fetch(API+'/api/mensagem/enviar', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({telefone:tel, mensagem:msg})
+        });
+      } else {
+        const fi = parseInt(document.getElementById('disp-funil-sel').value.replace('funil_',''));
+        const f = funis[fi];
+        for(const step of f.steps){
+          if(step.type==='text' && step.content){
+            const msg = step.content.replace(/\{\{nome\}\}/gi, card.name);
+            await fetch(API+'/api/mensagem/enviar', {
+              method:'POST', headers:{'Content-Type':'application/json'},
+              body:JSON.stringify({telefone:tel, mensagem:msg})
+            });
+            if(step.delay > 0){
+              const ms = step.du==='hora' ? step.delay*3600000 : step.du==='dia' ? step.delay*86400000 : step.delay*60000;
+              await new Promise(r=>setTimeout(r, Math.min(ms, 2000)));
+            }
+          }
+        }
+      }
+      enviados++;
+      await new Promise(r=>setTimeout(r,800)); // delay entre envios
+    } catch(e){ erros++; }
+  }
+  
+  document.querySelector('[style*="position:fixed"][style*="z-index:300"]').remove();
+  alert(`✅ Disparo concluído!
+${enviados} enviados${erros>0?' | '+erros+' erros':''}`);
+}
+
+// ===== MODAL NOVA CONVERSA =====
+let novaConversaModal = null;
+
+function abrirNovaConversa(){
+  const modal = document.createElement('div');
+  modal.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:300';
+  modal.innerHTML=`<div style="background:white;border-radius:14px;padding:20px;width:320px;box-shadow:0 8px 32px rgba(0,0,0,.15)">
+    <h3 style="font-size:15px;font-weight:700;color:#0d1b2a;margin-bottom:14px">Nova conversa</h3>
+    <label style="font-size:11px;color:#888;display:block;margin-bottom:4px">Número WhatsApp (com DDD)</label>
+    <input type="tel" id="nova-numero" placeholder="Ex: 67984226096" style="width:100%;margin-bottom:10px;padding:8px 10px;font-size:13px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
+    <label style="font-size:11px;color:#888;display:block;margin-bottom:4px">Mensagem</label>
+    <textarea id="nova-msg" placeholder="Digite a mensagem..." style="width:100%;margin-bottom:12px;padding:8px 10px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;resize:none;min-height:80px;font-family:system-ui"></textarea>
+    <div style="display:flex;gap:8px">
+      <button onclick="this.closest('[style*=fixed]').remove()" style="flex:1;padding:8px;border-radius:8px;border:1px solid #ddd;background:transparent;cursor:pointer;font-size:12px;color:#666">Cancelar</button>
+      <button onclick="enviarNovaConversa()" style="flex:1;padding:8px;border-radius:8px;border:none;background:linear-gradient(135deg,#0a7a70,#0d6b8a);color:white;cursor:pointer;font-size:12px;font-weight:600">Enviar</button>
+    </div>
+  </div>`;
+  document.body.appendChild(modal);
+  setTimeout(()=>document.getElementById('nova-numero').focus(), 100);
+}
+
+async function enviarNovaConversa(){
+  const num = document.getElementById('nova-numero').value.trim().replace(/\D/g,'');
+  const msg = document.getElementById('nova-msg').value.trim();
+  if(!num || !msg){ alert('Preencha o número e a mensagem!'); return; }
+  const telefone = num.startsWith('55') ? num : '55'+num;
+  try {
+    const r = await fetch(API+'/api/mensagem/enviar', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({telefone, mensagem:msg})
+    });
+    const d = await r.json();
+    if(d.ok){
+      alert('Mensagem enviada para '+telefone+'!');
+      document.querySelector('[style*="position:fixed"][style*="z-index:300"]').remove();
+      setTimeout(loadRealContacts, 2000);
+    } else {
+      alert('Erro: '+d.erro);
+    }
+  } catch(e){ alert('Erro ao enviar: '+e.message); }
+}
+
+function moverParaKanban(){
+  const c = atendContacts[activeAtend];
+  if(!c){ alert('Selecione um contato!'); return; }
+  const modal = document.createElement('div');
+  modal.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:300';
+  let opts = '';
+  Object.entries(kbBoards).forEach(([key,b])=>{
+    b.cols.forEach((col,ci)=>{
+      opts += `<option value="${key}|${ci}">${b.label} → ${col.title}</option>`;
+    });
+  });
+  modal.innerHTML=`<div style="background:white;border-radius:14px;padding:20px;width:300px;box-shadow:0 8px 32px rgba(0,0,0,.15)">
+    <h3 style="font-size:15px;font-weight:700;color:#0d1b2a;margin-bottom:14px">Mover para Kanban</h3>
+    <p style="font-size:12px;color:#666;margin-bottom:10px">Contato: <strong>${c.name}</strong></p>
+    <select id="kb-destino" style="width:100%;margin-bottom:14px;padding:8px 10px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">${opts}</select>
+    <div style="display:flex;gap:8px">
+      <button onclick="this.closest('[style*=fixed]').remove()" style="flex:1;padding:8px;border-radius:8px;border:1px solid #ddd;background:transparent;cursor:pointer;font-size:12px;color:#666">Cancelar</button>
+      <button onclick="confirmarKanban('${c.name}','${c.phone||c.id}')" style="flex:1;padding:8px;border-radius:8px;border:none;background:linear-gradient(135deg,#0a7a70,#0d6b8a);color:white;cursor:pointer;font-size:12px;font-weight:600">Mover</button>
+    </div>
+  </div>`;
+  document.body.appendChild(modal);
+}
+
+function confirmarKanban(nome, sub){
+  const dest = document.getElementById('kb-destino').value.split('|');
+  const boardKey = dest[0]; const colIdx = parseInt(dest[1]);
+  kbBoards[boardKey].cols[colIdx].cards.push({name:nome, sub:sub, tag:'lead'});
+  document.querySelector('[style*="position:fixed"][style*="z-index:300"]').remove();
+  alert('Adicionado ao Kanban!');
+}
+
+async function apagarContato(){
+  const c = atendContacts[activeAtend];
+  if(!c){ alert('Selecione um contato!'); return; }
+  if(!confirm('Apagar '+c.name+'? Isso remove o contato e todas as mensagens.')) return;
+  try {
+    await fetch(API+'/api/contatos/'+c.id, {method:'DELETE'});
+    atendContacts.splice(activeAtend, 1);
+    activeAtend = 0;
+    activeContactId = atendContacts[0]?.id || null;
+    renderAtendList();
+    if(atendContacts[0]) selectAtend(atendContacts[0]);
+    const msgs = document.getElementById('atend-msgs');
+    if(msgs) msgs.innerHTML='<div style="text-align:center;font-size:12px;color:#888;padding:20px">Contato apagado.</div>';
+    alert('Contato apagado!');
+  } catch(e){ alert('Erro: '+e.message); }
+}
+
+async function atualizarContato(campo, valor){
+  const c = atendContacts[activeAtend];
+  if(!c || !c.id) return;
+  try {
+    const body = {};
+    body[campo] = valor;
+    await fetch(API+'/api/contatos/'+c.id, {
+      method:'PATCH',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    });
+    // Atualiza localmente
+    atendContacts[activeAtend][campo] = valor;
+  } catch(e){ console.log('Erro ao atualizar:', e); }
+}
+
+function preencherPainelContato(c){
+  // Preenche os selects e observações com dados do contato
+  const tagEl = document.getElementById('rp-tag');
+  const segEl = document.getElementById('rp-segmento');
+  const obsEl = document.getElementById('rp-obs');
+  if(tagEl) tagEl.value = c.tag || '';
+  if(segEl) segEl.value = c.seg || c.segmento || '';
+  if(obsEl) obsEl.value = c.observacoes || '';
+}
+
 // ===== ATENDIMENTO AO VIVO — DADOS REAIS =====
 let atendContacts=[];
 let activeAtend=0,atendIAon=true,funilPopOpen=false;
@@ -1054,32 +1303,34 @@ async function loadMessages(contactId){
     const atBottom = msgs.scrollTop+msgs.clientHeight >= msgs.scrollHeight-20;
     msgs.innerHTML='<div style="text-align:center;font-size:10px;color:#999;padding:4px 0">Histórico</div>';
     d.historico.forEach(function(m){
-      // Campo pode ser conteudo ou content dependendo da versão
       const texto = (m.conteudo && m.conteudo !== 'undefined') ? m.conteudo 
                   : (m.content && m.content !== 'undefined') ? m.content 
                   : null;
       if(!texto || texto === 'undefined') return;
       
+      const hora = m.criado_em ? new Date(m.criado_em).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}) : '';
       const wrap=document.createElement('div');
+      
       if(m.role==='user'){
+        // Lead — esquerda, fundo branco
         wrap.style.cssText='display:flex;flex-direction:column;align-items:flex-start;margin:6px 0';
         const contact=atendContacts.find(c=>c.id===contactId);
-        const cName = contact ? contact.name : 'Cliente';
-        const hora = m.criado_em ? new Date(m.criado_em).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}) : '';
+        const cName = contact ? contact.name : 'Lead';
         wrap.innerHTML='<div style="font-size:9px;color:#888;margin-bottom:3px">'+cName+'</div>'
           +'<div style="background:white;border-radius:0 12px 12px 12px;padding:8px 12px;font-size:12px;max-width:75%;line-height:1.5;box-shadow:0 1px 3px rgba(0,0,0,.06)">'+texto
           +'<div style="font-size:10px;color:#999;margin-top:3px">'+hora+'</div></div>';
-      } else {
+      } else if(m.role==='assistant'){
+        // IA — esquerda, fundo verde claro
         wrap.style.cssText='display:flex;flex-direction:column;align-items:flex-start;margin:6px 0';
-        const hora2 = m.criado_em ? new Date(m.criado_em).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}) : '';
-        const labelIA = m.role==='assistant' ? 'Sofia · IA' : 'Você';
-        const bgIA = m.role==='assistant' ? '#e8f5e9' : '#dcf8c6';
-        const colorIA = m.role==='assistant' ? '#1a6b3a' : '#075e54';
-        wrap.style.cssText='display:flex;flex-direction:column;align-items:'+(m.role==='assistant'?'flex-start':'flex-end')+';margin:6px 0';
-        wrap.innerHTML='<div style="font-size:9px;color:#0a7a70;margin-bottom:3px;font-weight:500">'+labelIA+'</div>'
-          +'<div style="background:'+bgIA+';border-radius:'+(m.role==='assistant'?'0 12px 12px 12px':'12px 0 12px 12px')+';padding:8px 12px;font-size:12px;max-width:75%;color:'+colorIA+';line-height:1.5;box-shadow:0 1px 3px rgba(0,0,0,.06)">'+texto
-          +(m.role==='assistant'?'<div style="font-size:10px;color:#888;margin-top:3px">🤖 '+hora2+'</div>':'<div style="font-size:10px;color:#888;margin-top:3px">'+hora2+' ✓✓</div>')
-          +'</div>';
+        wrap.innerHTML='<div style="font-size:9px;color:#0a7a70;margin-bottom:3px;font-weight:500">Sofia · IA</div>'
+          +'<div style="background:#e8f5e9;border-radius:0 12px 12px 12px;padding:8px 12px;font-size:12px;max-width:75%;color:#1a6b3a;line-height:1.5;box-shadow:0 1px 3px rgba(0,0,0,.06)">'+texto
+          +'<div style="font-size:10px;color:#888;margin-top:3px">🤖 '+hora+'</div></div>';
+      } else {
+        // Você — direita, fundo verde WhatsApp
+        wrap.style.cssText='display:flex;flex-direction:column;align-items:flex-end;margin:6px 0';
+        wrap.innerHTML='<div style="font-size:9px;color:#888;margin-bottom:3px">Você</div>'
+          +'<div style="background:#dcf8c6;border-radius:12px 0 12px 12px;padding:8px 12px;font-size:12px;max-width:75%;color:#075e54;line-height:1.5;box-shadow:0 1px 3px rgba(0,0,0,.06)">'+texto
+          +'<div style="font-size:10px;color:#888;margin-top:3px">'+hora+' ✓✓</div></div>';
       }
       msgs.appendChild(wrap);
     });
@@ -1159,8 +1410,10 @@ function selectAtend(c){
   ['ach-av','rp-av'].forEach(id=>{const e=document.getElementById(id);if(e){e.textContent=c.ini;e.style.background=c.bg;e.style.color=c.col;}});
   const n=document.getElementById('ach-name');if(n)n.textContent=c.name;
   const rn=document.getElementById('rp-name');if(rn)rn.textContent=c.name;
-  const s=document.getElementById('ach-sub');if(s)s.textContent='● '+c.phone+' · '+c.seg;
+  const rph=document.getElementById('rp-phone');if(rph)rph.textContent=c.phone||c.id||'';
+  const s=document.getElementById('ach-sub');if(s)s.textContent='● '+(c.phone||c.id)+' · '+(c.seg||'Geral');
   updateAtendIA();renderFunilPanels();
+  preencherPainelContato(c);
 }
 
 function toggleAtendIA(){
@@ -1360,6 +1613,10 @@ function handleAttach(input,tipo){
   const nameEl=document.getElementById('attach-name');
   nameEl.innerHTML='';
   nameEl.style.cssText='display:flex;align-items:center;gap:8px;width:100%;overflow:hidden';
+  // Converter para base64 para envio real
+  const reader=new FileReader();
+  reader.onload=function(e){ if(pendingAttach) pendingAttach.base64=e.target.result.split(',')[1]; pendingAttach.mimetype=file.type; };
+  reader.readAsDataURL(file);
 
   if(tipo==='audio'){
     // Player de audio no preview
@@ -1590,13 +1847,27 @@ function atendSend(){
   if(!txt && !pendingAttach) return;
   
   if(pendingAttach){
+    const c=atendContacts[activeAtend];
+    const telEnvio = c && c.phone ? (c.phone.startsWith('55')?c.phone:'55'+c.phone) : null;
+    
     if(pendingAttach.tipo === 'audio'){
       msgs.appendChild(buildAudioBubble(pendingAttach.file));
+      // Enviar audio real
+      if(telEnvio && pendingAttach.base64){
+        fetch(API+'/api/mensagem/enviar-midia',{method:'POST',headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({telefone:telEnvio,tipo:'audio',base64:pendingAttach.base64,mimetype:pendingAttach.mimetype||'audio/mpeg',filename:pendingAttach.file.name})
+        }).then(r=>r.json()).then(d=>console.log('[Midia] audio:',d)).catch(e=>console.log('[Midia] erro:',e));
+      }
     } else if(pendingAttach.tipo === 'imagem'){
       msgs.appendChild(buildImageBubble(pendingAttach.file, txt));
+      // Enviar imagem real
+      if(telEnvio && pendingAttach.base64){
+        fetch(API+'/api/mensagem/enviar-midia',{method:'POST',headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({telefone:telEnvio,tipo:'imagem',base64:pendingAttach.base64,mimetype:pendingAttach.mimetype||'image/jpeg',caption:txt||''})
+        }).then(r=>r.json()).then(d=>console.log('[Midia] imagem:',d)).catch(e=>console.log('[Midia] erro:',e));
+      }
       inp.value = '';
     } else {
-      // arquivo generico
       const wrap = document.createElement('div');
       wrap.style.cssText = 'display:flex;flex-direction:column;align-items:flex-end;margin:6px 0';
       wrap.innerHTML = '<div style="font-size:9px;color:#888;margin-bottom:3px">Você</div>'
