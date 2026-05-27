@@ -9,23 +9,30 @@ const EVO_URL  = process.env.EVOLUTION_API_URL;
 const EVO_KEY  = process.env.EVOLUTION_API_KEY;
 const EVO_INST = process.env.EVOLUTION_INSTANCE;
 
-// Busca número real de um @lid pelo nome na agenda
+// Busca número real de um @lid pelo nome na agenda (v2)
 async function resolverLid(lid, pushName) {
   try {
     if (!pushName) return null;
     const r = await axios.post(
       `${EVO_URL}/chat/findContacts/${EVO_INST}`,
-      { where: { pushName } },
-      { headers: { apikey: EVO_KEY }, timeout: 5000 }
+      { where: {} },
+      { headers: { apikey: EVO_KEY }, timeout: 8000 }
     );
     const contatos = r.data || [];
-    // Procura um que seja @s.whatsapp.net (número real)
-    const real = contatos.find(c => c.id && c.id.includes('@s.whatsapp.net') && c.pushName === pushName);
-    if (real) {
-      const num = real.id.replace('@s.whatsapp.net', '').replace(/\D/g,'');
-      console.log(`[Webhook] @lid resolvido: ${lid} → ${num}`);
+    // Procura contatos com mesmo pushName e @s.whatsapp.net
+    const reais = contatos.filter(c => 
+      c.remoteJid && 
+      c.remoteJid.includes('@s.whatsapp.net') && 
+      c.pushName === pushName
+    );
+    if (reais.length > 0) {
+      // Pega o mais recente
+      const real = reais.sort((a,b) => new Date(b.updatedAt) - new Date(a.updatedAt))[0];
+      const num = real.remoteJid.replace('@s.whatsapp.net', '').replace(/\D/g,'');
+      console.log(`[Webhook] @lid resolvido: ${lid} → ${num} (${pushName})`);
       return num;
     }
+    console.log(`[Webhook] @lid não resolvido para ${pushName} — ${contatos.filter(c=>c.pushName===pushName).length} contatos encontrados`);
   } catch(e) {
     console.log('[Webhook] Erro ao resolver @lid:', e.message);
   }
