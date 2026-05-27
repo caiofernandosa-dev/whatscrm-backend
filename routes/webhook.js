@@ -45,11 +45,18 @@ router.post('/whatsapp', async (req, res) => {
     if (remoteJid.includes('@g.us')) return;
 
     const pushName = body?.data?.pushName || '';
+    // Ignorar mensagens de sistema/status
+    const msgType = Object.keys(body?.data?.message || {})[0] || '';
+    if (['protocolMessage','ephemeralMessage','reactionMessage','senderKeyDistributionMessage'].includes(msgType)) return;
+
     const texto =
       body?.data?.message?.conversation ||
       body?.data?.message?.extendedTextMessage?.text ||
       body?.data?.message?.imageMessage?.caption ||
-      '[mídia]';
+      '';
+    
+    // Ignorar mensagens vazias ou só de mídia sem legenda
+    if (!texto.trim()) return;
 
     // Extrair número real
     let telefone = '';
