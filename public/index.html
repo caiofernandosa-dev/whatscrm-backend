@@ -706,7 +706,7 @@ function goTo(v){
   currentView=v;
   if(v==='kanban') renderKanban();
   if(v==='funis') renderFunis();
-  if(v==='atend'){renderAtendList();renderFunilPanels();}
+  if(v==='atend'){loadRealContacts();renderFunilPanels();startPolling();}
 }
 
 document.getElementById('main-nav').addEventListener('click',e=>{
@@ -971,24 +971,170 @@ document.getElementById('funil-modal-confirm').addEventListener('click',()=>{
   document.getElementById('funil-modal').classList.remove('show');
 });
 
-// ===== ATENDIMENTO AO VIVO =====
-const atendContacts=[
-  {name:'Ana Costa',ini:'AC',bg:'#e6faf0',col:'#0a7a40',phone:'67 99801-2233',seg:'Clínica',ia:true,unread:0,preview:'Sim, pode confirmar!',time:'14:33'},
-  {name:'Pedro Mota',ini:'PM',bg:'#e6f0ff',col:'#1a4fa0',phone:'11 98712-5544',seg:'Geral',ia:true,unread:2,preview:'Quero mais informações',time:'14:28'},
-  {name:'Lúcia Faria',ini:'LF',bg:'#f0e6ff',col:'#6010a0',phone:'21 97654-9910',seg:'Advocacia',ia:false,unread:1,preview:'Preciso de ajuda',time:'14:10'},
-  {name:'Rafael Souza',ini:'RS',bg:'#fff8e6',col:'#a07010',phone:'31 96543-7788',seg:'Geral',ia:true,unread:0,preview:'Ok, obrigado',time:'13:45'}
-];
+// ===== ATENDIMENTO AO VIVO — DADOS REAIS =====
+let atendContacts=[];
 let activeAtend=0,atendIAon=true,funilPopOpen=false;
 let pendingAttach=null;
+let activeContactId=null;
+let pollingInterval=null;
+
+// Cores por inicial
+function getContactColors(name){
+  const colors=[
+    {bg:'#e6faf0',col:'#0a7a40'},{bg:'#e6f0ff',col:'#1a4fa0'},
+    {bg:'#f0e6ff',col:'#6010a0'},{bg:'#fff8e6',col:'#a07010'},
+    {bg:'#ffe6f0',col:'#a01050'},{bg:'#f0ffe6',col:'#407000'}
+  ];
+  const idx = (name||'?').charCodeAt(0) % colors.length;
+  return colors[idx];
+}
+
+function getInitials(name){
+  const parts=(name||'?').split(' ');
+  return (parts[0][0]+(parts[1]?parts[1][0]:'')).toUpperCase();
+}
+
+function timeAgo(dateStr){
+  if(!dateStr) return '';
+  const diff=Date.now()-new Date(dateStr).getTime();
+  const min=Math.floor(diff/60000);
+  if(min<1) return 'agora';
+  if(min<60) return min+'min';
+  const h=Math.floor(min/60);
+  if(h<24) return h+'h';
+  return Math.floor(h/24)+'d';
+}
+
+// Buscar contatos reais do backend
+async function loadRealContacts(){
+  try{
+    const r=await fetch(API+'/api/contatos?limit=50');
+    const d=await r.json();
+    if(d.contatos && d.contatos.length>0){
+      atendContacts=d.contatos.map(c=>{
+        const colors=getContactColors(c.nome);
+        return {
+          id:c.id,
+          name:c.nome||c.telefone,
+          ini:getInitials(c.nome||c.telefone),
+          bg:colors.bg,
+          col:colors.col,
+          phone:c.telefone,
+          seg:c.segmento||'Geral',
+          ia:c.ia_ativa!==false,
+          unread:0,
+          preview:c.ultima_msg||'Sem mensagens',
+          time:timeAgo(c.ultima_interacao),
+          tag:c.tag
+        };
+      });
+      renderAtendList();
+      if(atendContacts.length>0 && !activeContactId){
+        activeContactId=atendContacts[0].id;
+        selectAtend(atendContacts[0]);
+      }
+    }
+  }catch(e){
+    console.log('Erro ao carregar contatos:',e);
+  }
+}
+
+// Buscar histórico de mensagens do contato selecionado
+async function loadMessages(contactId){
+  const msgs=document.getElementById('atend-msgs');
+  if(!msgs||!contactId) return;
+  try{
+    const r=await fetch(API+'/api/agente/historico/'+contactId);
+    const d=await r.json();
+    if(!d.historico||d.historico.length===0){
+      msgs.innerHTML='<div style="text-align:center;font-size:12px;color:#888;padding:20px">Nenhuma mensagem ainda.<br>Aguardando contato pelo WhatsApp.</div>';
+      return;
+    }
+    msgs.innerHTML='<div style="text-align:center;font-size:10px;color:#999;padding:4px 0">Histórico de mensagens</div>';
+    d.historico.forEach(function(m){
+      const wrap=document.createElement('div');
+      if(m.role==='user'){
+        wrap.style.cssText='display:flex;flex-direction:column;align-items:flex-start;margin:6px 0';
+        const contact=atendContacts.find(c=>c.id===contactId);
+        wrap.innerHTML='<div style="font-size:9px;color:#888;margin-bottom:3px">'+(contact?contact.name:'Cliente')+'</div>'
+          +'<div style="background:white;border-radius:0 12px 12px 12px;padding:8px 12px;font-size:12px;max-width:75%;line-height:1.5;box-shadow:0 1px 3px rgba(0,0,0,.06)">'
+          +m.conteudo+'</div>';
+      } else {
+        wrap.style.cssText='display:flex;flex-direction:column;align-items:flex-start;margin:6px 0';
+        wrap.innerHTML='<div style="font-size:9px;color:#0a7a70;margin-bottom:3px;font-weight:500">Sofia · IA</div>'
+          +'<div style="background:#e8f5e9;border-radius:0 12px 12px 12px;padding:8px 12px;font-size:12px;max-width:75%;color:#1a6b3a;line-height:1.5;box-shadow:0 1px 3px rgba(0,0,0,.06)">'
+          +m.conteudo+'<div style="font-size:10px;color:#888;margin-top:3px">🤖</div></div>';
+      }
+      msgs.appendChild(wrap);
+    });
+    msgs.scrollTop=msgs.scrollHeight;
+  }catch(e){
+    console.log('Erro ao carregar mensagens:',e);
+  }
+}
+
+// Enviar mensagem real pelo WhatsApp
+async function sendRealMessage(text, contactPhone){
+  try{
+    const r=await fetch(API+'/api/contatos',{
+      method:'GET',
+      headers:{'Content-Type':'application/json'}
+    });
+    // Usar endpoint de envio direto
+    await fetch(API+'/api/agente/assumir',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({contato_id:activeContactId, mensagem:text})
+    });
+    return true;
+  }catch(e){
+    console.log('Erro ao enviar:',e);
+    return false;
+  }
+}
+
+// Polling para novas mensagens a cada 3 segundos
+function startPolling(){
+  if(pollingInterval) clearInterval(pollingInterval);
+  pollingInterval=setInterval(()=>{
+    loadRealContacts();
+    if(activeContactId) loadMessages(activeContactId);
+  },3000);
+}
 
 function renderAtendList(){
   const el=document.getElementById('atend-list');if(!el)return;
+  
+  if(atendContacts.length===0){
+    el.innerHTML='<div style="padding:16px;text-align:center;font-size:12px;color:#888">Aguardando mensagens<br>no WhatsApp...</div>';
+    return;
+  }
+  
   el.innerHTML='';
   atendContacts.forEach((c,i)=>{
+    const isActive=c.id===activeContactId;
     const item=document.createElement('div');
-    item.style.cssText=`padding:9px 12px;cursor:pointer;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px;background:${i===activeAtend?'white':'transparent'};${i===activeAtend?'border-left:3px solid #0a7a70':'border-left:3px solid transparent'}`;
-    item.innerHTML=`<div style="width:32px;height:32px;border-radius:50%;background:${c.bg};color:${c.col};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">${c.ini}</div><div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0d1b2a">${c.name}</div><div style="font-size:10px;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.preview}</div></div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0"><div style="font-size:10px;color:#888">${c.time}</div>${c.unread>0?`<div style="background:#25D366;color:white;border-radius:8px;font-size:9px;padding:1px 5px;font-weight:700">${c.unread}</div>`:''}<div style="font-size:9px;padding:1px 5px;border-radius:4px;font-weight:700;${c.ia?'background:#e6faf0;color:#0a7a40':'background:#fff8e6;color:#a07010'}">${c.ia?'IA':'hum'}</div></div>`;
-    item.addEventListener('click',()=>{activeAtend=i;atendIAon=c.ia;selectAtend(c);renderAtendList();});
+    item.style.cssText='padding:9px 12px;cursor:pointer;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px;'
+      +'background:'+(isActive?'white':'transparent')+';'
+      +'border-left:3px solid '+(isActive?'#0a7a70':'transparent');
+    item.innerHTML='<div style="width:32px;height:32px;border-radius:50%;background:'+c.bg+';color:'+c.col+';display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">'+c.ini+'</div>'
+      +'<div style="flex:1;min-width:0">'
+      +'<div style="font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0d1b2a">'+c.name+'</div>'
+      +'<div style="font-size:10px;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+c.preview+'</div>'
+      +'</div>'
+      +'<div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0">'
+      +'<div style="font-size:10px;color:#888">'+c.time+'</div>'
+      +(c.unread>0?'<div style="background:#25D366;color:white;border-radius:8px;font-size:9px;padding:1px 5px;font-weight:700">'+c.unread+'</div>':'')
+      +'<div style="font-size:9px;padding:1px 5px;border-radius:4px;font-weight:700;'+(c.ia?'background:#e6faf0;color:#0a7a40':'background:#fff8e6;color:#a07010')+'">'+(c.ia?'IA':'hum')+'</div>'
+      +'</div>';
+    item.addEventListener('click',()=>{
+      activeAtend=i;
+      activeContactId=c.id;
+      atendIAon=c.ia;
+      selectAtend(c);
+      loadMessages(c.id);
+      renderAtendList();
+    });
     el.appendChild(item);
   });
 }
@@ -997,7 +1143,7 @@ function selectAtend(c){
   ['ach-av','rp-av'].forEach(id=>{const e=document.getElementById(id);if(e){e.textContent=c.ini;e.style.background=c.bg;e.style.color=c.col;}});
   const n=document.getElementById('ach-name');if(n)n.textContent=c.name;
   const rn=document.getElementById('rp-name');if(rn)rn.textContent=c.name;
-  const s=document.getElementById('ach-sub');if(s)s.textContent=`● Online · ${c.seg}`;
+  const s=document.getElementById('ach-sub');if(s)s.textContent='● '+c.phone+' · '+c.seg;
   updateAtendIA();renderFunilPanels();
 }
 
@@ -1449,14 +1595,28 @@ function atendSend(){
   }
   
   if(inp.value.trim()){
+    const txt=inp.value.trim();
     const wrap = document.createElement('div');
     wrap.style.cssText = 'display:flex;flex-direction:column;align-items:flex-end;margin:6px 0';
     wrap.innerHTML = '<div style="font-size:9px;color:#888;margin-bottom:3px">Você</div>'
       +'<div style="background:#dcf8c6;border-radius:12px 0 12px 12px;padding:8px 12px;font-size:12px;max-width:75%;color:#075e54;line-height:1.5;box-shadow:0 1px 3px rgba(0,0,0,.06)">'
-      +inp.value.trim()
-      +'<div style="font-size:10px;color:#888;margin-top:3px">agora ✓✓</div></div>';
+      +txt
+      +'<div style="font-size:10px;color:#888;margin-top:3px">enviando...</div></div>';
     msgs.appendChild(wrap);
     inp.value = '';
+    
+    // Enviar mensagem real pelo WhatsApp
+    if(activeContactId){
+      fetch(API+'/api/agente/assumir',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({contato_id:activeContactId, mensagem:txt})
+      }).then(r=>r.json()).then(()=>{
+        // Atualizar tick para enviado
+        const ticks=wrap.querySelectorAll('div');
+        if(ticks.length>0) ticks[ticks.length-1].textContent='agora ✓✓';
+      }).catch(e=>console.log('Erro envio:',e));
+    }
   }
   
   msgs.scrollTop = msgs.scrollHeight;
