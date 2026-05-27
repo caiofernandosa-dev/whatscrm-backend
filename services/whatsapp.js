@@ -1,63 +1,57 @@
 const axios = require('axios');
 
-const BASE_URL = process.env.EVOLUTION_API_URL;
-const API_KEY  = process.env.EVOLUTION_API_KEY;
-const INSTANCE = process.env.EVOLUTION_INSTANCE || 'whatscrm';
+const EVOLUTION_URL      = process.env.EVOLUTION_API_URL;
+const EVOLUTION_KEY      = process.env.EVOLUTION_API_KEY;
+const EVOLUTION_INSTANCE = process.env.EVOLUTION_INSTANCE;
 
-const api = axios.create({
-  baseURL: BASE_URL,
-  headers: { apikey: API_KEY, 'Content-Type': 'application/json' }
-});
-
-// Formata número para padrão internacional
-function formatarNumero(tel) {
-  const limpo = tel.replace(/\D/g, '');
-  if (limpo.startsWith('55')) return limpo + '@s.whatsapp.net';
-  return '55' + limpo + '@s.whatsapp.net';
+function formatarNumero(telefone) {
+  // Remove tudo que não é número
+  let num = String(telefone).replace(/\D/g, '');
+  
+  // Remove @lid, @s.whatsapp.net etc
+  num = num.split('@')[0];
+  
+  // Se começar com 0, remove
+  if (num.startsWith('0')) num = num.slice(1);
+  
+  // Se não começar com 55, adiciona
+  if (!num.startsWith('55')) num = '55' + num;
+  
+  // Garante que tem 12 ou 13 dígitos (55 + DDD + numero)
+  // Se tiver 9 dígito no celular com DDD: 55 + 2 + 9 = 13 digitos
+  // Se não tiver: 55 + 2 + 8 = 12 digitos
+  
+  return num;
 }
 
-// Envia mensagem de texto
-async function enviarMensagem(telefone, texto) {
+async function enviarMensagem(telefone, mensagem) {
   try {
     const numero = formatarNumero(telefone);
-    const res = await api.post(`/message/sendText/${INSTANCE}`, {
+    
+    console.log(`[WhatsApp] Enviando para ${numero}: ${mensagem.substring(0, 50)}`);
+    
+    const url = `${EVOLUTION_URL}/message/sendText/${EVOLUTION_INSTANCE}`;
+    
+    const response = await axios.post(url, {
       number: numero,
-      text: texto
+      text: mensagem
+    }, {
+      headers: {
+        'apikey': EVOLUTION_KEY,
+        'Content-Type': 'application/json'
+      },
+      timeout: 15000
     });
-    return { ok: true, data: res.data };
+    
+    console.log(`[WhatsApp] Enviado! Status: ${response.status}`);
+    return { ok: true, data: response.data };
+    
   } catch (err) {
-    console.error('Erro ao enviar mensagem:', err.message);
-    return { ok: false, erro: err.message };
+    const status = err.response?.status;
+    const data   = err.response?.data;
+    console.error(`[WhatsApp] Erro ${status}:`, JSON.stringify(data));
+    return { ok: false, erro: err.message, status, data };
   }
 }
 
-// Disparo em massa com delay entre mensagens (evita bloqueio)
-async function dispararEmMassa(contatos, mensagem, delayMs = 4000) {
-  const resultados = [];
-  for (const contato of contatos) {
-    // Substitui variáveis como {{nome}}, {{data}}
-    const texto = mensagem
-      .replace(/{{nome}}/gi, contato.nome || 'Cliente')
-      .replace(/{{data}}/gi, new Date().toLocaleDateString('pt-BR'));
-
-    const res = await enviarMensagem(contato.telefone, texto);
-    resultados.push({ contato: contato.nome, ...res });
-
-    // Delay humano entre mensagens (reduz risco de bloqueio)
-    const espera = delayMs + Math.random() * 2000;
-    await new Promise(r => setTimeout(r, espera));
-  }
-  return resultados;
-}
-
-// Busca status da instância (conectado / desconectado)
-async function statusConexao() {
-  try {
-    const res = await api.get(`/instance/connectionState/${INSTANCE}`);
-    return res.data;
-  } catch (err) {
-    return { state: 'error', erro: err.message };
-  }
-}
-
-module.exports = { enviarMensagem, dispararEmMassa, statusConexao, formatarNumero };
+module.exports = { enviarMensagem, formatarNumero };
