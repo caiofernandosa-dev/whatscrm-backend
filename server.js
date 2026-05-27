@@ -6,38 +6,35 @@ const rateLimit = require('express-rate-limit');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middlewares
+// CORREÇÃO: trust proxy para Railway/Heroku/Vercel
+app.set('trust proxy', 1);
+
 app.use(cors());
 app.use(express.json());
 
-// Rate limit geral (proteção contra abuso)
+// Rate limit com trust proxy ativado
 app.use(rateLimit({
   windowMs: 60 * 1000,
-  max: 200,
-  message: { erro: 'Muitas requisições. Tente em breve.' }
+  max: 500,
+  message: { erro: 'Muitas requisições.' }
 }));
 
 // Rotas
-app.use('/api/contatos',    require('./routes/contatos'));
-app.use('/api/campanhas',   require('./routes/campanhas'));
-app.use('/api/agente',      require('./routes/agente'));
-app.use('/api/agendamentos',require('./routes/agendamentos'));
-app.use('/webhook',         require('./routes/webhook'));
+app.use('/api/contatos',     require('./routes/contatos'));
+app.use('/api/campanhas',    require('./routes/campanhas'));
+app.use('/api/agente',       require('./routes/agente'));
+app.use('/api/agendamentos', require('./routes/agendamentos'));
+app.use('/webhook',          require('./routes/webhook'));
 
-// Health check (Railway usa isso para saber se o app está vivo)
+// Health check
 app.get('/', (req, res) => {
-  res.json({
-    status: 'online',
-    app: 'WhatsCRM',
-    versao: '1.0.0',
-    hora: new Date().toISOString()
-  });
+  res.json({ status: 'online', app: 'WhatsCRM', versao: '1.0.0', hora: new Date().toISOString() });
 });
 
 // Erro genérico
 app.use((err, req, res, next) => {
   console.error('Erro:', err.message);
-  res.status(500).json({ erro: 'Erro interno do servidor' });
+  res.status(500).json({ erro: 'Erro interno' });
 });
 
 app.listen(PORT, () => {
@@ -45,5 +42,4 @@ app.listen(PORT, () => {
   console.log(`   Ambiente: ${process.env.NODE_ENV || 'development'}`);
 });
 
-// Agendamentos automáticos (remarketing, lembretes)
 require('./services/agendador');
