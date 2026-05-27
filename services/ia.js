@@ -1,81 +1,76 @@
-const Anthropic = require('@anthropic-ai/sdk');
-const supabase  = require('./supabase');
+const axios = require('axios');
+const supabase = require('./supabase');
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
+const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const GROQ_MODEL = 'llama-3.1-8b-instant';
 
-// Prompt base padrão (pode ser sobrescrito por contato/segmento)
-const PROMPT_BASE = `Você é Sofia, assistente virtual inteligente. 
-Atenda com cordialidade e objetividade. 
-Responda sempre em português brasileiro informal mas profissional.
-Nunca invente informações que não sabe.
-Se não souber responder, diga: "Vou verificar isso com nossa equipe e te retorno em breve!"
-Seja conciso — respostas curtas funcionam melhor no WhatsApp.`;
-
-// Busca histórico de conversa do contato (últimas 10 mensagens)
 async function buscarHistorico(contatoId) {
-  const { data } = await supabase
-    .from('mensagens')
-    .select('role, conteudo')
-    .eq('contato_id', contatoId)
-    .order('criado_em', { ascending: true })
-    .limit(10);
-  return (data || []).map(m => ({ role: m.role, content: m.conteudo }));
-}
-
-// Salva mensagem no histórico
-async function salvarMensagem(contatoId, role, conteudo) {
-  await supabase.from('mensagens').insert({
-    contato_id: contatoId,
-    role,
-    conteudo,
-    criado_em: new Date().toISOString()
-  });
-}
-
-// Responde com IA
-async function responderIA(contato, mensagemUsuario) {
   try {
-    // Busca prompt personalizado do contato/segmento
-    let systemPrompt = PROMPT_BASE;
-    if (contato.prompt_personalizado) {
-      systemPrompt = contato.prompt_personalizado;
-    } else if (contato.segmento === 'clinica') {
-      systemPrompt = `Você é recepcionista virtual de clínica médica. 
-Ajude a agendar consultas, confirmar horários e enviar lembretes.
-Nunca dê diagnósticos ou orientações médicas.
-Colete: nome, especialidade desejada, convênio e data preferida.`;
-    } else if (contato.segmento === 'advocacia') {
-      systemPrompt = `Você é assistente jurídica virtual.
-Faça triagem e agendamento — nunca dê parecer jurídico.
-Identifique a área (trabalhista, cível, família, criminal).
-Colete dados do caso e agende reunião com o advogado responsável.`;
-    }
-
-    // Busca histórico da conversa
-    const historico = await buscarHistorico(contato.id);
-
-    // Chama a API da Anthropic
-    const resposta = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 500,
-      system: systemPrompt,
-      messages: [
-        ...historico,
-        { role: 'user', content: mensagemUsuario }
-      ]
-    });
-
-    const textoResposta = resposta.content[0].text;
-
-    // Salva no histórico
-    await salvarMensagem(contato.id, 'user',      mensagemUsuario);
-    await salvarMensagem(contato.id, 'assistant', textoResposta);
-
-    return { ok: true, resposta: textoResposta };
-  } catch (err) {
-    console.error('Erro IA:', err.message);
-    return { ok: false, erro: err.message };
+    const { data } = await supabase
+      .from('mensagens')
+      .select('role, conteudo')
+      .eq('contato_id', contatoId)
+      .order('criado_em', { ascending: true })
+      .limit(20);
+    return (data || []).map(m => ({
+      role: m.role === 'user' ? 'user' : 'assistant',
+      content: m.conteudo || ''
+    })).filter(m => m.content);
+  } catch (e) {
+    return [];
   }
 }
 
-module.exports = { responderIA, salvarMensagem, buscarHistorico };
+async function responderIA(contato, mensagem) {
+  try {
+    const historico = await buscarHistorico(contato.id);
+
+    const systemPrompt = contato.prompt_personalizado ||
+      `Você é Sofia, assistente virtual prestativa e simpática. 
+Atenda com cordialidade e responda sempre em português brasileiro.
+Nunca invente informações. Se não souber algo, diga que vai verificar.
+Seja conciso — respostas curtas e diretas.
+Nome do cliente: ${contato.nome || 'Cliente'}.
+Segmento: ${contato.segmento || 'geral'}.`;
+
+    const messages = [
+      { role: 'system', content: systemPrompt },
+      ...historico,
+      { role: 'user', content: mensagem }
+    ];
+
+    const response = await axios.post(GROQ_URL, {
+      model: GROQ_MODEL,
+      messages,
+      max_tokens: 500,
+      temperature: 0.7
+    }, {
+      headers: {
+        'Authorization': `Bearer ${GROQ_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      timeout: 15000
+    });
+
+    const resposta = response.data.choices[0].message.content.trim();
+
+    // Salva resposta no histórico
+    await supabase.from('mensagens').insert({
+      contato_id: contato.id,
+      role: 'assistant',
+      conteudo: resposta,
+      criado_em: new Date().toISOString()
+    });
+
+    console.log(`[IA] Groq respondeu para ${contato.nome}: ${resposta.substring(0, 60)}`);
+    return { ok: true, resposta };
+
+  } catch (err) {
+    const erro = err.response?.data ? JSON.stringify(err.response.data) : err.message;
+    console.error(`Erro IA: ${err.response?.status} ${erro}`);
+    return { ok: false, erro };
+  }
+}
+
+module.exports = { responderIA };
