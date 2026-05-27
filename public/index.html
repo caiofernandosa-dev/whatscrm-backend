@@ -847,7 +847,7 @@ function renderKanban(){
     col.cards.forEach((card,cdi)=>{
       const cardEl=document.createElement('div');cardEl.className='kbcard';cardEl.draggable=true;
       const c=(tagC[card.tag]||'#eee|#333').split('|');
-      cardEl.innerHTML=`<div class="kbcn">${card.name}</div><div class="kbcs">${card.sub}</div><span class="kbct" style="background:${c[0]};color:${c[1]}">${card.tag}</span><div class="card-actions"><button class="card-btn" onclick="event.stopPropagation();goTo('atend')"><i class="ti ti-message-circle" style="font-size:11px"></i>Chat</button><button class="card-btn card-btn-send" onclick="event.stopPropagation();openFunilModal('${card.name}')"><i class="ti ti-hierarchy" style="font-size:11px"></i>Funil</button></div>`;
+      cardEl.innerHTML=`<div class="kbcn">${card.name}</div><div class="kbcs">${card.sub}</div><span class="kbct" style="background:${c[0]};color:${c[1]}">${card.tag}</span><div class="card-actions"><button class="card-btn" onclick="event.stopPropagation();goTo('atend')"><i class="ti ti-message-circle" style="font-size:11px"></i>Chat</button><button class="card-btn card-btn-send" onclick="event.stopPropagation();openFunilModal('${card.name}')"><i class="ti ti-hierarchy" style="font-size:11px"></i>Funil</button><button class="card-btn" onclick="event.stopPropagation();apagarCardKanban('${activeKb}',${ci},${cdi})" style="color:#e24b4a;border-color:#ffe0e0;max-width:28px"><i class="ti ti-trash" style="font-size:11px"></i></button></div>`;
       cardEl.addEventListener('dragstart',()=>{kbDC=cdi;kbDF=ci;});
       cardEl.addEventListener('dragend',()=>{kbDC=null;kbDF=null;});
       ce.appendChild(cardEl);
@@ -1169,12 +1169,31 @@ function moverParaKanban(){
   document.body.appendChild(modal);
 }
 
+function apagarCardKanban(boardKey, colIdx, cardIdx){
+  const card = kbBoards[boardKey]?.cols[colIdx]?.cards[cardIdx];
+  if(!card) return;
+  if(!confirm('Remover "'+card.name+'" do Kanban?')) return;
+  kbBoards[boardKey].cols[colIdx].cards.splice(cardIdx, 1);
+  renderKanban();
+}
+
 function confirmarKanban(nome, sub){
   const dest = document.getElementById('kb-destino').value.split('|');
   const boardKey = dest[0]; const colIdx = parseInt(dest[1]);
+  // Verifica se já existe em qualquer coluna desse board
+  let jaExiste = false;
+  kbBoards[boardKey].cols.forEach(col=>{
+    if(col.cards.find(c=>c.name===nome)) jaExiste=true;
+  });
+  if(jaExiste){
+    alert(nome+' já está no Kanban!');
+    document.querySelector('[style*="position:fixed"][style*="z-index:300"]').remove();
+    return;
+  }
   kbBoards[boardKey].cols[colIdx].cards.push({name:nome, sub:sub, tag:'lead'});
   document.querySelector('[style*="position:fixed"][style*="z-index:300"]').remove();
-  alert('Adicionado ao Kanban!');
+  alert('✅ '+nome+' adicionado ao Kanban!');
+  if(currentView==='kanban') renderKanban();
 }
 
 async function apagarContato(){
@@ -1360,13 +1379,17 @@ async function sendRealMessage(text, contactPhone){
   }
 }
 
-// Polling para novas mensagens a cada 3 segundos
+// Polling para novas mensagens a cada 2 segundos
 function startPolling(){
   if(pollingInterval) clearInterval(pollingInterval);
+  // Atualiza lista de contatos a cada 2s
   pollingInterval=setInterval(()=>{
     loadRealContacts();
-    if(activeContactId) loadMessages(activeContactId);
-  },3000);
+  },2000);
+  // Atualiza mensagens do contato ativo a cada 1.5s
+  setInterval(()=>{
+    if(activeContactId && currentView==='atend') loadMessages(activeContactId);
+  },1500);
 }
 
 function renderAtendList(){
