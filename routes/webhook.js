@@ -9,37 +9,17 @@ router.post('/whatsapp', async (req, res) => {
     res.sendStatus(200);
 
     const body = req.body;
-    if (!body?.data?.message || body?.data?.key?.fromMe) return;
 
+    // LOG COMPLETO para debug do número
     const remoteJid = body?.data?.key?.remoteJid || '';
+    const pushName  = body?.data?.pushName || '';
+    const fromMe    = body?.data?.key?.fromMe;
+    console.log(`[Webhook] remoteJid: ${remoteJid} | pushName: ${pushName} | fromMe: ${fromMe}`);
+    console.log(`[Webhook] sender: ${JSON.stringify(body?.data?.sender)}`);
+    console.log(`[Webhook] participant: ${JSON.stringify(body?.data?.participant)}`);
+
+    if (!body?.data?.message || fromMe) return;
     if (remoteJid.includes('@g.us')) return;
-
-    // Extrair número real — prioriza pushName + remoteJid sem @lid
-    // remoteJid pode ser: 5511999999999@s.whatsapp.net OU 196516279017700@lid
-    let telefone = '';
-    
-    if (remoteJid.includes('@s.whatsapp.net')) {
-      // Formato normal: 5511999999999@s.whatsapp.net
-      telefone = remoteJid.replace('@s.whatsapp.net', '').replace(/\D/g, '');
-      // Garante que tem 55 no início
-      if (!telefone.startsWith('55')) telefone = '55' + telefone;
-    } else if (remoteJid.includes('@lid')) {
-      // Formato @lid — usar o número do participant
-      const participant = body?.data?.participant || body?.data?.key?.participant || '';
-      if (participant.includes('@s.whatsapp.net')) {
-        telefone = participant.replace('@s.whatsapp.net', '').replace(/\D/g, '');
-        if (!telefone.startsWith('55')) telefone = '55' + telefone;
-      } else {
-        // Último recurso: remoteJid sem @lid
-        telefone = remoteJid.replace('@lid', '').replace(/\D/g, '');
-        if (!telefone.startsWith('55')) telefone = '55' + telefone;
-      }
-    }
-
-    if (!telefone) {
-      console.log('[Webhook] Não foi possível extrair telefone de:', remoteJid);
-      return;
-    }
 
     const texto =
       body?.data?.message?.conversation ||
@@ -47,12 +27,35 @@ router.post('/whatsapp', async (req, res) => {
       body?.data?.message?.imageMessage?.caption ||
       '[mídia]';
 
-    const pushName = body?.data?.pushName || body?.data?.key?.pushName || '';
-    const nome = pushName || `WhatsApp +${telefone}`; // telefone já tem 55
+    // Extrair número real
+    let telefone = '';
 
+    if (remoteJid.includes('@s.whatsapp.net')) {
+      telefone = remoteJid.replace('@s.whatsapp.net', '').replace(/\D/g, '');
+    } else if (remoteJid.includes('@lid')) {
+      // @lid não tem número real — pegar do sender ou participant
+      const sender = body?.data?.sender || '';
+      if (sender && sender.includes('@s.whatsapp.net')) {
+        telefone = sender.replace('@s.whatsapp.net', '').replace(/\D/g, '');
+      }
+    }
+
+    // Garante 55 no início
+    if (telefone && !telefone.startsWith('55')) {
+      telefone = '55' + telefone;
+    }
+
+    // Se ainda não tiver número válido, log e sai
+    if (!telefone || telefone.length < 12) {
+      console.log(`[Webhook] Número inválido extraído: "${telefone}" de remoteJid: "${remoteJid}"`);
+      console.log(`[Webhook] Body completo: ${JSON.stringify(body?.data?.key)}`);
+      return;
+    }
+
+    const nome = pushName || `WhatsApp +${telefone}`;
     console.log(`[Webhook] Msg de ${telefone} (${nome}): ${texto.substring(0, 60)}`);
 
-    // Busca ou cria contato pelo telefone
+    // Busca ou cria contato
     const { data: existente } = await supabase
       .from('contatos')
       .select('*')
@@ -64,8 +67,7 @@ router.post('/whatsapp', async (req, res) => {
       contato = existente;
       await supabase.from('contatos').update({
         ultima_interacao: new Date().toISOString(),
-        ultima_msg: texto.substring(0, 100),
-        nome: existente.nome === `WhatsApp +${telefone}` && pushName ? pushName : existente.nome
+        ultima_msg: texto.substring(0, 100)
       }).eq('id', contato.id);
     } else {
       const { data: novo } = await supabase
@@ -87,7 +89,6 @@ router.post('/whatsapp', async (req, res) => {
 
     if (!contato) return;
 
-    // Salva mensagem
     await supabase.from('mensagens').insert({
       contato_id: contato.id,
       role: 'user',
@@ -95,11 +96,7 @@ router.post('/whatsapp', async (req, res) => {
       criado_em: new Date().toISOString()
     });
 
-    if (!contato.ia_ativa) {
-      console.log(`[Webhook] IA pausada para ${telefone}`);
-      return;
-    }
-
+    if (!contato.ia_ativa) return;
     if (!texto.trim() || texto === '[mídia]') return;
 
     const delay = 2000 + Math.random() * 3000;
