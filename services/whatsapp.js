@@ -29,7 +29,8 @@ async function enviarMensagem(telefone, mensagem) {
 
     const response = await axios.post(url, {
       number: numero,
-      text: mensagem
+      text: mensagem,
+      delay: 3000
     }, {
       headers: {
         'apikey': EVOLUTION_KEY,
