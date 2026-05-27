@@ -40,6 +40,15 @@ Segmento: ${contato.segmento || 'geral'}.`;
       { role: 'user', content: mensagem }
     ];
 
+    // Mostrar "digitando..." antes de responder
+    try {
+      await axios.post(
+        `${process.env.EVOLUTION_API_URL}/chat/presence/${process.env.EVOLUTION_INSTANCE}`,
+        { number: contato.telefone, delay: 1000, presence: 'composing' },
+        { headers: { apikey: process.env.EVOLUTION_API_KEY }, timeout: 3000 }
+      );
+    } catch(e) { /* ignora erro de presence */ }
+
     const response = await axios.post(GROQ_URL, {
       model: GROQ_MODEL,
       messages,
