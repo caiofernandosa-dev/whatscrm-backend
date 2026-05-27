@@ -3,131 +3,227 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WhatsCRM</title>
+<title>E PRO CRM</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,sans-serif;background:#f5f5f5;color:#1a1a1a}
 .app{display:flex;height:100vh;overflow:hidden}
-.sidebar{width:200px;background:#fff;border-right:1px solid #eee;display:flex;flex-direction:column;flex-shrink:0}
-.logo{padding:14px 16px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px}
-.logo-icon{width:28px;height:28px;background:#25D366;border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:15px}
-.logo-name{font-size:14px;font-weight:700}
+.sidebar{width:210px;background:#0d1b2a;border-right:1px solid #1a2d42;display:flex;flex-direction:column;flex-shrink:0}
+.logo-area{padding:16px;border-bottom:1px solid #1a2d42;display:flex;align-items:center;gap:10px}
+.logo-img{width:32px;height:32px;object-fit:contain;border-radius:6px}
+.logo-text{font-size:13px;font-weight:700;color:white;line-height:1.2}
+.logo-sub{font-size:10px;color:#4aaaa5;font-weight:400}
 nav{padding:8px;flex:1;overflow-y:auto}
-.ns{font-size:10px;color:#bbb;padding:8px 8px 4px;text-transform:uppercase;letter-spacing:.5px}
-.ni{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:8px;cursor:pointer;font-size:12px;color:#666;margin-bottom:1px;user-select:none}
-.ni:hover{background:#f5f5f5;color:#1a1a1a}
-.ni.active{background:#f0faf4;color:#25D366;font-weight:600}
-.ni i{font-size:15px;width:16px;pointer-events:none}
+.ns{font-size:10px;color:#4a6070;padding:8px 8px 4px;text-transform:uppercase;letter-spacing:.6px}
+.ni{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:12px;color:#8aa0b0;margin-bottom:1px;user-select:none;transition:all .15s}
+.ni:hover{background:#1a2d42;color:#e0eaf0}
+.ni.active{background:linear-gradient(135deg,#0a7a70,#0d6b8a);color:white;font-weight:600}
+.ni i{font-size:15px;width:16px;pointer-events:none;flex-shrink:0}
 .ni span{pointer-events:none}
 .bgg{margin-left:auto;background:#25D366;color:white;border-radius:8px;font-size:10px;padding:1px 5px;pointer-events:none}
 .bgr{margin-left:auto;background:#e24b4a;color:white;border-radius:8px;font-size:10px;padding:1px 5px;pointer-events:none}
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
-.topbar{padding:10px 16px;border-bottom:1px solid #eee;background:white;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.topbar{padding:10px 20px;border-bottom:1px solid #eee;background:white;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 .ai-pill{display:flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid #9FE1CB;background:#f0faf4;color:#25D366}
 .ai-dot{width:7px;height:7px;border-radius:50%;background:#25D366}
-.btng{background:#25D366;color:white;border:none;padding:6px 14px;border-radius:8px;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:5px}
-.btno{background:transparent;border:1px solid #eee;padding:6px 12px;border-radius:8px;font-size:12px;cursor:pointer;color:#1a1a1a;display:flex;align-items:center;gap:5px}
-.content{flex:1;overflow-y:auto;padding:16px}
+.btng{background:linear-gradient(135deg,#0a7a70,#0d6b8a);color:white;border:none;padding:6px 16px;border-radius:8px;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:5px}
+.btno{background:transparent;border:1px solid #ddd;padding:6px 12px;border-radius:8px;font-size:12px;cursor:pointer;color:#1a1a1a;display:flex;align-items:center;gap:5px}
+.content{flex:1;overflow-y:auto;padding:20px}
 .view{display:none}.view.active{display:block}
-.mcs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
-.mc{background:white;border-radius:10px;padding:12px;border:1px solid #eee}
-.mcl{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
-.mcv{font-size:20px;font-weight:700}
-.mcd{font-size:10px;color:#25D366;margin-top:1px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
-.panel{background:white;border-radius:10px;padding:12px 14px;border:1px solid #eee}
-.pt{font-size:12px;font-weight:600;margin-bottom:10px}
-.row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #f5f5f5}
-.row:last-child{border:none}
+
+/* DASHBOARD */
+.dash-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.dash-welcome{font-size:22px;font-weight:700;color:#0d1b2a}
+.dash-sub{font-size:13px;color:#666;margin-top:2px}
+.dash-logo{height:40px;object-fit:contain;opacity:.8}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.kpi{background:white;border-radius:12px;padding:16px 18px;border:1px solid #eee;position:relative;overflow:hidden}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.kpi-green::before{background:linear-gradient(90deg,#25D366,#0a7a70)}
+.kpi-blue::before{background:linear-gradient(90deg,#0d6b8a,#185FA5)}
+.kpi-amber::before{background:linear-gradient(90deg,#EF9F27,#e06b00)}
+.kpi-teal::before{background:linear-gradient(90deg,#4aaaa5,#0a7a70)}
+.kpi-label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.kpi-val{font-size:28px;font-weight:700;color:#0d1b2a;margin-bottom:2px}
+.kpi-delta{font-size:11px;color:#25D366;display:flex;align-items:center;gap:3px}
+.kpi-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:32px;opacity:.08;color:#0d1b2a}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px}
+.dash-card{background:white;border-radius:12px;padding:16px;border:1px solid #eee}
+.dash-card-title{font-size:13px;font-weight:600;color:#0d1b2a;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.dash-card-title i{color:#4aaaa5}
+.activity-item{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid #f5f5f5}
+.activity-item:last-child{border:none}
+.act-av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.act-info{flex:1;min-width:0}
+.act-name{font-size:12px;font-weight:500;color:#1a1a1a}
+.act-time{font-size:10px;color:#999}
 .tag{display:inline-block;padding:2px 7px;border-radius:8px;font-size:10px;font-weight:600}
 .tg{background:#e6faf0;color:#0a7a40}.tb{background:#e6f0ff;color:#1a4fa0}
 .ta{background:#fff8e6;color:#a07010}.tr{background:#ffe6e6;color:#a01010}.tp{background:#f0e6ff;color:#6010a0}
+.progress-bar{height:6px;background:#f0f0f0;border-radius:3px;margin-top:6px;overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#25D366,#0a7a70)}
+.camp-item{padding:8px 0;border-bottom:1px solid #f5f5f5}
+.camp-item:last-child{border:none}
+.camp-name{font-size:12px;font-weight:600;color:#1a1a1a;margin-bottom:2px}
+.camp-meta{font-size:11px;color:#888}
+.stat-ring{display:flex;align-items:center;justify-content:center;flex-direction:column;padding:10px}
+.ring-val{font-size:28px;font-weight:700;color:#0a7a70}
+.ring-lbl{font-size:11px;color:#888;margin-top:2px}
+.ia-status-row{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#f9f9f9;border-radius:8px;margin-bottom:8px}
+.ia-status-label{font-size:12px;font-weight:500;color:#1a1a1a}
+.ia-status-val{font-size:12px;color:#888}
+.dot-on{display:inline-block;width:8px;height:8px;border-radius:50%;background:#25D366;margin-right:5px}
+.dot-off{display:inline-block;width:8px;height:8px;border-radius:50%;background:#e24b4a;margin-right:5px}
+
+/* PAINEIS */
+.panel{background:white;border-radius:10px;padding:14px 16px;border:1px solid #eee;margin-bottom:12px}
+.pt{font-size:13px;font-weight:600;margin-bottom:12px;color:#0d1b2a}
+.row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #f5f5f5}
+.row:last-child{border:none}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .av{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
-.tog{width:30px;height:17px;border-radius:9px;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
+.tog{width:32px;height:18px;border-radius:9px;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
 .tog.on{background:#25D366}.tog.off{background:#ddd}
-.tog::after{content:'';position:absolute;width:13px;height:13px;border-radius:50%;background:white;top:2px;transition:left .2s}
-.tog.on::after{left:15px}.tog.off::after{left:2px}
+.tog::after{content:'';position:absolute;width:14px;height:14px;border-radius:50%;background:white;top:2px;transition:left .2s}
+.tog.on::after{left:16px}.tog.off::after{left:2px}
 .segtabs{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap}
-.stab{padding:4px 10px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid #eee;color:#666;background:white}
-.stab.active{background:#25D366;color:white;border-color:#25D366;font-weight:600}
+.stab{padding:4px 10px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid #ddd;color:#666;background:white}
+.stab.active{background:linear-gradient(135deg,#0a7a70,#0d6b8a);color:white;border-color:transparent;font-weight:600}
 .segbar{display:flex;align-items:center;justify-content:space-between;background:#f9f9f9;border-radius:8px;padding:7px 12px;margin-bottom:10px;border:1px solid #eee}
 table.ct{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}
-table.ct th{text-align:left;padding:5px 8px;color:#999;font-weight:400;border-bottom:1px solid #eee;font-size:11px}
-table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+table.ct th{text-align:left;padding:6px 8px;color:#888;font-weight:400;border-bottom:1px solid #eee;font-size:11px}
+table.ct td{padding:7px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pbox{background:#f9f9f9;border:1px solid #eee;border-radius:8px;padding:8px 10px;font-size:12px;font-family:monospace;line-height:1.5;margin-bottom:8px;width:100%;resize:vertical}
-.plbl{font-size:10px;color:#999;margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
-.kbwrap{background:#f5f5f5;border-radius:10px;padding:12px;min-height:380px}
-.kbtabs{display:flex;gap:4px;margin-bottom:12px;align-items:center;flex-wrap:wrap}
-.kbtab{padding:4px 10px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid #eee;color:#666;background:white}
-.kbtab.active{background:#25D366;color:white;border-color:#25D366;font-weight:600}
-.addtab{padding:4px 10px;border-radius:20px;font-size:12px;cursor:pointer;border:1px dashed #ccc;color:#999;background:transparent;display:flex;align-items:center;gap:4px}
-.addtab:hover{border-color:#25D366;color:#25D366}
-.kbboard{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;min-height:300px}
-.kbcol{min-width:175px;width:175px;flex-shrink:0;background:white;border-radius:8px;border:1px solid #eee;display:flex;flex-direction:column}
-.kbcolh{padding:8px 10px;display:flex;align-items:center;border-bottom:1px solid #f5f5f5}
+.plbl{font-size:10px;color:#888;margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px}
+
+/* HORÁRIO IA */
+.schedule-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:12px}
+.day-card{background:#f9f9f9;border:1px solid #eee;border-radius:8px;padding:8px 6px;text-align:center;cursor:pointer;transition:all .15s}
+.day-card.active{background:linear-gradient(135deg,#0a7a70,#0d6b8a);border-color:transparent;color:white}
+.day-card .day-name{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.day-card .day-check{font-size:14px;margin-top:4px}
+.time-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.time-row label{font-size:12px;color:#666;min-width:80px}
+.time-inp{padding:6px 10px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a;width:110px}
+.break-tag{display:inline-block;padding:3px 10px;border-radius:6px;font-size:11px;background:#e6faf0;color:#0a7a40;font-weight:500}
+
+/* KANBAN */
+.kbwrap{background:#f0f2f5;border-radius:12px;padding:14px;min-height:400px}
+.kbtabs{display:flex;gap:4px;margin-bottom:14px;align-items:center;flex-wrap:wrap}
+.kbtab{padding:5px 12px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid #ddd;color:#666;background:white;font-weight:500}
+.kbtab.active{background:linear-gradient(135deg,#0a7a70,#0d6b8a);color:white;border-color:transparent;font-weight:600}
+.addtab{padding:5px 10px;border-radius:20px;font-size:12px;cursor:pointer;border:1px dashed #ccc;color:#888;background:transparent;display:flex;align-items:center;gap:4px}
+.addtab:hover{border-color:#0a7a70;color:#0a7a70}
+.kbboard{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;min-height:320px}
+.kbcol{min-width:185px;width:185px;flex-shrink:0;background:white;border-radius:10px;border:1px solid #e8e8e8;display:flex;flex-direction:column;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.kbcolh{padding:10px 12px;display:flex;align-items:center;border-bottom:1px solid #f0f0f0}
 .colti{font-size:12px;font-weight:600;border:none;background:transparent;color:#1a1a1a;font-family:system-ui;outline:none;flex:1;min-width:0}
-.colcnt{font-size:10px;background:#f5f5f5;color:#999;border-radius:8px;padding:1px 5px;flex-shrink:0;margin-left:4px}
+.colcnt{font-size:10px;background:#f0f0f0;color:#888;border-radius:8px;padding:1px 6px;flex-shrink:0;margin-left:4px;font-weight:600}
 .coldel{font-size:12px;color:#ccc;cursor:pointer;flex-shrink:0;margin-left:4px}
 .coldel:hover{color:#e24b4a}
-.kbcards{padding:6px;flex:1;min-height:60px;transition:background .15s;border-radius:0 0 8px 8px}
-.kbcard{background:#f9f9f9;border-radius:8px;padding:7px 9px;margin-bottom:5px;cursor:grab;border:1px solid #eee;font-size:12px}
-.kbcard:active{opacity:.7}
+.kbcards{padding:8px;flex:1;min-height:60px;transition:background .15s}
+.kbcard{background:#f9fafb;border-radius:8px;padding:9px 10px;margin-bottom:6px;border:1px solid #e8e8e8;font-size:12px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.kbcard:hover{border-color:#0a7a70;box-shadow:0 2px 8px rgba(10,122,112,.1)}
 .kbcn{font-weight:600;color:#1a1a1a;margin-bottom:2px}
-.kbcs{font-size:11px;color:#999}
-.kbct{display:inline-block;padding:1px 6px;border-radius:6px;font-size:10px;font-weight:600;margin-top:3px}
-.addcardbn{padding:5px 8px;font-size:11px;color:#999;cursor:pointer;display:flex;align-items:center;gap:3px;border-top:1px solid #f5f5f5}
-.addcardbn:hover{color:#25D366}
-.addcolbn{min-width:36px;width:36px;height:36px;border-radius:8px;border:1px dashed #ccc;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#999;flex-shrink:0;align-self:flex-start;font-size:16px}
-.addcolbn:hover{border-color:#25D366;color:#25D366}
-.fw{display:grid;grid-template-columns:200px 1fr;gap:12px;min-height:420px}
+.kbcs{font-size:11px;color:#888;margin-bottom:4px}
+.kbct{display:inline-block;padding:1px 6px;border-radius:6px;font-size:10px;font-weight:600}
+.card-actions{display:flex;gap:4px;margin-top:6px;padding-top:6px;border-top:1px solid #f0f0f0}
+.card-btn{flex:1;padding:4px 6px;border-radius:6px;font-size:10px;cursor:pointer;border:1px solid #ddd;background:white;color:#555;display:flex;align-items:center;justify-content:center;gap:3px;font-weight:500;transition:all .15s}
+.card-btn:hover{border-color:#0a7a70;color:#0a7a70;background:#f0faf8}
+.card-btn-send{background:linear-gradient(135deg,#0a7a70,#0d6b8a);color:white;border-color:transparent}
+.card-btn-send:hover{background:linear-gradient(135deg,#0d8a80,#1076a0);border-color:transparent;color:white}
+.addcardbn{padding:6px 10px;font-size:11px;color:#888;cursor:pointer;display:flex;align-items:center;gap:3px;border-top:1px solid #f0f0f0}
+.addcardbn:hover{color:#0a7a70}
+.addcolbn{min-width:40px;width:40px;height:40px;border-radius:10px;border:1px dashed #ccc;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#888;flex-shrink:0;align-self:flex-start;font-size:18px}
+.addcolbn:hover{border-color:#0a7a70;color:#0a7a70}
+
+/* FUNIS */
+.fw{display:grid;grid-template-columns:210px 1fr;gap:14px;min-height:440px}
 .fsb{display:flex;flex-direction:column;gap:6px}
-.fitem{background:white;border:1px solid #eee;border-radius:8px;padding:9px 12px;cursor:pointer}
-.fitem:hover{border-color:#25D366}
-.fitem.active{border:1.5px solid #25D366;background:#f0faf4}
-.fin{font-size:12px;font-weight:600}
-.fim{font-size:11px;color:#999;margin-top:1px}
-.addfn{border:1px dashed #ccc;border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:#999;display:flex;align-items:center;gap:5px}
-.addfn:hover{border-color:#25D366;color:#25D366}
+.fitem{background:white;border:1px solid #eee;border-radius:10px;padding:10px 12px;cursor:pointer;transition:all .15s}
+.fitem:hover{border-color:#0a7a70}
+.fitem.active{border:1.5px solid #0a7a70;background:#f0faf8}
+.fin{font-size:12px;font-weight:600;color:#1a1a1a}
+.fim{font-size:11px;color:#888;margin-top:1px}
+.addfn{border:1px dashed #ccc;border-radius:10px;padding:9px 12px;cursor:pointer;font-size:12px;color:#888;display:flex;align-items:center;gap:5px}
+.addfn:hover{border-color:#0a7a70;color:#0a7a70}
 .fmain{display:flex;flex-direction:column;gap:8px}
-.ftb{display:flex;align-items:center;justify-content:space-between;background:white;border-radius:8px;padding:9px 12px;border:1px solid #eee}
-.fti{font-size:13px;font-weight:600;border:none;background:transparent;color:#1a1a1a;font-family:system-ui;outline:none}
-.sc{background:white;border:1px solid #eee;border-radius:8px;padding:10px 12px}
-.sh{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.snum{width:20px;height:20px;border-radius:50%;background:#25D366;color:white;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.sni{font-size:12px;font-weight:600;border:none;background:transparent;color:#1a1a1a;font-family:system-ui;outline:none;flex:1}
-.sdel{font-size:12px;color:#ccc;cursor:pointer}
+.ftb{display:flex;align-items:center;justify-content:space-between;background:white;border-radius:10px;padding:10px 14px;border:1px solid #eee}
+.fti{font-size:14px;font-weight:600;border:none;background:transparent;color:#1a1a1a;font-family:system-ui;outline:none;flex:1}
+.sc{background:white;border:1px solid #eee;border-radius:10px;padding:12px 14px}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.snum{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#0a7a70,#0d6b8a);color:white;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sni{font-size:13px;font-weight:600;border:none;background:transparent;color:#1a1a1a;font-family:system-ui;outline:none;flex:1}
+.sdel{font-size:13px;color:#ccc;cursor:pointer}
 .sdel:hover{color:#e24b4a}
-.ttabs{display:flex;gap:4px;margin-bottom:8px}
-.tt{padding:3px 9px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid #eee;color:#666;background:#f5f5f5}
-.tt.active{background:#25D366;color:white;border-color:#25D366}
-.me{width:100%;padding:7px 9px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a;font-family:system-ui;resize:vertical;min-height:56px}
-.drow{display:flex;align-items:center;gap:6px;font-size:11px;color:#999;margin-top:6px}
-.drow input{width:44px;padding:3px 6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a;text-align:center}
-.drow select{padding:3px 6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a}
-.aabtn{border:1px dashed #ccc;border-radius:8px;padding:8px;text-align:center;cursor:pointer;font-size:12px;color:#999;display:flex;align-items:center;justify-content:center;gap:5px;background:white}
-.aabtn:hover{border-color:#25D366;color:#25D366}
-.dbar{background:#f9f9f9;border-radius:8px;padding:9px 12px;border:1px solid #eee;display:flex;align-items:center;justify-content:space-between}
-.sarr{text-align:center;color:#25D366;font-size:16px;margin:2px 0}
-.uarea{border:1px dashed #ccc;border-radius:8px;padding:12px;text-align:center;cursor:pointer;font-size:12px;color:#999;margin-top:6px}
-.uarea:hover{border-color:#25D366;color:#25D366}
-.chatgrid{display:grid;grid-template-columns:195px 1fr 185px;border:1px solid #eee;border-radius:10px;overflow:hidden;background:white;height:calc(100vh - 100px)}
-.mbg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);align-items:center;justify-content:center;z-index:100}
+.ttabs{display:flex;gap:4px;margin-bottom:10px}
+.tt{padding:4px 10px;border-radius:20px;font-size:11px;cursor:pointer;border:1px solid #ddd;color:#666;background:#f9f9f9;display:flex;align-items:center;gap:4px}
+.tt.active{background:linear-gradient(135deg,#0a7a70,#0d6b8a);color:white;border-color:transparent}
+.me{width:100%;padding:8px 10px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a;font-family:system-ui;resize:vertical;min-height:64px}
+.drow{display:flex;align-items:center;gap:6px;font-size:11px;color:#888;margin-top:8px;padding-top:8px;border-top:1px solid #f0f0f0}
+.drow input{width:48px;padding:4px 6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a;text-align:center}
+.drow select{padding:4px 8px;font-size:11px;border-radius:6px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a}
+.aabtn{border:1px dashed #ccc;border-radius:10px;padding:10px;text-align:center;cursor:pointer;font-size:12px;color:#888;display:flex;align-items:center;justify-content:center;gap:5px;background:white}
+.aabtn:hover{border-color:#0a7a70;color:#0a7a70}
+.dbar{background:#f9f9f9;border-radius:8px;padding:10px 14px;border:1px solid #eee;display:flex;align-items:center;justify-content:space-between}
+.sarr{text-align:center;color:#0a7a70;font-size:18px;margin:4px 0}
+.upload-zone{border:1.5px dashed #0a7a70;border-radius:8px;padding:16px;text-align:center;cursor:pointer;font-size:12px;color:#0a7a70;margin-top:8px;background:#f0faf8;transition:all .15s}
+.upload-zone:hover{background:#e0f5f0}
+.upload-zone i{font-size:22px;display:block;margin-bottom:6px;opacity:.6}
+.file-preview{background:#f0faf8;border-radius:8px;padding:8px 12px;display:flex;align-items:center;gap:8px;margin-top:6px;border:1px solid #9FE1CB}
+.file-preview i{color:#0a7a70;font-size:16px}
+.file-preview .fname{font-size:12px;color:#0a7a40;font-weight:500;flex:1}
+.file-preview .fremove{font-size:12px;color:#ccc;cursor:pointer}
+.file-preview .fremove:hover{color:#e24b4a}
+.audio-player{background:#f0faf8;border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;border:1px solid #9FE1CB;margin-top:6px}
+.rec-btn{width:34px;height:34px;border-radius:50%;background:#e24b4a;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:14px;flex-shrink:0;transition:all .2s}
+.rec-btn.recording{background:#a01010;animation:pulse 1s infinite}
+.rec-btn.recorded{background:#0a7a70}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.audio-wave{flex:1;height:28px;display:flex;align-items:center;gap:2px}
+.wave-bar{width:3px;border-radius:2px;background:#0a7a70;opacity:.5}
+
+/* CHAT AO VIVO */
+.chatgrid{display:grid;grid-template-columns:200px 1fr 200px;border:1px solid #eee;border-radius:12px;overflow:hidden;background:white;height:calc(100vh - 108px)}
+
+/* REMARKETING */
+.rem-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f5f5f5}
+.rem-item:last-child{border:none}
+.rem-icon{width:34px;height:34px;border-radius:8px;background:#f0faf8;display:flex;align-items:center;justify-content:center;color:#0a7a70;font-size:16px;flex-shrink:0}
+.rem-info{flex:1}
+.rem-name{font-size:12px;font-weight:600;color:#1a1a1a}
+.rem-desc{font-size:11px;color:#888;margin-top:1px}
+
+/* MODAL */
+.mbg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);align-items:center;justify-content:center;z-index:200}
 .mbg.show{display:flex}
-.modal{background:white;border-radius:12px;padding:18px;width:280px;border:1px solid #eee}
-.modal h3{font-size:14px;font-weight:600;margin-bottom:12px}
-.modal input,.modal select{width:100%;margin-bottom:8px;padding:6px 9px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a;font-family:system-ui}
-.mbtns{display:flex;gap:6px;margin-top:4px}
-.mbtnok{background:#25D366;color:white;border:none;padding:7px 16px;border-radius:8px;font-size:12px;cursor:pointer;flex:1}
-.mbtnno{background:transparent;border:1px solid #eee;padding:7px 16px;border-radius:8px;font-size:12px;cursor:pointer;color:#1a1a1a}
+.modal{background:white;border-radius:14px;padding:20px;min-width:300px;max-width:400px;border:1px solid #eee;box-shadow:0 8px 32px rgba(0,0,0,.15)}
+.modal h3{font-size:15px;font-weight:700;color:#0d1b2a;margin-bottom:14px}
+.modal input,.modal select,.modal textarea{width:100%;margin-bottom:10px;padding:8px 10px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;color:#1a1a1a;font-family:system-ui}
+.mbtns{display:flex;gap:8px;margin-top:4px}
+.mbtnok{background:linear-gradient(135deg,#0a7a70,#0d6b8a);color:white;border:none;padding:8px 18px;border-radius:8px;font-size:12px;cursor:pointer;flex:1;font-weight:600}
+.mbtnno{background:transparent;border:1px solid #ddd;padding:8px 18px;border-radius:8px;font-size:12px;cursor:pointer;color:#666}
+
+/* Funil modal */
+.funil-select-item{background:#f9f9f9;border:1px solid #eee;border-radius:8px;padding:10px 12px;margin-bottom:6px;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:space-between}
+.funil-select-item:hover{border-color:#0a7a70;background:#f0faf8}
+.funil-select-item.selected{border-color:#0a7a70;background:#f0faf8}
+.funil-select-item .fn{font-size:12px;font-weight:600;color:#1a1a1a}
+.funil-select-item .fm{font-size:11px;color:#888}
 </style>
 </head>
 <body>
 <div class="app">
 <div class="sidebar">
-  <div class="logo">
-    <div class="logo-icon"><i class="ti ti-brand-whatsapp"></i></div>
-    <div class="logo-name">WhatsCRM</div>
+  <div class="logo-area">
+    <div style="width:32px;height:32px;background:linear-gradient(135deg,#4aaaa5,#0d6b8a);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <i class="ti ti-trending-up" style="color:white;font-size:18px"></i>
+    </div>
+    <div>
+      <div class="logo-text">E PRO CRM</div>
+      <div class="logo-sub">by E PRO Digital</div>
+    </div>
   </div>
   <nav id="main-nav">
     <div class="ns">Principal</div>
@@ -149,84 +245,202 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
 <div class="main">
   <div class="topbar">
     <div style="display:flex;align-items:center;gap:10px">
-      <span style="font-size:14px;font-weight:600" id="ptitle">Dashboard</span>
+      <span style="font-size:14px;font-weight:700;color:#0d1b2a" id="ptitle">Dashboard</span>
       <div class="ai-pill" id="ai-pill"><div class="ai-dot" id="ai-dot"></div><span id="ai-txt">IA ativa</span></div>
     </div>
     <button class="btng" id="topbtn"><i class="ti ti-plus"></i><span id="btn-lbl">Nova campanha</span></button>
   </div>
   <div class="content">
 
+    <!-- DASHBOARD -->
     <div id="v-dashboard" class="view active">
-      <div class="mcs">
-        <div class="mc"><div class="mcl">Contatos</div><div class="mcv" id="total-contatos">—</div><div class="mcd">carregando...</div></div>
-        <div class="mc"><div class="mcl">IA ativa hoje</div><div class="mcv">143</div><div class="mcd">↑ 68% do total</div></div>
-        <div class="mc"><div class="mcl">Agendamentos</div><div class="mcv">28</div><div class="mcd">hoje</div></div>
-        <div class="mc"><div class="mcl">Conversão</div><div class="mcv">31%</div><div class="mcd">↑ 5pts vs meta</div></div>
-      </div>
-      <div class="g2">
-        <div class="panel">
-          <div class="pt">Status do sistema</div>
-          <div class="row"><div style="flex:1;font-size:12px">API Railway</div><span class="tag tg" id="api-status">verificando...</span></div>
-          <div class="row"><div style="flex:1;font-size:12px">Banco Supabase</div><span class="tag tg">conectado</span></div>
-          <div class="row"><div style="flex:1;font-size:12px">Agente IA</div><span class="tag tg">ativo</span></div>
-          <div class="row"><div style="flex:1;font-size:12px">WhatsApp</div><span class="tag tr">não conectado</span></div>
+      <div class="dash-header">
+        <div>
+          <div class="dash-welcome" id="dash-greeting">Bom dia! 👋</div>
+          <div class="dash-sub">Aqui está o resumo do seu negócio hoje, <span id="dash-date"></span></div>
         </div>
-        <div class="panel">
-          <div class="pt">Checklist</div>
-          <div class="row"><i class="ti ti-check" style="color:#25D366;font-size:13px"></i><div style="font-size:12px;flex:1">GitHub + Railway + Supabase + Vercel</div></div>
-          <div class="row"><i class="ti ti-check" style="color:#25D366;font-size:13px"></i><div style="font-size:12px;flex:1">Agente IA com Anthropic API</div></div>
-          <div class="row"><i class="ti ti-clock" style="color:#eaa000;font-size:13px"></i><div style="font-size:12px;flex:1">Evolution API — conectar WhatsApp</div></div>
-          <div class="row"><i class="ti ti-clock" style="color:#eaa000;font-size:13px"></i><div style="font-size:12px;flex:1">VPS Hostinger — R$28/mês</div></div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="text-align:right">
+            <div style="font-size:11px;color:#888">E PRO Digital</div>
+            <div style="font-size:11px;color:#0a7a70;font-weight:600">CRM WhatsApp Pro</div>
+          </div>
+          <div style="width:44px;height:44px;background:linear-gradient(135deg,#4aaaa5,#0d6b8a);border-radius:10px;display:flex;align-items:center;justify-content:center">
+            <i class="ti ti-trending-up" style="color:white;font-size:22px"></i>
+          </div>
+        </div>
+      </div>
+      <div class="kpis">
+        <div class="kpi kpi-green">
+          <div class="kpi-label">Total de contatos</div>
+          <div class="kpi-val" id="total-contatos">—</div>
+          <div class="kpi-delta"><i class="ti ti-trending-up" style="font-size:12px"></i> crescendo</div>
+          <i class="ti ti-users kpi-icon"></i>
+        </div>
+        <div class="kpi kpi-blue">
+          <div class="kpi-label">Atendidos hoje</div>
+          <div class="kpi-val">143</div>
+          <div class="kpi-delta"><i class="ti ti-robot" style="font-size:12px"></i> 68% pela IA</div>
+          <i class="ti ti-message-circle kpi-icon"></i>
+        </div>
+        <div class="kpi kpi-amber">
+          <div class="kpi-label">Agendamentos</div>
+          <div class="kpi-val">28</div>
+          <div class="kpi-delta"><i class="ti ti-calendar" style="font-size:12px"></i> hoje</div>
+          <i class="ti ti-calendar kpi-icon"></i>
+        </div>
+        <div class="kpi kpi-teal">
+          <div class="kpi-label">Taxa de conversão</div>
+          <div class="kpi-val">31%</div>
+          <div class="kpi-delta"><i class="ti ti-trending-up" style="font-size:12px"></i> +5pts vs meta</div>
+          <i class="ti ti-target kpi-icon"></i>
+        </div>
+      </div>
+      <div class="dash-grid">
+        <div class="dash-card">
+          <div class="dash-card-title"><i class="ti ti-message-circle"></i>Últimas conversas</div>
+          <div class="activity-item">
+            <div class="act-av" style="background:#e6faf0;color:#0a7a40">AC</div>
+            <div class="act-info"><div class="act-name">Ana Costa</div><div class="act-time">Consulta agendada · há 5min</div></div>
+            <span class="tag tg">IA</span>
+          </div>
+          <div class="activity-item">
+            <div class="act-av" style="background:#e6f0ff;color:#1a4fa0">PM</div>
+            <div class="act-info"><div class="act-name">Pedro Mota</div><div class="act-time">Pergunta sobre produto · há 12min</div></div>
+            <span class="tag tb">IA</span>
+          </div>
+          <div class="activity-item">
+            <div class="act-av" style="background:#f0e6ff;color:#6010a0">LF</div>
+            <div class="act-info"><div class="act-name">Lúcia Faria</div><div class="act-time">Transferido p/ você · há 20min</div></div>
+            <span class="tag ta">Você</span>
+          </div>
+          <div class="activity-item">
+            <div class="act-av" style="background:#fff8e6;color:#a07010">RS</div>
+            <div class="act-info"><div class="act-name">Rafael Souza</div><div class="act-time">Lead novo · há 30min</div></div>
+            <span class="tag tb">IA</span>
+          </div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-title"><i class="ti ti-send"></i>Campanhas ativas</div>
+          <div class="camp-item">
+            <div class="camp-name">Promoção Julho — Clientes</div>
+            <div class="camp-meta">2.400 de 3.000 enviados</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+          </div>
+          <div class="camp-item">
+            <div class="camp-name">Reengajamento VIP</div>
+            <div class="camp-meta">890 de 1.200 enviados</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:74%"></div></div>
+          </div>
+          <div class="camp-item">
+            <div class="camp-name">Lembrete Consultas</div>
+            <div class="camp-meta">Agendada para amanhã</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+          </div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-title"><i class="ti ti-robot"></i>Status da IA hoje</div>
+          <div style="display:flex;justify-content:center;margin-bottom:12px">
+            <div class="stat-ring">
+              <div class="ring-val">97</div>
+              <div class="ring-lbl">conversas resolvidas pela IA</div>
+            </div>
+          </div>
+          <div class="ia-status-row">
+            <span class="ia-status-label"><span class="dot-on"></span>IA ativa agora</span>
+            <span class="ia-status-val">08:00–22:00</span>
+          </div>
+          <div class="ia-status-row">
+            <span class="ia-status-label">Tempo médio resposta</span>
+            <span class="ia-status-val" style="color:#0a7a70;font-weight:600">4.2s</span>
+          </div>
+          <div class="ia-status-row">
+            <span class="ia-status-label">Transferências para humano</span>
+            <span class="ia-status-val">46 hoje</span>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- AGENTE IA -->
     <div id="v-agente" class="view">
       <div class="g2">
         <div>
-          <div class="panel" style="margin-bottom:12px">
-            <div class="pt">Controle</div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span style="font-size:12px">IA respondendo automaticamente</span><div class="tog on" id="tog-ia-global"></div></div>
-            <div class="row"><i class="ti ti-clock" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Horário</div><span style="font-size:12px;font-weight:600">08:00–22:00</span></div>
-            <div class="row"><i class="ti ti-message-2" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Delay respostas</div><span style="font-size:12px;font-weight:600">3–8s</span></div>
-            <div class="row"><i class="ti ti-user-check" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Transferir se não souber</div><div class="tog on"></div></div>
+          <div class="panel">
+            <div class="pt">Controle geral</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f5f5f5;margin-bottom:8px">
+              <div>
+                <div style="font-size:13px;font-weight:600">IA respondendo automaticamente</div>
+                <div style="font-size:11px;color:#888;margin-top:2px">Quando ativada, responde todos os contatos</div>
+              </div>
+              <div class="tog on" id="tog-ia-global"></div>
+            </div>
+            <div class="row"><i class="ti ti-message-2" style="font-size:14px;color:#888"></i><div style="flex:1;font-size:12px">Delay entre respostas</div><span style="font-size:12px;font-weight:600">3–8s (humanizado)</span></div>
+            <div class="row"><i class="ti ti-user-check" style="font-size:14px;color:#888"></i><div style="flex:1;font-size:12px">Transferir se não souber</div><div class="tog on"></div></div>
+            <div class="row"><i class="ti ti-calendar" style="font-size:14px;color:#888"></i><div style="flex:1;font-size:12px">Agendar pelo bot</div><div class="tog on"></div></div>
           </div>
           <div class="panel">
             <div class="pt">Perfil do agente</div>
-            <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Nome</label>
-            <input type="text" value="Sofia — Assistente Virtual" style="width:100%;margin-bottom:8px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
-            <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Segmento</label>
-            <select style="width:100%;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9"><option>Todos</option><option>Clínica</option><option>Advocacia</option></select>
+            <label style="font-size:11px;color:#888;display:block;margin-bottom:4px">Nome do agente</label>
+            <input type="text" value="Sofia — Assistente Virtual" style="width:100%;margin-bottom:10px;padding:7px 10px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
+            <label style="font-size:11px;color:#888;display:block;margin-bottom:4px">Segmento padrão</label>
+            <select style="width:100%;margin-bottom:10px;padding:7px 10px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
+              <option>Todos os contatos</option><option>Clínica médica</option><option>Advocacia</option><option>E-commerce</option>
+            </select>
+            <button class="btng" style="width:100%;justify-content:center">Salvar perfil</button>
           </div>
         </div>
         <div>
-          <div class="panel" style="margin-bottom:12px">
-            <div class="pt">Prompts</div>
+          <div class="panel">
+            <div class="pt" style="display:flex;align-items:center;justify-content:space-between">
+              <span>Horário de funcionamento</span>
+              <div class="tog on" id="tog-schedule"></div>
+            </div>
+            <div style="font-size:11px;color:#888;margin-bottom:12px">Fora deste horário a IA não responde automaticamente</div>
+            <div style="font-size:11px;color:#888;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px;font-weight:600">Dias da semana</div>
+            <div class="schedule-grid">
+              <div class="day-card active" data-day="seg"><div class="day-name">Seg</div><div class="day-check">✓</div></div>
+              <div class="day-card active" data-day="ter"><div class="day-name">Ter</div><div class="day-check">✓</div></div>
+              <div class="day-card active" data-day="qua"><div class="day-name">Qua</div><div class="day-check">✓</div></div>
+              <div class="day-card active" data-day="qui"><div class="day-name">Qui</div><div class="day-check">✓</div></div>
+              <div class="day-card active" data-day="sex"><div class="day-name">Sex</div><div class="day-check">✓</div></div>
+              <div class="day-card" data-day="sab"><div class="day-name">Sáb</div><div class="day-check">—</div></div>
+              <div class="day-card" data-day="dom"><div class="day-name">Dom</div><div class="day-check">—</div></div>
+            </div>
+            <div class="time-row">
+              <label>Início</label>
+              <input type="time" class="time-inp" value="08:00">
+            </div>
+            <div class="time-row">
+              <label>Fim</label>
+              <input type="time" class="time-inp" value="22:00">
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#f9f9f9;border-radius:8px;margin-top:4px">
+              <span style="font-size:12px;color:#666">Intervalo de almoço</span>
+              <div class="tog off" id="tog-break"></div>
+            </div>
+            <div id="break-times" style="display:none;margin-top:8px">
+              <div class="time-row"><label>Almoço início</label><input type="time" class="time-inp" value="12:00"></div>
+              <div class="time-row"><label>Almoço fim</label><input type="time" class="time-inp" value="13:30"></div>
+            </div>
+            <div style="margin-top:6px;padding:8px 12px;background:#fff8e6;border-radius:8px;border:1px solid #FAC775;font-size:11px;color:#a07010;display:flex;align-items:center;gap:6px">
+              <i class="ti ti-info-circle" style="font-size:14px"></i>
+              Fora do horário a IA envia: "Olá! Estou fora do horário de atendimento. Retornarei em breve! 🕐"
+            </div>
+            <button class="btng" style="width:100%;justify-content:center;margin-top:10px"><i class="ti ti-check"></i>Salvar horário</button>
+          </div>
+          <div class="panel">
+            <div class="pt">Prompts de personalidade</div>
             <div class="plbl">Prompt base</div>
             <textarea class="pbox" rows="3">Você é Sofia, assistente virtual. Atenda com cordialidade. Responda em português. Nunca invente informações. Se não souber, transfira para um humano.</textarea>
             <div class="plbl">Agendamento</div>
             <textarea class="pbox" rows="2">Para agendar: pergunte nome, data e tipo de serviço. Confirme com dia, hora e local.</textarea>
-            <div class="plbl">Vendas</div>
-            <textarea class="pbox" rows="2">Apresente produtos com entusiasmo. Use o nome do cliente. Máximo 2 opções.</textarea>
-            <button class="btng" style="margin-top:8px">Salvar prompts</button>
-          </div>
-          <div class="panel">
-            <div class="pt">Simulador</div>
-            <div style="background:#f9f9f9;border-radius:8px;padding:10px">
-              <div id="sim-msgs" style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px;max-height:160px;overflow-y:auto">
-                <div style="align-self:flex-start;background:white;border:1px solid #eee;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%">Olá, quero marcar uma consulta</div>
-                <div style="align-self:flex-start;background:#e6f0ff;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%;color:#1a4fa0">Olá! Sou a Sofia! Qual especialidade?<div style="font-size:10px;color:#888;margin-top:2px">Sofia · IA</div></div>
-              </div>
-              <div style="display:flex;gap:6px">
-                <input type="text" id="sim-input" placeholder="Simule uma mensagem..." style="flex:1;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:white">
-                <button class="btng" id="sim-btn" style="padding:5px 10px"><i class="ti ti-send"></i></button>
-              </div>
-            </div>
+            <button class="btng" style="margin-top:4px">Salvar prompts</button>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- CONTATOS -->
     <div id="v-contatos" class="view">
       <div class="segtabs" id="seg-tabs">
         <div class="stab active" data-seg="Todos" data-count="5204">Todos (5.204)</div>
@@ -244,16 +458,17 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
         </div>
       </div>
       <table class="ct">
-        <thead><tr><th style="width:28%">Nome</th><th style="width:22%">WhatsApp</th><th style="width:15%">Tag</th><th style="width:20%">Última msg</th><th style="width:15%">IA</th></tr></thead>
+        <thead><tr><th style="width:25%">Nome</th><th style="width:20%">WhatsApp</th><th style="width:13%">Tag</th><th style="width:17%">Última msg</th><th style="width:13%">IA</th><th style="width:12%">Ações</th></tr></thead>
         <tbody>
-          <tr><td><span class="av" style="background:#e6faf0;color:#0a7a40;margin-right:5px">AC</span>Ana Costa</td><td>67 99801-2233</td><td><span class="tag tg">Cliente</span></td><td>há 2h</td><td><span class="tag tg">Ativa</span></td></tr>
-          <tr><td><span class="av" style="background:#e6f0ff;color:#1a4fa0;margin-right:5px">PM</span>Pedro Mota</td><td>11 98712-5544</td><td><span class="tag tb">Lead</span></td><td>há 4h</td><td><span class="tag tb">Ativa</span></td></tr>
-          <tr><td><span class="av" style="background:#f0e6ff;color:#6010a0;margin-right:5px">LF</span>Lúcia Faria</td><td>21 97654-9910</td><td><span class="tag tp">VIP</span></td><td>há 1h</td><td><span class="tag ta">Humano</span></td></tr>
-          <tr><td><span class="av" style="background:#fff8e6;color:#a07010;margin-right:5px">RS</span>Rafael Souza</td><td>31 96543-7788</td><td><span class="tag tb">Lead</span></td><td>há 2d</td><td><span class="tag tr">Pausada</span></td></tr>
+          <tr><td><span class="av" style="background:#e6faf0;color:#0a7a40;margin-right:5px">AC</span>Ana Costa</td><td>67 99801-2233</td><td><span class="tag tg">Cliente</span></td><td>há 2h</td><td><span class="tag tg">Ativa</span></td><td><button class="btng" style="font-size:10px;padding:3px 8px" onclick="openFunilModal('Ana Costa')"><i class="ti ti-send"></i>Funil</button></td></tr>
+          <tr><td><span class="av" style="background:#e6f0ff;color:#1a4fa0;margin-right:5px">PM</span>Pedro Mota</td><td>11 98712-5544</td><td><span class="tag tb">Lead</span></td><td>há 4h</td><td><span class="tag tb">Ativa</span></td><td><button class="btng" style="font-size:10px;padding:3px 8px" onclick="openFunilModal('Pedro Mota')"><i class="ti ti-send"></i>Funil</button></td></tr>
+          <tr><td><span class="av" style="background:#f0e6ff;color:#6010a0;margin-right:5px">LF</span>Lúcia Faria</td><td>21 97654-9910</td><td><span class="tag tp">VIP</span></td><td>há 1h</td><td><span class="tag ta">Humano</span></td><td><button class="btng" style="font-size:10px;padding:3px 8px" onclick="openFunilModal('Lúcia Faria')"><i class="ti ti-send"></i>Funil</button></td></tr>
+          <tr><td><span class="av" style="background:#fff8e6;color:#a07010;margin-right:5px">RS</span>Rafael Souza</td><td>31 96543-7788</td><td><span class="tag tb">Lead</span></td><td>há 2d</td><td><span class="tag tr">Pausada</span></td><td><button class="btng" style="font-size:10px;padding:3px 8px" onclick="openFunilModal('Rafael Souza')"><i class="ti ti-send"></i>Funil</button></td></tr>
         </tbody>
       </table>
     </div>
 
+    <!-- KANBAN -->
     <div id="v-kanban" class="view">
       <div class="kbwrap">
         <div class="kbtabs" id="kb-tabs"></div>
@@ -261,6 +476,7 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       </div>
     </div>
 
+    <!-- DISPAROS -->
     <div id="v-disparos" class="view">
       <div class="segtabs" id="disp-tabs">
         <div class="stab active">Todos (5.204)</div>
@@ -273,31 +489,32 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       <div class="g2">
         <div class="panel">
           <div class="pt">Configurar disparo</div>
-          <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Nome da campanha</label>
-          <input type="text" value="Promoção Julho" style="width:100%;margin-bottom:8px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
-          <label style="font-size:11px;color:#999;display:block;margin-bottom:3px">Mensagem (use {{nome}}, {{data}})</label>
-          <textarea rows="4" style="width:100%;margin-bottom:8px;padding:6px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;resize:none">Olá {{nome}}! Temos uma oferta especial. Responda SIM!</textarea>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><div class="tog on"></div><span style="font-size:11px;color:#666">IA responde quem interagir</span></div>
-          <button class="btng" style="width:100%;justify-content:center;padding:8px"><i class="ti ti-send"></i>Disparar agora</button>
+          <label style="font-size:11px;color:#888;display:block;margin-bottom:4px">Nome da campanha</label>
+          <input type="text" value="Promoção Julho" style="width:100%;margin-bottom:10px;padding:7px 10px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9">
+          <label style="font-size:11px;color:#888;display:block;margin-bottom:4px">Mensagem (use {{nome}}, {{data}})</label>
+          <textarea rows="4" style="width:100%;margin-bottom:10px;padding:7px 10px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;resize:none">Olá {{nome}}! Temos uma oferta especial. Responda SIM!</textarea>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><div class="tog on"></div><span style="font-size:11px;color:#666">IA responde quem interagir</span></div>
+          <button class="btng" style="width:100%;justify-content:center;padding:9px"><i class="ti ti-send"></i>Disparar agora</button>
         </div>
         <div class="panel">
           <div class="pt">Histórico</div>
-          <div class="row"><div style="flex:1"><div style="font-size:12px;font-weight:600">Promoção Junho</div><div style="font-size:11px;color:#999">3.000 enviadas · 76% lidas</div></div><span class="tag tg">OK</span></div>
-          <div class="row"><div style="flex:1"><div style="font-size:12px;font-weight:600">Lembrete VIP</div><div style="font-size:11px;color:#999">145 enviadas · 92% lidas</div></div><span class="tag tg">OK</span></div>
-          <div class="row"><div style="flex:1"><div style="font-size:12px;font-weight:600">Pauta Jurídica</div><div style="font-size:11px;color:#999">203 enviadas · 61% lidas</div></div><span class="tag tg">OK</span></div>
+          <div class="row"><div style="flex:1"><div style="font-size:12px;font-weight:600">Promoção Junho</div><div style="font-size:11px;color:#888">3.000 enviadas · 76% lidas</div></div><span class="tag tg">OK</span></div>
+          <div class="row"><div style="flex:1"><div style="font-size:12px;font-weight:600">Lembrete VIP</div><div style="font-size:11px;color:#888">145 enviadas · 92% lidas</div></div><span class="tag tg">OK</span></div>
+          <div class="row"><div style="flex:1"><div style="font-size:12px;font-weight:600">Pauta Jurídica</div><div style="font-size:11px;color:#888">203 enviadas · 61% lidas</div></div><span class="tag tg">OK</span></div>
         </div>
       </div>
     </div>
 
+    <!-- FUNIS -->
     <div id="v-funis" class="view">
       <div class="fw">
         <div class="fsb">
-          <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px">Meus funis</div>
+          <div style="font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px">Meus funis</div>
           <div id="funil-list"></div>
           <div class="addfn" id="addfn-btn"><i class="ti ti-plus"></i>Novo funil</div>
-          <div style="margin-top:10px;padding-top:10px;border-top:1px solid #eee">
-            <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px">Disparar para</div>
-            <select id="funil-seg" style="width:100%;padding:5px 8px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;margin-bottom:6px">
+          <div style="margin-top:12px;padding-top:12px;border-top:1px solid #eee">
+            <div style="font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Disparar para</div>
+            <select id="funil-seg" style="width:100%;padding:7px 10px;font-size:12px;border-radius:8px;border:1px solid #eee;background:#f9f9f9;margin-bottom:8px">
               <option>Todos os contatos</option><option>Leads novos</option><option>Clientes ativos</option><option>VIP</option><option>Clínica</option><option>Advocacia</option>
             </select>
             <button class="btng" style="width:100%;justify-content:center" id="disparar-funil-btn"><i class="ti ti-send"></i>Disparar funil</button>
@@ -311,7 +528,7 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
               <button class="btng" style="font-size:11px" id="save-funil-btn"><i class="ti ti-check"></i>Salvar</button>
             </div>
           </div>
-          <div id="steps-area" style="display:flex;flex-direction:column;gap:6px;overflow-y:auto;max-height:calc(100vh - 320px)"></div>
+          <div id="steps-area" style="display:flex;flex-direction:column;gap:8px;overflow-y:auto;max-height:calc(100vh - 330px)"></div>
           <div class="aabtn" id="add-step-btn"><i class="ti ti-plus"></i>Adicionar etapa</div>
           <div class="dbar">
             <div style="font-size:12px;color:#666">Funil: <strong id="d-fn">Funil de vendas</strong> · <strong id="d-st">3</strong> etapas</div>
@@ -321,106 +538,126 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
       </div>
     </div>
 
+    <!-- REMARKETING -->
     <div id="v-remarketing" class="view">
       <div class="panel">
         <div class="pt">Automações ativas</div>
-        <div class="row"><i class="ti ti-shopping-cart" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Carrinho abandonado</div><div style="color:#999;font-size:11px">1h após inatividade + IA responde</div></div><div class="tog on"></div></div>
-        <div class="row"><i class="ti ti-calendar-off" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Consulta não confirmada</div><div style="color:#999;font-size:11px">Lembra 24h e 1h antes</div></div><div class="tog on"></div></div>
-        <div class="row"><i class="ti ti-clock" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Reengajamento 30 dias</div><div style="color:#999;font-size:11px">Contatos sem interação</div></div><div class="tog on"></div></div>
-        <div class="row"><i class="ti ti-star" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px"><div style="font-weight:600">Upsell pós-compra</div><div style="color:#999;font-size:11px">7 dias após atendimento</div></div><div class="tog off"></div></div>
+        <div class="rem-item"><div class="rem-icon"><i class="ti ti-shopping-cart"></i></div><div class="rem-info"><div class="rem-name">Carrinho abandonado</div><div class="rem-desc">Dispara 1h após inatividade + IA responde interessados</div></div><div class="tog on"></div></div>
+        <div class="rem-item"><div class="rem-icon"><i class="ti ti-calendar-off"></i></div><div class="rem-info"><div class="rem-name">Consulta não confirmada</div><div class="rem-desc">Lembrete 24h e 1h antes do horário</div></div><div class="tog on"></div></div>
+        <div class="rem-item"><div class="rem-icon"><i class="ti ti-clock"></i></div><div class="rem-info"><div class="rem-name">Reengajamento 30 dias</div><div class="rem-desc">Contatos sem interação há mais de 30 dias</div></div><div class="tog on"></div></div>
+        <div class="rem-item"><div class="rem-icon"><i class="ti ti-star"></i></div><div class="rem-info"><div class="rem-name">Upsell pós-compra</div><div class="rem-desc">7 dias após conversão ou atendimento</div></div><div class="tog off"></div></div>
+        <div class="rem-item"><div class="rem-icon"><i class="ti ti-gift"></i></div><div class="rem-info"><div class="rem-name">Aniversário do cliente</div><div class="rem-desc">Mensagem especial no dia do aniversário</div></div><div class="tog on"></div></div>
       </div>
     </div>
 
+    <!-- AGENDA -->
     <div id="v-agenda" class="view">
       <div class="g2">
         <div class="panel">
-          <div class="pt">Hoje</div>
-          <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid #eee;background:white;margin-bottom:6px"><div style="font-size:11px;font-weight:600;min-width:38px">08:30</div><div><div style="font-size:12px;font-weight:600">Ana Costa</div><div style="font-size:11px;color:#999">Clínica · Cardiologia</div></div><span class="tag tb">OK</span></div>
-          <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid #eee;background:white;margin-bottom:6px"><div style="font-size:11px;font-weight:600;min-width:38px">10:00</div><div><div style="font-size:12px;font-weight:600">João Lima</div><div style="font-size:11px;color:#999">Advocacia · Trabalhista</div></div><span class="tag tp">OK</span></div>
-          <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;border:1px solid #eee;background:white"><div style="font-size:11px;font-weight:600;min-width:38px">14:30</div><div><div style="font-size:12px;font-weight:600">Pedro Alves</div><div style="font-size:11px;color:#999">Clínica · Dermatologia</div></div><span class="tag ta">Pendente</span></div>
+          <div class="pt">Agendamentos de hoje</div>
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;border:1px solid #eee;background:white;margin-bottom:6px"><div style="font-size:11px;font-weight:600;min-width:40px;color:#0a7a70">08:30</div><div style="flex:1"><div style="font-size:12px;font-weight:600">Ana Costa</div><div style="font-size:11px;color:#888">Clínica · Cardiologia</div></div><span class="tag tb">Conf.</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;border:1px solid #eee;background:white;margin-bottom:6px"><div style="font-size:11px;font-weight:600;min-width:40px;color:#0a7a70">10:00</div><div style="flex:1"><div style="font-size:12px;font-weight:600">João Lima</div><div style="font-size:11px;color:#888">Advocacia · Trabalhista</div></div><span class="tag tp">Conf.</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;border:1px solid #eee;background:white"><div style="font-size:11px;font-weight:600;min-width:40px;color:#e67e22">14:30</div><div style="flex:1"><div style="font-size:12px;font-weight:600">Pedro Alves</div><div style="font-size:11px;color:#888">Clínica · Dermatologia</div></div><span class="tag ta">Pend.</span></div>
         </div>
         <div class="panel">
           <div class="pt">Integrações</div>
-          <div class="row"><i class="ti ti-calendar" style="color:#25D366;font-size:13px"></i><div style="flex:1;font-size:12px">Google Calendar</div><span class="tag tg">Ativo</span></div>
-          <div class="row"><i class="ti ti-stethoscope" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Doctoralia</div><span class="tag ta">Configurar</span></div>
-          <div class="row"><i class="ti ti-briefcase" style="font-size:13px;color:#999"></i><div style="flex:1;font-size:12px">Projuris / Advbox</div><span class="tag ta">Configurar</span></div>
+          <div class="row"><i class="ti ti-calendar" style="color:#0a7a70;font-size:14px"></i><div style="flex:1;font-size:12px">Google Calendar</div><span class="tag tg">Ativo</span></div>
+          <div class="row"><i class="ti ti-stethoscope" style="font-size:14px;color:#888"></i><div style="flex:1;font-size:12px">Doctoralia</div><span class="tag ta">Configurar</span></div>
+          <div class="row"><i class="ti ti-briefcase" style="font-size:14px;color:#888"></i><div style="flex:1;font-size:12px">Projuris / Advbox</div><span class="tag ta">Configurar</span></div>
         </div>
       </div>
     </div>
 
+    <!-- CLINICA -->
     <div id="v-clinica" class="view">
       <div class="panel"><div class="pt">Prompt — clínica médica</div><div class="plbl">Recepcionista virtual</div>
       <textarea class="pbox" rows="5">Você é a recepcionista virtual da Clínica [Nome]. Ao receber mensagem: 1) Cumprimente pelo nome. 2) Pergunte se é consulta, retorno ou exame. 3) Verifique disponibilidade. 4) Confirme: nome, convênio, especialidade. Nunca dê diagnósticos médicos.</textarea>
       <button class="btng" style="margin-top:8px">Salvar prompt</button></div>
     </div>
 
+    <!-- ADVOCACIA -->
     <div id="v-adv" class="view">
       <div class="panel"><div class="pt">Prompt — advocacia</div><div class="plbl">Assistente jurídica virtual</div>
       <textarea class="pbox" rows="5">Você é assistente jurídica virtual do escritório [Nome]. Ao receber mensagem: 1) Identifique a área: trabalhista, cível, família, criminal. 2) Colete informações sem dar orientação jurídica. 3) Agende consulta com o advogado. NUNCA dê parecer jurídico.</textarea>
       <button class="btng" style="margin-top:8px">Salvar prompt</button></div>
     </div>
 
+    <!-- ATENDIMENTO -->
     <div id="v-atend" class="view">
       <div class="chatgrid">
         <div style="border-right:1px solid #eee;display:flex;flex-direction:column;background:#f9f9f9;overflow:hidden">
-          <div style="padding:10px 12px;border-bottom:1px solid #eee;font-size:12px;font-weight:600;display:flex;justify-content:space-between;align-items:center;flex-shrink:0">Fila <span style="background:#e24b4a;color:white;border-radius:8px;font-size:10px;padding:1px 5px">3</span></div>
-          <div style="padding:6px 10px;border-bottom:1px solid #eee;flex-shrink:0"><input type="text" placeholder="Buscar..." style="width:100%;padding:5px 8px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white"></div>
+          <div style="padding:10px 12px;border-bottom:1px solid #eee;font-size:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;color:#0d1b2a">Fila <span style="background:#e24b4a;color:white;border-radius:8px;font-size:10px;padding:1px 5px">3</span></div>
+          <div style="padding:6px 10px;border-bottom:1px solid #eee;flex-shrink:0"><input type="text" placeholder="Buscar contato..." style="width:100%;padding:5px 8px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white"></div>
           <div id="atend-list" style="flex:1;overflow-y:auto"></div>
         </div>
         <div style="display:flex;flex-direction:column;overflow:hidden;position:relative">
           <div style="padding:10px 14px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:10px;flex-shrink:0;background:white">
-            <div id="ach-av" style="width:34px;height:34px;border-radius:50%;background:#e6faf0;color:#0a7a40;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0">AC</div>
-            <div style="flex:1"><div style="font-size:13px;font-weight:600" id="ach-name">Ana Costa</div><div style="font-size:11px;color:#25D366" id="ach-sub">● Online · Clínica</div></div>
-            <div id="ia-pill2" style="display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;cursor:pointer;background:#e6faf0;color:#0a7a40;border:1px solid #9FE1CB;font-weight:500;flex-shrink:0">
+            <div id="ach-av" style="width:34px;height:34px;border-radius:50%;background:#e6faf0;color:#0a7a40;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">AC</div>
+            <div style="flex:1"><div style="font-size:13px;font-weight:700;color:#0d1b2a" id="ach-name">Ana Costa</div><div style="font-size:11px;color:#25D366" id="ach-sub">● Online · Clínica</div></div>
+            <div id="ia-pill2" style="display:flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;font-size:11px;cursor:pointer;background:#e6faf0;color:#0a7a40;border:1px solid #9FE1CB;font-weight:600;flex-shrink:0">
               <div id="ia-dot2" style="width:6px;height:6px;border-radius:50%;background:#25D366"></div><span id="ia-txt2">IA ativa</span>
             </div>
           </div>
-          <div id="atend-msgs" style="flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:8px;background:#f0f2f5">
-            <div style="text-align:center;font-size:10px;color:#999;padding:4px 0">Hoje, 26 mai</div>
-            <div style="display:flex;flex-direction:column;align-items:flex-start"><div style="font-size:9px;color:#999;margin-bottom:2px">Ana Costa</div><div style="background:white;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;line-height:1.5">Olá! Quero marcar consulta com cardiologista<div style="font-size:10px;color:#999;margin-top:2px">14:30</div></div></div>
-            <div style="display:flex;flex-direction:column;align-items:flex-start"><div style="font-size:9px;color:#1a4fa0;margin-bottom:2px">Sofia · IA</div><div style="background:#e6f0ff;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#1a4fa0;line-height:1.5">Olá Ana! Sou a Sofia! Qual convênio e data preferida?<div style="font-size:10px;color:#888;margin-top:2px">14:30 🤖</div></div></div>
-            <div style="display:flex;flex-direction:column;align-items:flex-start"><div style="background:white;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;line-height:1.5">Unimed, prefiro manhã<div style="font-size:10px;color:#999;margin-top:2px">14:32</div></div></div>
-            <div style="display:flex;flex-direction:column;align-items:flex-start"><div style="font-size:9px;color:#1a4fa0;margin-bottom:2px">Sofia · IA</div><div style="background:#e6f0ff;border-radius:0 10px 10px 10px;padding:7px 10px;font-size:12px;max-width:75%;color:#1a4fa0;line-height:1.5">Temos quinta às 08:30 com Dr. Ferreira. Confirmo?<div style="font-size:10px;color:#888;margin-top:2px">14:32 🤖</div></div></div>
+          <div id="atend-msgs" style="flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:10px;background:#f0f2f5">
+            <div style="text-align:center;font-size:10px;color:#999;padding:4px 0">Hoje, 27 mai</div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start"><div style="font-size:9px;color:#888;margin-bottom:3px">Ana Costa</div><div style="background:white;border-radius:0 12px 12px 12px;padding:8px 12px;font-size:12px;max-width:75%;line-height:1.5;box-shadow:0 1px 3px rgba(0,0,0,.06)">Olá! Quero marcar consulta com cardiologista<div style="font-size:10px;color:#999;margin-top:3px">14:30</div></div></div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start"><div style="font-size:9px;color:#0a7a70;margin-bottom:3px;font-weight:500">Sofia · IA</div><div style="background:#e8f5e9;border-radius:0 12px 12px 12px;padding:8px 12px;font-size:12px;max-width:75%;color:#1a6b3a;line-height:1.5;box-shadow:0 1px 3px rgba(0,0,0,.06)">Olá Ana! Sou a Sofia! Qual convênio e data preferida?<div style="font-size:10px;color:#4a8a5a;margin-top:3px">14:30 🤖</div></div></div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start"><div style="background:white;border-radius:0 12px 12px 12px;padding:8px 12px;font-size:12px;max-width:75%;line-height:1.5;box-shadow:0 1px 3px rgba(0,0,0,.06)">Unimed, prefiro manhã<div style="font-size:10px;color:#999;margin-top:3px">14:32</div></div></div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start"><div style="font-size:9px;color:#0a7a70;margin-bottom:3px;font-weight:500">Sofia · IA</div><div style="background:#e8f5e9;border-radius:0 12px 12px 12px;padding:8px 12px;font-size:12px;max-width:75%;color:#1a6b3a;line-height:1.5;box-shadow:0 1px 3px rgba(0,0,0,.06)">Temos quinta às 08:30 com Dr. Ferreira. Confirmo?<div style="font-size:10px;color:#4a8a5a;margin-top:3px">14:32 🤖</div></div></div>
           </div>
+          <!-- TOOLBAR -->
           <div style="padding:6px 12px;border-top:1px solid #eee;border-bottom:1px solid #eee;display:flex;align-items:center;gap:4px;background:white;flex-shrink:0">
-            <div id="funil-toolbar-btn" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#25D366;font-weight:500;border:1px solid #9FE1CB;background:#f0faf4"><i class="ti ti-hierarchy"></i>Funis</div>
-            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666"><i class="ti ti-photo"></i>Imagem</div>
-            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666"><i class="ti ti-microphone"></i>Áudio</div>
-            <div style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666"><i class="ti ti-file"></i>Arquivo</div>
-            <div id="pausar-ia-btn" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;color:#666;margin-left:auto"><i class="ti ti-robot"></i><span id="tb-ia-lbl">Pausar IA</span></div>
+            <div id="funil-toolbar-btn" style="display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:11px;cursor:pointer;color:#0a7a70;font-weight:600;border:1px solid #9FE1CB;background:#f0faf8"><i class="ti ti-hierarchy"></i>Funis</div>
+            <label style="display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:11px;cursor:pointer;color:#555;border:1px solid #eee" for="attach-img"><i class="ti ti-photo"></i>Imagem<input type="file" id="attach-img" accept="image/*" style="display:none" onchange="handleAttach(this,'imagem')"></label>
+            <label style="display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:11px;cursor:pointer;color:#555;border:1px solid #eee" for="attach-audio"><i class="ti ti-microphone"></i>Áudio<input type="file" id="attach-audio" accept="audio/*" style="display:none" onchange="handleAttach(this,'audio')"></label>
+            <label style="display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:11px;cursor:pointer;color:#555;border:1px solid #eee" for="attach-file"><i class="ti ti-file"></i>Arquivo<input type="file" id="attach-file" accept=".pdf,.doc,.docx,.xls,.xlsx" style="display:none" onchange="handleAttach(this,'arquivo')"></label>
+            <div id="pausar-ia-btn" style="display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:11px;cursor:pointer;color:#555;margin-left:auto;border:1px solid #eee"><i class="ti ti-robot"></i><span id="tb-ia-lbl">Pausar IA</span></div>
           </div>
+          <!-- PREVIEW ANEXO -->
+          <div id="attach-preview" style="display:none;padding:6px 12px;background:#f0faf8;border-bottom:1px solid #9FE1CB;flex-shrink:0">
+            <div style="display:flex;align-items:center;gap:8px">
+              <i class="ti ti-paperclip" style="color:#0a7a70;font-size:14px"></i>
+              <span id="attach-name" style="font-size:11px;color:#0a7a40;flex:1;font-weight:500"></span>
+              <span onclick="clearAttach()" style="cursor:pointer;color:#888;font-size:13px"><i class="ti ti-x"></i></span>
+            </div>
+          </div>
+          <!-- INPUT -->
           <div style="padding:10px 12px;display:flex;align-items:flex-end;gap:8px;background:white;flex-shrink:0">
-            <div style="flex:1;background:#f9f9f9;border-radius:10px;border:1px solid #eee;padding:8px 12px">
+            <div style="flex:1;background:#f9f9f9;border-radius:12px;border:1px solid #eee;padding:8px 14px">
               <textarea id="atend-input" placeholder="Digite uma mensagem..." rows="1" style="width:100%;border:none;background:transparent;font-size:12px;color:#1a1a1a;resize:none;outline:none;font-family:system-ui;max-height:80px"></textarea>
             </div>
-            <button id="atend-send-btn" style="width:36px;height:36px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:15px;flex-shrink:0"><i class="ti ti-send"></i></button>
+            <button id="atend-send-btn" style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#0a7a70,#0d6b8a);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:15px;flex-shrink:0"><i class="ti ti-send"></i></button>
           </div>
-          <div id="funil-pop" style="display:none;background:white;border:1px solid #eee;border-radius:10px;padding:10px;position:absolute;bottom:115px;left:14px;width:260px;z-index:10;box-shadow:0 4px 20px rgba(0,0,0,.1)">
-            <div style="font-size:12px;font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">Enviar funil <span id="close-funil-pop" style="cursor:pointer;color:#999;font-size:14px"><i class="ti ti-x"></i></span></div>
+          <!-- POPUP FUNIS -->
+          <div id="funil-pop" style="display:none;background:white;border:1px solid #eee;border-radius:12px;padding:12px;position:absolute;bottom:120px;left:14px;width:270px;z-index:10;box-shadow:0 6px 24px rgba(0,0,0,.12)">
+            <div style="font-size:12px;font-weight:700;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;color:#0d1b2a">
+              Enviar funil <span id="close-funil-pop" style="cursor:pointer;color:#888;font-size:14px"><i class="ti ti-x"></i></span>
+            </div>
             <div id="funil-pop-items"></div>
           </div>
         </div>
+        <!-- PAINEL DIREITO -->
         <div style="border-left:1px solid #eee;display:flex;flex-direction:column;background:#f9f9f9;overflow-y:auto">
-          <div style="display:flex;flex-direction:column;align-items:center;padding:14px 12px;border-bottom:1px solid #eee">
-            <div id="rp-av" style="width:44px;height:44px;border-radius:50%;background:#e6faf0;color:#0a7a40;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;margin-bottom:6px">AC</div>
-            <div style="font-size:13px;font-weight:600" id="rp-name">Ana Costa</div>
-            <div style="font-size:11px;color:#999">67 99801-2233</div>
+          <div style="display:flex;flex-direction:column;align-items:center;padding:16px 12px;border-bottom:1px solid #eee">
+            <div id="rp-av" style="width:46px;height:46px;border-radius:50%;background:#e6faf0;color:#0a7a40;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;margin-bottom:8px;box-shadow:0 2px 8px rgba(0,0,0,.08)">AC</div>
+            <div style="font-size:13px;font-weight:700;color:#0d1b2a" id="rp-name">Ana Costa</div>
+            <div style="font-size:11px;color:#888">67 99801-2233</div>
           </div>
           <div style="padding:10px 12px;border-bottom:1px solid #eee">
-            <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Informações</div>
-            <div style="display:flex;justify-content:space-between;padding:3px 0;font-size:11px"><span style="color:#999">Tag</span><span class="tag tg">Cliente</span></div>
-            <div style="display:flex;justify-content:space-between;padding:3px 0;font-size:11px"><span style="color:#999">Segmento</span><span class="tag tb">Clínica</span></div>
-            <div style="display:flex;justify-content:space-between;padding:3px 0;font-size:11px"><span style="color:#999">IA</span><span id="rp-ia-st" class="tag tg">Ativa</span></div>
+            <div style="font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px;font-weight:600">Informações</div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:11px"><span style="color:#888">Tag</span><span class="tag tg">Cliente</span></div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:11px"><span style="color:#888">Segmento</span><span class="tag tb">Clínica</span></div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:11px"><span style="color:#888">IA</span><span id="rp-ia-st" class="tag tg">Ativa</span></div>
           </div>
           <div style="padding:10px 12px;border-bottom:1px solid #eee">
-            <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Funis rápidos</div>
+            <div style="font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px;font-weight:600">Funis rápidos</div>
             <div id="rp-funil-list"></div>
           </div>
           <div style="padding:10px 12px">
-            <div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Ações</div>
-            <button id="rp-pausar-btn" style="width:100%;margin-bottom:5px;padding:6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-robot" style="font-size:13px"></i><span id="rp-ia-btn">Pausar IA</span></button>
-            <button style="width:100%;margin-bottom:5px;padding:6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-calendar" style="font-size:13px"></i>Criar agendamento</button>
-            <button style="width:100%;padding:6px;font-size:11px;border-radius:6px;border:1px solid #eee;background:white;color:#e24b4a;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="ti ti-x" style="font-size:13px"></i>Encerrar chat</button>
+            <div style="font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px;font-weight:600">Ações</div>
+            <button id="rp-pausar-btn" style="width:100%;margin-bottom:6px;padding:7px;font-size:11px;border-radius:8px;border:1px solid #eee;background:white;cursor:pointer;display:flex;align-items:center;gap:6px;font-weight:500"><i class="ti ti-robot" style="font-size:13px;color:#0a7a70"></i><span id="rp-ia-btn">Pausar IA</span></button>
+            <button style="width:100%;margin-bottom:6px;padding:7px;font-size:11px;border-radius:8px;border:1px solid #eee;background:white;cursor:pointer;display:flex;align-items:center;gap:6px;font-weight:500"><i class="ti ti-calendar" style="font-size:13px;color:#0a7a70"></i>Criar agendamento</button>
+            <button style="width:100%;padding:7px;font-size:11px;border-radius:8px;border:1px solid #ffe0e0;background:#fff8f8;color:#e24b4a;cursor:pointer;display:flex;align-items:center;gap:6px;font-weight:500"><i class="ti ti-x" style="font-size:13px"></i>Encerrar chat</button>
           </div>
         </div>
       </div>
@@ -430,6 +667,7 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
 </div>
 </div>
 
+<!-- MODAL KANBAN -->
 <div class="mbg" id="kb-modal">
   <div class="modal">
     <h3>Novo card</h3>
@@ -440,103 +678,102 @@ table.ct td{padding:6px 8px;border-bottom:1px solid #f5f5f5;overflow:hidden;text
   </div>
 </div>
 
+<!-- MODAL FUNIL PARA CONTATO/CARD -->
+<div class="mbg" id="funil-modal">
+  <div class="modal">
+    <h3>Enviar funil para <span id="funil-modal-target"></span></h3>
+    <div id="funil-modal-list"></div>
+    <div class="mbtns" style="margin-top:10px"><button class="mbtnno" id="funil-modal-cancel">Cancelar</button><button class="mbtnok" id="funil-modal-confirm">Enviar funil</button></div>
+  </div>
+</div>
+
 <script>
 const API = 'https://whatscrm-backend-production-f2e2.up.railway.app';
 
-// ===== NAVEGAÇÃO via data-attributes =====
-const TITLES = {dashboard:'Dashboard',agente:'Agente IA',atend:'Atendimento ao vivo',contatos:'Contatos',kanban:'Kanban',disparos:'Disparos',funis:'Funis',remarketing:'Remarketing',agenda:'Agendamentos',clinica:'Clínica',adv:'Advocacia'};
-const BTNS   = {dashboard:'Nova campanha',agente:'Salvar prompts',atend:'Encerrar chat',contatos:'Novo contato',kanban:'Nova coluna',disparos:'Novo disparo',funis:'Novo funil',remarketing:'Nova automação',agenda:'Novo agendamento',clinica:'Salvar prompt',adv:'Salvar prompt'};
-let currentView = 'dashboard';
+// ===== NAVEGAÇÃO =====
+const TITLES={dashboard:'Dashboard',agente:'Agente IA',atend:'Atendimento ao vivo',contatos:'Contatos',kanban:'Kanban',disparos:'Disparos',funis:'Funis',remarketing:'Remarketing',agenda:'Agendamentos',clinica:'Clínica',adv:'Advocacia'};
+const BTNS={dashboard:'Nova campanha',agente:'Salvar',atend:'Encerrar',contatos:'Novo contato',kanban:'Nova coluna',disparos:'Novo disparo',funis:'Novo funil',remarketing:'Nova automação',agenda:'Novo agendamento',clinica:'Salvar',adv:'Salvar'};
+let currentView='dashboard';
 
-function goTo(v) {
-  document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.ni').forEach(el => el.classList.remove('active'));
-  const ve = document.getElementById('v-' + v);
-  if (ve) ve.classList.add('active');
-  const ni = document.querySelector('.ni[data-view="' + v + '"]');
-  if (ni) ni.classList.add('active');
-  document.getElementById('ptitle').textContent = TITLES[v] || v;
-  document.getElementById('btn-lbl').textContent = BTNS[v] || 'Novo';
-  currentView = v;
-  if (v === 'kanban') renderKanban();
-  if (v === 'funis') renderFunis();
-  if (v === 'atend') { renderAtendList(); renderFunilPanels(); }
+function goTo(v){
+  document.querySelectorAll('.view').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.ni').forEach(e=>e.classList.remove('active'));
+  const ve=document.getElementById('v-'+v); if(ve) ve.classList.add('active');
+  const ni=document.querySelector('.ni[data-view="'+v+'"]'); if(ni) ni.classList.add('active');
+  document.getElementById('ptitle').textContent=TITLES[v]||v;
+  document.getElementById('btn-lbl').textContent=BTNS[v]||'Novo';
+  currentView=v;
+  if(v==='kanban') renderKanban();
+  if(v==='funis') renderFunis();
+  if(v==='atend'){renderAtendList();renderFunilPanels();}
 }
 
-// Nav click via delegation
-document.getElementById('main-nav').addEventListener('click', function(e) {
-  const ni = e.target.closest('.ni[data-view]');
-  if (ni) goTo(ni.dataset.view);
+document.getElementById('main-nav').addEventListener('click',e=>{
+  const ni=e.target.closest('.ni[data-view]'); if(ni) goTo(ni.dataset.view);
+});
+document.addEventListener('click',e=>{
+  const gt=e.target.closest('[data-goto]'); if(gt) goTo(gt.dataset.goto);
+});
+document.getElementById('topbtn').addEventListener('click',()=>{
+  if(currentView==='funis') addFunil();
+  else if(currentView==='kanban'){const n=prompt('Nome da nova coluna:');if(n){kbBoards[activeKb].cols.push({title:n,cards:[]});renderKanban();}}
 });
 
-// Botão goto em contatos
-document.addEventListener('click', function(e) {
-  const gt = e.target.closest('[data-goto]');
-  if (gt) goTo(gt.dataset.goto);
-});
-
-// Botão topo
-document.getElementById('topbtn').addEventListener('click', function() {
-  if (currentView === 'funis') addFunil();
-  else if (currentView === 'kanban') { const n = prompt('Nome da nova coluna:'); if (n) { kbBoards[activeKb].cols.push({title:n,cards:[]}); renderKanban(); } }
-});
+// ===== DASHBOARD =====
+const now=new Date();
+const hrs=now.getHours();
+const greeting=hrs<12?'Bom dia!':hrs<18?'Boa tarde!':'Boa noite!';
+document.getElementById('dash-greeting').textContent=greeting+' 👋';
+document.getElementById('dash-date').textContent=now.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'});
 
 // ===== IA GLOBAL =====
-let globalIA = true;
-document.getElementById('ai-pill').addEventListener('click', function() {
-  globalIA = !globalIA;
-  document.getElementById('ai-dot').style.background = globalIA ? '#25D366' : '#e24b4a';
-  document.getElementById('ai-txt').textContent = globalIA ? 'IA ativa' : 'IA pausada';
+let globalIA=true;
+document.getElementById('ai-pill').addEventListener('click',()=>{
+  globalIA=!globalIA;
+  document.getElementById('ai-dot').style.background=globalIA?'#25D366':'#e24b4a';
+  document.getElementById('ai-txt').textContent=globalIA?'IA ativa':'IA pausada';
 });
 
-// Toggles genéricos
-document.addEventListener('click', function(e) {
-  if (e.target.classList.contains('tog')) {
-    e.target.classList.toggle('on');
-    e.target.classList.toggle('off');
+// ===== TOGGLES GENÉRICOS =====
+document.addEventListener('click',e=>{
+  if(e.target.classList.contains('tog')){
+    e.target.classList.toggle('on'); e.target.classList.toggle('off');
   }
 });
 
+// ===== HORÁRIO IA =====
+document.querySelectorAll('.day-card').forEach(d=>{
+  d.addEventListener('click',()=>{
+    d.classList.toggle('active');
+    d.querySelector('.day-check').textContent=d.classList.contains('active')?'✓':'—';
+  });
+});
+document.getElementById('tog-break').addEventListener('click',()=>{
+  setTimeout(()=>{
+    const on=document.getElementById('tog-break').classList.contains('on');
+    document.getElementById('break-times').style.display=on?'block':'none';
+  },50);
+});
+
 // ===== SEGTABS =====
-document.getElementById('seg-tabs').addEventListener('click', function(e) {
-  const stab = e.target.closest('.stab');
-  if (!stab) return;
-  this.querySelectorAll('.stab').forEach(s => s.classList.remove('active'));
-  stab.classList.add('active');
-  document.getElementById('seg-name').textContent = stab.dataset.seg || stab.textContent;
-  document.getElementById('seg-count').textContent = Number(stab.dataset.count || 0).toLocaleString('pt-BR');
+document.getElementById('seg-tabs').addEventListener('click',e=>{
+  const s=e.target.closest('.stab'); if(!s) return;
+  document.querySelectorAll('#seg-tabs .stab').forEach(x=>x.classList.remove('active'));
+  s.classList.add('active');
+  document.getElementById('seg-name').textContent=s.dataset.seg||s.textContent;
+  document.getElementById('seg-count').textContent=Number(s.dataset.count||0).toLocaleString('pt-BR');
 });
-
-document.getElementById('disp-tabs').addEventListener('click', function(e) {
-  const stab = e.target.closest('.stab');
-  if (!stab) return;
-  this.querySelectorAll('.stab').forEach(s => s.classList.remove('active'));
-  stab.classList.add('active');
+document.getElementById('disp-tabs').addEventListener('click',e=>{
+  const s=e.target.closest('.stab'); if(!s) return;
+  document.querySelectorAll('#disp-tabs .stab').forEach(x=>x.classList.remove('active'));
+  s.classList.add('active');
 });
-
-// ===== SIMULADOR =====
-const simResps = ['Claro! Pode me informar seu nome?','Qual especialidade você precisa?','Temos horário quinta às 09:00. Confirmo?','Agendamento confirmado!'];
-let simIdx = 0;
-function simSend() {
-  const inp = document.getElementById('sim-input');
-  const msgs = document.getElementById('sim-msgs');
-  if (!inp.value.trim()) return;
-  msgs.innerHTML += `<div style="align-self:flex-start;background:white;border:1px solid #eee;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%">${inp.value}</div>`;
-  inp.value = '';
-  setTimeout(() => {
-    msgs.innerHTML += `<div style="align-self:flex-start;background:#e6f0ff;border-radius:0 8px 8px 8px;padding:6px 9px;font-size:12px;max-width:78%;color:#1a4fa0">${simResps[simIdx%simResps.length]}<div style="font-size:10px;color:#888;margin-top:2px">Sofia · IA</div></div>`;
-    simIdx++; msgs.scrollTop = msgs.scrollHeight;
-  }, 700);
-  msgs.scrollTop = msgs.scrollHeight;
-}
-document.getElementById('sim-btn').addEventListener('click', simSend);
-document.getElementById('sim-input').addEventListener('keydown', e => { if (e.key === 'Enter') simSend(); });
 
 // ===== KANBAN =====
-const tagC = {lead:'#e6f0ff|#1a4fa0',cliente:'#e6faf0|#0a7a40',vip:'#f0e6ff|#6010a0',clinica:'#e6f0ff|#185FA5',adv:'#f0e6ff|#534AB7',urgente:'#ffe6e6|#a01010'};
-const kbBoards = {
+const tagC={lead:'#e6f0ff|#1a4fa0',cliente:'#e6faf0|#0a7a40',vip:'#f0e6ff|#6010a0',clinica:'#e6f0ff|#185FA5',adv:'#f0e6ff|#534AB7',urgente:'#ffe6e6|#a01010'};
+const kbBoards={
   atendimento:{label:'Atendimento',cols:[
-    {title:'Fila',cards:[{name:'Ana Costa',sub:'67 99801-2233',tag:'clinica'},{name:'Pedro Mota',sub:'11 98712-5544',tag:'lead'}]},
+    {title:'Fila',cards:[{name:'Pedro Mota',sub:'11 98712-5544',tag:'lead'},{name:'Ana Costa',sub:'67 99801-2233',tag:'clinica'}]},
     {title:'Em atendimento',cards:[{name:'Lúcia Faria',sub:'VIP · há 5min',tag:'vip'}]},
     {title:'IA respondendo',cards:[{name:'Rafael Souza',sub:'Lead frio',tag:'lead'},{name:'Maria Gomes',sub:'Retorno',tag:'cliente'}]},
     {title:'Resolvido',cards:[{name:'João Lima',sub:'Consulta marcada',tag:'clinica'}]}
@@ -551,259 +788,303 @@ const kbBoards = {
     {title:'Rascunho',cards:[{name:'Promoção Julho',sub:'2.310 contatos',tag:'cliente'}]},
     {title:'Agendada',cards:[{name:'Lembrete VIP',sub:'28/05 · 145',tag:'vip'}]},
     {title:'Enviando',cards:[{name:'Reengajamento',sub:'630 inativos',tag:'lead'}]},
-    {title:'Concluída',cards:[{name:'Promoção Junho',sub:'3.000 · 76%',tag:'cliente'},{name:'Black Friday',sub:'4.200 · 81%',tag:'cliente'}]}
+    {title:'Concluída',cards:[{name:'Promoção Junho',sub:'3.000 · 76%',tag:'cliente'}]}
   ]}
 };
-let activeKb = 'atendimento', kbDC = null, kbDF = null, kbAddCol = null;
+let activeKb='atendimento',kbDC=null,kbDF=null,kbAddCol=null;
 
-function renderKanban() {
-  const tabs = document.getElementById('kb-tabs');
-  if (!tabs) return;
-  tabs.innerHTML = '';
-  Object.entries(kbBoards).forEach(([key, b]) => {
-    const t = document.createElement('div');
-    t.className = 'kbtab' + (key === activeKb ? ' active' : '');
-    t.dataset.key = key;
-    t.innerHTML = `<span>${b.label}</span>`;
-    t.addEventListener('dblclick', () => {
-      const s = t.querySelector('span'); s.contentEditable = 'true'; s.focus();
-      s.onblur = () => { s.contentEditable = 'false'; b.label = s.textContent.trim() || b.label; s.textContent = b.label; };
-      s.onkeydown = ev => { if (ev.key === 'Enter') { ev.preventDefault(); s.blur(); } };
-    });
-    t.addEventListener('click', e => { if (e.target.isContentEditable) return; activeKb = key; renderKanban(); });
+function renderKanban(){
+  const tabs=document.getElementById('kb-tabs'); if(!tabs) return;
+  tabs.innerHTML='';
+  Object.entries(kbBoards).forEach(([key,b])=>{
+    const t=document.createElement('div'); t.className='kbtab'+(key===activeKb?' active':''); t.dataset.key=key;
+    t.innerHTML=`<span>${b.label}</span>`;
+    t.addEventListener('dblclick',()=>{const s=t.querySelector('span');s.contentEditable='true';s.focus();s.onblur=()=>{s.contentEditable='false';b.label=s.textContent.trim()||b.label;s.textContent=b.label;};s.onkeydown=ev=>{if(ev.key==='Enter'){ev.preventDefault();s.blur();}};});
+    t.addEventListener('click',e=>{if(e.target.isContentEditable)return;activeKb=key;renderKanban();});
     tabs.appendChild(t);
   });
-  const at = document.createElement('div'); at.className = 'addtab'; at.innerHTML = '<i class="ti ti-plus"></i> Nova aba';
-  at.addEventListener('click', () => { const n = prompt('Nome da aba:'); if (!n) return; const k = 'kb_'+Date.now(); kbBoards[k] = {label:n,cols:[{title:'A fazer',cards:[]},{title:'Em andamento',cards:[]},{title:'Concluído',cards:[]}]}; activeKb = k; renderKanban(); });
+  const at=document.createElement('div');at.className='addtab';at.innerHTML='<i class="ti ti-plus"></i> Nova aba';
+  at.addEventListener('click',()=>{const n=prompt('Nome da aba:');if(!n)return;const k='kb_'+Date.now();kbBoards[k]={label:n,cols:[{title:'A fazer',cards:[]},{title:'Em andamento',cards:[]},{title:'Concluído',cards:[]}]};activeKb=k;renderKanban();});
   tabs.appendChild(at);
-  const board = document.getElementById('kb-board'); board.innerHTML = '';
-  kbBoards[activeKb].cols.forEach((col, ci) => {
-    const colEl = document.createElement('div'); colEl.className = 'kbcol';
-    const hdr = document.createElement('div'); hdr.className = 'kbcolh';
-    const ti = document.createElement('input'); ti.className = 'colti'; ti.value = col.title; ti.onchange = () => col.title = ti.value;
-    const cnt = document.createElement('span'); cnt.className = 'colcnt'; cnt.textContent = col.cards.length;
-    const del = document.createElement('span'); del.className = 'coldel ti ti-x';
-    del.addEventListener('click', () => { if (confirm('Remover "'+col.title+'"?')) { kbBoards[activeKb].cols.splice(ci,1); renderKanban(); } });
-    hdr.appendChild(ti); hdr.appendChild(cnt); hdr.appendChild(del); colEl.appendChild(hdr);
-    const ce = document.createElement('div'); ce.className = 'kbcards';
-    ce.addEventListener('dragover', e => { e.preventDefault(); ce.style.background = '#f0faf4'; });
-    ce.addEventListener('dragleave', () => ce.style.background = '');
-    ce.addEventListener('drop', e => { e.preventDefault(); ce.style.background = ''; if (kbDC !== null) { const card = kbBoards[activeKb].cols[kbDF].cards.splice(kbDC,1)[0]; col.cards.push(card); renderKanban(); } });
-    col.cards.forEach((card, cdi) => {
-      const cardEl = document.createElement('div'); cardEl.className = 'kbcard'; cardEl.draggable = true;
-      const c = (tagC[card.tag]||'#eee|#333').split('|');
-      cardEl.innerHTML = `<div class="kbcn">${card.name}</div><div class="kbcs">${card.sub}</div><span class="kbct" style="background:${c[0]};color:${c[1]}">${card.tag}</span>`;
-      cardEl.addEventListener('dragstart', () => { kbDC = cdi; kbDF = ci; });
-      cardEl.addEventListener('dragend', () => { kbDC = null; kbDF = null; });
+  const board=document.getElementById('kb-board');board.innerHTML='';
+  kbBoards[activeKb].cols.forEach((col,ci)=>{
+    const colEl=document.createElement('div');colEl.className='kbcol';
+    const hdr=document.createElement('div');hdr.className='kbcolh';
+    const ti=document.createElement('input');ti.className='colti';ti.value=col.title;ti.onchange=()=>col.title=ti.value;
+    const cnt=document.createElement('span');cnt.className='colcnt';cnt.textContent=col.cards.length;
+    const del=document.createElement('span');del.className='coldel ti ti-x';
+    del.addEventListener('click',()=>{if(confirm('Remover "'+col.title+'"?')){kbBoards[activeKb].cols.splice(ci,1);renderKanban();}});
+    hdr.appendChild(ti);hdr.appendChild(cnt);hdr.appendChild(del);colEl.appendChild(hdr);
+    const ce=document.createElement('div');ce.className='kbcards';
+    ce.addEventListener('dragover',e=>{e.preventDefault();ce.style.background='#f0faf8';});
+    ce.addEventListener('dragleave',()=>ce.style.background='');
+    ce.addEventListener('drop',e=>{e.preventDefault();ce.style.background='';if(kbDC!==null){const card=kbBoards[activeKb].cols[kbDF].cards.splice(kbDC,1)[0];col.cards.push(card);renderKanban();}});
+    col.cards.forEach((card,cdi)=>{
+      const cardEl=document.createElement('div');cardEl.className='kbcard';cardEl.draggable=true;
+      const c=(tagC[card.tag]||'#eee|#333').split('|');
+      cardEl.innerHTML=`<div class="kbcn">${card.name}</div><div class="kbcs">${card.sub}</div><span class="kbct" style="background:${c[0]};color:${c[1]}">${card.tag}</span><div class="card-actions"><button class="card-btn" onclick="event.stopPropagation();goTo('atend')"><i class="ti ti-message-circle" style="font-size:11px"></i>Chat</button><button class="card-btn card-btn-send" onclick="event.stopPropagation();openFunilModal('${card.name}')"><i class="ti ti-hierarchy" style="font-size:11px"></i>Funil</button></div>`;
+      cardEl.addEventListener('dragstart',()=>{kbDC=cdi;kbDF=ci;});
+      cardEl.addEventListener('dragend',()=>{kbDC=null;kbDF=null;});
       ce.appendChild(cardEl);
     });
     colEl.appendChild(ce);
-    const ac = document.createElement('div'); ac.className = 'addcardbn'; ac.innerHTML = '<i class="ti ti-plus" style="font-size:11px"></i> Adicionar';
-    ac.addEventListener('click', () => { kbAddCol = ci; document.getElementById('kb-modal').classList.add('show'); document.getElementById('kb-name').focus(); });
-    colEl.appendChild(ac); board.appendChild(colEl);
+    const ac=document.createElement('div');ac.className='addcardbn';ac.innerHTML='<i class="ti ti-plus" style="font-size:11px"></i> Adicionar';
+    ac.addEventListener('click',()=>{kbAddCol=ci;document.getElementById('kb-modal').classList.add('show');document.getElementById('kb-name').focus();});
+    colEl.appendChild(ac);board.appendChild(colEl);
   });
-  const acb = document.createElement('div'); acb.className = 'addcolbn'; acb.innerHTML = '<i class="ti ti-plus"></i>';
-  acb.addEventListener('click', () => { const n = prompt('Nome da coluna:'); if (n) { kbBoards[activeKb].cols.push({title:n,cards:[]}); renderKanban(); } });
+  const acb=document.createElement('div');acb.className='addcolbn';acb.innerHTML='<i class="ti ti-plus"></i>';
+  acb.addEventListener('click',()=>{const n=prompt('Nome da coluna:');if(n){kbBoards[activeKb].cols.push({title:n,cards:[]});renderKanban();}});
   board.appendChild(acb);
 }
-document.getElementById('kb-cancel').addEventListener('click', () => { document.getElementById('kb-modal').classList.remove('show'); document.getElementById('kb-name').value=''; document.getElementById('kb-sub').value=''; });
-document.getElementById('kb-save').addEventListener('click', () => {
-  const name = document.getElementById('kb-name').value.trim(); if (!name) return;
-  kbBoards[activeKb].cols[kbAddCol].cards.push({name, sub:document.getElementById('kb-sub').value.trim(), tag:document.getElementById('kb-tag').value});
-  document.getElementById('kb-modal').classList.remove('show'); document.getElementById('kb-name').value=''; document.getElementById('kb-sub').value=''; renderKanban();
+document.getElementById('kb-cancel').addEventListener('click',()=>{document.getElementById('kb-modal').classList.remove('show');document.getElementById('kb-name').value='';document.getElementById('kb-sub').value='';});
+document.getElementById('kb-save').addEventListener('click',()=>{
+  const name=document.getElementById('kb-name').value.trim();if(!name)return;
+  kbBoards[activeKb].cols[kbAddCol].cards.push({name,sub:document.getElementById('kb-sub').value.trim(),tag:document.getElementById('kb-tag').value});
+  document.getElementById('kb-modal').classList.remove('show');document.getElementById('kb-name').value='';document.getElementById('kb-sub').value='';renderKanban();
 });
 
 // ===== FUNIS =====
-const funis = [
-  {id:1,name:'Funil de vendas',steps:[{name:'Boas-vindas',type:'text',content:'Olá {{nome}}! Sou a Sofia. Posso te ajudar?',delay:0,du:'min'},{name:'Apresentação',type:'audio',content:'audio.mp3',delay:5,du:'min'},{name:'Proposta',type:'text',content:'{{nome}}, preparei uma proposta! Posso enviar detalhes?',delay:1,du:'hora'}]},
-  {id:2,name:'Funil clínica',steps:[{name:'Primeiro contato',type:'text',content:'Olá {{nome}}! Somos a Clínica [Nome]. Podemos ajudar?',delay:0,du:'min'},{name:'Catálogo',type:'image',content:'catalogo.pdf',delay:2,du:'min'},{name:'Agendamento',type:'text',content:'Que dia seria melhor {{nome}}?',delay:10,du:'min'}]},
-  {id:3,name:'Boas-vindas',steps:[{name:'Olá',type:'text',content:'Olá {{nome}}! Bem-vindo! Como posso te ajudar?',delay:0,du:'min'}]}
+const funis=[
+  {id:1,name:'Funil de vendas',steps:[{name:'Boas-vindas',type:'text',content:'Olá {{nome}}! Sou a Sofia. Posso te ajudar?',delay:0,du:'min',file:null},{name:'Apresentação',type:'audio',content:'',delay:5,du:'min',file:null},{name:'Proposta',type:'text',content:'{{nome}}, preparei uma proposta! Posso enviar detalhes?',delay:1,du:'hora',file:null}]},
+  {id:2,name:'Funil clínica',steps:[{name:'Primeiro contato',type:'text',content:'Olá {{nome}}! Somos a Clínica [Nome]. Podemos ajudar?',delay:0,du:'min',file:null},{name:'Catálogo',type:'image',content:'',delay:2,du:'min',file:null},{name:'Agendamento',type:'text',content:'Que dia seria melhor {{nome}}?',delay:10,du:'min',file:null}]},
+  {id:3,name:'Boas-vindas',steps:[{name:'Olá',type:'text',content:'Olá {{nome}}! Bem-vindo! Como posso te ajudar?',delay:0,du:'min',file:null}]}
 ];
-let activeFunil = 0;
+let activeFunil=0;
 
-function renderFunis() {
-  const list = document.getElementById('funil-list'); if (!list) return;
-  list.innerHTML = '';
-  funis.forEach((f, i) => {
-    const el = document.createElement('div'); el.className = 'fitem' + (i === activeFunil ? ' active' : '');
-    el.innerHTML = `<div class="fin">${f.name}</div><div class="fim">${f.steps.length} etapa${f.steps.length>1?'s':''}</div>`;
-    el.addEventListener('click', () => { activeFunil = i; renderFunis(); });
+function renderFunis(){
+  const list=document.getElementById('funil-list');if(!list)return;
+  list.innerHTML='';
+  funis.forEach((f,i)=>{
+    const el=document.createElement('div');el.className='fitem'+(i===activeFunil?' active':'');
+    el.innerHTML=`<div class="fin">${f.name}</div><div class="fim">${f.steps.length} etapa${f.steps.length>1?'s':''}</div>`;
+    el.addEventListener('click',()=>{activeFunil=i;renderFunis();});
     list.appendChild(el);
   });
-  const f = funis[activeFunil];
-  document.getElementById('funil-title').value = f.name;
-  document.getElementById('d-fn').textContent = f.name;
-  document.getElementById('d-st').textContent = f.steps.length;
+  document.getElementById('funil-title').value=funis[activeFunil].name;
+  document.getElementById('d-fn').textContent=funis[activeFunil].name;
+  document.getElementById('d-st').textContent=funis[activeFunil].steps.length;
   renderSteps();
 }
 
-function renderSteps() {
-  const area = document.getElementById('steps-area'); if (!area) return;
-  area.innerHTML = '';
-  funis[activeFunil].steps.forEach((step, si) => {
-    const card = document.createElement('div'); card.className = 'sc';
-    const hdr = document.createElement('div'); hdr.className = 'sh';
-    hdr.innerHTML = `<div class="snum">${si+1}</div><input class="sni" value="${step.name}"><span class="sdel ti ti-trash"></span>`;
-    hdr.querySelector('.sni').oninput = e => step.name = e.target.value;
-    hdr.querySelector('.sdel').addEventListener('click', () => { funis[activeFunil].steps.splice(si,1); renderFunis(); });
+function renderSteps(){
+  const area=document.getElementById('steps-area');if(!area)return;
+  area.innerHTML='';
+  funis[activeFunil].steps.forEach((step,si)=>{
+    const card=document.createElement('div');card.className='sc';
+    const hdr=document.createElement('div');hdr.className='sh';
+    hdr.innerHTML=`<div class="snum">${si+1}</div><input class="sni" value="${step.name}"><span class="sdel ti ti-trash"></span>`;
+    hdr.querySelector('.sni').oninput=e=>step.name=e.target.value;
+    hdr.querySelector('.sdel').addEventListener('click',()=>{funis[activeFunil].steps.splice(si,1);renderFunis();});
     card.appendChild(hdr);
-    const tt = document.createElement('div'); tt.className = 'ttabs';
-    [['text','ti-message','Texto'],['audio','ti-microphone','Áudio'],['image','ti-photo','Imagem/PDF']].forEach(([t,ic,lbl]) => {
-      const tb = document.createElement('div'); tb.className = 'tt'+(step.type===t?' active':'');
-      tb.innerHTML = `<i class="ti ${ic}"></i> ${lbl}`;
-      tb.addEventListener('click', () => { step.type = t; renderSteps(); });
+    const tt=document.createElement('div');tt.className='ttabs';
+    [['text','ti-message','Texto'],['audio','ti-microphone','Áudio'],['image','ti-photo','Imagem/PDF']].forEach(([t,ic,lbl])=>{
+      const tb=document.createElement('div');tb.className='tt'+(step.type===t?' active':'');
+      tb.innerHTML=`<i class="ti ${ic}"></i> ${lbl}`;
+      tb.addEventListener('click',()=>{step.type=t;step.file=null;step.content='';renderSteps();});
       tt.appendChild(tb);
     });
     card.appendChild(tt);
-    if (step.type === 'text') {
-      const ta = document.createElement('textarea'); ta.className = 'me'; ta.value = step.content;
-      ta.placeholder = 'Mensagem... Use {{nome}}, {{data}}, {{empresa}}';
-      ta.oninput = e => step.content = e.target.value; card.appendChild(ta);
-      const h = document.createElement('div'); h.style.cssText='font-size:10px;color:#999;margin-top:2px'; h.textContent='Variáveis: {{nome}} {{data}} {{empresa}} {{telefone}}'; card.appendChild(h);
-    } else if (step.type === 'audio') {
-      const ae = document.createElement('div'); ae.style.cssText='background:#f9f9f9;border-radius:8px;padding:8px 10px;border:1px solid #eee;display:flex;align-items:center;gap:8px';
-      ae.innerHTML = `<button style="width:30px;height:30px;border-radius:50%;background:#e24b4a;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;flex-shrink:0"><i class="ti ti-microphone"></i></button><span style="font-size:12px;color:#999;flex:1">${step.content||'Clique para gravar'}</span>`;
-      card.appendChild(ae);
-      const up = document.createElement('div'); up.className='uarea'; up.innerHTML='<i class="ti ti-upload"></i> Enviar áudio (.mp3, .ogg)'; card.appendChild(up);
+    if(step.type==='text'){
+      const ta=document.createElement('textarea');ta.className='me';ta.value=step.content;
+      ta.placeholder='Mensagem... Use {{nome}}, {{data}}, {{empresa}}';
+      ta.oninput=e=>step.content=e.target.value;card.appendChild(ta);
+      const h=document.createElement('div');h.style.cssText='font-size:10px;color:#888;margin-top:4px';h.textContent='Variáveis: {{nome}} {{data}} {{empresa}} {{telefone}}';card.appendChild(h);
+    } else if(step.type==='audio'){
+      if(step.file){
+        const fp=document.createElement('div');fp.className='file-preview';
+        fp.innerHTML=`<i class="ti ti-music"></i><span class="fname">${step.file.name}</span><span class="fremove ti ti-x"></span>`;
+        fp.querySelector('.fremove').addEventListener('click',()=>{step.file=null;step.content='';renderSteps();});
+        card.appendChild(fp);
+      }
+      const uz=document.createElement('label');uz.className='upload-zone';
+      uz.innerHTML=`<i class="ti ti-microphone"></i><div>Clique para enviar áudio</div><div style="font-size:10px;opacity:.7;margin-top:3px">.mp3, .ogg, .m4a</div>`;
+      const finp=document.createElement('input');finp.type='file';finp.accept='audio/*';finp.style.display='none';
+      finp.addEventListener('change',()=>{if(finp.files[0]){step.file=finp.files[0];step.content=finp.files[0].name;renderSteps();}});
+      uz.appendChild(finp);card.appendChild(uz);
     } else {
-      const ie = document.createElement('div'); ie.className='uarea';
-      ie.innerHTML=`<i class="ti ti-photo" style="font-size:18px;display:block;margin-bottom:3px"></i>Clique para enviar imagem ou PDF${step.content?`<br><span style="font-size:10px;color:#25D366">${step.content}</span>`:''}`;
-      card.appendChild(ie);
+      if(step.file){
+        const fp=document.createElement('div');fp.className='file-preview';
+        const icon=step.file.type.includes('pdf')?'ti-file-type-pdf':'ti-photo';
+        fp.innerHTML=`<i class="ti ${icon}"></i><span class="fname">${step.file.name}</span><span class="fremove ti ti-x"></span>`;
+        fp.querySelector('.fremove').addEventListener('click',()=>{step.file=null;step.content='';renderSteps();});
+        card.appendChild(fp);
+      }
+      const uz=document.createElement('label');uz.className='upload-zone';
+      uz.innerHTML=`<i class="ti ti-upload"></i><div>Clique para enviar imagem ou PDF</div><div style="font-size:10px;opacity:.7;margin-top:3px">.jpg, .png, .pdf</div>`;
+      const finp=document.createElement('input');finp.type='file';finp.accept='image/*,.pdf';finp.style.display='none';
+      finp.addEventListener('change',()=>{if(finp.files[0]){step.file=finp.files[0];step.content=finp.files[0].name;renderSteps();}});
+      uz.appendChild(finp);card.appendChild(uz);
     }
-    const dr = document.createElement('div'); dr.className='drow';
+    const dr=document.createElement('div');dr.className='drow';
     dr.innerHTML=`<i class="ti ti-clock" style="font-size:12px"></i><span>Aguardar</span><input type="number" min="0" value="${step.delay}"><select><option ${step.du==='min'?'selected':''}>min</option><option ${step.du==='hora'?'selected':''}>hora</option><option ${step.du==='dia'?'selected':''}>dia</option></select><span>antes de enviar</span>`;
-    dr.querySelector('input').oninput = e => step.delay = +e.target.value;
-    dr.querySelector('select').onchange = e => step.du = e.target.value;
+    dr.querySelector('input').oninput=e=>step.delay=+e.target.value;
+    dr.querySelector('select').onchange=e=>step.du=e.target.value;
     card.appendChild(dr);
-    if (si < funis[activeFunil].steps.length-1) { const arr = document.createElement('div'); arr.className='sarr'; arr.innerHTML='<i class="ti ti-arrow-down"></i>'; card.appendChild(arr); }
+    if(si<funis[activeFunil].steps.length-1){const arr=document.createElement('div');arr.className='sarr';arr.innerHTML='<i class="ti ti-arrow-down"></i>';card.appendChild(arr);}
     area.appendChild(card);
   });
 }
 
-function addFunil() {
-  const n = prompt('Nome do novo funil:'); if (!n) return;
-  funis.push({id:Date.now(),name:n,steps:[{name:'Primeiro contato',type:'text',content:'Olá {{nome}}! Bem-vindo!',delay:0,du:'min'}]});
-  activeFunil = funis.length-1; renderFunis();
-}
+function addFunil(){const n=prompt('Nome do novo funil:');if(!n)return;funis.push({id:Date.now(),name:n,steps:[{name:'Primeiro contato',type:'text',content:'Olá {{nome}}! Bem-vindo!',delay:0,du:'min',file:null}]});activeFunil=funis.length-1;renderFunis();}
+document.getElementById('addfn-btn').addEventListener('click',addFunil);
+document.getElementById('add-step-btn').addEventListener('click',()=>{funis[activeFunil].steps.push({name:'Nova etapa',type:'text',content:'',delay:0,du:'min',file:null});renderFunis();});
+document.getElementById('save-funil-btn').addEventListener('click',()=>{const s=document.getElementById('d-status');s.textContent='Salvo!';setTimeout(()=>s.textContent='Pronto',2000);});
+document.getElementById('funil-title').addEventListener('input',e=>{funis[activeFunil].name=e.target.value;document.getElementById('d-fn').textContent=e.target.value;const items=document.querySelectorAll('#funil-list .fitem');if(items[activeFunil])items[activeFunil].querySelector('.fin').textContent=e.target.value;});
+document.getElementById('disparar-funil-btn').addEventListener('click',()=>{const seg=document.getElementById('funil-seg').value;alert(`Funil "${funis[activeFunil].name}" disparado para: ${seg}\n${funis[activeFunil].steps.length} etapas com delays!`);});
 
-document.getElementById('addfn-btn').addEventListener('click', addFunil);
-document.getElementById('add-step-btn').addEventListener('click', () => { funis[activeFunil].steps.push({name:'Nova etapa',type:'text',content:'',delay:0,du:'min'}); renderFunis(); });
-document.getElementById('save-funil-btn').addEventListener('click', () => { const s=document.getElementById('d-status'); s.textContent='Salvo!'; setTimeout(()=>s.textContent='Pronto',2000); });
-document.getElementById('funil-title').addEventListener('input', e => {
-  funis[activeFunil].name = e.target.value;
-  document.getElementById('d-fn').textContent = e.target.value;
-  const items = document.querySelectorAll('#funil-list .fitem');
-  if (items[activeFunil]) items[activeFunil].querySelector('.fin').textContent = e.target.value;
-});
-document.getElementById('disparar-funil-btn').addEventListener('click', () => {
-  const seg = document.getElementById('funil-seg').value;
-  alert(`Funil "${funis[activeFunil].name}" disparado para: ${seg}\n${funis[activeFunil].steps.length} etapas com delays!`);
+// ===== MODAL FUNIL PARA CONTATO/CARD =====
+let funilModalTarget='';
+let funilModalSelected=null;
+function openFunilModal(nome){
+  funilModalTarget=nome;funilModalSelected=null;
+  document.getElementById('funil-modal-target').textContent=nome;
+  const list=document.getElementById('funil-modal-list');list.innerHTML='';
+  funis.forEach((f,i)=>{
+    const item=document.createElement('div');item.className='funil-select-item';
+    item.innerHTML=`<div><div class="fn">${f.name}</div><div class="fm">${f.steps.length} etapas · texto/áudio/imagem</div></div><i class="ti ti-circle" style="color:#ccc;font-size:16px" id="fsi-${i}"></i>`;
+    item.addEventListener('click',()=>{
+      document.querySelectorAll('.funil-select-item').forEach(x=>{x.classList.remove('selected');x.querySelector('i').className='ti ti-circle';x.querySelector('i').style.color='#ccc';});
+      item.classList.add('selected');item.querySelector('i').className='ti ti-circle-check';item.querySelector('i').style.color='#0a7a70';
+      funilModalSelected=i;
+    });
+    list.appendChild(item);
+  });
+  document.getElementById('funil-modal').classList.add('show');
+}
+document.getElementById('funil-modal-cancel').addEventListener('click',()=>{document.getElementById('funil-modal').classList.remove('show');});
+document.getElementById('funil-modal-confirm').addEventListener('click',()=>{
+  if(funilModalSelected===null){alert('Selecione um funil!');return;}
+  const f=funis[funilModalSelected];
+  alert(`✅ Funil "${f.name}" enviado para ${funilModalTarget}!\n${f.steps.length} etapas serão disparadas em sequência.`);
+  document.getElementById('funil-modal').classList.remove('show');
 });
 
 // ===== ATENDIMENTO AO VIVO =====
-const atendContacts = [
+const atendContacts=[
   {name:'Ana Costa',ini:'AC',bg:'#e6faf0',col:'#0a7a40',phone:'67 99801-2233',seg:'Clínica',ia:true,unread:0,preview:'Sim, pode confirmar!',time:'14:33'},
   {name:'Pedro Mota',ini:'PM',bg:'#e6f0ff',col:'#1a4fa0',phone:'11 98712-5544',seg:'Geral',ia:true,unread:2,preview:'Quero mais informações',time:'14:28'},
-  {name:'Lúcia Faria',ini:'LF',bg:'#f0e6ff',col:'#6010a0',phone:'21 97654-9910',seg:'Advocacia',ia:false,unread:1,preview:'Preciso de ajuda jurídica',time:'14:10'},
+  {name:'Lúcia Faria',ini:'LF',bg:'#f0e6ff',col:'#6010a0',phone:'21 97654-9910',seg:'Advocacia',ia:false,unread:1,preview:'Preciso de ajuda',time:'14:10'},
   {name:'Rafael Souza',ini:'RS',bg:'#fff8e6',col:'#a07010',phone:'31 96543-7788',seg:'Geral',ia:true,unread:0,preview:'Ok, obrigado',time:'13:45'}
 ];
-let activeAtend = 0, atendIAon = true, funilPopOpen = false;
+let activeAtend=0,atendIAon=true,funilPopOpen=false;
+let pendingAttach=null;
 
-function renderAtendList() {
-  const el = document.getElementById('atend-list'); if (!el) return;
-  el.innerHTML = '';
-  atendContacts.forEach((c, i) => {
-    const item = document.createElement('div');
-    item.style.cssText = `padding:8px 12px;cursor:pointer;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px;background:${i===activeAtend?'white':'transparent'};${i===activeAtend?'border-left:2px solid #25D366':''}`;
-    item.innerHTML = `<div style="width:30px;height:30px;border-radius:50%;background:${c.bg};color:${c.col};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0">${c.ini}</div><div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.name}</div><div style="font-size:10px;color:#999;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.preview}</div></div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0"><div style="font-size:10px;color:#999">${c.time}</div>${c.unread>0?`<div style="background:#25D366;color:white;border-radius:8px;font-size:9px;padding:1px 5px">${c.unread}</div>`:''}<div style="font-size:9px;padding:1px 4px;border-radius:4px;font-weight:600;${c.ia?'background:#e6faf0;color:#0a7a40':'background:#fff8e6;color:#a07010'}">${c.ia?'IA':'hum'}</div></div>`;
-    item.addEventListener('click', () => { activeAtend = i; atendIAon = c.ia; selectAtend(c); renderAtendList(); });
+function renderAtendList(){
+  const el=document.getElementById('atend-list');if(!el)return;
+  el.innerHTML='';
+  atendContacts.forEach((c,i)=>{
+    const item=document.createElement('div');
+    item.style.cssText=`padding:9px 12px;cursor:pointer;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px;background:${i===activeAtend?'white':'transparent'};${i===activeAtend?'border-left:3px solid #0a7a70':'border-left:3px solid transparent'}`;
+    item.innerHTML=`<div style="width:32px;height:32px;border-radius:50%;background:${c.bg};color:${c.col};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">${c.ini}</div><div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0d1b2a">${c.name}</div><div style="font-size:10px;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.preview}</div></div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0"><div style="font-size:10px;color:#888">${c.time}</div>${c.unread>0?`<div style="background:#25D366;color:white;border-radius:8px;font-size:9px;padding:1px 5px;font-weight:700">${c.unread}</div>`:''}<div style="font-size:9px;padding:1px 5px;border-radius:4px;font-weight:700;${c.ia?'background:#e6faf0;color:#0a7a40':'background:#fff8e6;color:#a07010'}">${c.ia?'IA':'hum'}</div></div>`;
+    item.addEventListener('click',()=>{activeAtend=i;atendIAon=c.ia;selectAtend(c);renderAtendList();});
     el.appendChild(item);
   });
 }
 
-function selectAtend(c) {
-  ['ach-av','rp-av'].forEach(id => { const e=document.getElementById(id); if(e){e.textContent=c.ini;e.style.background=c.bg;e.style.color=c.col;} });
-  const n=document.getElementById('ach-name'); if(n) n.textContent=c.name;
-  const rn=document.getElementById('rp-name'); if(rn) rn.textContent=c.name;
-  const s=document.getElementById('ach-sub'); if(s) s.textContent=`● Online · ${c.seg}`;
-  updateAtendIA(); renderFunilPanels();
+function selectAtend(c){
+  ['ach-av','rp-av'].forEach(id=>{const e=document.getElementById(id);if(e){e.textContent=c.ini;e.style.background=c.bg;e.style.color=c.col;}});
+  const n=document.getElementById('ach-name');if(n)n.textContent=c.name;
+  const rn=document.getElementById('rp-name');if(rn)rn.textContent=c.name;
+  const s=document.getElementById('ach-sub');if(s)s.textContent=`● Online · ${c.seg}`;
+  updateAtendIA();renderFunilPanels();
 }
 
-function toggleAtendIA() {
-  atendIAon = !atendIAon;
-  atendContacts[activeAtend].ia = atendIAon;
-  updateAtendIA(); renderAtendList();
-  const msgs = document.getElementById('atend-msgs');
-  if (msgs) { msgs.innerHTML += `<div style="text-align:center;font-size:10px;color:#999;padding:4px 0;margin:4px 0">${atendIAon?'🤖 IA reativada':'⏸ IA pausada — você assumiu o atendimento'}</div>`; msgs.scrollTop=msgs.scrollHeight; }
+function toggleAtendIA(){
+  atendIAon=!atendIAon;atendContacts[activeAtend].ia=atendIAon;
+  updateAtendIA();renderAtendList();
+  const msgs=document.getElementById('atend-msgs');
+  if(msgs){msgs.innerHTML+=`<div style="text-align:center;font-size:10px;color:#888;padding:6px 0;margin:4px 0">${atendIAon?'🤖 IA reativada — respondendo automaticamente':'⏸ IA pausada — você assumiu o atendimento'}</div>`;msgs.scrollTop=msgs.scrollHeight;}
 }
 
-function updateAtendIA() {
-  const pill=document.getElementById('ia-pill2'), dot=document.getElementById('ia-dot2'), txt=document.getElementById('ia-txt2');
-  const tbLbl=document.getElementById('tb-ia-lbl'), rpBtn=document.getElementById('rp-ia-btn'), rpSt=document.getElementById('rp-ia-st');
-  if (atendIAon) {
+function updateAtendIA(){
+  const pill=document.getElementById('ia-pill2'),dot=document.getElementById('ia-dot2'),txt=document.getElementById('ia-txt2');
+  const tbLbl=document.getElementById('tb-ia-lbl'),rpBtn=document.getElementById('rp-ia-btn'),rpSt=document.getElementById('rp-ia-st');
+  if(atendIAon){
     if(pill){pill.style.background='#e6faf0';pill.style.color='#0a7a40';pill.style.borderColor='#9FE1CB';}
-    if(dot)dot.style.background='#25D366'; if(txt)txt.textContent='IA ativa';
-    if(tbLbl)tbLbl.textContent='Pausar IA'; if(rpBtn)rpBtn.textContent='Pausar IA';
+    if(dot)dot.style.background='#25D366';if(txt)txt.textContent='IA ativa';
+    if(tbLbl)tbLbl.textContent='Pausar IA';if(rpBtn)rpBtn.textContent='Pausar IA';
     if(rpSt){rpSt.textContent='Ativa';rpSt.className='tag tg';}
   } else {
     if(pill){pill.style.background='#fff8e6';pill.style.color='#a07010';pill.style.borderColor='#FAC775';}
-    if(dot)dot.style.background='#a07010'; if(txt)txt.textContent='IA pausada';
-    if(tbLbl)tbLbl.textContent='Ativar IA'; if(rpBtn)rpBtn.textContent='Ativar IA';
+    if(dot)dot.style.background='#a07010';if(txt)txt.textContent='IA pausada';
+    if(tbLbl)tbLbl.textContent='Ativar IA';if(rpBtn)rpBtn.textContent='Ativar IA';
     if(rpSt){rpSt.textContent='Pausada';rpSt.className='tag ta';}
   }
 }
 
-function renderFunilPanels() {
-  const c = atendContacts[activeAtend];
-  ['funil-pop-items','rp-funil-list'].forEach(id => {
-    const el = document.getElementById(id); if (!el) return;
-    el.innerHTML = '';
-    funis.forEach(f => {
-      const d = document.createElement('div');
-      d.style.cssText='background:white;border-radius:6px;padding:7px 9px;margin-bottom:6px;border:1px solid #eee';
-      d.innerHTML=`<div style="font-size:11px;font-weight:600">${f.name}</div><div style="font-size:10px;color:#999;margin-top:1px">${f.steps.length} etapa${f.steps.length>1?'s':''}</div>`;
-      const btn = document.createElement('button');
-      btn.style.cssText='width:100%;margin-top:5px;padding:5px;background:#25D366;color:white;border:none;border-radius:6px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px';
+function renderFunilPanels(){
+  const c=atendContacts[activeAtend];
+  ['funil-pop-items','rp-funil-list'].forEach(id=>{
+    const el=document.getElementById(id);if(!el)return;
+    el.innerHTML='';
+    funis.forEach(f=>{
+      const d=document.createElement('div');
+      d.style.cssText='background:#f9f9f9;border-radius:8px;padding:8px 10px;margin-bottom:6px;border:1px solid #eee;cursor:pointer;transition:border .15s';
+      d.innerHTML=`<div style="font-size:11px;font-weight:700;color:#0d1b2a">${f.name}</div><div style="font-size:10px;color:#888;margin-top:1px">${f.steps.length} etapa${f.steps.length>1?'s':''}</div>`;
+      const btn=document.createElement('button');
+      btn.style.cssText='width:100%;margin-top:6px;padding:5px;background:linear-gradient(135deg,#0a7a70,#0d6b8a);color:white;border:none;border-radius:6px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;font-weight:600';
       btn.innerHTML=`<i class="ti ti-send"></i> Enviar para ${c.name}`;
-      btn.addEventListener('click', () => sendFunilChat(f));
-      d.appendChild(btn); el.appendChild(d);
+      btn.addEventListener('click',()=>sendFunilChat(f));
+      d.appendChild(btn);el.appendChild(d);
     });
   });
 }
 
-function sendFunilChat(f) {
-  const msgs = document.getElementById('atend-msgs'); if (!msgs) return;
-  msgs.innerHTML += `<div style="display:flex;flex-direction:column;align-items:flex-end;margin:4px 0"><div style="font-size:9px;color:#999;margin-bottom:2px">Você · funil</div><div style="background:white;border-radius:10px 0 10px 10px;padding:8px 10px;max-width:78%;border:1px solid #eee"><div style="font-size:11px;font-weight:600;color:#25D366;margin-bottom:5px;display:flex;align-items:center;gap:4px"><i class="ti ti-hierarchy" style="font-size:12px"></i>${f.name}</div>${f.steps.map((s,i)=>`<div style="font-size:11px;color:#666;padding:3px 0;${i<f.steps.length-1?'border-bottom:1px solid #f5f5f5;':''}display:flex;align-items:center;gap:4px"><i class="ti ti-${s.type==='text'?'message':s.type==='audio'?'microphone':'photo'}" style="font-size:11px;color:#25D366"></i>${s.name}${s.delay>0?` <span style="font-size:9px;color:#999;margin-left:auto">+${s.delay}${s.du}</span>`:''}</div>`).join('')}</div><div style="font-size:10px;color:#999;margin-top:2px">agora ✓✓</div></div>`;
-  msgs.scrollTop = msgs.scrollHeight;
-  if (funilPopOpen) toggleFunilPop();
+function sendFunilChat(f){
+  const msgs=document.getElementById('atend-msgs');if(!msgs)return;
+  msgs.innerHTML+=`<div style="display:flex;flex-direction:column;align-items:flex-end;margin:4px 0"><div style="font-size:9px;color:#888;margin-bottom:3px">Você · funil</div><div style="background:white;border-radius:12px 0 12px 12px;padding:10px 12px;max-width:78%;border:1px solid #eee;box-shadow:0 1px 4px rgba(0,0,0,.06)"><div style="font-size:11px;font-weight:700;color:#0a7a70;margin-bottom:6px;display:flex;align-items:center;gap:5px"><i class="ti ti-hierarchy" style="font-size:12px"></i>${f.name}</div>${f.steps.map((s,i)=>`<div style="font-size:11px;color:#555;padding:4px 0;${i<f.steps.length-1?'border-bottom:1px solid #f0f0f0;':''}display:flex;align-items:center;gap:5px"><i class="ti ti-${s.type==='text'?'message':s.type==='audio'?'microphone':'photo'}" style="font-size:11px;color:#0a7a70"></i><span>${s.name}</span>${s.delay>0?`<span style="font-size:9px;color:#888;margin-left:auto">+${s.delay}${s.du}</span>`:''}</div>`).join('')}</div><div style="font-size:10px;color:#888;margin-top:3px">agora ✓✓</div></div>`;
+  msgs.scrollTop=msgs.scrollHeight;
+  if(funilPopOpen)toggleFunilPop();
 }
 
-function toggleFunilPop() {
-  funilPopOpen = !funilPopOpen;
-  const pop = document.getElementById('funil-pop');
-  if (pop) pop.style.display = funilPopOpen ? 'block' : 'none';
-  if (funilPopOpen) renderFunilPanels();
+function toggleFunilPop(){
+  funilPopOpen=!funilPopOpen;
+  const pop=document.getElementById('funil-pop');
+  if(pop)pop.style.display=funilPopOpen?'block':'none';
+  if(funilPopOpen)renderFunilPanels();
 }
 
-function atendSend() {
-  const inp = document.getElementById('atend-input'), msgs = document.getElementById('atend-msgs');
-  if (!inp||!msgs||!inp.value.trim()) return;
-  msgs.innerHTML += `<div style="display:flex;flex-direction:column;align-items:flex-end;margin:4px 0"><div style="font-size:9px;color:#999;margin-bottom:2px">Você</div><div style="background:#dcf8c6;border-radius:10px 0 10px 10px;padding:7px 10px;font-size:12px;max-width:78%;color:#075e54;line-height:1.5">${inp.value}<div style="font-size:10px;color:#888;margin-top:2px">agora ✓✓</div></div></div>`;
-  inp.value=''; msgs.scrollTop=msgs.scrollHeight; inp.style.height='auto';
+// ===== ANEXOS NO CHAT =====
+function handleAttach(input,tipo){
+  const file=input.files[0];if(!file)return;
+  pendingAttach={file,tipo};
+  document.getElementById('attach-preview').style.display='block';
+  document.getElementById('attach-name').textContent=`${tipo==='imagem'?'🖼':tipo==='audio'?'🎵':'📄'} ${file.name} (${(file.size/1024).toFixed(0)}KB)`;
+  input.value='';
 }
 
-// Event listeners atendimento
-document.getElementById('ia-pill2').addEventListener('click', toggleAtendIA);
-document.getElementById('pausar-ia-btn').addEventListener('click', toggleAtendIA);
-document.getElementById('rp-pausar-btn').addEventListener('click', toggleAtendIA);
-document.getElementById('funil-toolbar-btn').addEventListener('click', toggleFunilPop);
-document.getElementById('close-funil-pop').addEventListener('click', toggleFunilPop);
-document.getElementById('atend-send-btn').addEventListener('click', atendSend);
-document.getElementById('atend-input').addEventListener('keydown', e => { if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();atendSend();} const t=e.target;t.style.height='auto';t.style.height=Math.min(t.scrollHeight,80)+'px'; });
+function clearAttach(){
+  pendingAttach=null;
+  document.getElementById('attach-preview').style.display='none';
+  document.getElementById('attach-name').textContent='';
+}
+
+function atendSend(){
+  const inp=document.getElementById('atend-input'),msgs=document.getElementById('atend-msgs');
+  if(!inp||!msgs)return;
+  const txt=inp.value.trim();
+  if(!txt&&!pendingAttach)return;
+  if(pendingAttach){
+    const icons={imagem:'🖼',audio:'🎵',arquivo:'📄'};
+    msgs.innerHTML+=`<div style="display:flex;flex-direction:column;align-items:flex-end;margin:4px 0"><div style="font-size:9px;color:#888;margin-bottom:3px">Você</div><div style="background:#dcf8c6;border-radius:12px 0 12px 12px;padding:8px 12px;font-size:12px;max-width:78%;color:#075e54;line-height:1.5;box-shadow:0 1px 3px rgba(0,0,0,.06)"><div style="display:flex;align-items:center;gap:6px;font-weight:500">${icons[pendingAttach.tipo]||'📎'} ${pendingAttach.file.name}</div>${txt?`<div style="margin-top:4px">${txt}</div>`:''}<div style="font-size:10px;color:#888;margin-top:3px">agora ✓✓</div></div></div>`;
+    clearAttach();
+  } else if(txt){
+    msgs.innerHTML+=`<div style="display:flex;flex-direction:column;align-items:flex-end;margin:4px 0"><div style="font-size:9px;color:#888;margin-bottom:3px">Você</div><div style="background:#dcf8c6;border-radius:12px 0 12px 12px;padding:8px 12px;font-size:12px;max-width:78%;color:#075e54;line-height:1.5;box-shadow:0 1px 3px rgba(0,0,0,.06)">${txt}<div style="font-size:10px;color:#888;margin-top:3px">agora ✓✓</div></div></div>`;
+  }
+  inp.value='';msgs.scrollTop=msgs.scrollHeight;inp.style.height='auto';
+}
+
+document.getElementById('ia-pill2').addEventListener('click',toggleAtendIA);
+document.getElementById('pausar-ia-btn').addEventListener('click',toggleAtendIA);
+document.getElementById('rp-pausar-btn').addEventListener('click',toggleAtendIA);
+document.getElementById('funil-toolbar-btn').addEventListener('click',toggleFunilPop);
+document.getElementById('close-funil-pop').addEventListener('click',toggleFunilPop);
+document.getElementById('atend-send-btn').addEventListener('click',atendSend);
+document.getElementById('atend-input').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();atendSend();}const t=e.target;t.style.height='auto';t.style.height=Math.min(t.scrollHeight,80)+'px';});
 
 // ===== API STATUS =====
-fetch(API).then(r=>r.json()).then(d=>{const el=document.getElementById('api-status');if(el){el.textContent=d.status==='online'?'online':'offline';el.className='tag '+(d.status==='online'?'tg':'tr');}}).catch(()=>{const el=document.getElementById('api-status');if(el){el.textContent='offline';el.className='tag tr';}});
-fetch(API+'/api/contatos').then(r=>r.json()).then(d=>{const el=document.getElementById('total-contatos');if(el)el.textContent=(d.total||0).toLocaleString('pt-BR');}).catch(()=>{});
+fetch(API).then(r=>r.json()).then(d=>{const el=document.getElementById('total-contatos');if(el)el.textContent=(d.total||0)>0?(d.total||0).toLocaleString('pt-BR'):'—';}).catch(()=>{});
+fetch(API+'/api/contatos').then(r=>r.json()).then(d=>{const el=document.getElementById('total-contatos');if(el&&d.total)el.textContent=d.total.toLocaleString('pt-BR');}).catch(()=>{});
 </script>
 </body>
 </html>
