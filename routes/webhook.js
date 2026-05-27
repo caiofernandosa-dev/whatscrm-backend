@@ -34,7 +34,7 @@ async function resolverLid(lid, pushName) {
     }
     console.log(`[Webhook] @lid não resolvido para ${pushName} — ${contatos.filter(c=>c.pushName===pushName).length} contatos encontrados`);
   } catch(e) {
-    console.log('[Webhook] Erro ao resolver @lid:', e.message);
+    console.log('[Webhook] Erro ao resolver @lid:', e.message, e.response?.status, JSON.stringify(e.response?.data));
   }
   return null;
 }
@@ -76,6 +76,7 @@ router.post('/whatsapp', async (req, res) => {
     } else if (remoteJid.includes('@lid')) {
       // Tenta resolver pelo nome na agenda
       const lidId = remoteJid.replace('@lid','').replace(/\D/g,'');
+      console.log(`[Webhook] Tentando resolver @lid: ${lidId} pushName: ${pushName} EVO_URL: ${EVO_URL} EVO_INST: ${EVO_INST}`);
       const numeroReal = await resolverLid(lidId, pushName);
       if (numeroReal) {
         telefone = numeroReal.startsWith('55') ? numeroReal : '55' + numeroReal;
