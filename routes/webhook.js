@@ -5,70 +5,107 @@ const { responderIA }    = require('../services/ia');
 const { enviarMensagem } = require('../services/whatsapp');
 
 // POST /webhook/whatsapp
-// A Evolution API chama essa rota toda vez que chega uma mensagem
 router.post('/whatsapp', async (req, res) => {
   try {
+    res.sendStatus(200); // Responde rápido para o Evolution API não dar timeout
+
     const body = req.body;
 
-    // Ignora mensagens do próprio bot e grupos
-    if (!body?.data?.message || body?.data?.key?.fromMe) {
-      return res.sendStatus(200);
-    }
+    // Ignora mensagens enviadas pelo próprio bot
+    if (!body?.data?.message || body?.data?.key?.fromMe) return;
 
-    const telefone = body.data.key.remoteJid.replace('@s.whatsapp.net', '').replace('55', '');
-    const texto    = body.data.message.conversation ||
-                     body.data.message.extendedTextMessage?.text || '';
+    // Extrai o número do remetente
+    const remoteJid = body?.data?.key?.remoteJid || '';
+    if (remoteJid.includes('@g.us')) return; // Ignora grupos
 
-    if (!texto.trim()) return res.sendStatus(200);
+    const telefone = remoteJid
+      .replace('@s.whatsapp.net', '')
+      .replace('@lid', '')
+      .replace('55', '')
+      .replace(/\D/g, '');
 
-    console.log(`[Webhook] Mensagem de ${telefone}: ${texto.substring(0, 60)}`);
+    const texto =
+      body?.data?.message?.conversation ||
+      body?.data?.message?.extendedTextMessage?.text ||
+      body?.data?.message?.imageMessage?.caption ||
+      '';
+
+    if (!telefone) return;
+
+    console.log(`[Webhook] Msg de ${telefone}: ${texto.substring(0, 60)}`);
 
     // Busca ou cria contato
-    let { data: contato } = await supabase
+    let contato;
+    const { data: existente } = await supabase
       .from('contatos')
       .select('*')
       .eq('telefone', telefone)
       .single();
 
-    if (!contato) {
+    if (existente) {
+      contato = existente;
+      // Atualiza última interação e última mensagem
+      await supabase
+        .from('contatos')
+        .update({
+          ultima_interacao: new Date().toISOString(),
+          ultima_msg: texto.substring(0, 100)
+        })
+        .eq('id', contato.id);
+    } else {
+      // Cria novo contato
       const { data: novo } = await supabase
         .from('contatos')
-        .insert({ telefone, nome: 'Novo contato', ia_ativa: true, ativo: true, remarketing_ativo: true })
+        .insert({
+          telefone,
+          nome: 'WhatsApp +' + telefone,
+          ia_ativa: true,
+          ativo: true,
+          remarketing_ativo: true,
+          ultima_interacao: new Date().toISOString(),
+          ultima_msg: texto.substring(0, 100)
+        })
         .select()
         .single();
       contato = novo;
+      console.log(`[Webhook] Novo contato criado: ${telefone}`);
     }
 
-    // Atualiza última interação
-    await supabase
-      .from('contatos')
-      .update({ ultima_interacao: new Date().toISOString() })
-      .eq('id', contato.id);
+    if (!contato) return;
 
-    // Se IA está pausada para este contato, não responde
+    // Salva mensagem no histórico
+    await supabase.from('mensagens').insert({
+      contato_id: contato.id,
+      role: 'user',
+      conteudo: texto || '[mídia]',
+      criado_em: new Date().toISOString()
+    });
+
+    // Se IA está pausada, não responde
     if (!contato.ia_ativa) {
       console.log(`[Webhook] IA pausada para ${telefone}`);
-      return res.sendStatus(200);
+      return;
     }
 
-    // Delay humanizado antes de responder (simula digitação)
+    // Só responde se tiver texto
+    if (!texto.trim()) return;
+
+    // Delay humanizado
     const delay = 2000 + Math.random() * 3000;
     await new Promise(r => setTimeout(r, delay));
 
-    // Chama o agente de IA
+    // Chama IA
     const { ok, resposta, erro } = await responderIA(contato, texto);
 
-    if (ok) {
+    if (ok && resposta) {
       await enviarMensagem(contato.telefone, resposta);
       console.log(`[Webhook] IA respondeu para ${telefone}`);
     } else {
-      console.error(`[Webhook] Falha IA: ${erro}`);
+      console.log(`[Webhook] IA falhou: ${erro}`);
     }
 
-    res.sendStatus(200);
   } catch (err) {
-    console.error('[Webhook] Erro geral:', err.message);
-    res.sendStatus(500);
+    console.error('[Webhook] Erro:', err.message);
   }
 });
 
